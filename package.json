@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "commitizen": "^4.0.4",
+    "lerna": "^3.20.2"
+  },
+  "name": "mgilbride",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "commit": "git-cz",
+    "lint": "lerna run lint -- --",
+    "tsc": "lerna run tsc -- --"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "3.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@mgilbride/tsconfig",
+  "version": "0.0.0",
+  "description": "shared tsconfig across projects",
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "tsc"
+  ],
+  "author": "Matthew T. Gilbride <mgilbride@chariotsolutions.com>",
+  "homepage": "https://github.com/matthewtgilbride/mgilbride#readme",
+  "license": "MIT",
+  "main": "tsconfig.json",
+  "files": [
+    "tsconfig.json"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewtgilbride/mgilbride.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matthewtgilbride/mgilbride/issues"
+  }
+}

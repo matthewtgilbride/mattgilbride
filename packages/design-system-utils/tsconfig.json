@@ -1,0 +1,7 @@
+{
+  "extends": "@mgilbride/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "lib"
+  }
+}
