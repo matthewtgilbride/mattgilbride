@@ -1,5 +1,5 @@
 import { mix } from 'polished';
-import { ColorScalable } from '../types/primitive/color.primitive';
+import { ColorScalable } from 'types/primitive/color.primitive';
 import {
   ColorBlendRatios,
   InitMakeColor,
@@ -8,7 +8,7 @@ import {
   ColorMapScalable,
   ColorScales,
   Palette,
-} from '../types/composite/color.composite';
+} from 'types/composite/color.composite';
 
 export const initMakeColor: InitMakeColor = (palette: Palette) => {
   const createColor = (

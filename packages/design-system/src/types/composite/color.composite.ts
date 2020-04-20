@@ -1,11 +1,17 @@
-import { Color, ColorFixed, ColorScalable } from '../primitive/color.primitive';
+import {
+  Color,
+  ColorFixed,
+  ColorScalable,
+} from 'types/primitive/color.primitive';
+import { ColorProperty } from 'csstype';
 
 /**
  * @todo Convert ColorHex to actual type-checked regex value
  * once this issue has been closed
  * https://github.com/Microsoft/TypeScript/issues/6579
+ * (maybe CSSType will handle it right away, and then it will just be a matter of upgrading that)
  */
-export type ColorHex = string;
+export type ColorHex = ColorProperty;
 export type ColorBlendRatios = 0.25 | 0.5 | 0.75;
 export type ColorScalePosition = -3 | -2 | -1 | 1 | 2 | 3;
 export type ColorScales = { [key in ColorScalePosition]: ColorHex };

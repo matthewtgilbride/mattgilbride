@@ -1,11 +1,11 @@
-# `design-system-utils`
+# `design-system`
 
 Low level design system util functions
 
 ## Usage
 
 ```
-import { initMakeColor } from '@mgilbride/design-system-utils/lib/utils/makeColor';
+import { initMakeColor } from '@mgilbride/design-system/lib/utils/makeColor';
 const { makeColor } = initMakeColor({ ...yourPalette })
 
 const black = makeColor('dark')
