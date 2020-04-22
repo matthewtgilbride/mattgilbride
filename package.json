@@ -8,8 +8,9 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "commit": "git-cz",
-    "lint": "lerna run lint -- --",
-    "tsc": "lerna run tsc -- --"
+    "lint": "lerna run lint --stream --",
+    "tsc": "lerna run tsc --stream",
+    "develop": "lerna run develop --scope=@mgilbride/mgilbride --stream"
   },
   "devDependencies": {
     "cz-conventional-changelog": "3.1.0"

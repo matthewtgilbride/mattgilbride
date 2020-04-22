@@ -1,0 +1,8 @@
+{
+  "extends": "@mgilbride/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "noEmit": true,
+    "jsx": "react"
+  }
+}
