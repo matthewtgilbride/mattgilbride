@@ -1,9 +1,5 @@
-import {
-  Color,
-  ColorFixed,
-  ColorScalable,
-} from 'types/primitive/color.primitive';
 import { ColorProperty } from 'csstype';
+import { Color, ColorFixed, ColorScalable } from '../primitive/color.primitive';
 
 /**
  * @todo Convert ColorHex to actual type-checked regex value
@@ -23,7 +19,7 @@ export interface Palette {
   scalable: PaletteScalable;
 }
 
-export type FixedColorConfig = [ColorFixed];
+export type FixedColorConfig = [Color];
 export type ScaledColorConfig = [ColorScalable, ColorScalePosition];
 export type CustomColorConfig = ['custom', ColorHex];
 
@@ -35,5 +31,5 @@ export type ColorConfig =
 export type ColorMap = { [key in Color]: ColorHex };
 export type ColorMapScalable = { [key in ColorScalable]: ColorScales };
 
-export type MakeColor = (config: ColorConfig) => ColorHex;
-export type InitMakeColor = (palette: Palette) => { makeColor: MakeColor };
+export type MakeColor = (...config: ColorConfig) => ColorHex;
+export type InitMakeColor = (palette: Palette) => MakeColor;

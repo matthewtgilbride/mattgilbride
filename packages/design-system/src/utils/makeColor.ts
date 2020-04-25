@@ -1,5 +1,5 @@
 import { mix } from 'polished';
-import { ColorScalable } from 'types/primitive/color.primitive';
+import { ColorScalable } from '../types/primitive/color.primitive';
 import {
   ColorBlendRatios,
   InitMakeColor,
@@ -8,7 +8,7 @@ import {
   ColorMapScalable,
   ColorScales,
   Palette,
-} from 'types/composite/color.composite';
+} from '../types/composite/color.composite';
 
 export const initMakeColor: InitMakeColor = (palette: Palette) => {
   const createColor = (
@@ -33,7 +33,7 @@ export const initMakeColor: InitMakeColor = (palette: Palette) => {
 
   const colorMap: ColorMap = Object.entries(palette)
     .map(([_, colors]) => ({ ...colors }))
-    .reduce((flattenedMap, innerMap) => ({ ...flattenedMap, innerMap }), {});
+    .reduce((flattenedMap, innerMap) => ({ ...flattenedMap, ...innerMap }), {});
 
   const colorMapScalable = Object.keys(palette.scalable).reduce(
     (resultMap, key) => ({
@@ -43,15 +43,13 @@ export const initMakeColor: InitMakeColor = (palette: Palette) => {
     {},
   ) as ColorMapScalable;
 
-  return {
-    makeColor: (config) => {
-      if (config.length === 1) {
-        return colorMap[config[0]];
-      }
-      if (config[0] === 'custom') {
-        return config[1];
-      }
-      return colorMapScalable[config[0]][config[1]];
-    },
+  return (...config) => {
+    if (config.length === 1) {
+      return colorMap[config[0]];
+    }
+    if (config[0] === 'custom') {
+      return config[1];
+    }
+    return colorMapScalable[config[0]][config[1]];
   };
 };
