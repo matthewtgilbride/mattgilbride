@@ -29,8 +29,9 @@
     "url": "https://github.com/matthewtgilbride/mgilbride/issues"
   },
   "dependencies": {
-    "polished": "^3.5.1",
-    "csstype": "^2.6.10"
+    "@emotion/core": "^10.0.28",
+    "csstype": "^2.6.10",
+    "polished": "^3.5.1"
   },
   "devDependencies": {
     "@mgilbride/eslint-config": "^0.0.0",

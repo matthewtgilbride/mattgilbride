@@ -7,7 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "lint": "eslint src/* --ext=.ts,.tsx",
+    "lint": "eslint src/* --ext=.ts,.tsx --no-error-on-unmatched-pattern",
     "tsc": "tsc",
     "start": "npm run develop",
     "serve": "gatsby serve",

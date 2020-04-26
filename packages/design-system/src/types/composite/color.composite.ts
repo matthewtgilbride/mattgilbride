@@ -32,4 +32,4 @@ export type ColorMap = { [key in Color]: ColorHex };
 export type ColorMapScalable = { [key in ColorScalable]: ColorScales };
 
 export type MakeColor = (...config: ColorConfig) => ColorHex;
-export type InitMakeColor = (palette: Palette) => MakeColor;
+export type ConfigureMakeColor = (palette: Palette) => { makeColor: MakeColor };

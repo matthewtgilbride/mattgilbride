@@ -2,15 +2,16 @@ import { mix } from 'polished';
 import { ColorScalable } from '../types/primitive/color.primitive';
 import {
   ColorBlendRatios,
-  InitMakeColor,
+  ConfigureMakeColor,
   ColorHex,
   ColorMap,
   ColorMapScalable,
   ColorScales,
   Palette,
+  MakeColor,
 } from '../types/composite/color.composite';
 
-export const initMakeColor: InitMakeColor = (palette: Palette) => {
+export const configureMakeColor: ConfigureMakeColor = (palette: Palette) => {
   const createColor = (
     scale: ColorBlendRatios,
     color: ColorScalable,
@@ -43,7 +44,7 @@ export const initMakeColor: InitMakeColor = (palette: Palette) => {
     {},
   ) as ColorMapScalable;
 
-  return (...config) => {
+  const makeColor: MakeColor = (...config) => {
     if (config.length === 1) {
       return colorMap[config[0]];
     }
@@ -52,4 +53,6 @@ export const initMakeColor: InitMakeColor = (palette: Palette) => {
     }
     return colorMapScalable[config[0]][config[1]];
   };
+
+  return { makeColor };
 };
