@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Layout } from '../components/Layout';
-import { makeResponsiveObject } from '../utils/design';
 import profilePhoto from '../assets/images/profile_circle.png';
 
 const styleContainer: CSSObject = {
@@ -13,15 +12,7 @@ const styleContainer: CSSObject = {
 };
 
 const styleImage: CSSObject = {
-  height: 200,
-  width: 200,
-  ...makeResponsiveObject({
-    beginAt: 'phoneLg',
-    style: {
-      height: 400,
-      width: 400,
-    },
-  }),
+  height: '50vh',
 };
 
 const Home: FC = () => (
