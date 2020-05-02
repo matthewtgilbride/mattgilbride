@@ -9,17 +9,16 @@ const styleContainer: CSSObject = {
   display: 'grid',
   justifyContent: 'center',
   alignContent: 'center',
-};
-
-const styleImage: CSSObject = {
-  height: '50vh',
+  img: {
+    height: '50vh',
+  }
 };
 
 const Home: FC = () => (
   <Layout>
     <div css={styleContainer}>
       Yo
-      <img css={styleImage} src={profilePhoto} alt="Profile" />
+      <img src={profilePhoto} alt="Profile" />
     </div>
   </Layout>
 );

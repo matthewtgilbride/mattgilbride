@@ -3,47 +3,63 @@ import { CSSObject, Global } from '@emotion/core';
 import { Link } from 'gatsby';
 import { makeColor, makeResponsiveObject } from '../utils/design';
 
-const styleNav = (open: boolean): CSSObject => ({
-  display: 'flex',
-  flexDirection: 'column' as const,
-  div: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
+const beginAt = 'tabletPortrait'
+const styleContainer = (open: boolean): CSSObject => ({
+  display: 'grid',
+  gridTemplateColumns: 'auto auto',
+  gridTemplateRows: 'auto auto',
+  gridTemplateAreas: `
+    'menu home'   
+    'main main'
+  `,
   a: {
     textDecoration: 'none',
     color: makeColor('light'),
   },
-  ul: {
-    width: '100%',
-    display: open ? 'flex' : 'none',
-    margin: 0,
-    flexDirection: 'column' as const,
-    listStyle: 'none',
-    paddingInlineStart: 0,
+  '> a': {
+    gridArea: 'home',
+    justifySelf: 'flex-end',
+    ...makeResponsiveObject({
+      beginAt,
+      style: {
+        gridArea: 'menu',
+        justifySelf: 'inherit'
+      }
+    })
   },
-  ...makeResponsiveObject({
-    beginAt: 'tabletPortrait',
-    style: {
-      flexDirection: 'row' as const,
-      justifyContent: 'space-between',
-      div: {
-        width: 'initial',
-        button: {
-          display: 'none',
-        },
-      },
-      ul: {
-        flexDirection: 'row' as const,
-      },
+  button: {
+    gridArea: 'menu',
+    ...makeResponsiveObject({
+      beginAt,
+      style: {
+        display: 'none'
+      }
+    })
+  },
+  nav: {
+    gridArea: 'main',
+    display: open ? 'block' : 'none',
+    ul: {
+      margin: 0,
+      listStyle: 'none',
+      paddingInlineStart: 0,
     },
-  }),
-});
-
-const styleContent = {
-  top: 0,
-};
+    ...makeResponsiveObject({
+      beginAt,
+      style: {
+        gridArea: 'home',
+        display: 'block',
+        justifySelf: 'flex-end',
+        ul: {
+          display: 'flex'
+        }
+      }
+    })
+  },
+  div: {
+    gridArea: 'main'
+  }
+})
 
 export const Layout: FC = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -60,12 +76,10 @@ export const Layout: FC = ({ children }) => {
           },
         }}
       />
-      <nav css={styleNav(open)}>
-        <div>
-          <button onClick={onOpen}>menu</button>
-          <Link to="/">Matt Gilbride</Link>
-        </div>
-        <div>
+      <div css={styleContainer(open)}>
+        <button onClick={onOpen}>menu</button>
+        <Link to="/">Matt Gilbride</Link>
+        <nav>
           <ul>
             <li>
               <Link to="/about">About</Link>
@@ -80,9 +94,9 @@ export const Layout: FC = ({ children }) => {
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
-        </div>
-      </nav>
-      <div css={styleContent}>{children}</div>
+        </nav>
+        <div>{children}</div>
+      </div>
     </>
   );
 };
