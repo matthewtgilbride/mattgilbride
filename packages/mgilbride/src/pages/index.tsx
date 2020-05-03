@@ -11,7 +11,7 @@ const styleContainer: CSSObject = {
   alignContent: 'center',
   img: {
     height: '50vh',
-  }
+  },
 };
 
 const Home: FC = () => (
