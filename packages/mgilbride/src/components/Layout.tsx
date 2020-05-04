@@ -23,9 +23,10 @@ export const Layout: FC = ({ children }) => {
             margin: 0,
             backgroundColor: makeColor('gray', -2),
             color: makeColor('light'),
-            // plagiarized from the react docs site
+            overflow: 'hidden',
+            // plagiarized from sarah drasner
             fontFamily:
-              '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif',
+              'Gotham XNarrow A,Gotham XNarrow B,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;',
           },
         }}
       />

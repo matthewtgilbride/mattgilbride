@@ -4,8 +4,6 @@ import { Layout } from '../components/Layout';
 import profilePhoto from '../assets/images/profile_circle.png';
 
 const styleContainer: CSSObject = {
-  height: '100vh',
-  width: '100%',
   display: 'grid',
   justifyContent: 'center',
   alignContent: 'center',

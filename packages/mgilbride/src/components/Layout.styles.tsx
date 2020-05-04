@@ -65,17 +65,17 @@ const styleContainerTablet: CSSObject = makeResponsiveObject({
   style: {
     backgroundColor: 'inherit',
     color: 'inherit',
-    a: {
-      color: white,
-    },
     '> a': {
       gridArea: 'menu',
-      justifySelf: 'inherit',
+      justifySelf: 'flex-start',
+      alignSelf: 'flex-start',
+      color: white,
+      animation: 'initial',
     },
-    button: {
+    '> button': {
       display: 'none',
     },
-    nav: {
+    '> nav': {
       gridArea: 'home',
       display: 'block',
       justifySelf: 'flex-end',
@@ -86,10 +86,14 @@ const styleContainerTablet: CSSObject = makeResponsiveObject({
         display: 'flex',
         li: {
           paddingTop: 'inherit',
+          a: {
+            color: white,
+            animation: 'initial',
+          },
         },
       },
     },
-    div: {
+    '> div': {
       zIndex: 'inherit',
     },
   },
@@ -101,32 +105,38 @@ export const styleContainer = (
 ): CSSObject => ({
   display: 'grid',
   gridTemplateColumns: 'auto auto',
-  gridTemplateRows: 'auto auto',
+  gridTemplateRows: 'min-content auto',
   gridTemplateAreas: `
     'menu home'   
     'main main'
   `,
+  height: '100vh',
+  width: '100vw',
   backgroundColor: open ? accent : 'inherit',
   animation: open
     ? ease(fadeDarkToAccent, firstRender)
     : ease(fadeAccentToDark, firstRender),
   a: {
     textDecoration: 'none',
+    color: white,
+    textTransform: 'uppercase',
+    fontWeight: 500,
+  },
+  '> a': {
+    gridArea: 'home',
+    justifySelf: 'flex-end',
+    alignSelf: 'flex-start',
     color: open ? primary : white,
     animation: open
       ? ease(fadeWhiteToPrimary, firstRender)
       : ease(fadePrimaryToWhite, firstRender),
     padding: 8,
   },
-  '> a': {
-    gridArea: 'home',
-    justifySelf: 'flex-end',
-    alignSelf: 'center',
-  },
-  button: {
+  '> button': {
     gridArea: 'menu',
     justifySelf: 'flex-start',
-    padding: '12px 0',
+    alignSelf: 'flex-start',
+    padding: '10px 0',
     svg: {
       height: 12,
       animation: ease(fadeIn, firstRender, 2),
@@ -138,26 +148,34 @@ export const styleContainer = (
       },
     },
   },
-  nav: {
+  '> nav': {
     gridArea: 'main',
     display: open ? 'block' : 'none',
     animation: ease(fadeIn, firstRender),
-    height: '100%',
     ul: {
       margin: 0,
       listStyle: 'none',
       paddingInlineStart: 0,
       li: {
         paddingTop: 8,
+        a: {
+          color: open ? primary : white,
+          animation: open
+            ? ease(fadeWhiteToPrimary, firstRender)
+            : ease(fadePrimaryToWhite, firstRender),
+          padding: 8,
+        },
       },
     },
   },
-  div: {
+  '> div': {
     gridArea: 'main',
     zIndex: open ? -1 : 'inherit',
     '> *': {
-      animation: open ? 'inherit' : ease(fadeIn, firstRender),
+      animation: open ? 'inherit' : ease(fadeIn, false),
     },
+    alignSelf: 'center',
+    overflowY: 'auto',
   },
   ...styleContainerTablet,
 });
