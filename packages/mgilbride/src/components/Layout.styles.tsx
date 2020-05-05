@@ -1,9 +1,25 @@
 import { CSSObject, keyframes } from '@emotion/core';
-import { makeColor, makeResponsiveObject } from '../utils/design';
+import {
+  makeColor,
+  makeResponsiveObject,
+  responsiveBreakpoints,
+} from '../utils/design';
 
 const white = makeColor('light');
-const accent = makeColor('accent', -1);
-const primary = makeColor('primary', 2);
+const accent = makeColor('accent');
+const darkGray = makeColor('gray', -3);
+
+export const bodyReset = {
+  body: {
+    margin: 0,
+    backgroundColor: darkGray,
+    color: white,
+    overflow: 'hidden',
+    // plagiarized from sarah drasner
+    fontFamily:
+      'Gotham XNarrow A,Gotham XNarrow B,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;',
+  },
+};
 
 const ease = (
   animation: ReturnType<typeof keyframes>,
@@ -23,22 +39,22 @@ const fadeIn = keyframes({
 const fadeDarkToAccent = keyframes({
   '0%': {
     color: white,
-    backgroundColor: 'inherit',
+    backgroundColor: darkGray,
   },
   '100%': {
-    color: primary,
+    color: darkGray,
     backgroundColor: accent,
   },
 });
 
 const fadeAccentToDark = keyframes({
   '0%': {
-    color: primary,
+    color: darkGray,
     backgroundColor: accent,
   },
   '100%': {
     color: white,
-    backgroundColor: 'inherit',
+    backgroundColor: darkGray,
   },
 });
 
@@ -47,13 +63,13 @@ const fadeWhiteToPrimary = keyframes({
     color: white,
   },
   '100%': {
-    color: primary,
+    color: darkGray,
   },
 });
 
 const fadePrimaryToWhite = keyframes({
   '0%': {
-    color: primary,
+    color: darkGray,
   },
   '100%': {
     color: white,
@@ -63,7 +79,6 @@ const fadePrimaryToWhite = keyframes({
 const styleContainerTablet: CSSObject = makeResponsiveObject({
   beginAt: 'tabletPortrait',
   style: {
-    backgroundColor: 'inherit',
     color: 'inherit',
     '> a': {
       gridArea: 'menu',
@@ -112,21 +127,23 @@ export const styleContainer = (
   `,
   height: '100vh',
   width: '100vw',
-  backgroundColor: open ? accent : 'inherit',
+  margin: 'auto',
+  maxWidth: responsiveBreakpoints.desktop,
+  backgroundColor: open ? accent : darkGray,
   animation: open
     ? ease(fadeDarkToAccent, firstRender)
     : ease(fadeAccentToDark, firstRender),
   a: {
     textDecoration: 'none',
     color: white,
-    textTransform: 'uppercase',
     fontWeight: 500,
   },
   '> a': {
     gridArea: 'home',
     justifySelf: 'flex-end',
     alignSelf: 'flex-start',
-    color: open ? primary : white,
+    textTransform: 'uppercase',
+    color: open ? darkGray : white,
     animation: open
       ? ease(fadeWhiteToPrimary, firstRender)
       : ease(fadePrimaryToWhite, firstRender),
@@ -141,10 +158,10 @@ export const styleContainer = (
       height: 12,
       animation: ease(fadeIn, firstRender, 2),
       line: {
-        stroke: open ? primary : white,
+        stroke: open ? darkGray : white,
       },
       rect: {
-        fill: open ? primary : white,
+        fill: open ? darkGray : white,
       },
     },
   },
@@ -159,7 +176,8 @@ export const styleContainer = (
       li: {
         paddingTop: 8,
         a: {
-          color: open ? primary : white,
+          textTransform: 'uppercase',
+          color: open ? darkGray : white,
           animation: open
             ? ease(fadeWhiteToPrimary, firstRender)
             : ease(fadePrimaryToWhite, firstRender),

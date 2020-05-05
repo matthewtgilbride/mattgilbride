@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Link } from 'gatsby';
-import { Layout } from '../components/Layout';
-import profilePhoto from '../assets/images/profile_circle.png';
+import { Layout } from '../../components/Layout';
+import profilePhoto from '../../assets/images/profile_circle.png';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -26,15 +26,7 @@ const styleContainer: CSSObject = {
 const Home: FC = () => (
   <Layout>
     <div css={styleContainer}>
-      <div>Yo</div>
-      <img src={profilePhoto} alt="Profile" />
-      <div>
-        <p>{`I'm Matt, from Philly`}</p>
-        <p>I like writing code, and dogs</p>
-        <p>
-          check out my <Link to="/about">about</Link> page
-        </p>
-      </div>
+      Yo this shit is under construction
     </div>
   </Layout>
 );

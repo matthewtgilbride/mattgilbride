@@ -1,10 +1,18 @@
 import React, { FC, useCallback, useState } from 'react';
 import { Global } from '@emotion/core';
-import { Link } from 'gatsby';
-import { makeColor } from '../utils/design';
+import { Link, GatsbyLinkProps } from 'gatsby';
 import { Bars } from './svg/Bars';
 import { Close } from './svg/Close';
-import { styleContainer } from './Layout.styles';
+import { bodyReset, styleContainer } from './Layout.styles';
+
+interface LayoutLinkProps {
+  to: GatsbyLinkProps<unknown>['to'];
+}
+const LayoutLink: FC<LayoutLinkProps> = ({ to, children }) => (
+  <Link to={to} activeStyle={{ textDecoration: 'underline' }}>
+    {children}
+  </Link>
+);
 
 export const Layout: FC = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -17,35 +25,23 @@ export const Layout: FC = ({ children }) => {
 
   return (
     <>
-      <Global
-        styles={{
-          body: {
-            margin: 0,
-            backgroundColor: makeColor('gray', -2),
-            color: makeColor('light'),
-            overflow: 'hidden',
-            // plagiarized from sarah drasner
-            fontFamily:
-              'Gotham XNarrow A,Gotham XNarrow B,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;',
-          },
-        }}
-      />
+      <Global styles={bodyReset} />
       <div css={styleContainer(open, isFirstRender)}>
         <button onClick={onOpen}>{open ? <Close /> : <Bars />}</button>
-        <Link to="/">Matt Gilbride</Link>
+        <LayoutLink to="/">Matt Gilbride</LayoutLink>
         <nav>
           <ul>
             <li>
-              <Link to="/about">About</Link>
+              <LayoutLink to="/about">About</LayoutLink>
             </li>
             <li>
-              <Link to="/resume">Resume</Link>
+              <LayoutLink to="/resume">Resume</LayoutLink>
             </li>
             <li>
-              <Link to="/blog">Blog</Link>
+              <LayoutLink to="/blog">Blog</LayoutLink>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <LayoutLink to="/contact">Contact</LayoutLink>
             </li>
           </ul>
         </nav>
