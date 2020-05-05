@@ -36,7 +36,7 @@ const fadeIn = keyframes({
   },
 });
 
-const fadeDarkToAccent = keyframes({
+ const fadeDarkToAccent = keyframes({
   '0%': {
     color: white,
     backgroundColor: darkGray,
@@ -58,7 +58,7 @@ const fadeAccentToDark = keyframes({
   },
 });
 
-const fadeWhiteToPrimary = keyframes({
+const fadeWhiteToDark = keyframes({
   '0%': {
     color: white,
   },
@@ -67,7 +67,7 @@ const fadeWhiteToPrimary = keyframes({
   },
 });
 
-const fadePrimaryToWhite = keyframes({
+const fadeDarkToWhite = keyframes({
   '0%': {
     color: darkGray,
   },
@@ -145,8 +145,8 @@ export const styleContainer = (
     textTransform: 'uppercase',
     color: open ? darkGray : white,
     animation: open
-      ? ease(fadeWhiteToPrimary, firstRender)
-      : ease(fadePrimaryToWhite, firstRender),
+      ? ease(fadeWhiteToDark, firstRender)
+      : ease(fadeDarkToWhite, firstRender),
     padding: 8,
   },
   '> button': {
@@ -178,9 +178,6 @@ export const styleContainer = (
         a: {
           textTransform: 'uppercase',
           color: open ? darkGray : white,
-          animation: open
-            ? ease(fadeWhiteToPrimary, firstRender)
-            : ease(fadePrimaryToWhite, firstRender),
           padding: 8,
         },
       },
@@ -193,7 +190,11 @@ export const styleContainer = (
       animation: open ? 'inherit' : ease(fadeIn, false),
     },
     alignSelf: 'center',
-    overflowY: 'auto',
+    display: 'grid',
+    overflow: 'hidden',
+    '> div': {
+      'overflow': 'auto',
+    }
   },
   ...styleContainerTablet,
 });
