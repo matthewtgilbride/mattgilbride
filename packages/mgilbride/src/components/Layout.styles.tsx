@@ -1,123 +1,57 @@
-import { CSSObject, keyframes } from '@emotion/core';
+import { CSSObject } from '@emotion/core';
 import {
   makeColor,
   makeResponsiveObject,
   responsiveBreakpoints,
 } from '../utils/design';
+import {
+  easeAfterPageLoad,
+  fadeAccentToDark,
+  fadeDarkToAccent,
+  fadeDarkToWhite,
+  fadeIn,
+  fadeWhiteToDark,
+} from './Layout.animations';
 
 const white = makeColor('light');
 const accent = makeColor('accent');
 const darkGray = makeColor('gray', -3);
 
-export const bodyReset = {
+export const documentReset = {
   body: {
     margin: 0,
+    padding: 0,
+    height: '100%',
+    width: '100%',
     backgroundColor: darkGray,
     color: white,
-    overflow: 'hidden',
     // plagiarized from sarah drasner
     fontFamily:
       'Gotham XNarrow A,Gotham XNarrow B,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;',
   },
+  html: {
+    height: '100%',
+    width: '100%',
+  },
 };
-
-const ease = (
-  animation: ReturnType<typeof keyframes>,
-  firstRender: boolean,
-  seconds = 1,
-): string => (firstRender ? 'none' : `${animation} ease ${seconds}s`);
-
-const fadeIn = keyframes({
-  '0%': {
-    opacity: 0,
-  },
-  '100%': {
-    opacity: 100,
-  },
-});
-
- const fadeDarkToAccent = keyframes({
-  '0%': {
-    color: white,
-    backgroundColor: darkGray,
-  },
-  '100%': {
-    color: darkGray,
-    backgroundColor: accent,
-  },
-});
-
-const fadeAccentToDark = keyframes({
-  '0%': {
-    color: darkGray,
-    backgroundColor: accent,
-  },
-  '100%': {
-    color: white,
-    backgroundColor: darkGray,
-  },
-});
-
-const fadeWhiteToDark = keyframes({
-  '0%': {
-    color: white,
-  },
-  '100%': {
-    color: darkGray,
-  },
-});
-
-const fadeDarkToWhite = keyframes({
-  '0%': {
-    color: darkGray,
-  },
-  '100%': {
-    color: white,
-  },
-});
-
-const styleContainerTablet: CSSObject = makeResponsiveObject({
-  beginAt: 'tabletPortrait',
-  style: {
-    color: 'inherit',
-    '> a': {
-      gridArea: 'menu',
-      justifySelf: 'flex-start',
-      alignSelf: 'flex-start',
-      color: white,
-      animation: 'initial',
-    },
-    '> button': {
-      display: 'none',
-    },
-    '> nav': {
-      gridArea: 'home',
-      display: 'block',
-      justifySelf: 'flex-end',
-      backgroundColor: 'inherit',
-      animation: 'initial',
-      padding: 8,
-      ul: {
-        display: 'flex',
-        li: {
-          paddingTop: 'inherit',
-          a: {
-            color: white,
-            animation: 'initial',
-          },
-        },
-      },
-    },
-    '> div': {
-      zIndex: 'inherit',
-    },
-  },
-});
 
 export const styleContainer = (
   open: boolean,
   firstRender: boolean,
 ): CSSObject => ({
+  // resets
+  position: 'absolute',
+  overflow: 'hidden',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  margin: 'auto',
+  '*': {
+    boxSizing: 'border-box',
+    position: 'relative',
+  },
+  // grid
   display: 'grid',
   gridTemplateColumns: 'auto auto',
   gridTemplateRows: 'min-content auto',
@@ -125,19 +59,18 @@ export const styleContainer = (
     'menu home'   
     'main main'
   `,
-  height: '100vh',
-  width: '100vw',
-  margin: 'auto',
+  // defaults
   maxWidth: responsiveBreakpoints.desktop,
   backgroundColor: open ? accent : darkGray,
   animation: open
-    ? ease(fadeDarkToAccent, firstRender)
-    : ease(fadeAccentToDark, firstRender),
+    ? easeAfterPageLoad(fadeDarkToAccent, firstRender)
+    : easeAfterPageLoad(fadeAccentToDark, firstRender),
   a: {
     textDecoration: 'none',
     color: white,
     fontWeight: 500,
   },
+  // home link
   '> a': {
     gridArea: 'home',
     justifySelf: 'flex-end',
@@ -145,10 +78,11 @@ export const styleContainer = (
     textTransform: 'uppercase',
     color: open ? darkGray : white,
     animation: open
-      ? ease(fadeWhiteToDark, firstRender)
-      : ease(fadeDarkToWhite, firstRender),
+      ? easeAfterPageLoad(fadeWhiteToDark, firstRender)
+      : easeAfterPageLoad(fadeDarkToWhite, firstRender),
     padding: 8,
   },
+  // menu
   '> button': {
     gridArea: 'menu',
     justifySelf: 'flex-start',
@@ -156,7 +90,7 @@ export const styleContainer = (
     padding: '10px 0',
     svg: {
       height: 12,
-      animation: ease(fadeIn, firstRender, 2),
+      animation: easeAfterPageLoad(fadeIn, firstRender, 2),
       line: {
         stroke: open ? darkGray : white,
       },
@@ -165,10 +99,11 @@ export const styleContainer = (
       },
     },
   },
+  // main nav
   '> nav': {
     gridArea: 'main',
     display: open ? 'block' : 'none',
-    animation: ease(fadeIn, firstRender),
+    animation: easeAfterPageLoad(fadeIn, firstRender),
     ul: {
       margin: 0,
       listStyle: 'none',
@@ -183,18 +118,62 @@ export const styleContainer = (
       },
     },
   },
+  // content
   '> div': {
     gridArea: 'main',
     zIndex: open ? -1 : 'inherit',
+    // fade in the immediate child, even on initial load
     '> *': {
-      animation: open ? 'inherit' : ease(fadeIn, false),
+      animation: open ? 'inherit' : easeAfterPageLoad(fadeIn, false),
     },
     alignSelf: 'center',
     display: 'grid',
-    overflow: 'hidden',
-    '> div': {
-      'overflow': 'auto',
-    }
+    height: '100%',
+    overflowY: 'auto',
   },
-  ...styleContainerTablet,
+  ...styleContainerTablet(),
 });
+
+function styleContainerTablet(): CSSObject {
+  return makeResponsiveObject({
+    beginAt: 'tabletPortrait',
+    style: {
+      color: 'inherit',
+      // home link
+      '> a': {
+        gridArea: 'menu',
+        justifySelf: 'flex-start',
+        alignSelf: 'flex-start',
+        color: white,
+        animation: 'initial',
+      },
+      // hamburger menu
+      '> button': {
+        display: 'none',
+      },
+      // main nav
+      '> nav': {
+        gridArea: 'home',
+        display: 'block',
+        justifySelf: 'flex-end',
+        backgroundColor: 'inherit',
+        animation: 'initial',
+        padding: 8,
+        ul: {
+          display: 'flex',
+          li: {
+            paddingTop: 'inherit',
+            a: {
+              color: white,
+              animation: 'initial',
+            },
+          },
+        },
+      },
+      // content
+      '> div': {
+        zIndex: 'inherit',
+      },
+    },
+  });
+}

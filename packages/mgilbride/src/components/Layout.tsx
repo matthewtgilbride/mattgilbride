@@ -3,7 +3,7 @@ import { Global } from '@emotion/core';
 import { Link, GatsbyLinkProps } from 'gatsby';
 import { Bars } from './svg/Bars';
 import { Close } from './svg/Close';
-import { bodyReset, styleContainer } from './Layout.styles';
+import { documentReset, styleContainer } from './Layout.styles';
 
 interface LayoutLinkProps {
   to: GatsbyLinkProps<unknown>['to'];
@@ -25,7 +25,7 @@ export const Layout: FC = ({ children }) => {
 
   return (
     <>
-      <Global styles={bodyReset} />
+      <Global styles={documentReset} />
       <div css={styleContainer(open, isFirstRender)}>
         <button onClick={onOpen}>{open ? <Close /> : <Bars />}</button>
         <LayoutLink to="/">Matt Gilbride</LayoutLink>
