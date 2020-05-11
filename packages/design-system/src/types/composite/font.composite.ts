@@ -1,6 +1,7 @@
 import { Size } from 'types/primitive/size.primitive';
 import { SizeHeadings } from 'types/composite/size.composite';
 import { ColorConfig } from 'types/composite/color.composite';
+import { FontFaceConfiguration } from 'polished/lib/types/fontFaceConfiguration';
 
 export type FontSize = Size & SizeHeadings;
 export type FontFamilyType = 'system' | 'user-defined' | 'google';
@@ -44,3 +45,46 @@ export interface FontProperties {
     fontColor: ColorConfig;
   };
 }
+
+export interface FontFamilyDefinitionOptions {
+  family: FontFamily;
+  variants: {
+    [type in Exclude<FontStyle, 'bold'>]: FontWeightValue[];
+  };
+}
+
+export interface FontFamilyDefinition {
+  source: FontFamilyType;
+  options: FontFamilyDefinitionOptions | FontFaceConfiguration;
+}
+
+export interface FontConfig {
+  defaults: {
+    fontFamily: FontFamily;
+    fontStyle: FontStyle;
+    fontWeight: FontWeightName;
+    fontColor?: ColorConfig;
+  };
+  headingSizeMap: {
+    [key in SizeHeadings]: Size;
+  };
+  fontWeightMap: {
+    [key in FontWeightName]: FontWeightValue;
+  };
+  fontFamilyDefinitions: FontFamilyDefinition[];
+}
+
+export interface Font {
+  fontSize: string;
+  lineHeight: string;
+  fontFamily: FontFamily;
+  fontWeight: number;
+  fontStyle: FontStyle;
+  color?: string;
+}
+
+export type MakeFont = (config: FontProperties) => Font;
+
+export type ConfigureMakeFont = (
+  fontConfig: FontConfig,
+) => { makeFont: MakeFont };

@@ -4,10 +4,14 @@ import {
   MakeResponsiveString,
   ResponsiveBreakpoints,
 } from './responsive.composite';
+import { MakeSize, SizeConfig } from './size.composite';
+import { FontConfig } from './font.composite';
 
 export interface DesignConfig {
   palette: Palette;
   responsiveBreakpoints: ResponsiveBreakpoints;
+  sizeConfig: SizeConfig;
+  fontConfig: FontConfig;
 }
 
 export type ConfigureDesignUtils = (
@@ -16,4 +20,5 @@ export type ConfigureDesignUtils = (
   makeColor: MakeColor;
   makeResponsiveString: MakeResponsiveString;
   makeResponsiveObject: MakeResponsiveObject;
+  makeSize: MakeSize;
 };
