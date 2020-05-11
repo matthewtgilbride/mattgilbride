@@ -6,6 +6,7 @@ import {
 } from './responsive.composite';
 import { MakeSize, SizeConfig } from './size.composite';
 import { FontConfig } from './font.composite';
+import { MakeSpace } from './space.composite';
 
 export interface DesignConfig {
   palette: Palette;
@@ -21,4 +22,5 @@ export type ConfigureDesignUtils = (
   makeResponsiveString: MakeResponsiveString;
   makeResponsiveObject: MakeResponsiveObject;
   makeSize: MakeSize;
+  makeSpace: MakeSpace;
 };

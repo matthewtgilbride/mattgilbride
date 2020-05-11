@@ -1,6 +1,7 @@
 import { CSSObject } from '@emotion/core';
 import {
   makeColor,
+  makeSpace,
   makeResponsiveObject,
   responsiveBreakpoints,
 } from '../utils/design';
@@ -80,16 +81,16 @@ export const styleContainer = (
     animation: open
       ? easeAfterPageLoad(fadeWhiteToDark, firstRender)
       : easeAfterPageLoad(fadeDarkToWhite, firstRender),
-    padding: 8,
+    padding: makeSpace('xs'),
   },
   // menu
   '> button': {
     gridArea: 'menu',
     justifySelf: 'flex-start',
     alignSelf: 'flex-start',
-    padding: '10px 0',
+    padding: `${makeSpace('xs')} 0`,
     svg: {
-      height: 12,
+      height: makeSpace('sm'),
       animation: easeAfterPageLoad(fadeIn, firstRender, 2),
       line: {
         stroke: open ? darkGray : white,
@@ -109,11 +110,11 @@ export const styleContainer = (
       listStyle: 'none',
       paddingInlineStart: 0,
       li: {
-        paddingTop: 8,
+        paddingTop: makeSpace('xs'),
         a: {
           textTransform: 'uppercase',
           color: open ? darkGray : white,
-          padding: 8,
+          padding: makeSpace('xs'),
         },
       },
     },
@@ -158,7 +159,7 @@ function styleContainerTablet(): CSSObject {
         justifySelf: 'flex-end',
         backgroundColor: 'inherit',
         animation: 'initial',
-        padding: 8,
+        padding: makeSpace('xs'),
         ul: {
           display: 'flex',
           li: {

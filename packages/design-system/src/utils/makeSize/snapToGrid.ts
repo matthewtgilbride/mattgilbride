@@ -44,7 +44,7 @@ const InvalidSizeString = (arg: string): Error =>
  */
 function stringToValueAndUnit(arg: string): [number, string] {
   const split = arg.split(/(em|rem|px)/g);
-  if (split.length === 2) {
+  if (split.length === 3 && split[2] === '') {
     const [num, unit] = split;
     const value = parseFloat(num);
     if (!Number.isFinite(value)) {

@@ -18,12 +18,7 @@ export type SizeArgs = [Size | SizeHeadings] | [number, SizeUnits];
 export type SpaceScale = 'linear' | 'exponential';
 export type SpaceLinearValues = number[];
 
-export type SpaceProperties =
-  | (Size | number)
-  | {
-      custom?: number;
-    }
-  | 'auto';
+export type SpaceProperties = Size | 'auto' | number;
 
 type CSSBoxLong = 'top' | 'right' | 'bottom' | 'left';
 type CSSBoxShort = 'vertical' | 'horizontal';

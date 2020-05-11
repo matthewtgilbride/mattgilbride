@@ -83,7 +83,7 @@ function modularScaleSizeValueMap(sizeConfig: SizeConfig): SizeValueMap {
   );
 }
 
-function convertToUnits(
+export function convertToUnits(
   documentFontSize: number,
   value: string,
   unit: SizeUnits,
