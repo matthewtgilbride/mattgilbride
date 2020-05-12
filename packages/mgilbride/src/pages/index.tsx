@@ -1,20 +1,21 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Link } from 'gatsby';
+import { makeSpace } from '../utils/design';
 import { Layout } from '../components/Layout';
 import profilePhoto from '../assets/images/profile_circle.png';
 
 const styleContainer: CSSObject = {
   display: 'grid',
-  justifyContent: 'center',
-  alignContent: 'center',
+  justifySelf: 'center',
+  alignSelf: 'center',
   img: {
     height: '50vh',
-    paddingBottom: 16,
+    paddingBottom: makeSpace('sm'),
   },
   p: {
     textAlign: 'right',
-    padding: '8px 0',
+    padding: `${makeSpace('xxs')} 0`,
     margin: 0,
     a: {
       textDecoration: 'underline',

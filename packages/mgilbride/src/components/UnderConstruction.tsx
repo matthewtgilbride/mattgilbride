@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Layout } from './Layout';
+import { makeSpace } from '../utils/design';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -8,14 +9,13 @@ const styleContainer: CSSObject = {
   alignContent: 'center',
   img: {
     height: '50vh',
-    paddingBottom: 16,
+    paddingBottom: makeSpace('md'),
   },
   p: {
     textAlign: 'right',
-    padding: '8px 0',
+    padding: `${makeSpace('xxs')} 0`,
     margin: 0,
     a: {
-      textDecoration: 'underline',
       textTransform: 'initial',
     },
   },
