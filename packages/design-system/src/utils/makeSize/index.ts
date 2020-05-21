@@ -29,5 +29,18 @@ export const configureMakeSize: ConfigureMakeSize = ({
     return sizeMap.size[size][sizeConfig.sizeUnits];
   };
 
-  return { makeSize };
+  const makeFontSize = (...args: SizeArgs): string => {
+    if (args.length === 2) {
+      return `${args[0]}${args[1]}`;
+    }
+    const [size] = args;
+    if (isHeadingSize(size)) {
+      return sizeMap.fontSize[fontConfig.headingSizeMap[size]][
+        sizeConfig.sizeUnits
+      ];
+    }
+    return sizeMap.fontSize[size][sizeConfig.sizeUnits];
+  };
+
+  return { makeSize, makeFontSize };
 };

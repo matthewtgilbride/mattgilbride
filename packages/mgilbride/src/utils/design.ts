@@ -125,6 +125,7 @@ export const {
   makeResponsiveString,
   makeResponsiveObject,
   makeSize,
+  makeFontSize,
   makeSpace,
 } = configureDesignUtils({
   palette,
