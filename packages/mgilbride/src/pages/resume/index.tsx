@@ -117,12 +117,12 @@ const Home: FC = () => (
           fellow Charioteers as well as the various engineering organizations
           I&apos;ve gotten to work with. The most rewarding part of this job is
           the opportunity it provides me to learn rapidly. I enjoy having a
-          technically deep role that still includes interacting with people
-          regularly, and that&apos;s exactly what I get to do here.
+          deeply technical role that still includes interacting with people
+          regularly, and that&apos;s exactly what I have at Chariot.
         </p>
         <p>
-          Check out my <Link to="/blog">blog</Link> for more on what I&apos;
-          been working on:
+          Check out my <Link to="/blog">blog</Link> for more on what I&apos;ve
+          been working on.
         </p>
         <JobOrDegreeHeader
           orgCopy="Thomson Reuters"
@@ -150,9 +150,23 @@ const Home: FC = () => (
         <p>
           I implemented highly configurable SAP products in the logistics space.
           I focused on two products; Transportation Management (TM) and Extended
-          Warehouse Management (EWM).
+          Warehouse Management (EWM). This job was technical in nature, but
+          didn&apos;t overtly require programming skills. I spent much of my
+          time understanding whether complex business requirements could be
+          solved via configuration alone, or required more technical
+          enhancements.
         </p>
-        <p>I loved it there, but needed to travel less, and code more.</p>
+        <p>
+          After some time, I had spent enough time debugging the software to be
+          able to develop those enhancements on my own. I really enjoyed the
+          work for a period of time. I love the logistics space, so although I
+          wanted to spend more of my days writing code, I was happy with a more
+          hands-on role that involved walking the warehouse floor.
+        </p>
+        <p>
+          Eventually, a desire to travel less and code more meant I had to move
+          on.
+        </p>
         <JobOrDegreeHeader
           orgCopy="Boeing"
           dateCopy="Aug. 2009 - Nov. 2011"
@@ -161,7 +175,7 @@ const Home: FC = () => (
         />
         <p>
           As a supply chain major coming out of undergraduate school, this was a
-          great job. A lot of things I did revolved around spreadsheets, but
+          great job. A lot of things I did revolved around spreadsheets, and
           involved interacting on a production floor. I fell in love with coding
           via the Microsoft Office Suite (Excel, VBA, and Access).
         </p>
