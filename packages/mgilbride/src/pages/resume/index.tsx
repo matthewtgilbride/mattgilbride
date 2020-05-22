@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
+import { Link } from 'gatsby';
 import { Layout } from '../../components/Layout';
 import {
   makeSpace,
@@ -50,6 +51,7 @@ const styleContainer: CSSObject = {
   },
 };
 
+// @ts-ignore
 const Home: FC = () => (
   <Layout>
     <div css={styleContainer}>
@@ -108,9 +110,20 @@ const Home: FC = () => (
         <p>
           I&apos;m a consultant at Chariot. We build software products with
           small teams of highly capable engineers, or integrate into existing
-          engineering teams to help them do things better.
+          teams to help them do things better.
         </p>
-        <p>I love it here for many reasons. Mainly the people.</p>
+        <p>
+          I love it here for many reasons. Mainly the people. That includes my
+          fellow Charioteers as well as the various engineering organizations
+          I&apos;ve gotten to work with. The most rewarding part of this job is
+          the opportunity it provides me to learn rapidly. I enjoy having a
+          technically deep role that still includes interacting with people
+          regularly, and that&apos;s exactly what I get to do here.
+        </p>
+        <p>
+          Check out my <Link to="/blog">blog</Link> for more on what I&apos;
+          been working on:
+        </p>
         <JobOrDegreeHeader
           orgCopy="Thomson Reuters"
           dateCopy="Aug. 2015 - May 2018"
@@ -135,10 +148,11 @@ const Home: FC = () => (
           locationCopy="Newtown Square, PA."
         />
         <p>
-          I consulted for large scale ERP implementations. My favorite part was
-          the coding.
+          I implemented highly configurable SAP products in the logistics space.
+          I focused on two products; Transportation Management (TM) and Extended
+          Warehouse Management (EWM).
         </p>
-        <p>I loved it there, but didn&apos;t get to code enough.</p>
+        <p>I loved it there, but needed to travel less, and code more.</p>
         <JobOrDegreeHeader
           orgCopy="Boeing"
           dateCopy="Aug. 2009 - Nov. 2011"
@@ -146,10 +160,15 @@ const Home: FC = () => (
           locationCopy="Ridley Park, PA."
         />
         <p>
-          I fell in love with coding via the Microsoft Office Suite (Excel, VBA,
-          and Access).
+          As a supply chain major coming out of undergraduate school, this was a
+          great job. A lot of things I did revolved around spreadsheets, but
+          involved interacting on a production floor. I fell in love with coding
+          via the Microsoft Office Suite (Excel, VBA, and Access).
         </p>
-        <p>Little did I know a decade later I would be a Typescript fanboy.</p>
+        <p>
+          Little did I know, a decade later Microsoft would be popular for
+          different things and I would be a Typescript fanboy.
+        </p>
         <h1>Education</h1>
         <JobOrDegreeHeader
           titleCopy="M.S. Computer Science"
@@ -161,6 +180,15 @@ const Home: FC = () => (
           After too many years of dabbling, I committed to a technical career by
           pursuing a technical education.
         </p>
+        <p>
+          The final few quarters of my degree were spent with a research group
+          studying graph databases, specifically the exploration of graph
+          datastructures as they evolve over time. I worked with a brilliant
+          Ph.D student named Vera Zaychik Moffitt. We have all moved on since
+          then. If you&nbsp;d like to know more about the work, the website
+          (which I built, don&apos;t judge) still exists&nbsp;
+          <a href="https://portaldb.github.io/">here</a>.
+        </p>
         <JobOrDegreeHeader
           titleCopy="B.S. Supply Chain Info. Systems"
           orgCopy="Penn State University"
@@ -168,8 +196,10 @@ const Home: FC = () => (
           locationCopy="University Park, PA."
         />
         <p>
-          I studied Supply Chain and minored in Spanish and International
-          Business.
+          I studied Supply Chain Information Systems, and minored in Spanish and
+          International Business. SCIS was a degree from Penn State&apos;s
+          business college. It was like a business degree combined with an
+          industrial engineering degree, with less physics and more accounting.
         </p>
       </div>
     </div>
