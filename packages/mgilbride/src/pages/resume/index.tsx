@@ -3,11 +3,17 @@ import { CSSObject } from '@emotion/core';
 import { Link } from 'gatsby';
 import { Layout } from '../../components/Layout';
 import {
+  makeFontSize,
+  makeResponsiveObject,
   makeSpace,
   responsiveBreakpoints,
-  makeFontSize,
 } from '../../utils/design';
 import { JobOrDegreeHeader } from './JobOrDegreeHeader';
+import CurlyBrackets from '../../assets/svg/curly-brackets.svg';
+import Architecture from '../../assets/svg/architecture.svg';
+import Infrastructure from '../../assets/svg/infrastructure.svg';
+import Process from '../../assets/svg/process.svg';
+import { SkillHeader } from './SkillHeader';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -15,23 +21,18 @@ const styleContainer: CSSObject = {
   justifyItems: 'center',
   padding: makeSpace('md'),
   maxWidth: responsiveBreakpoints.tabletPortrait,
-  img: {
-    height: '50vh',
-    paddingBottom: makeSpace('sm'),
-  },
   'h1, h3': {
     fontStyle: 'italic',
+  },
+  h1: {
     margin: `${makeSpace('sm')} 0`,
   },
   h3: {
     fontWeight: 'normal',
-  },
-  '.first': {
-    marginTop: 0,
+    margin: 0,
   },
   h5: {
     margin: `${makeSpace('xs')} 0 0 0`,
-    fontWeight: 'normal',
   },
   ul: {
     padding: `0 ${makeSpace('sm')}`,
@@ -39,9 +40,8 @@ const styleContainer: CSSObject = {
   },
   li: {
     margin: `${makeSpace('xxs')} 0`,
-    fontSize: makeFontSize('xs'),
+    fontSize: makeFontSize('sm'),
     listStyleType: 'none',
-    fontWeight: 'bold',
   },
   a: {
     textDecoration: 'underline',
@@ -51,55 +51,102 @@ const styleContainer: CSSObject = {
   },
 };
 
-// @ts-ignore
+const styleSkills: CSSObject = {
+  display: 'grid',
+  gridTemplateColumns: '1fr',
+  '> div': {
+    '> div': {
+      padding: `${makeSpace('xxs')} ${makeSpace('md')} ${makeSpace(
+        'xl',
+      )} ${makeSpace('md')}`,
+    },
+  },
+  ...makeResponsiveObject({
+    beginAt: 'tabletPortrait',
+    style: {
+      gridTemplateColumns: '1fr 1fr',
+    },
+  }),
+};
+
 const Home: FC = () => (
   <Layout>
     <div css={styleContainer}>
       <div>
-        <h1 className="first">Skills</h1>
-        <h3>Languages / Frameworks</h3>
-        <h5>Day to Day</h5>
-        <ul>
-          <li>Javascript, Typescript, Node</li>
-          <li>React, Vue, HTML, CSS</li>
-          <li>Scala, Akka, Python, Flask</li>
-          <li>SQL, Postgres</li>
-        </ul>
-        <h5>Previous Projects</h5>
-        <ul>
-          <li>Java, Spring</li>
-          <li>Neo4j, Apache Spark</li>
-        </ul>
-        <h5>Dabbled</h5>
-        <ul>
-          <li>Clojure, Haskell</li>
-        </ul>
-        <h3>Infrastructure</h3>
-        <h5>General</h5>
-        <ul>
-          <li>Git, GitHub, GitLab</li>
-          <li>Docker</li>
-          <li>Jenkins</li>
-        </ul>
-        <h5>AWS</h5>
-        <ul>
-          <li>EC2, ECS</li>
-          <li>Lambda</li>
-          <li>Cognito</li>
-        </ul>
-        <h3>Architecture</h3>
-        <ul>
-          <li>REST</li>
-          <li>Event Sourcing and CQRS</li>
-          <li>Domain Driven Design</li>
-        </ul>
-        <h3>Process</h3>
-        <ul>
-          <li>Agile/Scrum</li>
-          <li>Specification writing</li>
-          <li>User acceptance testing</li>
-          <li>Go-live and production support</li>
-        </ul>
+        <h1 css={{ marginTop: 0 }}>Skills</h1>
+        <div css={styleSkills}>
+          <div>
+            <SkillHeader
+              imgSrc={CurlyBrackets}
+              imgAlt="brackets"
+              text="Languages / Frameworks"
+            />
+            <div>
+              <h5>Day to Day</h5>
+              <ul>
+                <li>Javascript, Typescript, Node</li>
+                <li>React, Vue, HTML, CSS</li>
+                <li>Scala, Akka, Python, Flask</li>
+                <li>SQL, Postgres</li>
+              </ul>
+              <h5>Previous Projects</h5>
+              <ul>
+                <li>Java, Spring</li>
+                <li>Neo4j, Apache Spark</li>
+              </ul>
+              <h5>Dabbled</h5>
+              <ul>
+                <li>Clojure, Haskell</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <SkillHeader
+              imgSrc={Infrastructure}
+              imgAlt="infrastructure"
+              text="Infrastructure"
+            />
+            <div>
+              <h5>General</h5>
+              <ul>
+                <li>Git, GitHub, GitLab</li>
+                <li>Docker</li>
+                <li>Jenkins</li>
+              </ul>
+              <h5>AWS</h5>
+              <ul>
+                <li>EC2, ECS</li>
+                <li>Lambda</li>
+                <li>Cognito</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <SkillHeader
+              imgSrc={Architecture}
+              imgAlt="architecture"
+              text="Architecture"
+            />
+            <div>
+              <ul>
+                <li>REST</li>
+                <li>Event Sourcing and CQRS</li>
+                <li>Domain Driven Design</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <SkillHeader imgSrc={Process} imgAlt="process" text="Process" />
+            <div>
+              <ul>
+                <li>Agile/Scrum</li>
+                <li>Specification writing</li>
+                <li>User acceptance testing</li>
+                <li>Go-live and production support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <h1>Experience</h1>
         <JobOrDegreeHeader
           orgCopy="Chariot Solutions"

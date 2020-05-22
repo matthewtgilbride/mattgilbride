@@ -7,7 +7,7 @@ export const styleContainer: CSSObject = {
     marginBottom: 0,
   },
   h5: {
-    marginTop: makeSpace('xxs'),
+    margin: `${makeSpace('xxs')} 0 0 0`,
   },
   div: {
     display: 'flex',
