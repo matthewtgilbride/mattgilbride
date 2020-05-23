@@ -15,10 +15,6 @@ const styleIcon: CSSObject = {
   alignItems: 'center',
   justifyItems: 'center',
   background: makeColor('light'),
-  svg: {
-    height: 16,
-    width: 16,
-  },
 };
 
 const styleText: CSSObject = {
