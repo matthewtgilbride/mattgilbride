@@ -3,11 +3,10 @@ import { CSSObject } from '@emotion/core';
 import { Link } from 'gatsby';
 import { Layout } from '../../components/Layout';
 import {
-  makeFontSize,
+  makeColor,
   makeResponsiveObject,
   makeSpace,
   responsiveBreakpoints,
-  makeColor,
 } from '../../utils/design';
 import { JobOrDegreeHeader } from './components/JobOrDegreeHeader';
 import CurlyBrackets from '../../assets/svg/curly-brackets.svg';
@@ -66,7 +65,7 @@ const Home: FC = () => (
           <div>
             <SkillHeader
               imgSrc={CurlyBrackets}
-              imgAlt="brackets"
+              imgSize={24}
               text="Languages / Frameworks"
             />
             <SkillBody>
@@ -91,7 +90,7 @@ const Home: FC = () => (
           <div>
             <SkillHeader
               imgSrc={Infrastructure}
-              imgAlt="infrastructure"
+              imgSize={24}
               text="Infrastructure"
             />
             <SkillBody>
@@ -112,7 +111,7 @@ const Home: FC = () => (
           <div>
             <SkillHeader
               imgSrc={Architecture}
-              imgAlt="architecture"
+              imgSize={24}
               text="Architecture"
             />
             <SkillBody>
@@ -124,7 +123,7 @@ const Home: FC = () => (
             </SkillBody>
           </div>
           <div>
-            <SkillHeader imgSrc={Process} imgAlt="process" text="Process" />
+            <SkillHeader imgSrc={Process} imgSize={28} text="Process" />
             <SkillBody>
               <ul>
                 <li>Agile/Scrum</li>
@@ -138,7 +137,8 @@ const Home: FC = () => (
         <h1>Experience</h1>
         <JobOrDegreeHeader
           imgUrl={Chariot}
-          imgAlt="chariot"
+          imgSize={36}
+          orgUrl="http://www.chariotsolutions.com"
           orgCopy="Chariot Solutions"
           dateCopy="May 2017 - Present"
           titleCopy="Software Architect"
@@ -164,7 +164,8 @@ const Home: FC = () => (
         </JobOrDegreeBody>
         <JobOrDegreeHeader
           imgUrl={Reuters}
-          imgAlt="reuters"
+          imgSize={36}
+          orgUrl="https://legal.thomsonreuters.com/en/products/c-track"
           orgCopy="Thomson Reuters"
           dateCopy="Aug. 2015 - May 2018"
           titleCopy="Senior Software Engineer"
@@ -184,7 +185,8 @@ const Home: FC = () => (
         </JobOrDegreeBody>
         <JobOrDegreeHeader
           imgUrl={SAP}
-          imgAlt="sap"
+          imgSize={36}
+          orgUrl="https://www.sap.com/products/digital-supply-chain/supply-chain-logistics.html"
           orgCopy="SAP"
           dateCopy="Dec. 2011 - Aug. 2015"
           titleCopy="Senior Application Consultant"
@@ -213,7 +215,8 @@ const Home: FC = () => (
         </JobOrDegreeBody>
         <JobOrDegreeHeader
           imgUrl={Boeing}
-          imgAlt="boeing"
+          imgSize={28}
+          orgUrl="https://www.boeing.com/"
           orgCopy="Boeing"
           dateCopy="Aug. 2009 - Nov. 2011"
           titleCopy="Supply Chain Analyst"
@@ -233,7 +236,8 @@ const Home: FC = () => (
         <h1>Education</h1>
         <JobOrDegreeHeader
           imgUrl={Drexel}
-          imgAlt="drexel"
+          imgSize={36}
+          orgUrl="https://drexel.edu/cci/academics/computer-science-department/"
           titleCopy="M.S. Computer Science"
           orgCopy="Drexel University"
           dateCopy="Fall 2013 - Spring 2017"
@@ -255,7 +259,8 @@ const Home: FC = () => (
         </JobOrDegreeBody>
         <JobOrDegreeHeader
           imgUrl={PennState}
-          imgAlt="pennstate"
+          imgSize={36}
+          orgUrl="https://www.smeal.psu.edu/scis"
           titleCopy="B.S. Supply Chain Info. Systems"
           orgCopy="Penn State University"
           dateCopy="Fall 2005 - Spring 2009"

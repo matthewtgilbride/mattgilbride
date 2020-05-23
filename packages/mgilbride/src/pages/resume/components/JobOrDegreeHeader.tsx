@@ -10,10 +10,11 @@ import {
 
 export interface JobHeaderProps {
   orgCopy: string;
+  orgUrl: string;
+  imgUrl: string;
+  imgSize: number;
   titleCopy: string;
   dateCopy: string;
-  imgUrl?: string;
-  imgAlt?: string;
 }
 
 export const styleContainer: CSSObject = {
@@ -79,24 +80,30 @@ const styleOrg: CSSObject = {
     style: {
       gridArea: 'right',
       justifySelf: 'flex-end',
+      textAlign: 'right',
     },
   }),
 };
 
 export const JobOrDegreeHeader: FC<JobHeaderProps> = ({
   orgCopy,
+  orgUrl,
   dateCopy,
   titleCopy,
   imgUrl,
-  imgAlt,
+  imgSize,
 }) => (
   <div css={styleContainer}>
-    <div css={styleIcon}>{imgUrl && <img src={imgUrl} alt={imgAlt} />}</div>
+    <div css={styleIcon}>
+      <img src={imgUrl} alt={orgCopy} height={imgSize} width={imgSize} />
+    </div>
     <div css={styleTitle}>
       <h3>{titleCopy}</h3>
     </div>
     <div css={styleOrg}>
-      <h5>{orgCopy}</h5>
+      <h5>
+        <a href={orgUrl}>{orgCopy}</a>
+      </h5>
       <h5>{dateCopy}</h5>
     </div>
   </div>

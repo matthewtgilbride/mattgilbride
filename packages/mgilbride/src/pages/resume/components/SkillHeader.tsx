@@ -23,12 +23,12 @@ const styleText: CSSObject = {
 
 export const SkillHeader: FC<{
   imgSrc: string;
-  imgAlt: string;
+  imgSize: number;
   text: string;
-}> = ({ imgSrc, imgAlt, text }) => (
+}> = ({ imgSrc, imgSize, text }) => (
   <h3 css={styleContainer}>
     <div css={styleIcon}>
-      <img src={imgSrc} alt={imgAlt} />
+      <img src={imgSrc} alt={text} height={imgSize} width={imgSize} />
     </div>
     <div css={styleText}>{text}</div>
   </h3>
