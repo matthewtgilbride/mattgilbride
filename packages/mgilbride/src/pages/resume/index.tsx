@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { Link } from 'gatsby';
+import { Link, PageProps } from 'gatsby';
 import { Layout } from '../../components/Layout';
 import {
-  makeColor,
   makeResponsiveObject,
   makeSpace,
   responsiveBreakpoints,
@@ -22,6 +21,7 @@ import PennState from '../../assets/svg/penn-state.svg';
 import { SkillHeader } from './components/SkillHeader';
 import { SkillBody } from './components/SkillBody';
 import { JobOrDegreeBody } from './components/JobOrDegreeBody';
+import { ScrollableSectionHeader } from './components/ScrollableSectionHeader';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -29,14 +29,8 @@ const styleContainer: CSSObject = {
   justifyItems: 'center',
   padding: makeSpace('md'),
   maxWidth: responsiveBreakpoints.tabletPortrait,
-  'h1, h3': {
-    fontStyle: 'italic',
-  },
-  h1: {
-    margin: `${makeSpace('sm')} 0 ${makeSpace('xxl')} 0`,
-    color: makeColor('primary', 1),
-  },
   h3: {
+    fontStyle: 'italic',
     fontWeight: 'normal',
     margin: 0,
   },
@@ -56,11 +50,18 @@ const styleSkills: CSSObject = {
   }),
 };
 
-const Home: FC = () => (
+const Home: FC<PageProps> = ({ location: { pathname, hash } }) => (
   <Layout>
     <div css={styleContainer}>
       <div>
-        <h1 css={{ marginTop: 0 }}>Skills</h1>
+        <ScrollableSectionHeader
+          firstSection
+          hash={hash}
+          pathname={pathname}
+          hashTarget="#skills"
+        >
+          Skills
+        </ScrollableSectionHeader>
         <div css={styleSkills}>
           <div>
             <SkillHeader
@@ -134,7 +135,13 @@ const Home: FC = () => (
             </SkillBody>
           </div>
         </div>
-        <h1>Experience</h1>
+        <ScrollableSectionHeader
+          hash={hash}
+          pathname={pathname}
+          hashTarget="#experience"
+        >
+          Experience
+        </ScrollableSectionHeader>
         <JobOrDegreeHeader
           imgUrl={Chariot}
           imgSize={36}
@@ -233,7 +240,13 @@ const Home: FC = () => (
             different things and I would be a Typescript fanboy.
           </p>
         </JobOrDegreeBody>
-        <h1>Education</h1>
+        <ScrollableSectionHeader
+          hash={hash}
+          pathname={pathname}
+          hashTarget="#education"
+        >
+          Education
+        </ScrollableSectionHeader>
         <JobOrDegreeHeader
           imgUrl={Drexel}
           imgSize={36}
