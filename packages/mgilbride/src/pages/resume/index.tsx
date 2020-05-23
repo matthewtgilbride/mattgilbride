@@ -7,14 +7,22 @@ import {
   makeResponsiveObject,
   makeSpace,
   responsiveBreakpoints,
+  makeColor,
 } from '../../utils/design';
-import { JobOrDegreeHeader } from './JobOrDegreeHeader';
+import { JobOrDegreeHeader } from './components/JobOrDegreeHeader';
 import CurlyBrackets from '../../assets/svg/curly-brackets.svg';
 import Architecture from '../../assets/svg/architecture.svg';
 import Infrastructure from '../../assets/svg/infrastructure.svg';
 import Process from '../../assets/svg/process.svg';
 import Chariot from '../../assets/svg/chariot.svg';
-import { SkillHeader } from './SkillHeader';
+import Reuters from '../../assets/svg/reuters.svg';
+import SAP from '../../assets/svg/sap.svg';
+import Boeing from '../../assets/svg/boeing.svg';
+import Drexel from '../../assets/svg/drexel.svg';
+import PennState from '../../assets/svg/penn-state.svg';
+import { SkillHeader } from './components/SkillHeader';
+import { SkillBody } from './components/SkillBody';
+import { JobOrDegreeBody } from './components/JobOrDegreeBody';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -27,52 +35,26 @@ const styleContainer: CSSObject = {
   },
   h1: {
     margin: `${makeSpace('sm')} 0 ${makeSpace('xxl')} 0`,
+    color: makeColor('primary', 1),
   },
   h3: {
     fontWeight: 'normal',
     margin: 0,
   },
-  h5: {
-    margin: `${makeSpace('xs')} 0 0 0`,
-  },
-  ul: {
-    padding: `${makeSpace('xxs')} 0`,
-    margin: 0,
-  },
-  li: {
-    margin: `${makeSpace('xxs')} 0`,
-    fontSize: makeFontSize('sm'),
-    listStyleType: 'none',
-  },
   a: {
     textDecoration: 'underline',
-  },
-  p: {
-    fontSize: makeFontSize('sm'),
-    padding: `0 ${makeSpace('md')}`,
   },
 };
 
 const styleSkills: CSSObject = {
   display: 'grid',
   gridTemplateColumns: '1fr',
-  '> div': {
-    '> div': {
-      padding: `${makeSpace('xxs')} ${makeSpace('md')} ${makeSpace(
-        'xl',
-      )} ${makeSpace('md')}`,
-    },
-  },
   ...makeResponsiveObject({
     beginAt: 'tabletPortrait',
     style: {
       gridTemplateColumns: '1fr 1fr',
     },
   }),
-};
-
-const styleProse: CSSObject = {
-  padding: `${makeSpace('xxs')} 0 ${makeSpace('lg')} 0`,
 };
 
 const Home: FC = () => (
@@ -87,7 +69,7 @@ const Home: FC = () => (
               imgAlt="brackets"
               text="Languages / Frameworks"
             />
-            <div>
+            <SkillBody>
               <h5>Day to Day</h5>
               <ul>
                 <li>Javascript, Typescript, Node</li>
@@ -104,7 +86,7 @@ const Home: FC = () => (
               <ul>
                 <li>Clojure, Haskell</li>
               </ul>
-            </div>
+            </SkillBody>
           </div>
           <div>
             <SkillHeader
@@ -112,7 +94,7 @@ const Home: FC = () => (
               imgAlt="infrastructure"
               text="Infrastructure"
             />
-            <div>
+            <SkillBody>
               <h5>General</h5>
               <ul>
                 <li>Git, GitHub, GitLab</li>
@@ -125,7 +107,7 @@ const Home: FC = () => (
                 <li>Lambda</li>
                 <li>Cognito</li>
               </ul>
-            </div>
+            </SkillBody>
           </div>
           <div>
             <SkillHeader
@@ -133,24 +115,24 @@ const Home: FC = () => (
               imgAlt="architecture"
               text="Architecture"
             />
-            <div>
+            <SkillBody>
               <ul>
                 <li>REST</li>
                 <li>Event Sourcing and CQRS</li>
                 <li>Domain Driven Design</li>
               </ul>
-            </div>
+            </SkillBody>
           </div>
           <div>
             <SkillHeader imgSrc={Process} imgAlt="process" text="Process" />
-            <div>
+            <SkillBody>
               <ul>
                 <li>Agile/Scrum</li>
                 <li>Specification writing</li>
                 <li>User acceptance testing</li>
                 <li>Go-live and production support</li>
               </ul>
-            </div>
+            </SkillBody>
           </div>
         </div>
         <h1>Experience</h1>
@@ -160,9 +142,8 @@ const Home: FC = () => (
           orgCopy="Chariot Solutions"
           dateCopy="May 2017 - Present"
           titleCopy="Software Architect"
-          locationCopy="Fort Washington, PA."
         />
-        <div css={styleProse}>
+        <JobOrDegreeBody>
           <p>
             I&apos;m a consultant at Chariot. We build software products with
             small teams of highly capable engineers, or integrate into existing
@@ -180,14 +161,15 @@ const Home: FC = () => (
             Check out my <Link to="/blog">blog</Link> for more on what I&apos;ve
             been working on.
           </p>
-        </div>
+        </JobOrDegreeBody>
         <JobOrDegreeHeader
+          imgUrl={Reuters}
+          imgAlt="reuters"
           orgCopy="Thomson Reuters"
           dateCopy="Aug. 2015 - May 2018"
           titleCopy="Senior Software Engineer"
-          locationCopy="Media, PA."
         />
-        <div css={styleProse}>
+        <JobOrDegreeBody>
           <p>
             I was a senior developer on an enterprise Court Management System
             (CMS). The software serves courts in the U.S. and abroad,
@@ -199,14 +181,15 @@ const Home: FC = () => (
             configurable financial system to support various processes including
             fee calculation, payment processing, and general ledger accounting.
           </p>
-        </div>
+        </JobOrDegreeBody>
         <JobOrDegreeHeader
+          imgUrl={SAP}
+          imgAlt="sap"
           orgCopy="SAP"
           dateCopy="Dec. 2011 - Aug. 2015"
           titleCopy="Senior Application Consultant"
-          locationCopy="Newtown Square, PA."
         />
-        <div css={styleProse}>
+        <JobOrDegreeBody>
           <p>
             I implemented highly configurable SAP products in the logistics
             space. I focused on two products; Transportation Management (TM) and
@@ -227,14 +210,15 @@ const Home: FC = () => (
             Eventually, a desire to travel less and code more meant I had to
             move on.
           </p>
-        </div>
+        </JobOrDegreeBody>
         <JobOrDegreeHeader
+          imgUrl={Boeing}
+          imgAlt="boeing"
           orgCopy="Boeing"
           dateCopy="Aug. 2009 - Nov. 2011"
           titleCopy="Supply Chain Analyst"
-          locationCopy="Ridley Park, PA."
         />
-        <div css={styleProse}>
+        <JobOrDegreeBody>
           <p>
             As a supply chain major coming out of undergraduate school, this was
             a great job. A lot of things I did revolved around spreadsheets, and
@@ -245,15 +229,16 @@ const Home: FC = () => (
             Little did I know, a decade later Microsoft would be popular for
             different things and I would be a Typescript fanboy.
           </p>
-        </div>
+        </JobOrDegreeBody>
         <h1>Education</h1>
         <JobOrDegreeHeader
+          imgUrl={Drexel}
+          imgAlt="drexel"
           titleCopy="M.S. Computer Science"
           orgCopy="Drexel University"
           dateCopy="Fall 2013 - Spring 2017"
-          locationCopy="Philadelphia, PA."
         />
-        <div css={styleProse}>
+        <JobOrDegreeBody>
           <p>
             After too many years of dabbling, I committed to a technical career
             by pursuing a technical education.
@@ -267,14 +252,15 @@ const Home: FC = () => (
             (which I built, don&apos;t judge) still exists&nbsp;
             <a href="https://portaldb.github.io/">here</a>.
           </p>
-        </div>
+        </JobOrDegreeBody>
         <JobOrDegreeHeader
+          imgUrl={PennState}
+          imgAlt="pennstate"
           titleCopy="B.S. Supply Chain Info. Systems"
           orgCopy="Penn State University"
           dateCopy="Fall 2005 - Spring 2009"
-          locationCopy="University Park, PA."
         />
-        <div css={styleProse}>
+        <JobOrDegreeBody>
           <p>
             I studied Supply Chain Information Systems, and minored in Spanish
             and International Business. SCIS was a degree from Penn State&apos;s
@@ -282,7 +268,7 @@ const Home: FC = () => (
             industrial engineering degree, with less physics and more
             accounting.
           </p>
-        </div>
+        </JobOrDegreeBody>
       </div>
     </div>
   </Layout>

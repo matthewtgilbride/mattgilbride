@@ -11,7 +11,7 @@ const palette: Palette = {
   },
   scalable: {
     primary: '#00a1ab',
-    secondary: '#00a1ab',
+    secondary: '#2fc4b2',
     accent: '#ff5722',
     error: '#dd2c00',
     warning: '#f2a51a',
