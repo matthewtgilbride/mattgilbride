@@ -21,12 +21,11 @@ import PennState from '../../assets/svg/penn-state.svg';
 import { SkillHeader } from './components/SkillHeader';
 import { SkillBody } from './components/SkillBody';
 import { JobOrDegreeBody } from './components/JobOrDegreeBody';
-import { ScrollableSectionHeader } from './components/ScrollableSectionHeader';
+import { Section } from './components/Section';
 
 const styleContainer: CSSObject = {
   display: 'grid',
   justifySelf: 'center',
-  justifyItems: 'center',
   padding: makeSpace('md'),
   maxWidth: responsiveBreakpoints.tabletPortrait,
   h3: {
@@ -42,6 +41,7 @@ const styleContainer: CSSObject = {
 const styleSkills: CSSObject = {
   display: 'grid',
   gridTemplateColumns: '1fr',
+  gridColumnGap: makeSpace('xxl'),
   ...makeResponsiveObject({
     beginAt: 'tabletPortrait',
     style: {
@@ -50,18 +50,19 @@ const styleSkills: CSSObject = {
   }),
 };
 
-const Home: FC<PageProps> = ({ location: { pathname, hash } }) => (
+const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
   <Layout>
     <div css={styleContainer}>
-      <div>
-        <ScrollableSectionHeader
-          firstSection
-          hash={hash}
-          pathname={pathname}
-          hashTarget="#skills"
-        >
-          Skills
-        </ScrollableSectionHeader>
+      <Section
+        defaultClosed
+        headerProps={{
+          firstSection: true,
+          hash,
+          pathname,
+          hashTarget: '#skills',
+          text: 'Skills',
+        }}
+      >
         <div css={styleSkills}>
           <div>
             <SkillHeader
@@ -135,13 +136,15 @@ const Home: FC<PageProps> = ({ location: { pathname, hash } }) => (
             </SkillBody>
           </div>
         </div>
-        <ScrollableSectionHeader
-          hash={hash}
-          pathname={pathname}
-          hashTarget="#experience"
-        >
-          Experience
-        </ScrollableSectionHeader>
+      </Section>
+      <Section
+        headerProps={{
+          hash,
+          pathname,
+          hashTarget: '#experience',
+          text: 'Experience',
+        }}
+      >
         <JobOrDegreeHeader
           imgUrl={Chariot}
           imgSize={36}
@@ -240,13 +243,15 @@ const Home: FC<PageProps> = ({ location: { pathname, hash } }) => (
             different things and I would be a Typescript fanboy.
           </p>
         </JobOrDegreeBody>
-        <ScrollableSectionHeader
-          hash={hash}
-          pathname={pathname}
-          hashTarget="#education"
-        >
-          Education
-        </ScrollableSectionHeader>
+      </Section>
+      <Section
+        headerProps={{
+          hash,
+          pathname,
+          hashTarget: '#education',
+          text: 'Education',
+        }}
+      >
         <JobOrDegreeHeader
           imgUrl={Drexel}
           imgSize={36}
@@ -287,9 +292,9 @@ const Home: FC<PageProps> = ({ location: { pathname, hash } }) => (
             accounting.
           </p>
         </JobOrDegreeBody>
-      </div>
+      </Section>
     </div>
   </Layout>
 );
 
-export default Home; // eslint-disable-line import/no-default-export
+export default Resume; // eslint-disable-line import/no-default-export
