@@ -25,8 +25,10 @@ import { Section } from './components/Section';
 
 const styleContainer: CSSObject = {
   display: 'grid',
+  gridAutoRows: 'max-content',
   justifySelf: 'center',
   padding: makeSpace('md'),
+  width: '100%',
   maxWidth: responsiveBreakpoints.tabletPortrait,
   h3: {
     fontStyle: 'italic',
