@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { CSSObject } from '@emotion/core';
+import { animated, useSpring } from 'react-spring';
 import { makeColor, makeSpace } from '../../../utils/design';
 import ChevronDown from '../../../assets/svg/chevron-down-accent.svg';
 
@@ -24,7 +25,6 @@ const styleHeader = (open: boolean, first?: boolean): CSSObject => ({
       width: 16,
       marginTop: open ? 4 : 2,
       marginRight: open ? undefined : 2,
-      transform: open ? undefined : 'rotate(90deg)',
     },
   },
 });
@@ -48,6 +48,13 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
   open,
   text,
 }) => {
+  const buttonSpring = useSpring({
+    from: {
+      transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
+    },
+    transform: open ? 'rotate(0deg)' : 'rotate(90deg)',
+  });
+
   const el = useRef<HTMLHeadingElement>(null);
 
   const scrollToElement = useCallback(
@@ -70,7 +77,7 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
     <h1 css={styleHeader(open, firstSection)} ref={el}>
       <a href={`${pathname}${hashTarget}`}>{text}</a>
       <button onClick={onClick}>
-        <img src={ChevronDown} alt="open" />
+        <animated.img style={buttonSpring} src={ChevronDown} alt="open" />
       </button>
     </h1>
   );
