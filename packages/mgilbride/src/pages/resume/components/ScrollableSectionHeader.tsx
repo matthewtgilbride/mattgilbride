@@ -5,7 +5,6 @@ import { makeColor, makeSpace } from '../../../utils/design';
 import ChevronDown from '../../../assets/svg/chevron-down-accent.svg';
 
 const styleHeader = (open: boolean, first?: boolean): CSSObject => ({
-  fontStyle: 'italic',
   display: 'flex',
   justifyContent: 'space-between',
   margin: first ? `0 0 ${makeSpace('md')} 0` : `${makeSpace('md')} 0`,

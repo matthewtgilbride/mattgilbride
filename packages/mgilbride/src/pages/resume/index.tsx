@@ -6,6 +6,7 @@ import {
   makeResponsiveObject,
   makeSpace,
   responsiveBreakpoints,
+  makeColor,
 } from '../../utils/design';
 import { JobOrDegreeHeader } from './components/JobOrDegreeHeader';
 import CurlyBrackets from '../../assets/svg/curly-brackets.svg';
@@ -34,6 +35,9 @@ const styleContainer: CSSObject = {
     fontStyle: 'italic',
     fontWeight: 'normal',
     margin: 0,
+  },
+  h5: {
+    color: makeColor('accent'),
   },
   a: {
     textDecoration: 'underline',
@@ -75,19 +79,19 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
             <SkillBody>
               <h5>Day to Day</h5>
               <ul>
-                <li>Javascript, Typescript, Node</li>
-                <li>React, Vue, HTML, CSS</li>
-                <li>Scala, Akka, Python, Flask</li>
-                <li>SQL, Postgres</li>
+                <li>Javascript &bull; Typescript &bull; Node</li>
+                <li>React &bull; Vue &bull; HTML &bull; CSS</li>
+                <li>Scala &bull; Akka &bull; Python &bull; Flask</li>
+                <li>SQL &bull; Postgres</li>
               </ul>
               <h5>Previous Projects</h5>
               <ul>
-                <li>Java, Spring</li>
-                <li>Neo4j, Apache Spark</li>
+                <li>Java &bull; Spring</li>
+                <li>Neo4j &bull; Apache Spark</li>
               </ul>
               <h5>Dabbled</h5>
               <ul>
-                <li>Clojure, Haskell</li>
+                <li>Clojure &bull; Haskell</li>
               </ul>
             </SkillBody>
           </div>
@@ -100,13 +104,13 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
             <SkillBody>
               <h5>General</h5>
               <ul>
-                <li>Git, GitHub, GitLab</li>
+                <li>Git &bull; GitHub &bull; GitLab</li>
                 <li>Docker</li>
                 <li>Jenkins</li>
               </ul>
               <h5>AWS</h5>
               <ul>
-                <li>EC2, ECS</li>
+                <li>EC2 &bull; ECS</li>
                 <li>Lambda</li>
                 <li>Cognito</li>
               </ul>

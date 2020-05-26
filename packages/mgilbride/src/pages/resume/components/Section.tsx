@@ -19,7 +19,7 @@ export const Section: FC<{
   const transitions = useTransition(open, null, {
     from: { opacity: 0, transform: 'scaleY(0)' },
     enter: { opacity: 1, transform: 'scaleY(1)' },
-    leave: { opacity: 0, height: 0, transform: 'scaleY(0)' },
+    leave: { opacity: 0, maxHeight: 0, transform: 'scaleY(0)' },
   });
 
   return (
