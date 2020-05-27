@@ -44,7 +44,7 @@ export const styleContainer: CSSObject = {
 
 const styleTitle: CSSObject = {
   gridArea: 'top',
-  color: makeColor('secondary'),
+  color: makeColor('primary'),
   ...makeResponsiveObject({
     beginAt: 'tabletPortrait',
     style: {
@@ -85,6 +85,10 @@ const styleOrg: CSSObject = {
   }),
 };
 
+const styleDate: CSSObject = {
+  color: makeColor('secondary'),
+};
+
 export const JobOrDegreeHeader: FC<JobHeaderProps> = ({
   orgCopy,
   orgUrl,
@@ -104,7 +108,7 @@ export const JobOrDegreeHeader: FC<JobHeaderProps> = ({
       <h5>
         <a href={orgUrl}>{orgCopy}</a>
       </h5>
-      <h5>{dateCopy}</h5>
+      <h5 css={styleDate}>{dateCopy}</h5>
     </div>
   </div>
 );

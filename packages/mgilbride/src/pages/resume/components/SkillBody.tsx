@@ -11,6 +11,7 @@ const styleContainer: CSSObject = {
   `,
   h5: {
     margin: `${makeSpace('xs')} 0`,
+    color: makeColor('secondary'),
   },
   ul: {
     backgroundColor: makeColor('gray', -2),

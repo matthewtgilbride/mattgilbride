@@ -14,7 +14,7 @@ const styleIcon: CSSObject = {
   display: 'grid',
   alignItems: 'center',
   justifyItems: 'center',
-  background: makeColor('secondary'),
+  background: makeColor('primary'),
 };
 
 const styleText: CSSObject = {

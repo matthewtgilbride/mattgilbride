@@ -6,7 +6,6 @@ import {
   makeResponsiveObject,
   makeSpace,
   responsiveBreakpoints,
-  makeColor,
 } from '../../utils/design';
 import { JobOrDegreeHeader } from './components/JobOrDegreeHeader';
 import CurlyBrackets from '../../assets/svg/curly-brackets.svg';
@@ -35,9 +34,6 @@ const styleContainer: CSSObject = {
     fontStyle: 'italic',
     fontWeight: 'normal',
     margin: 0,
-  },
-  h5: {
-    color: makeColor('accent'),
   },
   a: {
     textDecoration: 'underline',

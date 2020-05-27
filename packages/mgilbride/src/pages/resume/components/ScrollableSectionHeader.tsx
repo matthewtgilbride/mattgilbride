@@ -8,9 +8,6 @@ const styleHeader = (open: boolean, first?: boolean): CSSObject => ({
   display: 'flex',
   justifyContent: 'space-between',
   margin: first ? `0 0 ${makeSpace('md')} 0` : `${makeSpace('md')} 0`,
-  '> a': {
-    color: makeColor('primary', 1),
-  },
   '> button': {
     backgroundColor: makeColor('gray', -2),
     border: 'none',
