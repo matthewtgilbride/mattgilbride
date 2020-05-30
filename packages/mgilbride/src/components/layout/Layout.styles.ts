@@ -1,22 +1,14 @@
 import { CSSObject } from '@emotion/core';
 import {
   makeColor,
-  makeSpace,
   makeResponsiveObject,
+  makeSpace,
   responsiveBreakpoints,
-} from '../utils/design';
-import {
-  easeAfterPageLoad,
-  fadeAccentToDark,
-  fadeDarkToAccent,
-  fadeDarkToWhite,
-  fadeIn,
-  fadeWhiteToDark,
-} from './Layout.animations';
+} from '../../utils/design';
 
-const white = makeColor('light');
-const accent = makeColor('accent');
-const darkGray = makeColor('gray', -3);
+export const white = makeColor('light');
+export const accent = makeColor('accent');
+export const darkGray = makeColor('gray', -3);
 
 export const documentReset = {
   body: {
@@ -36,10 +28,7 @@ export const documentReset = {
   },
 };
 
-export const styleContainer = (
-  open: boolean,
-  firstRender: boolean,
-): CSSObject => ({
+export const styleContainer = (open: boolean): CSSObject => ({
   // resets
   position: 'absolute',
   overflow: 'hidden',
@@ -62,10 +51,6 @@ export const styleContainer = (
   `,
   // defaults
   maxWidth: responsiveBreakpoints.desktop,
-  backgroundColor: open ? accent : darkGray,
-  animation: open
-    ? easeAfterPageLoad(fadeDarkToAccent, firstRender)
-    : easeAfterPageLoad(fadeAccentToDark, firstRender),
   a: {
     textDecoration: 'none',
     color: white,
@@ -77,10 +62,6 @@ export const styleContainer = (
     justifySelf: 'flex-end',
     alignSelf: 'flex-start',
     textTransform: 'uppercase',
-    color: open ? darkGray : white,
-    animation: open
-      ? easeAfterPageLoad(fadeWhiteToDark, firstRender)
-      : easeAfterPageLoad(fadeDarkToWhite, firstRender),
     padding: makeSpace('xs'),
   },
   // menu
@@ -91,20 +72,12 @@ export const styleContainer = (
     padding: `${makeSpace('xs')} 0`,
     svg: {
       height: makeSpace('sm'),
-      animation: easeAfterPageLoad(fadeIn, firstRender, 2),
-      line: {
-        stroke: open ? darkGray : white,
-      },
-      rect: {
-        fill: open ? darkGray : white,
-      },
     },
   },
   // main nav
   '> nav': {
     gridArea: 'main',
     display: open ? 'block' : 'none',
-    animation: easeAfterPageLoad(fadeIn, firstRender),
     ul: {
       margin: 0,
       listStyle: 'none',
@@ -113,7 +86,7 @@ export const styleContainer = (
         paddingTop: makeSpace('xs'),
         a: {
           textTransform: 'uppercase',
-          color: open ? darkGray : white,
+          color: white,
           padding: makeSpace('xs'),
         },
       },
@@ -123,10 +96,6 @@ export const styleContainer = (
   '> div': {
     gridArea: 'main',
     zIndex: open ? -1 : 'inherit',
-    // fade in the immediate child, even on initial load
-    '> *': {
-      animation: open ? 'inherit' : easeAfterPageLoad(fadeIn, false),
-    },
     alignSelf: 'center',
     display: 'grid',
     height: '100%',
@@ -146,7 +115,6 @@ function styleContainerTablet(): CSSObject {
         justifySelf: 'flex-start',
         alignSelf: 'flex-start',
         color: white,
-        animation: 'initial',
       },
       // hamburger menu
       '> button': {
@@ -158,7 +126,6 @@ function styleContainerTablet(): CSSObject {
         display: 'block',
         justifySelf: 'flex-end',
         backgroundColor: 'inherit',
-        animation: 'initial',
         padding: makeSpace('xs'),
         ul: {
           display: 'flex',
@@ -166,7 +133,6 @@ function styleContainerTablet(): CSSObject {
             paddingTop: 'inherit',
             a: {
               color: white,
-              animation: 'initial',
             },
           },
         },

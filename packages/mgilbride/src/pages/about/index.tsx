@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Link } from 'gatsby';
-import { Layout } from '../../components/Layout';
+import { Layout } from '../../components/layout/Layout';
 import { makeSpace, responsiveBreakpoints } from '../../utils/design';
 import phillyGlobe from '../../assets/images/philly-globe.png';
 import engineer from '../../assets/images/engineer_thinking.png';

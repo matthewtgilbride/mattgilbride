@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Link } from 'gatsby';
 import { makeSpace } from '../utils/design';
-import { Layout } from '../components/Layout';
+import { Layout } from '../components/layout/Layout';
 import profilePhoto from '../assets/images/profile_circle.png';
 
 const styleContainer: CSSObject = {

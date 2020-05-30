@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Link, PageProps } from 'gatsby';
-import { Layout } from '../../components/Layout';
+import { Layout } from '../../components/layout/Layout';
 import {
   makeResponsiveObject,
   makeSpace,

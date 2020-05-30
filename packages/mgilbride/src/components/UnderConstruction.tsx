@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { Layout } from './Layout';
+import { Layout } from './layout/Layout';
 import { makeSpace } from '../utils/design';
 
 const styleContainer: CSSObject = {
