@@ -1,26 +1,10 @@
-import React, { CSSProperties, FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { Global } from '@emotion/core';
-import { GatsbyLinkProps, Link } from 'gatsby';
 import { animated } from 'react-spring';
 import { MenuIcon } from './MenuIcon';
 import { documentReset, styleContainer } from './Layout.styles';
 import { useLayoutSprings } from './Layout.springs';
-
-interface LayoutLinkProps {
-  to: GatsbyLinkProps<unknown>['to'];
-  style: CSSProperties;
-}
-
-const AnimatedLink = animated(Link);
-const LayoutLink: FC<LayoutLinkProps> = ({ style, to, children }) => (
-  <AnimatedLink
-    style={style}
-    to={to}
-    activeStyle={{ textDecoration: 'underline' }}
-  >
-    {children}
-  </AnimatedLink>
-);
+import { LayoutLink } from './LayoutLink';
 
 export const Layout: FC = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -46,7 +30,10 @@ export const Layout: FC = ({ children }) => {
         <button onClick={onOpen}>
           <MenuIcon open={open} style={svgSpring} />
         </button>
-        <LayoutLink style={homeLinkSpring} to="/">
+        <LayoutLink isHome="mobile" style={homeLinkSpring} to="/">
+          Matt Gilbride
+        </LayoutLink>
+        <LayoutLink isHome="desktop" style={linkSpring} to="/">
           Matt Gilbride
         </LayoutLink>
         <nav>

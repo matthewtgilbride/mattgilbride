@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { makeFontSize, makeSpace } from '../../../utils/design';
+import { makeFontSize, makeSpace } from '../../utils/design';
 
 const styleContainer: CSSObject = {
   padding: `${makeSpace('xxs')} 0 ${makeSpace('lg')} 0`,

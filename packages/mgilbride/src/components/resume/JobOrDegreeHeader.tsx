@@ -6,7 +6,7 @@ import {
   makeSize,
   makeSpace,
   makeResponsiveObject,
-} from '../../../utils/design';
+} from '../../utils/design';
 
 export interface JobHeaderProps {
   orgCopy: string;

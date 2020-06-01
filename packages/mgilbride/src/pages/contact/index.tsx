@@ -8,7 +8,7 @@ import {
   makeColor,
   makeFontSize,
 } from '../../utils/design';
-import { FormControl } from './FormControl';
+import { FormControl } from '../../components/FormControl';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -21,6 +21,7 @@ const styleContainer: CSSObject = {
   maxWidth: responsiveBreakpoints.phoneLg,
   '> button': {
     marginTop: makeSpace('lg'),
+    cursor: 'pointer',
     boxShadow: 'none',
     border: 'none',
     borderRadius: 4,
@@ -29,6 +30,8 @@ const styleContainer: CSSObject = {
     padding: makeSpace('xs'),
     fontSize: makeFontSize('md'),
     ':hover,:focus': {
+      boxShadow: 'none',
+      outline: 'none',
       backgroundColor: makeColor('primary', 1),
     },
   },

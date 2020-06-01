@@ -1,7 +1,7 @@
 import React, { FC, SyntheticEvent, useMemo } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, config, useSpring } from 'react-spring';
-import { makeColor, makeFontSize, makeSpace } from '../../utils/design';
+import { makeColor, makeFontSize, makeSpace } from '../utils/design';
 
 const styleContainer = (value: string): CSSObject => ({
   display: 'flex',

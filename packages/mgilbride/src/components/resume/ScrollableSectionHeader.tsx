@@ -1,8 +1,8 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useSpring } from 'react-spring';
-import { makeColor, makeSpace } from '../../../utils/design';
-import ChevronDown from '../../../assets/svg/chevron-down-accent.svg';
+import { makeColor, makeSpace } from '../../utils/design';
+import ChevronDown from '../../assets/svg/chevron-down-accent.svg';
 
 const styleHeader = (open: boolean, first?: boolean): CSSObject => ({
   display: 'flex',
@@ -10,10 +10,13 @@ const styleHeader = (open: boolean, first?: boolean): CSSObject => ({
   margin: first ? `0 0 ${makeSpace('md')} 0` : `${makeSpace('md')} 0`,
   '> button': {
     backgroundColor: makeColor('gray', -2),
+    cursor: 'pointer',
     border: 'none',
     borderRadius: '50%',
     width: 38,
-    ':hover': {
+    ':hover,:focus': {
+      boxShadow: 'none',
+      outline: 'none',
       backgroundColor: makeColor('gray', -1),
     },
     '> img': {

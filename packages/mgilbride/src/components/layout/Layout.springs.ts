@@ -1,6 +1,5 @@
 import { config, useSpring, useTransition } from 'react-spring';
 import { accent, darkGray, white } from './Layout.styles';
-import { responsiveBreakpoints } from '../../utils/design';
 
 export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
   const backgroundSpring = useSpring({
@@ -39,8 +38,7 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
 
   const homeLinkSpring = useSpring({
     from: {
-      opacity:
-        window.innerWidth <= responsiveBreakpoints.tabletPortrait ? 0 : 1,
+      opacity: 0,
       color: open ? darkGray : white,
     },
     to: {

@@ -19,8 +19,8 @@ export const Section: FC<{
 
   const [open, setOpen] = useState(true);
   if (defaultClosed && !hasRenderedOnce) {
-    // wait a tick to close it so the user sees it can be opened
-    setTimeout(() => setOpen(false), 750);
+    // wait a tick to close it so measurement can take place
+    setTimeout(() => setOpen(false));
   }
 
   const [bodyHeight, setBodyHeight] = useState(0);

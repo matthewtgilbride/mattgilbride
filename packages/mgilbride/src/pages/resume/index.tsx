@@ -7,7 +7,7 @@ import {
   makeSpace,
   responsiveBreakpoints,
 } from '../../utils/design';
-import { JobOrDegreeHeader } from './components/JobOrDegreeHeader';
+import { JobOrDegreeHeader } from '../../components/resume/JobOrDegreeHeader';
 import CurlyBrackets from '../../assets/svg/curly-brackets.svg';
 import Architecture from '../../assets/svg/architecture.svg';
 import Infrastructure from '../../assets/svg/infrastructure.svg';
@@ -18,10 +18,11 @@ import SAP from '../../assets/svg/sap.svg';
 import Boeing from '../../assets/svg/boeing.svg';
 import Drexel from '../../assets/svg/drexel.svg';
 import PennState from '../../assets/svg/penn-state.svg';
-import { SkillHeader } from './components/SkillHeader';
-import { SkillBody } from './components/SkillBody';
-import { JobOrDegreeBody } from './components/JobOrDegreeBody';
-import { Section } from './components/Section';
+import { SkillHeader } from '../../components/resume/SkillHeader';
+import { SkillBody } from '../../components/resume/SkillBody';
+import { JobOrDegreeBody } from '../../components/resume/JobOrDegreeBody';
+import { Section } from '../../components/resume/Section';
+import { Footer } from '../../components/resume/Footer';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -296,6 +297,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
         </JobOrDegreeBody>
       </Section>
     </div>
+    <Footer />
   </Layout>
 );
 

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { makeColor, makeSize, makeSpace } from '../../../utils/design';
+import { makeColor, makeSize, makeSpace } from '../../utils/design';
 
 const styleContainer: CSSObject = {
   display: 'flex',
