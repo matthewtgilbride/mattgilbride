@@ -108,8 +108,9 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
               <h5>AWS</h5>
               <ul>
                 <li>EC2 &bull; ECS</li>
-                <li>Lambda</li>
-                <li>Cognito</li>
+                <li>VPC &bull; ALB &bull; Route 53</li>
+                <li>Lambda &bull; Kinesis</li>
+                <li>IAM &bull; Cognito</li>
               </ul>
             </SkillBody>
           </div>

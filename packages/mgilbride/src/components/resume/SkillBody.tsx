@@ -16,7 +16,7 @@ const styleContainer: CSSObject = {
   ul: {
     backgroundColor: makeColor('gray', -2),
     borderRadius: makeSpace('xs'),
-    padding: `0 ${makeSpace('xxs')}`,
+    padding: `${makeSpace('xxs')} ${makeSpace('xs')}`,
     margin: `${makeSpace('xs')} 0 0 0`,
   },
   li: {

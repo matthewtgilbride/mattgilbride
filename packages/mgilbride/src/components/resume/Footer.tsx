@@ -15,7 +15,6 @@ const styleFooter: CSSObject = {
   display: 'flex',
   alignSelf: 'flex-end',
   justifyContent: 'center',
-  width: '100%',
   backgroundColor: makeColor('gray', -1),
   '> div': {
     display: 'flex',
