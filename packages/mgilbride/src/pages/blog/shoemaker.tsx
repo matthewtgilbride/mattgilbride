@@ -11,6 +11,7 @@ const styleContainer: CSSObject = {
   padding: makeSpace('md'),
   maxWidth: responsiveBreakpoints.tabletPortrait,
   h1: {
+    marginTop: 0,
     fontStyle: 'italic',
     textAlign: 'center',
   },
@@ -57,7 +58,7 @@ const Shoemaker: FC = () => (
         <p>
           {`
             Of the five items listed above, Typescript is the most important to me.
-            I think it has the most potential to endure decades, as opposed to years.
+            I think it has the most potential to endure for decades, as opposed to years.
             The javascript ecosystem is notoriously fickle.  Today, in 2020, React
             feels like the gold standard of web development tooling.  It's easy to forget
             that it was released in 2013.  That was 7 years ago...an
@@ -81,6 +82,44 @@ const Shoemaker: FC = () => (
             far from the first attempt to bring static type checking to web programming.  Coffeescript,
             Elm, Dart, and Scala.js are just a few of many alternatives for those
             wishing to write statically checked code that transpiles to javascript, and thus can run in the browser.
+          `}
+        </p>
+        <p>
+          {`
+            Two things make typescript different.  I'm not sure which is more important.
+          `}
+        </p>
+        <p>
+          {`
+            The first is that typescript "start's from the same syntax and semantics that millions of javascript developers know today"
+            and "compiles to clean, simple javascript".  That means that both typescript source code and the code emitted
+            by the compiler can be easily understood by anyone who knows javascript.  Javascript is already assuming
+            a larger and larger role in every website, by virtue of the SPA approach I mentioned before.  In 2020,
+            front-end developers are javascript developers.  When it comes to adoption by the existing community of 
+            developers targeting browsers, being as close to plain javascript as possible gives
+            typescript a distinct advantage over the languages mentioned above.
+          `}
+        </p>
+        <p>
+          {`
+            The second is typescript's approach to static type checking.  Typescript is a gradual type system, which
+            means that some variables and expressions can be statically checked at compile time, while others are left
+            untyped and checked at runtime.  Type checkers are supposed to help engineers, not hinder them.  Typescript's
+            checker can be told to "go away" when it's user can't wrangle the type system to their liking.  That is not
+            the case in most other languages.  Python, from version 3.5 and later, supports a similar approach entitled
+            type hints.  It has a much lower barrier to entry, since there is no transpilation step.  One can choose to 
+            write type hints or not.  The python interpreter ignores the extra syntax, and separate tooling can be stood 
+            up to do the type checking.
+            Python, however, doesn't run in a browser (yet).  So for now, those of us developing web front ends have to
+            make other choices.
+          `}
+        </p>
+        <p>
+          {`
+            I could say more about typescript.
+            The decisions that team has made with regards to soundness and completeness, as well as
+            structural vs. nominal typing, are fascinating.  In the end, however, the point is
+            that we all want to maximize productivity and minimize bugs.  Typescript helps, and that's all that matters.
           `}
         </p>
       </div>
