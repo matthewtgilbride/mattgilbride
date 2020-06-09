@@ -102,6 +102,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
               <h5>General</h5>
               <ul>
                 <li>Git &bull; GitHub &bull; GitLab</li>
+                <li>nginx &bull; Apache Tomcat</li>
                 <li>Docker</li>
                 <li>Jenkins</li>
               </ul>

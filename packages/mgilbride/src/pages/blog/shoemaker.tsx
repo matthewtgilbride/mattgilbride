@@ -10,7 +10,7 @@ const styleContainer: CSSObject = {
   justifyItems: 'center',
   padding: makeSpace('md'),
   maxWidth: responsiveBreakpoints.tabletPortrait,
-  h1: {
+  'h1, h2': {
     fontStyle: 'italic',
     textAlign: 'center',
   },
@@ -53,12 +53,13 @@ const Shoemaker: FC = () => (
             Let's talk about each of those.
           `}
         </p>
-        <h1>Typescript</h1>
+        <h2>Typescript</h2>
         <p>
           {`
-            Of the five items listed above, Typescript is the most important to me.
-            I think it has the most potential to endure for decades, as opposed to years.
-            The javascript ecosystem is notoriously fickle.  Today, in 2020, React
+            Of the five items listed above, Typescript is the most important to me.  So, this section
+            is going to be the longest.
+            I think Typescript has the most potential to endure for decades, as opposed to years.
+            The Javascript ecosystem is notoriously fickle.  Today, in 2020, React
             feels like the gold standard of web development tooling.  It's easy to forget
             that it was released in 2013.  That was 7 years ago...an
             eon in Javascript time...but not very long in the grand scheme of things.
@@ -121,19 +122,84 @@ const Shoemaker: FC = () => (
             that we all want to maximize productivity and minimize bugs.  Typescript helps, and that's all that matters.
           `}
         </p>
-        <h1>React</h1>
+        <h2>React</h2>
         <p>
           {`
             For many, React is considered the top framework for front-end development in 2020.
-            Angular and Vue lurk close behind, with Vue gaining momentum rapidly.  React is my favorite,
+            Angular and Vue lurk close behind, with Vue gaining momentum quickly.  React is my favorite,
             and also the one that I have the most experience with, so it was a simple choice to use it for
             this project.
           `}
         </p>
         <p>
           {`
-            I've never done anything substantial in Angular, but have had the opportunity to do
-            substantial development in Vue over the last year.  
+            I've never done anything substantial in Angular, though I have dabbled in a few very small
+            applications.  I have had the opportunity to do substantial development in Vue over the last year.
+            In fact, a post entitled "10 things I like and don't like about Vue" is high on my list of things
+            to write about in the immediate future.  Vue 3 might change things a lot, so take the next
+            few points with a grain of salt. 
+          `}
+        </p>
+        <p>
+          {`
+            Templates vs. JSX...
+          `}
+        </p>
+        <p>
+          {`
+            Hooks and Context API...
+          `}
+        </p>
+        <h2>Gatsby</h2>
+        <p>
+          {`
+            Frankly, I don't have much to say about Gatsby at this point.  The community support seems great,
+            it seems mature enough, and things are working so far.  I'll just harken back to my previous point,
+            however.  I know I'm not alone in my suspicions of the fact that in 2020 we are writing SPA's in
+            Javascript frameworks just to turn around and generate static sites out of them.  Call me crazy...
+          `}
+        </p>
+        <p>
+          {`
+            ...and this is in no way critical of the creators and maintainers of the Gatsby project.  From what I
+            can tell it's a great project and a great community.
+          `}
+        </p>
+        <h2>Emotion</h2>
+        <p>
+          {`
+            Yes, I am a fan of CSS-in-JS.  We are already writing Typescript, which transpiles to Javascript
+            (but also JSX, which compiles to Javascript), which then transpiles to more Javascript, which emits DOM.
+            We live in a crazy world, so we might as well write Javascript that emits CSS as well because, well, who
+            the hell cares at this point anyway?  The thing I like about CSS-in-JS is that is can also be CSS-in-TS,
+            which can be statically checked at compile time.  See my rant on Typescript above.    
+          `}
+        </p>
+        <p>
+          {`
+            Throughout this project's source I use Emotions support for writing CSS styles as Javascript objects
+            instead of string interpolations for exactly the same reason.  I can leverage the great CSSType
+            project to ensure that I'm using the right values for the right properties, and that is great
+            for someone like me, who is far from a CSS expert.   
+          `}
+        </p>
+        <p>
+          {`
+            I shouldn't say too much more in this blog post, however.  If you want to hear more of my opinions
+            on this subject you can check out my talk at Philly ETE 2020 with the guy who taught me everything
+            I know about styling <here>.
+          `}
+        </p>
+        <h2>React-spring</h2>
+        <p>
+          {`
+            This is another spot where I don't have much of an opinion yet.
+          `}
+        </p>
+        <h1>so are they sandals, cross-trainers, or hiking boots?</h1>
+        <p>
+          {`
+            Conclusion
           `}
         </p>
       </div>
