@@ -142,8 +142,34 @@ const Shoemaker: FC = () => (
         </p>
         <p>
           {`
-            Templates vs. JSX...
+            The main point of distinction I see with React is it's approach to templating, or lack thereof.
+            JSX was controversial when React first gained notoriety.  In fact, it was my main point of hesitation when I started.  
+            Angular and Vue both use template engines to add Javascript "directives" to HTML.  JSX is the opposite.  
+            It extends Javascript with syntax that looks like HTML.  In short, templates add Javascript to HTML,
+            JSX adds HTML to Javascript.  The template approach in Angular and Vue is actually quite similar to the template
+            approach of the MVC frameworks that preceded SPA's.  Before I wrote Javascript apps, I worked on large
+            enterprise web apps written in Java.  The frustrations I encountered with Java Servlet Pages
+            (JSP's) are the same as the ones I have with Vue and Angular templates.  JSP's, in short, add Java to
+            HTML.  With all templating engines, the issues are the same:
           `}
+          <ul>
+            <li>
+              {`
+                It's not obvious what variables are in scope and available to reference in the template.
+              `}
+            </li>
+            <li>
+              {`
+                Template directives themselves are another small DSL that the developer must be aware of.
+              `}
+            </li>
+            <li>
+              {`
+                When things go wrong, template problems can be very hard to debug.  Error messages typically come from
+                from the template engine itself, and thus can't be as accurate as messages thrown in user code.
+              `}
+            </li>
+          </ul>
         </p>
         <p>
           {`
