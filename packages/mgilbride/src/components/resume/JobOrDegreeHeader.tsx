@@ -3,7 +3,6 @@ import { CSSObject } from '@emotion/core';
 import {
   makeColor,
   makeFontSize,
-  makeSize,
   makeSpace,
   makeResponsiveObject,
 } from '../../utils/design';
@@ -55,8 +54,8 @@ const styleTitle: CSSObject = {
 
 const styleIcon: CSSObject = {
   borderRadius: '50%',
-  height: makeSize('lg'),
-  width: makeSize('lg'),
+  height: makeSpace(40, 'px'),
+  width: makeSpace(40, 'px'),
   display: 'grid',
   alignItems: 'center',
   justifyItems: 'center',

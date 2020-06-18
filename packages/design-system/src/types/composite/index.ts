@@ -21,7 +21,7 @@ export type ConfigureDesignUtils = (
   makeColor: MakeColor;
   makeResponsiveString: MakeResponsiveString;
   makeResponsiveObject: MakeResponsiveObject;
-  makeSize: MakeSize;
   makeFontSize: MakeSize;
+  makeLineHeight: MakeSize;
   makeSpace: MakeSpace;
 };

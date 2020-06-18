@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { makeColor, makeSize, makeSpace } from '../../utils/design';
+import { makeColor, makeFontSize, makeSpace } from '../../utils/design';
 
 const styleContainer: CSSObject = {
   display: 'flex',
@@ -9,8 +9,8 @@ const styleContainer: CSSObject = {
 
 const styleIcon: CSSObject = {
   borderRadius: '50%',
-  height: makeSize('lg'),
-  width: makeSize('lg'),
+  height: makeSpace(40, 'px'),
+  width: makeSpace(40, 'px'),
   display: 'grid',
   alignItems: 'center',
   justifyItems: 'center',
