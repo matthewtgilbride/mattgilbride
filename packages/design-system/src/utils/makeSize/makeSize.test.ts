@@ -2,7 +2,7 @@ import { SizeConfig } from '../../types/composite/size.composite';
 import { baseSizeValues } from './buildSizeMap';
 
 describe('baseSizeValues', () => {
-  it('produces incremental sizes according to a modular scale', () => {
+  it('produces incremental sizes according to a modular scale, and snaps them to the baseline grid', () => {
     const config: SizeConfig = {
       baselineGrid: 4,
       baselineFontSizeFactor: 4,
