@@ -56,7 +56,7 @@ const styleButton: CSSObject = {
     padding: `0 ${makeSpace('xxs')}`,
   },
   '> img': {
-    height: makeFontSize('xxs'),
+    height: makeFontSize('xs'),
   },
 };
 

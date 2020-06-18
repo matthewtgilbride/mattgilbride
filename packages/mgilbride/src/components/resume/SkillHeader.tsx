@@ -9,8 +9,8 @@ const styleContainer: CSSObject = {
 
 const styleIcon: CSSObject = {
   borderRadius: '50%',
-  height: makeSpace(40, 'px'),
-  width: makeSpace(40, 'px'),
+  height: makeSpace(44, 'px'),
+  width: makeSpace(44, 'px'),
   display: 'grid',
   alignItems: 'center',
   justifyItems: 'center',
