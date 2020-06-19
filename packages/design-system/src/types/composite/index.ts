@@ -22,6 +22,6 @@ export type ConfigureDesignUtils = (
   makeResponsiveString: MakeResponsiveString;
   makeResponsiveObject: MakeResponsiveObject;
   makeSize: MakeSize;
-  makeFontSize: MakeSize;
+  makeLineHeight: MakeSize;
   makeSpace: MakeSpace;
 };

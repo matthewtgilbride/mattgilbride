@@ -33,22 +33,11 @@ export const responsiveBreakpoints: ResponsiveBreakpoints = {
 };
 
 const sizeConfig: SizeConfig = {
-  documentFontSize: 16,
   modularScaleRatio: 'perfectFourth',
-  baseFontSize: 14,
-  sizeUnits: 'rem',
-  lineHeight: 1.5,
   baselineGrid: 4,
-  spaceScale: 'linear',
-  fontSizeScaleMap: {
-    xxs: -2,
-    xs: -1,
-    sm: 0,
-    md: 1,
-    lg: 2,
-    xl: 3,
-    xxl: 4,
-  },
+  baselineFontSizeFactor: 4,
+  sizeUnits: 'rem',
+  lineHeightFactor: 1.5,
 };
 
 const fontConfig: FontConfig = {
@@ -125,7 +114,7 @@ export const {
   makeResponsiveString,
   makeResponsiveObject,
   makeSize,
-  makeFontSize,
+  makeLineHeight,
   makeSpace,
 } = configureDesignUtils({
   palette,

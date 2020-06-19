@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import {
   makeColor,
-  makeFontSize,
   makeSize,
   makeSpace,
   makeResponsiveObject,
@@ -29,7 +28,7 @@ export const styleContainer: CSSObject = {
   h5: {
     margin: 0,
     fontWeight: 'normal',
-    fontSize: makeFontSize('xs'),
+    fontSize: makeSize('xs'),
   },
   ...makeResponsiveObject({
     beginAt: 'tabletPortrait',
@@ -55,8 +54,8 @@ const styleTitle: CSSObject = {
 
 const styleIcon: CSSObject = {
   borderRadius: '50%',
-  height: makeSize('lg'),
-  width: makeSize('lg'),
+  height: makeSpace(44, 'px'),
+  width: makeSpace(44, 'px'),
   display: 'grid',
   alignItems: 'center',
   justifyItems: 'center',

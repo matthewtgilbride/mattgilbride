@@ -1,11 +1,9 @@
 import { ratioNames } from 'polished/lib/helpers/modularScale';
 import { Size } from 'types/primitive/size.primitive';
-import { ResponsiveDeviceTypes } from '../primitive/responsive.primitive';
 import { FontConfig } from './font.composite';
 
 export type SizeUnits = 'em' | 'rem' | 'px';
 export type SizeModularScaleRatio = keyof typeof ratioNames | number;
-export type SizeScales = { [key in Size]: number };
 export type SizeHeadings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
 export const isHeadingSize = (
@@ -14,11 +12,7 @@ export const isHeadingSize = (
 
 export type SizeArgs = [Size | SizeHeadings] | [number, SizeUnits];
 
-// Space
-export type SpaceScale = 'linear' | 'exponential';
-export type SpaceLinearValues = number[];
-
-export type SpaceProperties = Size | 'auto' | number;
+export type SpaceProperties = [Size] | [number, SizeUnits];
 
 type CSSBoxLong = 'top' | 'right' | 'bottom' | 'left';
 type CSSBoxShort = 'vertical' | 'horizontal';
@@ -29,22 +23,35 @@ export type InsetOutsetProperties = {
 };
 
 export interface SizeConfig {
-  documentFontSize: number;
   modularScaleRatio: SizeModularScaleRatio;
-  baseFontSize: number;
   sizeUnits: SizeUnits;
-  lineHeight: number;
+  lineHeightFactor: number;
+  baselineFontSizeFactor: number;
   baselineGrid: number;
-  responsiveFontScaler?: number;
-  responsiveFontSizes?: { [key in ResponsiveDeviceTypes]: number };
-  fontSizeScaleMap: SizeScales;
-  // space
-  spaceScale: SpaceScale;
 }
+
+export const baseFontSize = (config: SizeConfig): number =>
+  config.baselineGrid * config.baselineFontSizeFactor;
+
+export const baselineGridMismatchWarning = (
+  config: SizeConfig,
+  value: number,
+): void => {
+  if (value % config.baselineGrid !== 0) {
+    // eslint-disable-next-line no-console
+    console.warn(`${value}" is not a multiple of your baselineGrid of ${config.baselineGrid}.
+  
+  You may provide a custom value, but that value should be a multiple of your baselineGrid.
+  
+  Check the baselineGrid value of your size configuration again and make sure that you're providing a spacing value that is a correct multiple of your grid system.
+  
+  `);
+  }
+};
 
 export type MakeSize = (...size: SizeArgs) => string;
 
 export type ConfigureMakeSize = (config: {
   fontConfig: FontConfig;
   sizeConfig: SizeConfig;
-}) => { makeSize: MakeSize; makeFontSize: MakeSize };
+}) => { makeSize: MakeSize; makeLineHeight: MakeSize };
