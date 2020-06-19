@@ -8,7 +8,7 @@
   "name": "mgilbride",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "commit": "yarn check && git-cz",
+    "commit": "yarn chk && git-cz",
     "tsc": "lerna run tsc --stream --",
     "lint": "lerna run lint --stream --",
     "test": "lerna run test --stream --",
