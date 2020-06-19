@@ -6,5 +6,16 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: ['gatsby-plugin-typescript', 'gatsby-plugin-emotion'],
+  plugins: [
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-emotion',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
+      },
+    },
+    `gatsby-plugin-mdx`,
+  ],
 }
