@@ -4,7 +4,7 @@ import Doc from '../../assets/svg/doc.svg';
 import Pdf from '../../assets/svg/pdf.svg';
 import {
   makeColor,
-  makeFontSize,
+  makeSize,
   makeSpace,
   responsiveBreakpoints,
 } from '../../utils/design';
@@ -56,7 +56,7 @@ const styleButton: CSSObject = {
     padding: `0 ${makeSpace('xxs')}`,
   },
   '> img': {
-    height: makeFontSize('xs'),
+    height: makeSize('xs'),
   },
 };
 

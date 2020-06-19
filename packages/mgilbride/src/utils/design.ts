@@ -113,7 +113,7 @@ export const {
   makeColor,
   makeResponsiveString,
   makeResponsiveObject,
-  makeFontSize,
+  makeSize,
   makeLineHeight,
   makeSpace,
 } = configureDesignUtils({

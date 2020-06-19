@@ -17,7 +17,7 @@ export const configureMakeSize: ConfigureMakeSize = ({
   // @ts-ignore
   window.sizeMap = sizeMap; // eslint-disable-line no-undef
 
-  const makeFontSize = (...args: SizeArgs): string => {
+  const makeSize = (...args: SizeArgs): string => {
     if (args.length === 2) {
       baselineGridMismatchWarning(sizeConfig, args[0]);
       return `${args[0]}${args[1]}`;
@@ -44,5 +44,5 @@ export const configureMakeSize: ConfigureMakeSize = ({
     return sizeMap.lineHeight[size][sizeConfig.sizeUnits];
   };
 
-  return { makeFontSize, makeLineHeight };
+  return { makeSize, makeLineHeight };
 };

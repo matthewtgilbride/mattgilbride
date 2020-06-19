@@ -54,4 +54,4 @@ export type MakeSize = (...size: SizeArgs) => string;
 export type ConfigureMakeSize = (config: {
   fontConfig: FontConfig;
   sizeConfig: SizeConfig;
-}) => { makeFontSize: MakeSize; makeLineHeight: MakeSize };
+}) => { makeSize: MakeSize; makeLineHeight: MakeSize };

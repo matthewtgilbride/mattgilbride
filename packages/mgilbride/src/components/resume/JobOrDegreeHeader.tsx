@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import {
   makeColor,
-  makeFontSize,
+  makeSize,
   makeSpace,
   makeResponsiveObject,
 } from '../../utils/design';
@@ -28,7 +28,7 @@ export const styleContainer: CSSObject = {
   h5: {
     margin: 0,
     fontWeight: 'normal',
-    fontSize: makeFontSize('xs'),
+    fontSize: makeSize('xs'),
   },
   ...makeResponsiveObject({
     beginAt: 'tabletPortrait',

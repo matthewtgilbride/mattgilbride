@@ -6,7 +6,7 @@ import {
   responsiveBreakpoints,
   makeResponsiveObject,
   makeColor,
-  makeFontSize,
+  makeSize,
 } from '../../utils/design';
 import { FormControl } from '../../components/FormControl';
 
@@ -28,7 +28,7 @@ const styleContainer: CSSObject = {
     backgroundColor: makeColor('primary'),
     color: makeColor('light'),
     padding: makeSpace('xs'),
-    fontSize: makeFontSize('md'),
+    fontSize: makeSize('md'),
     ':hover,:focus': {
       boxShadow: 'none',
       outline: 'none',
