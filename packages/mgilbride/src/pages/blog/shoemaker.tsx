@@ -17,6 +17,12 @@ const styleContainer: CSSObject = {
   a: {
     textDecoration: 'underline',
   },
+  ul: {
+    paddingInlineStart: makeSpace('sm'),
+    li: {
+      margin: `${makeSpace('md')} 0`,
+    },
+  },
 };
 
 const Shoemaker: FC = () => (
@@ -140,6 +146,7 @@ const Shoemaker: FC = () => (
             few points with a grain of salt. 
           `}
         </p>
+        <h4>JSX</h4>
         <p>
           {`
             The main point of distinction I see with React is it's approach to templating, or lack thereof.
@@ -152,25 +159,34 @@ const Shoemaker: FC = () => (
             (JSP's) are the same as the ones I have with Vue and Angular templates.  JSP's, in short, add Java to
             HTML.  With all templating engines, the issues are the same:
           `}
-          <ul>
-            <li>
-              {`
-                It's not obvious what variables are in scope and available to reference in the template.
+        </p>
+        <ul>
+          <li>
+            {`
+                It's not obvious what variables are in scope, and thus can be referenced in a template.
+            `}
+          </li>
+          <li>
+            {`
+                Template directives are yet another DSL to learn.
               `}
-            </li>
-            <li>
-              {`
-                Template directives themselves are another small DSL that the developer must be aware of.
-              `}
-            </li>
-            <li>
-              {`
+          </li>
+          <li>
+            {`
                 When things go wrong, template problems can be very hard to debug.  Error messages typically come from
                 from the template engine itself, and thus can't be as accurate as messages thrown in user code.
               `}
-            </li>
-          </ul>
+          </li>
+        </ul>
+        <p>
+          JSX eliminates many of these shortcomings. Granted, it also entails
+          learning special syntax. However, in this case we are learning an
+          extension to the Javascript language that already dominates most
+          modern code bases targeting the web. For those reasons, I personally
+          find JSX to be a refreshingly unique take on a problem almost as old
+          as the web itself.
         </p>
+        <h4>API</h4>
         <p>
           {`
             Hooks and Context API...
