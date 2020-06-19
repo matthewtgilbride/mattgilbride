@@ -1,12 +1,9 @@
-import {
-  ConfigureMakeSpace,
-  MakeSpace,
-} from '../types/composite/space.composite';
-import { buildSizeMap } from './makeSize/buildSizeMap';
+import { ConfigureMakeSpace, MakeSpace, } from '../types/composite/space.composite';
+import { sizeMapValues } from './makeSize/buildSizeMap';
 import { baselineGridMismatchWarning } from '../types/composite/size.composite';
 
 export const configureMakeSpace: ConfigureMakeSpace = (config) => {
-  const sizeMap = buildSizeMap(config);
+  const sizes = sizeMapValues(config)
 
   const makeSpace: MakeSpace = (...args) => {
     if (args.length === 2) {
@@ -14,7 +11,7 @@ export const configureMakeSpace: ConfigureMakeSpace = (config) => {
       return `${args[0]}${args[1]}`;
     }
 
-    return sizeMap.fontSize[args[0]][config.sizeUnits];
+    return sizes[args[0]][config.sizeUnits];
   };
 
   return { makeSpace };
