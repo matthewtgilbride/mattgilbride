@@ -63,18 +63,18 @@ export const sizeMapValues = (
       size,
       {
         px: convertToUnits(
-          16,
+          baseFontSize(config),
           value * (isLineHeight ? config.lineHeightFactor : 1),
           'px',
         ),
         em: convertToUnits(
-          16,
+          baseFontSize(config),
           value * (isLineHeight ? config.lineHeightFactor : 1),
           'em',
         ),
         rem: convertToUnits(
-          baseFontSize(config) * (isLineHeight ? config.lineHeightFactor : 1),
-          value,
+          baseFontSize(config),
+          value * (isLineHeight ? config.lineHeightFactor : 1),
           'rem',
         ),
       },
