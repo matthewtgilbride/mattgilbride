@@ -12,7 +12,7 @@
     "tsc": "lerna run tsc --stream --",
     "lint": "lerna run lint --stream --",
     "test": "lerna run test --stream --",
-    "check": "yarn tsc && yarn lint --fix && yarn test",
+    "chk": "yarn tsc && yarn lint --fix && yarn test",
     "develop": "lerna run develop --scope=@mgilbride/mgilbride --stream"
   },
   "devDependencies": {
