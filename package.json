@@ -8,11 +8,11 @@
   "name": "mgilbride",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "commit": "yarn tsc && yarn test && yarn lint && git-cz",
+    "commit": "yarn check && git-cz",
+    "tsc": "lerna run tsc --stream --",
     "lint": "lerna run lint --stream --",
     "test": "lerna run test --stream --",
-    "tsc": "lerna run tsc --stream",
-    "format": "yarn tsc && yarn lint --fix",
+    "check": "yarn tsc && yarn lint --fix && yarn test",
     "develop": "lerna run develop --scope=@mgilbride/mgilbride --stream"
   },
   "devDependencies": {

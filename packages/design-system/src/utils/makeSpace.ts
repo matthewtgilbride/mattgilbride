@@ -1,9 +1,12 @@
-import { ConfigureMakeSpace, MakeSpace, } from '../types/composite/space.composite';
+import {
+  ConfigureMakeSpace,
+  MakeSpace,
+} from '../types/composite/space.composite';
 import { sizeMapValues } from './makeSize/buildSizeMap';
 import { baselineGridMismatchWarning } from '../types/composite/size.composite';
 
 export const configureMakeSpace: ConfigureMakeSpace = (config) => {
-  const sizes = sizeMapValues(config)
+  const sizes = sizeMapValues(config);
 
   const makeSpace: MakeSpace = (...args) => {
     if (args.length === 2) {
