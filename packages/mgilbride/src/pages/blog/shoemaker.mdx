@@ -1,4 +1,5 @@
 import { Shoemaker } from '../../components/blog/shoemaker'
+import { LayoutLink } from '../../components/layout/LayoutLink'
 export default Shoemaker
 
 # giving the shoemaker shoes
@@ -28,9 +29,9 @@ I think Typescript has the most potential to endure for decades, as opposed to y
 The Javascript ecosystem is notoriously fickle.  Today, in 2020,
 React feels like the gold standard of web development tooling.  It's easy to forget that it was released in 2013.  That was 7 years ago...an eon in Javascript time...but not very long in the grand scheme of things.
 
-What few people realize is that Typescript is actually older than React. It was open sourced in 2012.  
+What few people realize is that Typescript is actually older than React. It was open sourced in 2012.
 React surged in popularity in 2015 when large companies like Netflix and AirBnb adopted it.  On the contrary,
-the Typescript hype train didn't depart until recently.  But now that the train has left the station, 
+the Typescript hype train didn't depart until recently.  But now that the train has left the station,
 it's accelerating rapidly.
 
 The static vs. dynamic type checking dichotomy is about as old as computer programming itself.
@@ -48,7 +49,7 @@ The first is that Typescript "[start's from the same syntax and semantics that m
 and "[compiles to clean, simple javascript](https://www.typescriptlang.org/)".  That means that both Typescript source code and the code emitted
 by the compiler can be easily understood by anyone who knows Javascript.  Javascript is already assuming
 a larger and larger role in every website, by virtue of the SPA approach I mentioned before.  In 2020,
-front-end developers are Javascript developers.  When it comes to adoption by the existing community of 
+front-end developers are Javascript developers.  When it comes to adoption by the existing community of
 developers targeting browsers, being as close to plain Javascript as possible gives
 Typescript a distinct advantage over the languages mentioned above.
 
@@ -59,8 +60,8 @@ means that some variables and expressions can be statically checked at compile t
 untyped and checked at runtime.  Type checkers should to help engineers, not hinder them.  Typescript's
 checker can be told to "go away" when it's user can't wrangle the type system to their liking.  That is not
 the case in most other languages.  Python, from version 3.5 and later, supports a similar approach entitled
-[type hints](https://docs.python.org/3/library/typing.html).  It has a much lower barrier to entry, since there is no transpilation step.  One can choose to 
-write type hints or not.  The Python interpreter ignores the extra syntax, and separate tooling can be stood 
+[type hints](https://docs.python.org/3/library/typing.html).  It has a much lower barrier to entry, since there is no transpilation step.  One can choose to
+write type hints or not.  The Python interpreter ignores the extra syntax, and separate tooling can be stood
 up to do the type checking.
 Python, however, doesn't run in a browser (yet).  So for now, those of us targeting the web have to
 make other choices.
@@ -84,8 +85,8 @@ and has a composition API similar to that of React's hooks. So, take the next fe
 #### JSX
 
 The main point of distinction I see with React is its approach to templating, or lack thereof.
-JSX was controversial when React first gained notoriety.  In fact, it was my main point of hesitation when I started.  Angular 
-and Vue both use template engines to add Javascript "directives" to HTML.  JSX is the opposite.  It extends Javascript 
+JSX was controversial when React first gained notoriety.  In fact, it was my main point of hesitation when I started.  Angular
+and Vue both use template engines to add Javascript "directives" to HTML.  JSX is the opposite.  It extends Javascript
 with syntax that looks like HTML.  In short, templates add Javascript to HTML,
 JSX adds HTML to Javascript.  The template approach in Angular and Vue is actually quite similar to the template
 approach of the MVC frameworks that preceded SPA's.  Before I wrote Javascript apps, I worked on large
@@ -109,7 +110,7 @@ itself does not maintain these projects causes real headaches in the real world.
 choose React for a project, and in my opinion the library's biggest weakness.
 
 That being said, recent releases have made things much better. The Context API released in React 16.3 does a *lot* for state management.
-In my last production React project, it was the only thing we used for state management.  That says a lot about the quality of the API design.  
+In my last production React project, it was the only thing we used for state management.  That says a lot about the quality of the API design.
 
 The way we managed state in that app, however, would not have been possible if not combined with the hooks API released in 16.8.  The hooks
 API is at minimum a unique approach, if not a groundbreaking one.
@@ -133,7 +134,7 @@ I am a fan of CSS-in-JS.  We are already writing Typescript, which transpiles to
 Typescript with JSX, which transpiles to Javascript with JSX, which transpiles down to _more_ Javascript, which emits DOM.
 We live in a crazy world, so we might as well write Javascript that emits CSS too, because, well, who
 the hell cares at this point anyway?  The thing I like about CSS-in-JS is that is can also be CSS-in-TS,
-which can be statically checked at compile time.  See my rant on Typescript above. 
+which can be statically checked at compile time.  See my rant on Typescript above.
 
 Throughout this project's source I use [Emotion's](https://emotion.sh/docs/introduction) support for writing CSS styles as Javascript objects
 (as opposed to string interpolations).  This allows me to statically check my styles.  I can leverage the [CSSType](https://github.com/frenic/csstype)
@@ -161,3 +162,11 @@ This is in no way critical of the creators and maintainers of the Gatsby project
 can tell it's a great project and a great community.
 
 # so are they sandals, cross-trainers, or hiking boots?
+
+In the end, as engineers, we build to learn.  That's what this site is about.  Hopefully the stack I've chosen will stand the test of time.  I am fully
+prepared for it not to.  That is not an indictment of any of the technologies, but an admission of the world we live
+in as web developers.  It would have been an interesting exercise to use nothing but pure HTML, CSS, and
+Javascript because, frankly, I've never built anything that way either.  In any case, it's been fun, and I'm looking forward
+to using this as a vehicle to write about all of the things I'm interested that _don't_ involve web pages.  If you've gotten
+this far, thanks for reading!  Whether you agree or disagree with any of the above, I'd love to hear from you, so please
+go ahead and <LayoutLink to="/contact"> reach out</LayoutLink>.
