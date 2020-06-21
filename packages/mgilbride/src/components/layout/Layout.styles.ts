@@ -70,6 +70,8 @@ export const styleContainer = (open: boolean): CSSObject => ({
     justifySelf: 'flex-start',
     alignSelf: 'flex-start',
     padding: `${makeSpace('xs')} 0`,
+    backgroundColor: 'transparent',
+    border: 'none',
     svg: {
       height: makeSpace('sm'),
     },
