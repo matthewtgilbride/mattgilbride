@@ -4,13 +4,13 @@ export default Shoemaker
 # giving the shoemaker shoes
 
 I built this site because I'm a software developer.  Like many software developers,
-I do a lot of work on web applications.  Unfortunately, many (but not all) engineers don't
+I do a lot of work on web based applications.  Unfortunately, many (but not all) engineers don't
 have a website of their own.  That used to be me.
 
 We build web apps with Single Page Application (SPA) frameworks these days.  Then, we use
-static site generators to turn them into multi-page, static websites.  Well isn't that lovely.  While I do think the SPA 
-approach is an improvement over the architectures that preceded it, 
-count me amongst the many that think its reign as the de-facto way to build web apps won't last forever.
+static site generators to turn them into multi-page, static websites.  Well...isn't that lovely.  While I do think the SPA
+approach is an improvement over the architectures that preceded it,
+count me amongst the many skeptics of it's long term viability. Its reign as the de-facto way to build web apps won't last forever.
 In any case, this being 2020, I've chosen to build this thing using the tools du jour, and that
 includes the following:
 
@@ -29,7 +29,7 @@ The Javascript ecosystem is notoriously fickle.  Today, in 2020,
 React feels like the gold standard of web development tooling.  It's easy to forget that it was released in 2013.  That was 7 years ago...an eon in Javascript time...but not very long in the grand scheme of things.
 
 What few people realize is that Typescript is actually older than React. It was open sourced in 2012.  
-Contrary to React, which surged in popularity in 2015 when large companies like Netflix and AirBnb adopted it,
+React surged in popularity in 2015 when large companies like Netflix and AirBnb adopted it.  On the contrary,
 the Typescript hype train didn't depart until recently.  But now that the train has left the station, 
 it's accelerating rapidly.
 
@@ -62,7 +62,7 @@ the case in most other languages.  Python, from version 3.5 and later, supports 
 [type hints](https://docs.python.org/3/library/typing.html).  It has a much lower barrier to entry, since there is no transpilation step.  One can choose to 
 write type hints or not.  The Python interpreter ignores the extra syntax, and separate tooling can be stood 
 up to do the type checking.
-Python, however, doesn't run in a browser (yet).  So for now, those of us targeting the web ends have to
+Python, however, doesn't run in a browser (yet).  So for now, those of us targeting the web have to
 make other choices.
 
 I could say more about Typescript.
@@ -131,12 +131,12 @@ sharing said logic between components.  The hooks approach changes both of these
 
 I am a fan of CSS-in-JS.  We are already writing Typescript, which transpiles to Javascript.  Well...we're
 Typescript with JSX, which transpiles to Javascript with JSX, which transpiles down to _more_ Javascript, which emits DOM.
-We live in a crazy world, so we might as well write Javascript that emits CSS to because, well, who
+We live in a crazy world, so we might as well write Javascript that emits CSS too, because, well, who
 the hell cares at this point anyway?  The thing I like about CSS-in-JS is that is can also be CSS-in-TS,
 which can be statically checked at compile time.  See my rant on Typescript above. 
 
 Throughout this project's source I use [Emotion's](https://emotion.sh/docs/introduction) support for writing CSS styles as Javascript objects
-(as opposed to string interpolations).  This allows me to statically check my styles.  I can leverage the great CSSType
+(as opposed to string interpolations).  This allows me to statically check my styles.  I can leverage the [CSSType](https://github.com/frenic/csstype)
 project to ensure that I'm using the right values for the right properties, and that is great
 for someone like me, who is far from a CSS expert.
 
