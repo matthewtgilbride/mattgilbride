@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { Link, PageProps } from 'gatsby';
+import { PageProps } from 'gatsby';
 import { Layout } from '../../components/layout/Layout';
 import {
   makeResponsiveObject,
@@ -23,6 +23,7 @@ import { SkillBody } from '../../components/resume/SkillBody';
 import { JobOrDegreeBody } from '../../components/resume/JobOrDegreeBody';
 import { Section } from '../../components/resume/Section';
 import { Footer } from '../../components/resume/Footer';
+import { ChariotProjectHeader } from '../../components/resume/ChariotProjectHeader';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -112,6 +113,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
                 <li>VPC &bull; ALB &bull; Route 53</li>
                 <li>Lambda &bull; Kinesis</li>
                 <li>IAM &bull; Cognito</li>
+                <li>Cloudformation &bull; Terraform &bull; CDK</li>
               </ul>
             </SkillBody>
           </div>
@@ -172,10 +174,51 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
             deeply technical role that still includes interacting with people
             regularly, and that&apos;s exactly what I have at Chariot.
           </p>
+          <p>Here are some of the things I&apos;ve worked on:</p>
+          <ChariotProjectHeader
+            description="A data management platform for neuroscience researchers"
+            date="December 2019 - June 2020"
+          />
           <p>
-            Check out my <Link to="/blog">blog</Link> for more on what I&apos;ve
-            been working on.
+            I joined an incredibly talented team at a local startup. Their
+            product facilitates the creation and publication of massive
+            scientific datasets. I was given the opportunity to contribute
+            across the entirety of their stack, which included the following:
           </p>
+          <ul>
+            <li>
+              Web apps written in Vue, some of which used Nuxt to generate
+              static sites.
+            </li>
+            <li>
+              A Node service, written in Typescript, for streaming large zip
+              archives to the web clients.
+            </li>
+            <li>
+              A core REST API, written in Scala, backed by an RDS Postgres
+              instance and files of various sizes written to S3.
+            </li>
+            <li>
+              Another REST API for managing graph data structures, written in
+              Python, backed by a Neo4j database.
+            </li>
+            <li>An nginx API gateway.</li>
+            <li>
+              Lots of AWS infrastructure provisioned via Terraform. Most
+              services run in ECS containers, but other work involved a mix of
+              S3, CloudWatch Logs, Kinesis Firehose, and Lambda.
+            </li>
+          </ul>
+          <ChariotProjectHeader
+            description="Using IOT enabled outlets to manage industrial plug load"
+            date="June 2019 - November 2019"
+          />
+          <p>Lorum ipsum</p>
+          <ChariotProjectHeader
+            description="A banking system to manage the processing of wire transfers"
+            date="May 2017 - May 2019"
+          />
+          <p>Lorum ipsum</p>
         </JobOrDegreeBody>
         <JobOrDegreeHeader
           imgUrl={Reuters}

@@ -74,6 +74,7 @@ const styleOrg: CSSObject = {
   flexDirection: 'column',
   gridColumn: '2 / 3',
   gridArea: 'bottomRight',
+  textTransform: 'uppercase',
   ...makeResponsiveObject({
     beginAt: 'tabletPortrait',
     style: {

@@ -9,6 +9,7 @@ import {
 export const white = makeColor('light');
 export const accent = makeColor('accent');
 export const darkGray = makeColor('gray', -3);
+export const primary = makeColor('primary', -2);
 
 export const documentReset = {
   body: {
@@ -16,7 +17,7 @@ export const documentReset = {
     padding: 0,
     height: '100%',
     width: '100%',
-    backgroundColor: darkGray,
+    background: `radial-gradient(circle, ${darkGray} 0%, ${darkGray} 95%, ${primary} 100%)`,
     color: white,
     // plagiarized from sarah drasner
     fontFamily:
