@@ -85,7 +85,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
               <h5>Previous Projects</h5>
               <ul>
                 <li>Java &bull; Spring</li>
-                <li>Neo4j &bull; Apache Spark</li>
+                <li>Neo4j &bull; Apache Spark &bull; Cassandra</li>
               </ul>
               <h5>Dabbled</h5>
               <ul>
@@ -164,7 +164,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
           <p>
             I&apos;m a consultant at Chariot. We build software products with
             small teams of highly capable engineers, or integrate into existing
-            teams to help them do things better.
+            teams to help them get things done.
           </p>
           <p>
             I love it here for many reasons. Mainly the people. That includes my
@@ -213,12 +213,62 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
             description="Using IOT enabled outlets to manage industrial plug load"
             date="June 2019 - November 2019"
           />
-          <p>Lorum ipsum</p>
+          <p>
+            I lead a project to build a web application and backing REST API for
+            another local startup. Our client had built an impressive machine
+            learning pipeline leveraging IOT data from smart outlets. They
+            offered clients who operate large industrial or office buildings a
+            way to reduce energy costs associated with devices plugged into
+            outlets.
+          </p>
+          <p>
+            What they needed was an application that allowed users to monitor
+            and manage that system. The features we built included a variety of
+            data visualizations, interactive data grids, and basic CRUD
+            operations. We used the following technologies to get the job done:
+          </p>
+          <ul>
+            <li>
+              A Node REST service written in Typescript, backed by a Postgres
+              RDS database.
+            </li>
+            <li>A web app written in React, with Typescript.</li>
+            <li>
+              A separate library of React components encapsulating a custom
+              design system.
+            </li>
+            <li>User authentication with Cognito</li>
+            <li>
+              Run in ECS, deployed via CodeBuild, and provisioned with
+              Cloudformation
+            </li>
+          </ul>
           <ChariotProjectHeader
             description="A banking system to manage the processing of wire transfers"
             date="May 2017 - May 2019"
           />
-          <p>Lorum ipsum</p>
+          <p>
+            I joined a small team developing a wire transfer application serving
+            small and medium sized financial institutions. The business
+            requirements included providing a detailed audit trail of all
+            actions taken, by whom, and when. Additionally, the system needed to
+            support highly customizable workflows driven by the various
+            financial processes in which wire transfers are involved.
+          </p>
+          <p>
+            We addressed those requirements by building with the following
+            stack:
+          </p>
+          <ul>
+            <li>A web app written in React</li>
+            <li>
+              Multiple microservices written in Scala and Akka HTTP, using a
+              CQRS and Event Sourcing architectural pattern. Events were written
+              to Cassandra, with projections written to Postgres.
+            </li>
+            <li>User authentication with Keycloak</li>
+            <li>An nginx API gateway</li>
+          </ul>
         </JobOrDegreeBody>
         <JobOrDegreeHeader
           imgUrl={Reuters}

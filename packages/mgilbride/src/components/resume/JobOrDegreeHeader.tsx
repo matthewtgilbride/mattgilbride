@@ -36,7 +36,7 @@ export const styleContainer: CSSObject = {
       gridTemplateAreas: `
       'left middle right'
       `,
-      gridTemplateColumns: '1fr 7fr 2fr',
+      gridTemplateColumns: '1fr 6fr 2fr',
     },
   }),
 };
@@ -87,6 +87,7 @@ const styleOrg: CSSObject = {
 
 const styleDate: CSSObject = {
   color: makeColor('secondary'),
+  textTransform: 'initial',
 };
 
 export const JobOrDegreeHeader: FC<JobHeaderProps> = ({
