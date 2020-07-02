@@ -8,6 +8,9 @@ const styleContainer: CSSObject = {
     fontSize: makeSize('sm'),
     padding: `0 ${makeSpace('md')}`,
   },
+  li: {
+    marginTop: makeSpace('sm'),
+  },
 };
 
 export const JobOrDegreeBody: FC = ({ children }) => (

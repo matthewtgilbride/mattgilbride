@@ -8,6 +8,9 @@ import {
   makeSpace,
   responsiveBreakpoints,
 } from '../../utils/design';
+import { darkGray } from '../layout/Layout.styles';
+
+const lightGray = makeColor('gray', -1);
 
 const styleFooter: CSSObject = {
   position: 'sticky',
@@ -15,7 +18,7 @@ const styleFooter: CSSObject = {
   display: 'flex',
   alignSelf: 'flex-end',
   justifyContent: 'center',
-  backgroundColor: makeColor('gray', -1),
+  background: `radial-gradient(at 50% 100%, ${lightGray} 0%, ${darkGray} 50%, ${darkGray} 100%)`,
   '> div': {
     display: 'flex',
     width: '100%',

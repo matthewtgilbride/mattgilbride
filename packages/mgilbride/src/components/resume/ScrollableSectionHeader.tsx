@@ -11,7 +11,8 @@ const styleHeader = (open: boolean, first?: boolean): CSSObject => ({
   '> button': {
     backgroundColor: makeColor('gray', -2),
     cursor: 'pointer',
-    border: 'none',
+    border: '1px solid',
+    borderColor: makeColor('accent'),
     borderRadius: '50%',
     width: 38,
     ':hover,:focus': {

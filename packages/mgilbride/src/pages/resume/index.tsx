@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { Link, PageProps } from 'gatsby';
+import { PageProps } from 'gatsby';
 import { Layout } from '../../components/layout/Layout';
 import {
   makeResponsiveObject,
@@ -23,6 +23,7 @@ import { SkillBody } from '../../components/resume/SkillBody';
 import { JobOrDegreeBody } from '../../components/resume/JobOrDegreeBody';
 import { Section } from '../../components/resume/Section';
 import { Footer } from '../../components/resume/Footer';
+import { ChariotProjectHeader } from '../../components/resume/ChariotProjectHeader';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -84,7 +85,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
               <h5>Previous Projects</h5>
               <ul>
                 <li>Java &bull; Spring</li>
-                <li>Neo4j &bull; Apache Spark</li>
+                <li>Neo4j &bull; Apache Spark &bull; Cassandra</li>
               </ul>
               <h5>Dabbled</h5>
               <ul>
@@ -112,6 +113,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
                 <li>VPC &bull; ALB &bull; Route 53</li>
                 <li>Lambda &bull; Kinesis</li>
                 <li>IAM &bull; Cognito</li>
+                <li>Cloudformation &bull; Terraform &bull; CDK</li>
               </ul>
             </SkillBody>
           </div>
@@ -162,7 +164,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
           <p>
             I&apos;m a consultant at Chariot. We build software products with
             small teams of highly capable engineers, or integrate into existing
-            teams to help them do things better.
+            teams to help them get things done.
           </p>
           <p>
             I love it here for many reasons. Mainly the people. That includes my
@@ -172,10 +174,101 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
             deeply technical role that still includes interacting with people
             regularly, and that&apos;s exactly what I have at Chariot.
           </p>
+          <p>Here are some of the things I&apos;ve worked on:</p>
+          <ChariotProjectHeader
+            description="A data management platform for neuroscience researchers"
+            date="December 2019 - June 2020"
+          />
           <p>
-            Check out my <Link to="/blog">blog</Link> for more on what I&apos;ve
-            been working on.
+            I joined an incredibly talented team at a local startup. Their
+            product facilitates the creation and publication of massive
+            scientific datasets. I was given the opportunity to contribute
+            across the entirety of their stack, which included the following:
           </p>
+          <ul>
+            <li>
+              Web apps written in Vue, some of which used Nuxt to generate
+              static sites.
+            </li>
+            <li>
+              A Node service, written in Typescript, for streaming large zip
+              archives to the web clients.
+            </li>
+            <li>
+              A core REST API, written in Scala, backed by an RDS Postgres
+              instance and files of various sizes written to S3.
+            </li>
+            <li>
+              Another REST API for managing graph data structures, written in
+              Python, backed by a Neo4j database.
+            </li>
+            <li>An nginx API gateway.</li>
+            <li>
+              Lots of AWS infrastructure provisioned via Terraform. Most
+              services run in ECS containers, but other work involved a mix of
+              S3, CloudWatch Logs, Kinesis Firehose, and Lambda.
+            </li>
+          </ul>
+          <ChariotProjectHeader
+            description="Using IOT enabled outlets to manage industrial plug load"
+            date="June 2019 - November 2019"
+          />
+          <p>
+            I lead a project to build a web application and backing REST API for
+            another local startup. Our client had built an impressive machine
+            learning pipeline leveraging IOT data from smart outlets. They
+            offered clients who operate large industrial or office buildings a
+            way to reduce energy costs associated with devices plugged into
+            outlets.
+          </p>
+          <p>
+            What they needed was an application that allowed users to monitor
+            and manage that system. The features we built included a variety of
+            data visualizations, interactive data grids, and basic CRUD
+            operations. We used the following technologies to get the job done:
+          </p>
+          <ul>
+            <li>
+              A Node REST service written in Typescript, backed by a Postgres
+              RDS database.
+            </li>
+            <li>A web app written in React, with Typescript.</li>
+            <li>
+              A separate library of React components encapsulating a custom
+              design system.
+            </li>
+            <li>User authentication with Cognito</li>
+            <li>
+              Run in ECS, deployed via CodeBuild, and provisioned with
+              Cloudformation
+            </li>
+          </ul>
+          <ChariotProjectHeader
+            description="A banking system to manage the processing of wire transfers"
+            date="May 2017 - May 2019"
+          />
+          <p>
+            I joined a small team developing a wire transfer application serving
+            small and medium sized financial institutions. The business
+            requirements included providing a detailed audit trail of all
+            actions taken, by whom, and when. Additionally, the system needed to
+            support highly customizable workflows driven by the various
+            financial processes in which wire transfers are involved.
+          </p>
+          <p>
+            We addressed those requirements by building with the following
+            stack:
+          </p>
+          <ul>
+            <li>A web app written in React</li>
+            <li>
+              Multiple microservices written in Scala and Akka HTTP, using a
+              CQRS and Event Sourcing architectural pattern. Events were written
+              to Cassandra, with projections written to Postgres.
+            </li>
+            <li>User authentication with Keycloak</li>
+            <li>An nginx API gateway</li>
+          </ul>
         </JobOrDegreeBody>
         <JobOrDegreeHeader
           imgUrl={Reuters}
@@ -267,6 +360,9 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
         />
         <JobOrDegreeBody>
           <p>
+            GPA: 3.9
+          </p>
+          <p>
             After too many years of dabbling, I committed to a technical career
             by pursuing a technical education.
           </p>
@@ -289,6 +385,9 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
           dateCopy="Fall 2005 - Spring 2009"
         />
         <JobOrDegreeBody>
+          <p>
+            GPA: 3.8
+          </p>
           <p>
             I studied Supply Chain Information Systems, and minored in Spanish
             and International Business. SCIS was a degree from Penn State&apos;s
