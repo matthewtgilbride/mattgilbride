@@ -359,9 +359,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
           dateCopy="Fall 2013 - Spring 2017"
         />
         <JobOrDegreeBody>
-          <p>
-            GPA: 3.9
-          </p>
+          <p>GPA: 3.9</p>
           <p>
             After too many years of dabbling, I committed to a technical career
             by pursuing a technical education.
@@ -385,9 +383,7 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
           dateCopy="Fall 2005 - Spring 2009"
         />
         <JobOrDegreeBody>
-          <p>
-            GPA: 3.8
-          </p>
+          <p>GPA: 3.8</p>
           <p>
             I studied Supply Chain Information Systems, and minored in Spanish
             and International Business. SCIS was a degree from Penn State&apos;s
