@@ -25,7 +25,7 @@ const styleContainer: CSSObject = {
   },
 };
 
-const Home: FC = () => (
+const About: FC = () => (
   <Layout>
     <div css={styleContainer}>
       <h1>tl;dr</h1>
@@ -86,4 +86,4 @@ const Home: FC = () => (
   </Layout>
 );
 
-export default Home; // eslint-disable-line import/no-default-export
+export default About; // eslint-disable-line import/no-default-export

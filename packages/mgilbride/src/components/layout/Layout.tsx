@@ -1,4 +1,5 @@
 import React, { FC, useCallback, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Global } from '@emotion/core';
 import { animated } from 'react-spring';
 import { MenuIcon } from './MenuIcon';
@@ -25,6 +26,9 @@ export const Layout: FC = ({ children }) => {
 
   return (
     <>
+      <Helmet>
+        <title>Matt Gilbride</title>
+      </Helmet>
       <Global styles={documentReset} />
       <animated.div css={styleContainer(open)} style={backgroundSpring}>
         <button onClick={onOpen}>

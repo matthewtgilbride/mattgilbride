@@ -70,14 +70,18 @@ export const Footer: FC = () => (
         <p>Need a copy?</p>
       </div>
       <div>
-        <button css={styleButton}>
-          <img src={Doc} alt="doc" />
-          <p>.docx</p>
-        </button>
-        <button css={styleButton}>
-          <img src={Pdf} alt="pdf" />
-          <p>.pdf</p>
-        </button>
+        <a href="/Gilbride_Matthew Resume_2020_07.docx">
+          <button css={styleButton}>
+            <img src={Doc} alt="doc" />
+            <p>.docx</p>
+          </button>
+        </a>
+        <a href="/Gilbride_Matthew Resume_2020_07.pdf">
+          <button css={styleButton}>
+            <img src={Pdf} alt="pdf" />
+            <p>.pdf</p>
+          </button>
+        </a>
       </div>
     </div>
   </div>
