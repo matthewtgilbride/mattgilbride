@@ -68,14 +68,15 @@ export const styleContainer = (open: boolean): CSSObject => ({
     justifySelf: 'flex-end',
     alignSelf: 'flex-start',
     textTransform: 'uppercase',
-    padding: makeSpace('xs'),
+    padding: makeSpace('md'),
   },
   // menu
   '> button': {
     gridArea: 'menu',
     justifySelf: 'flex-start',
     alignSelf: 'flex-start',
-    padding: `${makeSpace('xs')} 0 ${makeSpace('xs')} ${makeSpace('xxs')}`,
+    padding: makeSpace('md'),
+    marginLeft: `-${makeSpace('xs')}`,
     backgroundColor: 'transparent',
     border: 'none',
     svg: {
@@ -86,12 +87,13 @@ export const styleContainer = (open: boolean): CSSObject => ({
   '> nav': {
     gridArea: 'main',
     display: open ? 'block' : 'none',
+    padding: makeSpace('md'),
     ul: {
       margin: 0,
       listStyle: 'none',
       paddingInlineStart: 0,
       li: {
-        paddingTop: makeSpace('xs'),
+        paddingBottom: makeSpace('lg'),
         a: {
           textTransform: 'uppercase',
           color: white,
