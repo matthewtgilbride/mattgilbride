@@ -21,7 +21,7 @@ export const handler = async (event: APIGatewayEvent): Promise<ProxyResult> => {
           },
           Body: {
             Text: {
-              Data: body ?? ''.toString(),
+              Data: body || ''.toString(),
               Charset: 'UTF-8',
             },
           },

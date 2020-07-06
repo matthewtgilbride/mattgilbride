@@ -27,6 +27,11 @@ export const documentReset = {
     height: '100%',
     width: '100%',
   },
+  button: {
+    ':focus': {
+      outline: 'none',
+    },
+  },
 };
 
 export const styleContainer = (open: boolean): CSSObject => ({

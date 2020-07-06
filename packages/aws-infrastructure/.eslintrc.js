@@ -8,6 +8,7 @@ module.exports = {
   },
   rules: {
     'no-new': 'off',
-    'no-console': 'warn'
+    'no-console': 'warn',
+    '@typescript-eslint/prefer-nullish-coalescing': 'off'
   }
 }

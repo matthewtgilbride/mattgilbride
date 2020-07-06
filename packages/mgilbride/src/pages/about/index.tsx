@@ -5,7 +5,8 @@ import { Layout } from '../../components/layout/Layout';
 import { makeSpace, responsiveBreakpoints } from '../../utils/design';
 import phillyGlobe from '../../assets/images/philly-globe.png';
 import engineer from '../../assets/images/engineer_thinking.png';
-import family from '../../assets/images/emmy_jamie.png';
+import jamie from '../../assets/images/jamie.png';
+import emmy from '../../assets/images/emmy.png';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -33,8 +34,10 @@ const About: FC = () => (
       <img src={engineer} alt="Profile" />
       <h3>from Philly</h3>
       <img src={phillyGlobe} alt="Philly" />
-      <h3>this is my dog (and wife)</h3>
-      <img src={family} alt="Family" />
+      <h3>this is my wife</h3>
+      <img src={jamie} alt="Jamie" />
+      <h3>and this is our dog</h3>
+      <img src={emmy} alt="Emmy" />
       <h1>the long version</h1>
       <div>
         <p>

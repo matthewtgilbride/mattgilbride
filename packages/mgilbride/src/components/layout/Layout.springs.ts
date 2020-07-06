@@ -11,7 +11,6 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
     to: {
       backgroundColor: open ? accent : darkGray,
     },
-    config: config.molasses,
   });
 
   const svgSpring = useSpring({
@@ -23,7 +22,6 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
       stroke: open ? darkGray : white,
       fill: open ? darkGray : white,
     },
-    config: config.molasses,
   });
 
   const linkSpring = useSpring({
@@ -33,7 +31,6 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
     to: {
       color: open ? darkGray : white,
     },
-    config: config.molasses,
   });
 
   const homeLinkSpring = useSpring({
@@ -45,7 +42,6 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
       opacity: 1,
       color: open ? darkGray : white,
     },
-    config: config.molasses,
   });
 
   const childrenSpring = useTransition(true, null, {
@@ -55,7 +51,6 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
     enter: {
       opacity: 1,
     },
-    config: config.molasses,
   });
 
   return {
