@@ -5,7 +5,7 @@ import { LambdaIntegration, RestApi } from '@aws-cdk/aws-apigateway';
 import { ARecord, HostedZone, RecordTarget } from '@aws-cdk/aws-route53';
 import { ApiGateway } from '@aws-cdk/aws-route53-targets';
 import { Certificate } from '@aws-cdk/aws-certificatemanager';
-import { PolicyStatement } from "@aws-cdk/aws-iam";
+import { PolicyStatement } from '@aws-cdk/aws-iam';
 
 export class ContactEmailApiConstruct extends Construct {
   constructor(
@@ -29,10 +29,12 @@ export class ContactEmailApiConstruct extends Construct {
       },
     });
 
-    handler.addToRolePolicy(new PolicyStatement({
-      actions: ['ses:SendEmail','ses:SendRawEmail'],
-      resources: ['*']
-    }))
+    handler.addToRolePolicy(
+      new PolicyStatement({
+        actions: ['ses:SendEmail', 'ses:SendRawEmail'],
+        resources: ['*'],
+      }),
+    );
 
     lambdaBucket.grantReadWrite(handler);
 

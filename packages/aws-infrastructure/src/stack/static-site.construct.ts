@@ -3,11 +3,11 @@ import { ARecord, HostedZone, RecordTarget } from '@aws-cdk/aws-route53';
 import { Bucket } from '@aws-cdk/aws-s3';
 import {
   CloudFrontWebDistribution,
+  OriginProtocolPolicy,
   SecurityPolicyProtocol,
   SSLMethod,
 } from '@aws-cdk/aws-cloudfront';
 import { CloudFrontTarget } from '@aws-cdk/aws-route53-targets';
-import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
 
 export interface StaticSiteProps {
   domainName: string;
@@ -50,8 +50,9 @@ export class StaticSiteConstruct extends Construct {
         },
         originConfigs: [
           {
-            s3OriginSource: {
-              s3BucketSource: siteBucket,
+            customOriginSource: {
+              domainName: siteBucket.bucketWebsiteDomainName,
+              originProtocolPolicy: OriginProtocolPolicy.HTTP_ONLY,
             },
             behaviors: [{ isDefaultBehavior: true }],
           },
@@ -64,14 +65,6 @@ export class StaticSiteConstruct extends Construct {
       recordName: siteDomain,
       target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
       zone,
-    });
-
-    // Deploy site contents to S3 bucket
-    new BucketDeployment(this, 'DeployWithInvalidation', {
-      sources: [Source.asset(props.assetsDirectory)],
-      destinationBucket: siteBucket,
-      distribution,
-      distributionPaths: ['/*'],
     });
   }
 }

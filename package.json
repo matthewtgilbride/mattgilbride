@@ -15,9 +15,10 @@
     "chk": "yarn tsc && yarn lint --fix && yarn test",
     "develop": "lerna run develop --scope=@mgilbride/mgilbride --stream",
     "build": "lerna run build --scope=@mgilbride/mgilbride --stream",
-    "deploy": "yarn build && lerna run deploy --scope=@mgilbride/aws-infrastructure --stream",
-    "synth": "yarn build && lerna run synth --scope=@mgilbride/aws-infrastructure --stream",
-    "destroy": "lerna run destroy --scope=@mgilbride/aws-infrastructure --stream"
+    "deploy-site": "cd packages/mgilbride && yarn deploy && cd ../..",
+    "deploy-aws": "cd packages/aws-infrastructure && yarn deploy && cd ../..",
+    "synth": "cd packages/aws-infrastructure && yarn synth && cd ../..",
+    "destroy": "cd packages/aws-infrastructure && yarn destroy && cd ../.."
   },
   "devDependencies": {
     "cz-conventional-changelog": "3.1.0"

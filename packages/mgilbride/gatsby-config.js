@@ -23,5 +23,13 @@ module.exports = {
         icon: "src/assets/images/profile_circle.png",
       },
     },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "www.mattgilbride.com",
+        protocol: "https",
+        hostname: "www.mattgilbride.com",
+      },
+    },
   ],
 }
