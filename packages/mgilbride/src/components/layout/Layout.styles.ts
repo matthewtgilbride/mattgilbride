@@ -75,11 +75,11 @@ export const styleContainer = (open: boolean): CSSObject => ({
     gridArea: 'menu',
     justifySelf: 'flex-start',
     alignSelf: 'flex-start',
-    padding: `${makeSpace('xs')} 0`,
+    padding: `${makeSpace('xs')} 0 ${makeSpace('xs')} ${makeSpace('xxs')}`,
     backgroundColor: 'transparent',
     border: 'none',
     svg: {
-      height: makeSpace('sm'),
+      height: makeSpace('md'),
     },
   },
   // main nav
