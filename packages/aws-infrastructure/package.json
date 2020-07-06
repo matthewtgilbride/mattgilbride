@@ -19,6 +19,7 @@
     "@aws-cdk/aws-certificatemanager": "^1.49.1",
     "@aws-cdk/aws-cloudfront": "^1.49.1",
     "@aws-cdk/aws-ec2": "^1.49.1",
+    "@aws-cdk/aws-iam": "^1.49.1",
     "@aws-cdk/aws-lambda": "^1.49.1",
     "@aws-cdk/aws-route53": "^1.49.1",
     "@aws-cdk/aws-route53-targets": "^1.49.1",
