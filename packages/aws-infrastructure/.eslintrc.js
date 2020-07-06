@@ -7,6 +7,7 @@ module.exports = {
     jest: true
   },
   rules: {
-    'no-new': 'off'
+    'no-new': 'off',
+    'no-console': 'warn'
   }
 }
