@@ -15,6 +15,9 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization":false
-  }
+    "strictPropertyInitialization":false,
+    "baseUrl": "src",
+    "outDir": "lib"
+  },
+  "include": ["src"]
 }
