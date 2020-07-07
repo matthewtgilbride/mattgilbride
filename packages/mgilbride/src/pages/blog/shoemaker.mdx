@@ -130,6 +130,8 @@ sharing said logic between components.  The hooks approach changes both of these
 
 ## Emotion and react-spring
 
+#### CSS-in-JS (or...CSS-in-TS)
+
 I am a fan of CSS-in-JS.  We are already writing Typescript, which transpiles to Javascript.  Well...we're
 Typescript with JSX, which transpiles to Javascript with JSX, which transpiles down to _more_ Javascript, which emits DOM.
 We live in a crazy world, so we might as well write Javascript that emits CSS too, because, well, who
@@ -141,6 +143,16 @@ Throughout this project's source I use [Emotion's](https://emotion.sh/docs/intro
 project to ensure that I'm using the right values for the right properties, and that is great
 for someone like me, who is far from a CSS expert.
 
+There are some serious downsides with this approach.  Writing CSS using Javascript syntax is...awkward.  Even for someone without years of experience in the CSS ecosystem, there is just something strange about writing a 
+selector as a Javascript key. `'> div': { ... }` just looks odd to me, and I'm sure it looks even weirder to a designer.  In a team of any size with good designers and experienced front end developers, 
+I would still use CSS-in-JS, but with the string interpolation style.  It might not be as "strongly typed",
+but it's much easier for those with CSS experience to read the CSS that lives within those backticks.  Furthermore, it would
+be less of a leap to take those strings and turn them into raw CSS in the case one wanted to depart from CSS-in-JS.
+
+In any case, using CSS "objects" was an educational experiment for this project.
+
+#### Animation
+
 For animations, I'm using [react-spring](https://www.react-spring.io/). I am no animation expert.  What I've done in the past
 has always been minimal...just enough to give the app some polish.  I find that styling an animation in a component
 frequently requires more lines of code than the rest of that component's styles combined.  Using react-spring
@@ -148,25 +160,28 @@ makes writing animations feel more natural, while also keeping the animation con
 styling concern.  I like that.
 
 I shouldn't say too much more in this blog post, however.  If you want to hear more of my opinions
-on the topic of styling web apps, you can check out [my talk from Philly ETE 2020](https://2020.phillyemergingtech.com/talks/typesafe-design-systems/), with the guy who taught me everything
-I know about the subject.
+on the topic of styling web apps, you can check out [my talk from Philly ETE 2020](https://youtu.be/rN4YuLr3dAk), 
+with the guy who taught me everything I know about the subject.
 
 ## Gatsby
 
 Frankly, I don't have much to say about Gatsby at this point.  The community support seems great,
-it seems mature enough, and things are working so far.  I'll just hearken back to my previous point.
+it seems quite mature, and things are working well so far.  I'll just hearken back to my previous point.
 I know I'm not alone in my suspicions of the fact that in 2020 we are writing SPA's in
 Javascript frameworks just to turn around and generate static sites out of them.  Call me crazy.
 
 This is in no way critical of the creators and maintainers of the Gatsby project.  From what I
-can tell it's a great project and a great community.
+can tell it's a great project and a great community.  The documentation is fantastic.  There is a
+well-maintained plugin for nearly every adjacent requirement I can think of (such as deploying to AWS S3 and Cloudfront).
+And there is a long list of well-known companies that are running it in production.  Those are the tell-tale signs
+of a battle-tested technology.
 
 # so are they sandals, sneakers, or ski boots?
 
 In the end, as engineers, we build to learn.  That's what this site is about.  Hopefully the stack I've chosen will stand the test of time.  I am fully
-prepared for it not to.  That is not an indictment of any of the technologies, but an admission of the world we live
+prepared for it not to.  That is not an indictment against the technologies, but an admission of the world we live
 in as web developers.  It would have been an interesting exercise to use nothing but pure HTML, CSS, and
 Javascript because, frankly, I've never built anything that way either.  In any case, it's been fun, and I'm looking forward
-to using this as a vehicle to write about all of the things I'm interested that _don't_ involve web pages.  If you've gotten
+to using this as a vehicle to write about the things I'm interested that _don't_ involve web pages.  If you've gotten
 this far, thanks for reading!  Whether you agree or disagree with any of the above, I'd love to hear from you, so please
 go ahead and <LayoutLink to="/contact"> reach out</LayoutLink>.
