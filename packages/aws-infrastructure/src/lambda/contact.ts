@@ -2,6 +2,12 @@ import { APIGatewayEvent, ProxyResult } from 'aws-lambda';
 import { SendEmailRequest } from 'aws-sdk/clients/ses';
 import { SES } from 'aws-sdk';
 
+const headers = {
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Origin': 'https://www.mattgilbride.com', // TODO: inject
+  'Access-Control-Allow-Methods': 'OPTIONS,POST',
+};
+
 export const handler = async (event: APIGatewayEvent): Promise<ProxyResult> => {
   try {
     const { path, httpMethod, body } = event;
@@ -34,12 +40,14 @@ export const handler = async (event: APIGatewayEvent): Promise<ProxyResult> => {
       return {
         statusCode: 200,
         body: 'email sent',
+        headers,
       };
     }
 
     return {
       statusCode: 404,
       body: 'Only POST / is accepted',
+      headers,
     };
   } catch (e) {
     console.error(e);
@@ -47,6 +55,7 @@ export const handler = async (event: APIGatewayEvent): Promise<ProxyResult> => {
     return {
       statusCode: 400,
       body: JSON.stringify(message, null, 2),
+      headers,
     };
   }
 };

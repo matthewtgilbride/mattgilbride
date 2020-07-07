@@ -18,7 +18,7 @@ const styleContainer: CSSObject = {
   paddingTop: makeSpace('lg'),
   margin: '0 auto',
   minWidth: '75%',
-  maxWidth: responsiveBreakpoints.phoneLg,
+  maxWidth: responsiveBreakpoints.phone - 40,
   '> button': {
     marginTop: makeSpace('lg'),
     cursor: 'pointer',
@@ -44,28 +44,85 @@ const styleContainer: CSSObject = {
   }),
 };
 
+type PostState = 'initial' | 'loading' | 'success' | 'error';
+
+const styleMessage = (postState: PostState): string => {
+  switch (postState) {
+    case 'initial':
+      return makeColor('light');
+    case 'error':
+      return makeColor('error');
+    case 'loading':
+      return makeColor('accent');
+    case 'success':
+    default:
+      return makeColor('success');
+  }
+};
+
+const submitMessage = (postState: PostState): string => {
+  switch (postState) {
+    case 'initial':
+      return "I'm all ears...";
+    case 'error':
+      return 'Sorry! Something went wrong';
+    case 'loading':
+      return 'just a sec...';
+    case 'success':
+    default:
+      return 'Thanks for reaching out!';
+  }
+};
+
+const initialValues = {
+  why: '',
+  name: '',
+  email: '',
+  message: '',
+};
+
 const Contact: FC = () => {
-  const [values, setValues] = useState({
-    why: '',
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [postState, setPostState] = useState<PostState>('initial');
+  const [values, setValues] = useState(initialValues);
 
   const changeHandler = (key: keyof typeof values) => (value: string) =>
     setValues({ ...values, [key]: value });
 
   const submitHandler = (e: SyntheticEvent): void => {
     e.preventDefault();
-    // eslint-disable-next-line no-console
-    console.log(JSON.stringify(values, undefined, 2));
+    if (typeof window !== 'undefined') {
+      const url = 'https://contact.mattgilbride.com'; // TODO: inject
+      setPostState('loading');
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      })
+        .then((res) => {
+          setTimeout(() => {
+            if (res.ok) {
+              setValues({ ...initialValues });
+            }
+            setPostState(res.ok ? 'success' : 'error');
+          }, 1000);
+        })
+        .catch(() => {
+          setTimeout(() => {
+            setPostState('error');
+          }, 1000);
+        });
+    }
   };
 
   return (
     <Layout>
       <form css={styleContainer} onSubmit={submitHandler}>
+        <span style={{ color: styleMessage(postState) }}>
+          {submitMessage(postState)}
+        </span>
         <FormControl
           required
+          disabled={postState === 'loading'}
           labelText="Why are you reaching out? *"
           type="select"
           options={[
@@ -79,6 +136,7 @@ const Contact: FC = () => {
         />
         <FormControl
           required
+          disabled={postState === 'loading'}
           labelText="Name *"
           type="input"
           value={values.name}
@@ -86,6 +144,7 @@ const Contact: FC = () => {
         />
         <FormControl
           required
+          disabled={postState === 'loading'}
           labelText="Email *"
           type="input"
           htmlType="email"
@@ -93,6 +152,7 @@ const Contact: FC = () => {
           onValueChange={changeHandler('email')}
         />
         <FormControl
+          disabled={postState === 'loading'}
           labelText="What's up?"
           type="textarea"
           value={values.message}

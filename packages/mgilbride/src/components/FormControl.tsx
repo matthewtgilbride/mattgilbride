@@ -50,6 +50,7 @@ type FormControlProps = FormControlElement & {
   onValueChange: (value: string) => void;
   required?: boolean;
   htmlType?: string;
+  disabled?: boolean;
 };
 
 export const FormControl: FC<FormControlProps> = (props: FormControlProps) => {
@@ -58,6 +59,7 @@ export const FormControl: FC<FormControlProps> = (props: FormControlProps) => {
     type: props.htmlType,
     placeholder: props.labelText,
     value: props.value,
+    disabled: !!props.disabled,
     onChange: (
       e: SyntheticEvent<
         HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement

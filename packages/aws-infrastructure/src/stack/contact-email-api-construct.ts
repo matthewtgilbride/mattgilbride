@@ -46,10 +46,6 @@ export class ContactEmailApiConstruct extends Construct {
     const api = new RestApi(this, `${id}-API`, {
       restApiName: 'REST email API',
       description: 'REST API serving a POST endpoint to send emails.',
-      defaultCorsPreflightOptions: {
-        allowOrigins: [`http://${props.domainName}`],
-        allowMethods: ['POST'],
-      },
       domainName: {
         domainName: siteDomain,
         certificate: Certificate.fromCertificateArn(
@@ -65,6 +61,10 @@ export class ContactEmailApiConstruct extends Construct {
     });
 
     api.root.addMethod('POST', lambdaIntegration);
+    api.root.addCorsPreflight({
+      allowOrigins: ['https://www.mattgilbride.com'], // TODO: inject
+      allowMethods: ['POST', 'OPTIONS'],
+    });
 
     // Route53 alias record for the CloudFront distribution
     new ARecord(this, `${id}-SiteAliasRecord`, {
