@@ -1,4 +1,4 @@
-import { config, useSpring, useTransition } from 'react-spring';
+import { useSpring, useTransition } from 'react-spring';
 import { accent, darkGray, white } from './Layout.styles';
 
 export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
