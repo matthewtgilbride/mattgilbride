@@ -44,8 +44,8 @@ const About: FC = () => (
       <h1 css={{ paddingTop: makeSpace('xl') }}>the long version</h1>
       <div>
         <p>
-          I&apos;m a &quot;full stack&quot; engineer by trade. You can check
-          out my&nbsp;<Link to="/resume">resume</Link> for more about that.
+          I&apos;m a &quot;full stack&quot; engineer by trade. You can check out
+          my&nbsp;<Link to="/resume">resume</Link> for more about that.
         </p>
         <p>
           This site serves as a place for people to find out more about me, and
