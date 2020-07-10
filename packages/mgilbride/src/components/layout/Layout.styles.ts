@@ -153,6 +153,7 @@ export const styleContent = (open: boolean): CSSObject => ({
   alignSelf: 'center',
   display: 'grid',
   height: '100%',
+  width: '100%',
   overflowY: 'auto',
   ...makeResponsiveObject({
     beginAt,

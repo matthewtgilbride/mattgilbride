@@ -21,6 +21,9 @@ const styleContainer: CSSObject = {
   h1: {
     fontStyle: 'italic',
   },
+  h3: {
+    paddingTop: makeSpace('lg'),
+  },
   a: {
     textDecoration: 'underline',
   },
@@ -38,7 +41,7 @@ const About: FC = () => (
       <img src={jamie} alt="Jamie" />
       <h3>and this is our dog</h3>
       <img src={emmy} alt="Emmy" />
-      <h1>the long version</h1>
+      <h1 css={{ paddingTop: makeSpace('xl') }}>the long version</h1>
       <div>
         <p>
           I&apos;m a &quot;full stack&quot; engineer by trade. You can to check
