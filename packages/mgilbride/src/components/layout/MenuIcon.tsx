@@ -15,7 +15,7 @@ export const MenuIcon: FC<{ open: boolean; style: CSSProperties }> = ({
   style,
 }) => (
   <>
-    <svg viewBox="0 0 100 80" width="40" height="40">
+    <svg viewBox="0 0 100 100" width="40" height="40">
       <animated.line
         css={styleClose(open)}
         style={style}

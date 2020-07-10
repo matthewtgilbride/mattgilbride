@@ -4,10 +4,10 @@ import { animated, useSpring } from 'react-spring';
 import { makeColor, makeSpace } from '../../utils/design';
 import ChevronDown from '../../assets/svg/chevron-down-accent.svg';
 
-const styleHeader = (open: boolean, first?: boolean): CSSObject => ({
+const styleHeader = (open: boolean): CSSObject => ({
   display: 'flex',
   justifyContent: 'space-between',
-  margin: first ? `0 0 ${makeSpace('md')} 0` : `${makeSpace('md')} 0`,
+  margin: `${makeSpace('md')} 0`,
   '> button': {
     backgroundColor: makeColor('gray', -2),
     cursor: 'pointer',
@@ -15,6 +15,7 @@ const styleHeader = (open: boolean, first?: boolean): CSSObject => ({
     borderColor: makeColor('accent'),
     borderRadius: '50%',
     width: 38,
+    height: 38,
     ':hover,:focus': {
       boxShadow: 'none',
       outline: 'none',
@@ -30,7 +31,6 @@ const styleHeader = (open: boolean, first?: boolean): CSSObject => ({
 });
 
 export interface ScrollableSectionHeaderProps {
-  firstSection?: boolean;
   pathname: Location['pathname'];
   hash: Location['hash'];
   hashTarget: string;
@@ -40,7 +40,6 @@ export interface ScrollableSectionHeaderProps {
 }
 
 export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
-  firstSection,
   hash,
   pathname,
   hashTarget,
@@ -74,7 +73,7 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
   }, [hash, hashTarget, scrollToElement]);
 
   return (
-    <h1 css={styleHeader(open, firstSection)} ref={el}>
+    <h1 css={styleHeader(open)} ref={el}>
       <a href={`${pathname}${hashTarget}`}>{text}</a>
       <button onClick={onClick}>
         <animated.img style={buttonSpring} src={ChevronDown} alt="open" />

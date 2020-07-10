@@ -11,6 +11,8 @@ export const accent = makeColor('accent');
 export const darkGray = makeColor('gray', -3);
 export const primary = makeColor('primary', -2);
 
+export const beginAt = 'tabletPortrait';
+
 export const documentReset = {
   body: {
     margin: 0,
@@ -31,10 +33,11 @@ export const documentReset = {
     ':focus': {
       outline: 'none',
     },
+    padding: 0,
   },
 };
 
-export const styleContainer = (open: boolean): CSSObject => ({
+export const styleContainer: CSSObject = {
   // resets
   position: 'absolute',
   overflow: 'hidden',
@@ -48,13 +51,8 @@ export const styleContainer = (open: boolean): CSSObject => ({
     position: 'relative',
   },
   // grid
-  display: 'grid',
-  gridTemplateColumns: 'auto auto',
-  gridTemplateRows: 'min-content auto',
-  gridTemplateAreas: `
-    'menu home'   
-    'main main'
-  `,
+  display: 'flex',
+  flexDirection: 'column',
   // defaults
   maxWidth: responsiveBreakpoints.desktop,
   a: {
@@ -62,95 +60,105 @@ export const styleContainer = (open: boolean): CSSObject => ({
     color: white,
     fontWeight: 500,
   },
-  // home link
-  '> a': {
-    gridArea: 'home',
-    justifySelf: 'flex-end',
-    alignSelf: 'flex-start',
-    textTransform: 'uppercase',
-    padding: makeSpace('md'),
-  },
-  // menu
-  '> button': {
-    gridArea: 'menu',
-    justifySelf: 'flex-start',
-    alignSelf: 'flex-start',
-    padding: makeSpace('md'),
-    marginLeft: `-${makeSpace('xs')}`,
-    backgroundColor: 'transparent',
-    border: 'none',
-    svg: {
-      height: makeSpace('md'),
-    },
-  },
-  // main nav
-  '> nav': {
-    gridArea: 'main',
-    display: open ? 'block' : 'none',
-    padding: makeSpace('md'),
-    ul: {
-      margin: 0,
-      listStyle: 'none',
-      paddingInlineStart: 0,
-      li: {
-        paddingBottom: makeSpace('lg'),
-        a: {
-          textTransform: 'uppercase',
-          color: white,
-          padding: makeSpace('xs'),
-        },
-      },
-    },
-  },
-  // content
-  '> div': {
-    gridArea: 'main',
-    zIndex: open ? -1 : 'inherit',
-    alignSelf: 'center',
-    display: 'grid',
-    height: '100%',
-    overflowY: 'auto',
-  },
-  ...styleContainerTablet(),
-});
-
-function styleContainerTablet(): CSSObject {
-  return makeResponsiveObject({
-    beginAt: 'tabletPortrait',
+  ...makeResponsiveObject({
+    beginAt,
     style: {
       color: 'inherit',
-      // home link
-      '> a': {
-        gridArea: 'menu',
-        justifySelf: 'flex-start',
-        alignSelf: 'flex-start',
+    },
+  }),
+};
+
+export const styleHeaderContainer: CSSObject = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  ...makeResponsiveObject({
+    beginAt,
+    style: {
+      flexDirection: 'row',
+    },
+  }),
+};
+
+export const styleHeader: CSSObject = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  padding: makeSpace('md'),
+  // TODO: home link because we can't style LayoutLink directly for some reason
+  '> a': {
+    textTransform: 'uppercase',
+    ...makeResponsiveObject({
+      beginAt,
+      style: {
         color: white,
       },
-      // hamburger menu
-      '> button': {
-        display: 'none',
-      },
-      // main nav
-      '> nav': {
-        gridArea: 'home',
-        display: 'block',
-        justifySelf: 'flex-end',
-        backgroundColor: 'inherit',
+    }),
+  },
+};
+
+export const styleNav = (open: boolean): CSSObject => ({
+  display: open ? 'block' : 'none',
+  padding: makeSpace('md'),
+  marginTop: makeSpace('xs'),
+  ul: {
+    margin: 0,
+    listStyle: 'none',
+    paddingInlineStart: 0,
+    li: {
+      paddingBottom: makeSpace('lg'),
+      a: {
+        textTransform: 'uppercase',
+        color: white,
         padding: makeSpace('xs'),
-        ul: {
-          display: 'flex',
-          li: {
-            paddingTop: 'inherit',
-            a: {
-              color: white,
-            },
+      },
+    },
+  },
+  ...makeResponsiveObject({
+    beginAt,
+    style: {
+      display: 'block',
+      justifySelf: 'flex-end',
+      marginTop: 'initial',
+      backgroundColor: 'inherit',
+      ul: {
+        display: 'flex',
+        li: {
+          paddingBottom: 'inherit',
+          a: {
+            color: white,
           },
         },
       },
-      // content
-      '> div': {
-        zIndex: 'inherit',
-      },
     },
-  });
-}
+  }),
+});
+
+export const styleMenuButton: CSSObject = {
+  marginLeft: `-${makeSpace('xs')}`,
+  backgroundColor: 'transparent',
+  border: 'none',
+  svg: {
+    height: makeSpace('md'),
+  },
+  ...makeResponsiveObject({
+    beginAt,
+    style: {
+      display: 'none',
+    },
+  }),
+};
+
+export const styleContent = (open: boolean): CSSObject => ({
+  zIndex: open ? -1 : 'inherit',
+  alignSelf: 'center',
+  display: 'grid',
+  height: '100%',
+  width: '100%',
+  overflowY: 'auto',
+  ...makeResponsiveObject({
+    beginAt,
+    style: {
+      zIndex: 'inherit',
+    },
+  }),
+});

@@ -60,7 +60,6 @@ const Resume: FC<PageProps> = ({ location: { pathname, hash } }) => (
       <Section
         defaultClosed
         headerProps={{
-          firstSection: true,
           hash,
           pathname,
           hashTarget: '#skills',

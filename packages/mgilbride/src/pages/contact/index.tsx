@@ -18,7 +18,7 @@ const styleContainer: CSSObject = {
   paddingTop: makeSpace('lg'),
   margin: '0 auto',
   minWidth: '75%',
-  maxWidth: responsiveBreakpoints.phone - 40,
+  maxWidth: responsiveBreakpoints.phone,
   '> button': {
     marginTop: makeSpace('lg'),
     cursor: 'pointer',

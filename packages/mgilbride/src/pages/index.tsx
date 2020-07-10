@@ -14,7 +14,7 @@ const styleContainer: CSSObject = {
     paddingBottom: makeSpace('sm'),
   },
   p: {
-    textAlign: 'right',
+    textAlign: 'center',
     padding: `${makeSpace('xxs')} 0`,
     margin: 0,
     a: {
@@ -27,7 +27,9 @@ const styleContainer: CSSObject = {
 const Home: FC = () => (
   <Layout>
     <div css={styleContainer}>
-      <div>Yo</div>
+      <h3>
+        <p>Yo</p>
+      </h3>
       <img src={profilePhoto} alt="Profile" />
       <div>
         <p>{`I'm Matt, from Philly`}</p>
