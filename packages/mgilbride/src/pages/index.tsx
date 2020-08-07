@@ -33,7 +33,10 @@ const Home: FC = () => (
       <img src={profilePhoto} alt="Profile" />
       <div>
         <p>{`I'm Matt, from Philly`}</p>
-        <p>I like writing code, and dogs</p>
+        <p>
+          I like writing <a href="https://github.com/matthewtgilbride">code</a>,
+          and dogs
+        </p>
         <p>
           check out my <Link to="/about">about</Link> page
         </p>
