@@ -7,6 +7,7 @@ const styleHeader = (open: boolean): CSSObject => ({
   display: 'flex',
   justifyContent: 'space-between',
   margin: `${makeSpace('md')} 0`,
+  padding: `${makeSpace('sm')} 0`,
   '> button': {
     backgroundColor: makeColor('gray', -2),
     cursor: 'pointer',
@@ -61,7 +62,7 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
         if (el.current) {
           el.current.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 1000),
+      }, 250),
     [el],
   );
 
