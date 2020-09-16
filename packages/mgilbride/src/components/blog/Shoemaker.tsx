@@ -8,7 +8,6 @@ const styleContainer: CSSObject = {
   gridTemplateRows: 'min-content',
   justifySelf: 'center',
   justifyItems: 'center',
-  padding: makeSpace('md'),
   maxWidth: responsiveBreakpoints.tabletPortrait,
   h1: {
     fontSize: makeSize('h1'),

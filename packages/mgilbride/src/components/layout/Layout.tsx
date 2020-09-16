@@ -1,19 +1,20 @@
 import React, { FC, useCallback, useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { Global } from '@emotion/core';
+import { CSSObject, Global } from '@emotion/core';
 import { animated } from 'react-spring';
+import Head from 'next/head';
 import { MenuIcon } from './MenuIcon';
 import {
   documentReset,
   styleContainer,
   styleContent,
-  styleHeaderContainer,
   styleHeader,
+  styleHeaderContainer,
   styleMenuButton,
   styleNav,
 } from './Layout.styles';
 import { useLayoutSprings } from './Layout.springs';
 import { LayoutLink } from './LayoutLink';
+import { makeColor, makeSpace } from '../../utils/design';
 
 export const Layout: FC = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -34,9 +35,9 @@ export const Layout: FC = ({ children }) => {
 
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Matt Gilbride</title>
-      </Helmet>
+      </Head>
       <Global styles={documentReset} />
       <animated.div css={styleContainer} style={backgroundSpring}>
         <div css={styleHeaderContainer}>
@@ -44,32 +45,32 @@ export const Layout: FC = ({ children }) => {
             <button css={styleMenuButton} onClick={onOpen}>
               <MenuIcon open={open} style={svgSpring} />
             </button>
-            <LayoutLink isHome="desktop" style={linkSpring} to="/">
+            <LayoutLink isHome="desktop" style={linkSpring} href="/">
               Matt Gilbride
             </LayoutLink>
-            <LayoutLink isHome="mobile" style={homeLinkSpring} to="/">
+            <LayoutLink isHome="mobile" style={homeLinkSpring} href="/">
               Matt Gilbride
             </LayoutLink>
           </div>
           <nav css={styleNav(open)}>
             <ul>
               <li>
-                <LayoutLink style={linkSpring} to="/about">
+                <LayoutLink style={linkSpring} href="/about">
                   About
                 </LayoutLink>
               </li>
               <li>
-                <LayoutLink style={linkSpring} to="/resume">
+                <LayoutLink style={linkSpring} href="/resume">
                   Resume
                 </LayoutLink>
               </li>
               <li>
-                <LayoutLink style={linkSpring} to="/blog">
+                <LayoutLink style={linkSpring} href="/blog">
                   Blog
                 </LayoutLink>
               </li>
               <li>
-                <LayoutLink style={linkSpring} to="/contact">
+                <LayoutLink style={linkSpring} href="/contact">
                   Contact
                 </LayoutLink>
               </li>

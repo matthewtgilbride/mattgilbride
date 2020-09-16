@@ -1,13 +1,23 @@
-import { GatsbyLinkProps, Link } from 'gatsby';
 import React, { CSSProperties, FC } from 'react';
 import { animated } from 'react-spring';
 import { CSSObject } from '@emotion/core';
+import Link, { LinkProps } from 'next/link';
+import { useRouter } from 'next/router';
 import { makeResponsiveObject } from '../../utils/design';
 
-const styleLayoutLink = (isHome?: 'desktop' | 'mobile'): CSSObject => {
-  if (!isHome) return {};
+const styleLayoutLink = (
+  active: boolean,
+  isHome?: 'desktop' | 'mobile',
+): CSSObject => {
+  const activeProps = active
+    ? {
+        '&&&': { textDecoration: 'underline' },
+      }
+    : {};
+  if (!isHome) return activeProps;
   return isHome === 'desktop'
     ? {
+        ...activeProps,
         display: 'none',
         ...makeResponsiveObject({
           beginAt: 'tabletPortrait',
@@ -15,6 +25,7 @@ const styleLayoutLink = (isHome?: 'desktop' | 'mobile'): CSSObject => {
         }),
       }
     : {
+        ...activeProps,
         display: 'inline',
         ...makeResponsiveObject({
           beginAt: 'tabletPortrait',
@@ -25,23 +36,24 @@ const styleLayoutLink = (isHome?: 'desktop' | 'mobile'): CSSObject => {
 
 interface LayoutLinkProps {
   isHome?: 'desktop' | 'mobile';
-  to: GatsbyLinkProps<unknown>['to'];
+  href: LinkProps['href'];
   style: CSSProperties;
 }
 
-const AnimatedLink = animated(Link);
 export const LayoutLink: FC<LayoutLinkProps> = ({
   isHome,
   style,
-  to,
+  href,
   children,
-}) => (
-  <AnimatedLink
-    css={styleLayoutLink(isHome)}
-    style={style}
-    to={to}
-    activeStyle={{ textDecoration: 'underline' }}
-  >
-    {children}
-  </AnimatedLink>
-);
+}) => {
+  const { pathname } = useRouter();
+  const active = pathname === href;
+  return (
+    <Link href={href}>
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+      <animated.a css={styleLayoutLink(active, isHome)} style={style}>
+        {children}
+      </animated.a>
+    </Link>
+  );
+};

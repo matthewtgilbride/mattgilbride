@@ -19,7 +19,7 @@ export const documentReset = {
     padding: 0,
     height: '100%',
     width: '100%',
-    background: `radial-gradient(circle, ${darkGray} 0%, ${darkGray} 95%, ${primary} 100%)`,
+    backgroundColor: darkGray,
     color: white,
     // plagiarized from sarah drasner
     fontFamily:
@@ -59,6 +59,7 @@ export const styleContainer: CSSObject = {
     textDecoration: 'none',
     color: white,
     fontWeight: 500,
+    cursor: 'pointer',
   },
   ...makeResponsiveObject({
     beginAt,
@@ -149,11 +150,15 @@ export const styleMenuButton: CSSObject = {
 };
 
 export const styleContent = (open: boolean): CSSObject => ({
+  padding: makeSpace('sm'),
+  margin: makeSpace('xs'),
+  borderRadius: makeSpace('xxs'),
+  boxShadow: `0 0 8px 2px ${makeColor('gray', -2)}`,
   zIndex: open ? -1 : 'inherit',
   alignSelf: 'center',
   display: 'grid',
   height: '100%',
-  width: '100%',
+  minWidth: '75%',
   overflowY: 'auto',
   ...makeResponsiveObject({
     beginAt,
