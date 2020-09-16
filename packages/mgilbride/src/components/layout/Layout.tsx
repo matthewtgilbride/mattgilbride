@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useState } from 'react';
-import { CSSObject, Global } from '@emotion/core';
+import { Global } from '@emotion/core';
 import { animated } from 'react-spring';
 import Head from 'next/head';
 import { MenuIcon } from './MenuIcon';
@@ -14,7 +14,6 @@ import {
 } from './Layout.styles';
 import { useLayoutSprings } from './Layout.springs';
 import { LayoutLink } from './LayoutLink';
-import { makeColor, makeSpace } from '../../utils/design';
 
 export const Layout: FC = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -37,6 +36,10 @@ export const Layout: FC = ({ children }) => {
     <>
       <Head>
         <title>Matt Gilbride</title>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Global styles={documentReset} />
       <animated.div css={styleContainer} style={backgroundSpring}>

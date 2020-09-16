@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
-import { cardStyle, Layout } from '../../components/layout/Layout';
+import { Layout } from '../../components/layout/Layout';
 import { makeSpace, responsiveBreakpoints } from '../../utils/design';
 
 const styleContainer: CSSObject = {

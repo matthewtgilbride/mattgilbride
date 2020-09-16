@@ -9,6 +9,8 @@ const styleContainer: CSSObject = {
   justifySelf: 'center',
   justifyItems: 'center',
   maxWidth: responsiveBreakpoints.tabletPortrait,
+  // because shoemaker is a long word in iphone SE
+  wordWrap: 'break-word',
   h1: {
     fontSize: makeSize('h1'),
   },

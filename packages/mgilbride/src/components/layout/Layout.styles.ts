@@ -21,9 +21,7 @@ export const documentReset = {
     width: '100%',
     backgroundColor: darkGray,
     color: white,
-    // plagiarized from sarah drasner
-    fontFamily:
-      'Gotham XNarrow A,Gotham XNarrow B,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;',
+    fontFamily: 'Montserrat,sans-serif;',
   },
   html: {
     height: '100%',

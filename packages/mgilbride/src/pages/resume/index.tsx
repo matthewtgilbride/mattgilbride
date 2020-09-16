@@ -2,9 +2,8 @@ import React from 'react';
 import { CSSObject } from '@emotion/core';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { cardStyle, Layout } from '../../components/layout/Layout';
+import { Layout } from '../../components/layout/Layout';
 import {
-  makeColor,
   makeResponsiveObject,
   makeSpace,
   responsiveBreakpoints,
@@ -45,8 +44,8 @@ const styleSkills: CSSObject = {
 };
 
 const Resume: NextPage = () => {
-  const { pathname } = useRouter();
-  const hash = pathname.substr(pathname.lastIndexOf('#'), pathname.length);
+  const { pathname, asPath } = useRouter();
+  const hash = asPath.substr(asPath.lastIndexOf('#'), asPath.length);
   return (
     <Layout>
       <div css={styleContainer}>
