@@ -3,6 +3,7 @@ import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
 import { makeSpace } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
+import { TraceToWebpImage } from '../components/TraceToWebpImage';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -29,7 +30,7 @@ const Home: FC = () => (
       <h3>
         <p>Yo</p>
       </h3>
-      <img src="assets/images/profile_circle.png" alt="Profile" />
+      <TraceToWebpImage path="profile_circle.png" alt="profile" />
       <div>
         <p>{`I'm Matt, from Philly`}</p>
         <p>
