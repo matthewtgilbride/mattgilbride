@@ -3,7 +3,7 @@ import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
 import { Layout } from '../../components/layout/Layout';
 import { makeSpace, responsiveBreakpoints } from '../../utils/design';
-import { TraceToWebpImage, useLqipWebpImage } from '../../components/TraceToWebpImage';
+import { TraceToWebpImage } from '../../components/TraceToWebpImage';
 
 const styleContainer: CSSObject = {
   display: 'grid',

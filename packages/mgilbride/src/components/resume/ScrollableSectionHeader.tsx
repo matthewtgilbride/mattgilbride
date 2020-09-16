@@ -78,7 +78,7 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
       <button onClick={onClick}>
         <animated.img
           style={buttonSpring}
-          src="assets/svg/chevron-down-accent.svg"
+          src="/assets/svg/chevron-down-accent.svg"
           alt="open"
         />
       </button>

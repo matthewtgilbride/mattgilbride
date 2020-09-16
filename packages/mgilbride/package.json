@@ -12,7 +12,8 @@
     "tsc": "tsc",
     "export": "next export",
     "serve": "serve out",
-    "clean": "rm -rf .next && rm -rf out"
+    "clean": "rm -rf .next && rm -rf out",
+    "deploy": "aws s3 sync out s3://www.mattgilbride.com"
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",

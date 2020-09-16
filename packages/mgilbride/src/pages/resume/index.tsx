@@ -61,7 +61,7 @@ const Resume: NextPage = () => {
           <div css={styleSkills}>
             <div>
               <SkillHeader
-                imgSrc="assets/svg/curly-brackets.svg"
+                imgSrc="/assets/svg/curly-brackets.svg"
                 imgSize={24}
                 text="Languages / Frameworks"
               />
@@ -86,7 +86,7 @@ const Resume: NextPage = () => {
             </div>
             <div>
               <SkillHeader
-                imgSrc="assets/svg/infrastructure.svg"
+                imgSrc="/assets/svg/infrastructure.svg"
                 imgSize={24}
                 text="Infrastructure"
               />
@@ -110,7 +110,7 @@ const Resume: NextPage = () => {
             </div>
             <div>
               <SkillHeader
-                imgSrc="assets/svg/architecture.svg"
+                imgSrc="/assets/svg/architecture.svg"
                 imgSize={24}
                 text="Architecture"
               />
@@ -124,7 +124,7 @@ const Resume: NextPage = () => {
             </div>
             <div>
               <SkillHeader
-                imgSrc="assets/svg/process.svg"
+                imgSrc="/assets/svg/process.svg"
                 imgSize={28}
                 text="Process"
               />
@@ -148,7 +148,7 @@ const Resume: NextPage = () => {
           }}
         >
           <JobOrDegreeHeader
-            imgUrl="assets/svg/chariot.svg"
+            imgUrl="/assets/svg/chariot.svg"
             imgSize={36}
             orgUrl="http://www.chariotsolutions.com"
             orgCopy="Chariot Solutions"
@@ -268,7 +268,7 @@ const Resume: NextPage = () => {
             </ul>
           </JobOrDegreeBody>
           <JobOrDegreeHeader
-            imgUrl="assets/svg/reuters.svg"
+            imgUrl="/assets/svg/reuters.svg"
             imgSize={36}
             orgUrl="https://legal.thomsonreuters.com/en/products/c-track"
             orgCopy="Thomson Reuters"
@@ -290,7 +290,7 @@ const Resume: NextPage = () => {
             </p>
           </JobOrDegreeBody>
           <JobOrDegreeHeader
-            imgUrl="assets/svg/sap.svg"
+            imgUrl="/assets/svg/sap.svg"
             imgSize={36}
             orgUrl="https://www.sap.com/products/digital-supply-chain/supply-chain-logistics.html"
             orgCopy="SAP"
@@ -321,7 +321,7 @@ const Resume: NextPage = () => {
             </p>
           </JobOrDegreeBody>
           <JobOrDegreeHeader
-            imgUrl="assets/svg/boeing.svg"
+            imgUrl="/assets/svg/boeing.svg"
             imgSize={28}
             orgUrl="https://www.boeing.com/"
             orgCopy="Boeing"
@@ -351,7 +351,7 @@ const Resume: NextPage = () => {
           }}
         >
           <JobOrDegreeHeader
-            imgUrl="assets/svg/drexel.svg"
+            imgUrl="/assets/svg/drexel.svg"
             imgSize={36}
             orgUrl="https://drexel.edu/cci/academics/computer-science-department/"
             titleCopy="M.S. Computer Science"
@@ -376,7 +376,7 @@ const Resume: NextPage = () => {
             </p>
           </JobOrDegreeBody>
           <JobOrDegreeHeader
-            imgUrl="assets/svg/penn-state.svg"
+            imgUrl="/assets/svg/penn-state.svg"
             imgSize={36}
             orgUrl="https://www.smeal.psu.edu/scis"
             titleCopy="B.S. Supply Chain Info. Systems"
