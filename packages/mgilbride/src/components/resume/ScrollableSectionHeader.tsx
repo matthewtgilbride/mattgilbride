@@ -62,7 +62,7 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
         if (el.current) {
           el.current.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 250),
+      }, 500),
     [el],
   );
 
