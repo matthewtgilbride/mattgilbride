@@ -13,7 +13,7 @@
     "lint": "lerna run lint --stream --",
     "test": "lerna run test --stream --",
     "chk": "yarn tsc && yarn lint --fix && yarn test",
-    "develop": "lerna run dev --scope=@mgilbride/mgilbride --stream",
+    "dev": "lerna run dev --scope=@mgilbride/mgilbride --stream",
     "build": "lerna run build --scope=@mgilbride/mgilbride --stream",
     "start": "lerna run start --scope=@mgilbride/mgilbride --stream",
     "export": "lerna run export --scope=@mgilbride/mgilbride --stream",
