@@ -149,7 +149,7 @@ export const styleMenuButton: CSSObject = {
 
 export const styleContent = (open: boolean): CSSObject => ({
   padding: makeSpace('sm'),
-  margin: makeSpace('xs'),
+  margin: `0 ${makeSpace('xs')} ${makeSpace('xs')} ${makeSpace('xs')}`,
   borderRadius: makeSpace('xxs'),
   boxShadow: `0 0 8px 2px ${makeColor('gray', -2)}`,
   zIndex: open ? -1 : 'inherit',

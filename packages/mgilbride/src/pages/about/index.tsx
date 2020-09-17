@@ -3,7 +3,7 @@ import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
 import { Layout } from '../../components/layout/Layout';
 import { makeSpace, responsiveBreakpoints } from '../../utils/design';
-import { TraceToWebpImage } from '../../components/TraceToWebpImage';
+import { ImgTrace } from '../../components/ImgTrace';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -30,13 +30,13 @@ const About: FC = () => (
     <div css={styleContainer}>
       <h1>tl;dr</h1>
       <h3>{`I'm a software engineer`}</h3>
-      <TraceToWebpImage path="engineer_thinking.png" alt="Profile" />
+      <ImgTrace path="engineer_thinking.png" alt="Profile" />
       <h3>from Philly</h3>
-      <TraceToWebpImage path="philly-globe.png" alt="Philly" />
+      <ImgTrace path="philly-globe.png" alt="Philly" />
       <h3>this is my wife</h3>
-      <TraceToWebpImage path="jamie.png" alt="Jamie" />
+      <ImgTrace path="jamie.png" alt="Jamie" />
       <h3>and this is our dog</h3>
-      <TraceToWebpImage path="emmy.png" alt="Emmy" />
+      <ImgTrace path="emmy.png" alt="Emmy" />
       <h1 css={{ paddingTop: makeSpace('xl') }}>the long version</h1>
       <div>
         <p>

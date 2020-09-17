@@ -1,18 +1,14 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 
-export type TraceToWebpImageProps = Record<string, unknown> & {
+export type ImgTraceProps = Record<string, unknown> & {
   path: string;
   alt: string;
 };
 
-export const TraceToWebpImage: FC<TraceToWebpImageProps> = ({
-  path,
-  alt,
-  ...rest
-}) => {
+export const ImgTrace: FC<ImgTraceProps> = ({ path, alt, ...rest }) => {
   /* eslint-disable @typescript-eslint/no-var-requires,global-require,import/no-dynamic-require */
   const { trace } = require(`images/${path}?trace`);
-  const webp = require(`images/${path}?webp`);
+  const raw = require(`images/${path}`);
 
   const [loaded, setLoaded] = useState(false);
   const [tries, setTries] = useState(0);
@@ -34,7 +30,7 @@ export const TraceToWebpImage: FC<TraceToWebpImageProps> = ({
         css={{ display: loaded ? 'none' : undefined }}
       />
       <img
-        src={webp}
+        src={raw}
         alt={alt}
         {...rest}
         css={{ display: loaded ? undefined : 'none' }}
