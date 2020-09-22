@@ -30,7 +30,6 @@ const About: FC = () => (
     <div css={styleContainer}>
       <h1>tl;dr</h1>
       <h3>{`I'm a software engineer`}</h3>
-      <ImgTrace path="engineer_thinking.png" alt="Profile" />
       <h3>from Philly</h3>
       <ImgTrace path="philly-globe.png" alt="Philly" />
       <h3>this is my wife</h3>

@@ -1,15 +1,18 @@
 import { useSpring, useTransition } from 'react-spring';
-import { accent, darkGray, white } from './Layout.styles';
+import { darkGray, white } from './Layout.styles';
+import { makeColor } from '../../utils/design';
+
+const primary = makeColor('primary');
 
 export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
   const backgroundSpring = useSpring({
     from: isFirstRender
       ? {}
       : {
-          backgroundColor: open ? darkGray : accent,
+          backgroundColor: open ? darkGray : primary,
         },
     to: {
-      backgroundColor: open ? accent : darkGray,
+      backgroundColor: open ? primary : darkGray,
     },
   });
 
@@ -44,6 +47,15 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
     },
   });
 
+  const navSpring = useSpring({
+    from: {
+      transform: open ? 'translateY(-120px)' : 'translateY(0px)',
+    },
+    to: {
+      transform: open ? 'translateY(0px)' : 'translateY(-120px)',
+    },
+  });
+
   const childrenSpring = useTransition(true, null, {
     from: {
       opacity: 0,
@@ -59,5 +71,6 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
     linkSpring,
     homeLinkSpring,
     childrenSpring,
+    navSpring,
   };
 };

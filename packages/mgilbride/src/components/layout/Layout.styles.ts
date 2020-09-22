@@ -98,13 +98,13 @@ export const styleHeader: CSSObject = {
 export const styleNav = (open: boolean): CSSObject => ({
   display: open ? 'block' : 'none',
   padding: makeSpace('md'),
-  marginTop: makeSpace('xs'),
+  margin: makeSpace('xs'),
   ul: {
     margin: 0,
     listStyle: 'none',
     paddingInlineStart: 0,
     li: {
-      paddingBottom: makeSpace('lg'),
+      padding: `${makeSpace('md')} 0`,
       a: {
         textTransform: 'uppercase',
         color: white,
@@ -112,17 +112,21 @@ export const styleNav = (open: boolean): CSSObject => ({
       },
     },
   },
+  borderRadius: makeSpace('xxs'),
+  boxShadow: `0 0 8px 2px ${makeColor('gray', -2)}`,
   ...makeResponsiveObject({
     beginAt,
     style: {
       display: 'block',
       justifySelf: 'flex-end',
-      marginTop: 'initial',
+      margin: 'initial',
       backgroundColor: 'inherit',
+      boxShadow: 'initial',
+      borderRadius: 'initial',
       ul: {
         display: 'flex',
         li: {
-          paddingBottom: 'inherit',
+          padding: 'inherit',
           a: {
             color: white,
           },

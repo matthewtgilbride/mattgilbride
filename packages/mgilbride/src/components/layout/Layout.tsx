@@ -55,7 +55,7 @@ export const Layout: FC = ({ children }) => {
               Matt Gilbride
             </LayoutLink>
           </div>
-          <nav css={styleNav(open)}>
+          <animated.nav css={styleNav(open)}>
             <ul>
               <li>
                 <LayoutLink style={linkSpring} href="/about">
@@ -78,7 +78,7 @@ export const Layout: FC = ({ children }) => {
                 </LayoutLink>
               </li>
             </ul>
-          </nav>
+          </animated.nav>
         </div>
         {childrenSpring.map(
           ({ item, key, props }) =>
