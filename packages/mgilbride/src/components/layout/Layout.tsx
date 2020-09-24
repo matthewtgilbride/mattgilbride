@@ -30,6 +30,7 @@ export const Layout: FC = ({ children }) => {
     linkSpring,
     homeLinkSpring,
     childrenSpring,
+    navSpring,
   } = useLayoutSprings(isFirstRender, open);
 
   return (
@@ -55,7 +56,7 @@ export const Layout: FC = ({ children }) => {
               Matt Gilbride
             </LayoutLink>
           </div>
-          <animated.nav css={styleNav(open)}>
+          <animated.nav css={styleNav(open)} style={navSpring}>
             <ul>
               <li>
                 <LayoutLink style={linkSpring} href="/about">

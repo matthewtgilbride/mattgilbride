@@ -1,8 +1,13 @@
 import { useSpring, useTransition } from 'react-spring';
 import { darkGray, white } from './Layout.styles';
-import { makeColor } from '../../utils/design';
+import { makeColor, responsiveBreakpoints } from '../../utils/design';
 
 const primary = makeColor('primary');
+
+const onMobile = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  return window.innerWidth < responsiveBreakpoints.tabletPortrait;
+};
 
 export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
   const backgroundSpring = useSpring({
@@ -48,12 +53,16 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
   });
 
   const navSpring = useSpring({
-    from: {
-      transform: open ? 'translateY(-120px)' : 'translateY(0px)',
-    },
-    to: {
-      transform: open ? 'translateY(0px)' : 'translateY(-120px)',
-    },
+    from: onMobile()
+      ? {
+          transform: open ? 'translateY(-120px)' : 'translateY(0px)',
+        }
+      : {},
+    to: onMobile()
+      ? {
+          transform: open ? 'translateY(0px)' : 'translateY(-120px)',
+        }
+      : {},
   });
 
   const childrenSpring = useTransition(true, null, {
