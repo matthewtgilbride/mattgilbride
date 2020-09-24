@@ -90,6 +90,13 @@ export const styleHeader: CSSObject = {
       beginAt,
       style: {
         color: white,
+        marginLeft: makeSpace('xs'),
+      },
+    }),
+    ...makeResponsiveObject({
+      beginAt: 'tabletLandscape',
+      style: {
+        marginLeft: makeSpace('sm'),
       },
     }),
   },
