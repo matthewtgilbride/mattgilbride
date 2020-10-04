@@ -36,8 +36,10 @@ const Blog: FC = () => (
         <a href="https://chariotsolutions.com/blog/post/vue-3-0-might-be-a-big-deal/">
           Vue 3.0 might be a big deal
         </a>
+        <a href="https://chariotsolutions.com/blog/post/using-the-aws-cdk-irl-part-2/">
+          using the AWS CDK IRL: Part 2
+        </a>
       </div>
-      <div css={{ margin: 'auto' }}>...more coming soon...</div>
     </div>
   </Layout>
 );

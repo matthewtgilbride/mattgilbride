@@ -11,8 +11,13 @@ import { darkGray } from '../layout/Layout.styles';
 const lightGray = makeColor('gray', -1);
 
 const styleFooter: CSSObject = {
-  position: 'sticky',
-  bottom: -16,
+  position: 'fixed',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  margin: '0 auto',
+  width: '100%',
+  maxWidth: responsiveBreakpoints.tabletPortrait,
   display: 'flex',
   alignSelf: 'flex-end',
   justifyContent: 'center',
