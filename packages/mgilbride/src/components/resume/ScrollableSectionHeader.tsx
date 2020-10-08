@@ -2,12 +2,12 @@ import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useSpring } from 'react-spring';
 import { makeColor, makeSpace } from '../../utils/design';
-import ChevronDown from '../../assets/svg/chevron-down-accent.svg';
 
 const styleHeader = (open: boolean): CSSObject => ({
   display: 'flex',
   justifyContent: 'space-between',
   margin: `${makeSpace('md')} 0`,
+  padding: `${makeSpace('sm')} 0`,
   '> button': {
     backgroundColor: makeColor('gray', -2),
     cursor: 'pointer',
@@ -62,7 +62,7 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
         if (el.current) {
           el.current.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 250),
+      }, 500),
     [el],
   );
 
@@ -76,7 +76,11 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
     <h1 css={styleHeader(open)} ref={el}>
       <a href={`${pathname}${hashTarget}`}>{text}</a>
       <button onClick={onClick}>
-        <animated.img style={buttonSpring} src={ChevronDown} alt="open" />
+        <animated.img
+          style={buttonSpring}
+          src="/assets/svg/chevron-down-accent.svg"
+          alt="open"
+        />
       </button>
     </h1>
   );

@@ -2,11 +2,11 @@ import React, { FC, SyntheticEvent, useState } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Layout } from '../../components/layout/Layout';
 import {
+  makeColor,
+  makeResponsiveObject,
+  makeSize,
   makeSpace,
   responsiveBreakpoints,
-  makeResponsiveObject,
-  makeColor,
-  makeSize,
 } from '../../utils/design';
 import { FormControl } from '../../components/FormControl';
 

@@ -1,18 +1,14 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import { Layout } from '../../components/layout/Layout';
 import { makeSpace, responsiveBreakpoints } from '../../utils/design';
-import phillyGlobe from '../../assets/images/philly-globe.png';
-import engineer from '../../assets/images/engineer_thinking.png';
-import jamie from '../../assets/images/jamie.png';
-import emmy from '../../assets/images/emmy.png';
+import { ImgTrace } from '../../components/ImgTrace';
 
 const styleContainer: CSSObject = {
   display: 'grid',
   justifySelf: 'center',
   justifyItems: 'center',
-  padding: makeSpace('md'),
   maxWidth: responsiveBreakpoints.tabletPortrait,
   img: {
     height: '50vh',
@@ -34,24 +30,23 @@ const About: FC = () => (
     <div css={styleContainer}>
       <h1>tl;dr</h1>
       <h3>{`I'm a software engineer`}</h3>
-      <img src={engineer} alt="Profile" />
       <h3>from Philly</h3>
-      <img src={phillyGlobe} alt="Philly" />
+      <ImgTrace path="philly-globe.png" alt="Philly" />
       <h3>this is my wife</h3>
-      <img src={jamie} alt="Jamie" />
+      <ImgTrace path="jamie.png" alt="Jamie" />
       <h3>and this is our dog</h3>
-      <img src={emmy} alt="Emmy" />
+      <ImgTrace path="emmy.png" alt="Emmy" />
       <h1 css={{ paddingTop: makeSpace('xl') }}>the long version</h1>
       <div>
         <p>
           I&apos;m a &quot;full stack&quot; engineer by trade. You can check out
-          my&nbsp;<Link to="/resume">resume</Link> for more about that.
+          my&nbsp;<Link href="/resume">resume</Link> for more about that.
         </p>
         <p>
           This site serves as a place for people to find out more about me, and
-          a place for <Link to="/blog">me to write down my thoughts</Link>. Most
-          of those thoughts will be about programming for now, so I&apos;ll keep
-          this particular page focused on everything else.
+          a place for <Link href="/blog">me to write down my thoughts</Link>.
+          Most of those thoughts will be about programming for now, so I&apos;ll
+          keep this particular page focused on everything else.
         </p>
         <p>
           I&apos;m a happily married man to my wife Jamie of (almost) four
@@ -85,7 +80,7 @@ const About: FC = () => (
         <p>
           That&apos;s all for now. If you are interested in connecting for any
           reason, please don&apos;t hesitate to&nbsp;
-          <Link to="/contact">reach out</Link>!
+          <Link href="/contact">reach out</Link>!
         </p>
       </div>
     </div>

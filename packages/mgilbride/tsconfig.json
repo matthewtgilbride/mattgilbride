@@ -3,7 +3,19 @@
   "compilerOptions": {
     "baseUrl": "src",
     "noEmit": true,
-    "jsx": "react",
-    "lib": ["dom"]
-  }
+    "jsx": "preserve",
+    "lib": [
+      "dom"
+    ],
+    "isolatedModules": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

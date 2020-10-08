@@ -8,8 +8,9 @@ const styleContainer: CSSObject = {
   gridTemplateRows: 'min-content',
   justifySelf: 'center',
   justifyItems: 'center',
-  padding: makeSpace('md'),
   maxWidth: responsiveBreakpoints.tabletPortrait,
+  // because shoemaker is a long word in iphone SE
+  wordBreak: 'break-word',
   h1: {
     fontSize: makeSize('h1'),
   },

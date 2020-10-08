@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import Doc from '../../assets/svg/doc.svg';
-import Pdf from '../../assets/svg/pdf.svg';
 import {
   makeColor,
   makeSize,
@@ -13,11 +11,17 @@ import { darkGray } from '../layout/Layout.styles';
 const lightGray = makeColor('gray', -1);
 
 const styleFooter: CSSObject = {
-  position: 'sticky',
+  position: 'fixed',
   bottom: 0,
+  left: 0,
+  right: 0,
+  margin: '0 auto',
+  width: '100%',
+  maxWidth: responsiveBreakpoints.tabletPortrait,
   display: 'flex',
   alignSelf: 'flex-end',
   justifyContent: 'center',
+  borderTop: `1px solid ${lightGray}`,
   background: `radial-gradient(at 50% 100%, ${lightGray} 0%, ${darkGray} 50%, ${darkGray} 100%)`,
   '> div': {
     display: 'flex',
@@ -70,15 +74,15 @@ export const Footer: FC = () => (
         <p>Need a copy?</p>
       </div>
       <div>
-        <a href="/Gilbride_Matthew Resume_2020_07.docx">
+        <a href="/static/Gilbride_Matthew Resume_2020_07.docx">
           <button css={styleButton}>
-            <img src={Doc} alt="doc" />
+            <img src="/assets/svg/doc.svg" alt="doc" />
             <p>.docx</p>
           </button>
         </a>
-        <a href="/Gilbride_Matthew Resume_2020_07.pdf">
+        <a href="/static/Gilbride_Matthew Resume_2020_07.pdf">
           <button css={styleButton}>
-            <img src={Pdf} alt="pdf" />
+            <img src="/assets/svg/pdf.svg" alt="pdf" />
             <p>.pdf</p>
           </button>
         </a>

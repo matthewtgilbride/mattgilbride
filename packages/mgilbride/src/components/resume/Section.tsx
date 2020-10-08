@@ -18,7 +18,11 @@ export const Section: FC<{
   useEffect(() => setHasRenderedOnce(true), []);
 
   const [open, setOpen] = useState(true);
-  if (defaultClosed && !hasRenderedOnce) {
+  if (
+    defaultClosed &&
+    !hasRenderedOnce &&
+    headerProps.hash !== headerProps.hashTarget
+  ) {
     // wait a tick to close it so measurement can take place
     setTimeout(() => setOpen(false));
   }

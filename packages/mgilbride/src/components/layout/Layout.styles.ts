@@ -19,11 +19,9 @@ export const documentReset = {
     padding: 0,
     height: '100%',
     width: '100%',
-    background: `radial-gradient(circle, ${darkGray} 0%, ${darkGray} 95%, ${primary} 100%)`,
+    backgroundColor: darkGray,
     color: white,
-    // plagiarized from sarah drasner
-    fontFamily:
-      'Gotham XNarrow A,Gotham XNarrow B,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;',
+    fontFamily: 'Montserrat,sans-serif;',
   },
   html: {
     height: '100%',
@@ -59,6 +57,7 @@ export const styleContainer: CSSObject = {
     textDecoration: 'none',
     color: white,
     fontWeight: 500,
+    cursor: 'pointer',
   },
   ...makeResponsiveObject({
     beginAt,
@@ -91,6 +90,13 @@ export const styleHeader: CSSObject = {
       beginAt,
       style: {
         color: white,
+        marginLeft: makeSpace('xs'),
+      },
+    }),
+    ...makeResponsiveObject({
+      beginAt: 'tabletLandscape',
+      style: {
+        marginLeft: makeSpace('sm'),
       },
     }),
   },
@@ -99,13 +105,13 @@ export const styleHeader: CSSObject = {
 export const styleNav = (open: boolean): CSSObject => ({
   display: open ? 'block' : 'none',
   padding: makeSpace('md'),
-  marginTop: makeSpace('xs'),
+  margin: makeSpace('xs'),
   ul: {
     margin: 0,
     listStyle: 'none',
     paddingInlineStart: 0,
     li: {
-      paddingBottom: makeSpace('lg'),
+      padding: `${makeSpace('md')} 0`,
       a: {
         textTransform: 'uppercase',
         color: white,
@@ -113,17 +119,21 @@ export const styleNav = (open: boolean): CSSObject => ({
       },
     },
   },
+  borderRadius: makeSpace('xxs'),
+  boxShadow: `0 0 8px 2px ${makeColor('gray', -2)}`,
   ...makeResponsiveObject({
     beginAt,
     style: {
       display: 'block',
       justifySelf: 'flex-end',
-      marginTop: 'initial',
+      margin: 'initial',
       backgroundColor: 'inherit',
+      boxShadow: 'initial',
+      borderRadius: 'initial',
       ul: {
         display: 'flex',
         li: {
-          paddingBottom: 'inherit',
+          padding: 'inherit',
           a: {
             color: white,
           },
@@ -149,11 +159,15 @@ export const styleMenuButton: CSSObject = {
 };
 
 export const styleContent = (open: boolean): CSSObject => ({
+  padding: makeSpace('sm'),
+  margin: `0 ${makeSpace('xs')} ${makeSpace('xs')} ${makeSpace('xs')}`,
+  borderRadius: makeSpace('xxs'),
+  boxShadow: `0 0 8px 2px ${makeColor('gray', -2)}`,
   zIndex: open ? -1 : 'inherit',
   alignSelf: 'center',
   display: 'grid',
   height: '100%',
-  width: '100%',
+  width: '95%',
   overflowY: 'auto',
   ...makeResponsiveObject({
     beginAt,

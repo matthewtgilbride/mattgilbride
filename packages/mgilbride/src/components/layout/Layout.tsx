@@ -1,14 +1,14 @@
 import React, { FC, useCallback, useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { Global } from '@emotion/core';
 import { animated } from 'react-spring';
+import Head from 'next/head';
 import { MenuIcon } from './MenuIcon';
 import {
   documentReset,
   styleContainer,
   styleContent,
-  styleHeaderContainer,
   styleHeader,
+  styleHeaderContainer,
   styleMenuButton,
   styleNav,
 } from './Layout.styles';
@@ -30,13 +30,18 @@ export const Layout: FC = ({ children }) => {
     linkSpring,
     homeLinkSpring,
     childrenSpring,
+    navSpring,
   } = useLayoutSprings(isFirstRender, open);
 
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Matt Gilbride</title>
-      </Helmet>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <Global styles={documentReset} />
       <animated.div css={styleContainer} style={backgroundSpring}>
         <div css={styleHeaderContainer}>
@@ -44,37 +49,37 @@ export const Layout: FC = ({ children }) => {
             <button css={styleMenuButton} onClick={onOpen}>
               <MenuIcon open={open} style={svgSpring} />
             </button>
-            <LayoutLink isHome="desktop" style={linkSpring} to="/">
+            <LayoutLink isHome="desktop" style={linkSpring} href="/">
               Matt Gilbride
             </LayoutLink>
-            <LayoutLink isHome="mobile" style={homeLinkSpring} to="/">
+            <LayoutLink isHome="mobile" style={homeLinkSpring} href="/">
               Matt Gilbride
             </LayoutLink>
           </div>
-          <nav css={styleNav(open)}>
+          <animated.nav css={styleNav(open)} style={navSpring}>
             <ul>
               <li>
-                <LayoutLink style={linkSpring} to="/about">
+                <LayoutLink style={linkSpring} href="/about">
                   About
                 </LayoutLink>
               </li>
               <li>
-                <LayoutLink style={linkSpring} to="/resume">
+                <LayoutLink style={linkSpring} href="/resume">
                   Resume
                 </LayoutLink>
               </li>
               <li>
-                <LayoutLink style={linkSpring} to="/blog">
+                <LayoutLink style={linkSpring} href="/blog">
                   Blog
                 </LayoutLink>
               </li>
               <li>
-                <LayoutLink style={linkSpring} to="/contact">
+                <LayoutLink style={linkSpring} href="/contact">
                   Contact
                 </LayoutLink>
               </li>
             </ul>
-          </nav>
+          </animated.nav>
         </div>
         {childrenSpring.map(
           ({ item, key, props }) =>
