@@ -1,28 +1,18 @@
-import React, { FC } from 'react';
-import { CSSObject } from '@emotion/core';
-import {
-  makeColor,
-  makeSize,
-  makeSpace,
-  responsiveBreakpoints,
-} from '../../utils/design';
-import { darkGray } from '../layout/Layout.styles';
+import React, {FC} from 'react';
+import {CSSObject} from '@emotion/core';
+import {makeColor, makeSize, makeSpace, responsiveBreakpoints,} from '../../utils/design';
+import {darkGray} from 'components/layout/Layout.styles';
 
 const lightGray = makeColor('gray', -1);
 
 const styleFooter: CSSObject = {
-  position: 'fixed',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  margin: '0 auto',
-  width: '100%',
-  maxWidth: responsiveBreakpoints.tabletPortrait,
+  position: 'sticky',
+  bottom: -16,
   display: 'flex',
   alignSelf: 'flex-end',
   justifyContent: 'center',
   borderTop: `1px solid ${lightGray}`,
-  background: `radial-gradient(at 50% 100%, ${lightGray} 0%, ${darkGray} 50%, ${darkGray} 100%)`,
+  backgroundColor: darkGray,
   '> div': {
     display: 'flex',
     width: '100%',

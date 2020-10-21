@@ -173,7 +173,7 @@ const Resume: NextPage = () => {
             <p>Here are some of the things I&apos;ve worked on:</p>
             <ChariotProjectHeader
               description="A data management platform for neuroscience researchers"
-              date="December 2019 - Present"
+              date="December 2019 - June 2020"
             />
             <p>
               I joined an incredibly talented team at a local startup. Their
@@ -272,7 +272,7 @@ const Resume: NextPage = () => {
             imgSize={36}
             orgUrl="https://legal.thomsonreuters.com/en/products/c-track"
             orgCopy="Thomson Reuters"
-            dateCopy="Aug. 2015 - May 2017"
+            dateCopy="Aug. 2015 - May 2018"
             titleCopy="Senior Software Engineer"
           />
           <JobOrDegreeBody>
