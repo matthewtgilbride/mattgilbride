@@ -21,6 +21,7 @@ const styleContainer: CSSObject = {
   },
   a: {
     textDecoration: 'underline',
+    textAlign: 'center',
   },
 };
 
@@ -37,7 +38,7 @@ const Blog: FC = () => (
           Vue 3.0 might be a big deal
         </a>
         <a href="https://chariotsolutions.com/blog/post/using-the-aws-cdk-irl-part-2/">
-          using the AWS CDK in real life (part 2)
+          using the AWS CDK in real life - part two
         </a>
       </div>
       <div css={{ margin: 'auto' }}>...more coming soon...</div>
