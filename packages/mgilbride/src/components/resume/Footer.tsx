@@ -1,7 +1,12 @@
-import React, {FC} from 'react';
-import {CSSObject} from '@emotion/core';
-import {makeColor, makeSize, makeSpace, responsiveBreakpoints,} from '../../utils/design';
-import {darkGray} from 'components/layout/Layout.styles';
+import React, { FC } from 'react';
+import { CSSObject } from '@emotion/core';
+import { darkGray } from 'components/layout/Layout.styles';
+import {
+  makeColor,
+  makeSize,
+  makeSpace,
+  responsiveBreakpoints,
+} from '../../utils/design';
 
 const lightGray = makeColor('gray', -1);
 
