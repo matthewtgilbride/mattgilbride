@@ -272,7 +272,7 @@ const Resume: NextPage = () => {
             imgSize={36}
             orgUrl="https://legal.thomsonreuters.com/en/products/c-track"
             orgCopy="Thomson Reuters"
-            dateCopy="Aug. 2015 - May 2018"
+            dateCopy="Aug. 2015 - May 2017"
             titleCopy="Senior Software Engineer"
           />
           <JobOrDegreeBody>
