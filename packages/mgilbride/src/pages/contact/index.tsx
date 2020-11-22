@@ -1,5 +1,5 @@
-import React, { FC, SyntheticEvent, useState } from 'react';
-import { CSSObject } from '@emotion/core';
+import React, { FC, SyntheticEvent, useCallback, useState } from 'react';
+import { CSSObject } from '@emotion/react';
 import { Layout } from '../../components/layout/Layout';
 import {
   makeColor,
@@ -88,31 +88,34 @@ const Contact: FC = () => {
   const changeHandler = (key: keyof typeof values) => (value: string) =>
     setValues({ ...values, [key]: value });
 
-  const submitHandler = (e: SyntheticEvent): void => {
-    e.preventDefault();
-    if (typeof window !== 'undefined') {
-      const url = 'https://contact.mattgilbride.com'; // TODO: inject
-      setPostState('loading');
-      fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
-      })
-        .then((res) => {
-          setTimeout(() => {
-            if (res.ok) {
-              setValues({ ...initialValues });
-            }
-            setPostState(res.ok ? 'success' : 'error');
-          }, 1000);
+  const submitHandler = useCallback(
+    (e: SyntheticEvent): void => {
+      e.preventDefault();
+      if (typeof window !== 'undefined') {
+        const url = 'https://contact.mattgilbride.com'; // TODO: inject
+        setPostState('loading');
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(values),
         })
-        .catch(() => {
-          setTimeout(() => {
-            setPostState('error');
-          }, 1000);
-        });
-    }
-  };
+          .then((res) => {
+            setTimeout(() => {
+              if (res.ok) {
+                setValues({ ...initialValues });
+              }
+              setPostState(res.ok ? 'success' : 'error');
+            }, 1000);
+          })
+          .catch(() => {
+            setTimeout(() => {
+              setPostState('error');
+            }, 1000);
+          });
+      }
+    },
+    [values],
+  );
 
   return (
     <Layout>

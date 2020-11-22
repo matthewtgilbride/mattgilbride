@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { darkGray } from 'components/layout/Layout.styles';
 import {
   makeColor,

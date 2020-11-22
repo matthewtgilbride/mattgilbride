@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useState } from 'react';
-import { Global } from '@emotion/core';
+import { Global } from '@emotion/react';
 import { animated } from 'react-spring';
 import Head from 'next/head';
 import { MenuIcon } from './MenuIcon';

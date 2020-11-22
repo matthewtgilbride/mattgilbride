@@ -1,4 +1,4 @@
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { ResponsiveDeviceTypes } from '../primitive/responsive.primitive';
 
 export type ResponsiveBreakpoints = { [key in ResponsiveDeviceTypes]: number };

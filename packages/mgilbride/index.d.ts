@@ -1,3 +1,5 @@
+import '@emotion/react/types/css-prop';
+
 declare module '*.png';
 declare module '*.svg';
 
