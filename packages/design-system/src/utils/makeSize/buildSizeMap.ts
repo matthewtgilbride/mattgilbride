@@ -7,7 +7,7 @@ import {
 import { Size } from '../../types/primitive/size.primitive';
 
 export type SizeUnitValueMap = {
-  [key in Size]: { [unitKey in SizeUnits]: string };
+  [key in Size]: { [key in SizeUnits]: string };
 };
 
 interface SizeMap {

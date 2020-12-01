@@ -1,6 +1,6 @@
 import React, { CSSProperties, FC } from 'react';
 import { animated } from 'react-spring';
-import { CSSObject } from '@emotion/react';
+import { CSSObject } from '@emotion/core';
 
 const styleMenu = (open: boolean): CSSObject => ({
   display: open ? 'none' : undefined,

@@ -1,5 +1,5 @@
 import React, { FC, SyntheticEvent, useMemo } from 'react';
-import { CSSObject } from '@emotion/react';
+import { CSSObject } from '@emotion/core';
 import { animated, config, useSpring } from 'react-spring';
 import { makeColor, makeSize, makeSpace } from '../utils/design';
 

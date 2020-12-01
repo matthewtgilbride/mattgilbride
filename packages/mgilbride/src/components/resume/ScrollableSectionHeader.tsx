@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
-import { CSSObject } from '@emotion/react';
+import { CSSObject } from '@emotion/core';
 import { animated, useSpring } from 'react-spring';
 import { makeColor, makeSpace } from '../../utils/design';
 

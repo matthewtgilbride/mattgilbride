@@ -1,3 +1,4 @@
+import { ColorProperty } from 'csstype';
 import { Color, ColorFixed, ColorScalable } from '../primitive/color.primitive';
 
 /**
@@ -6,14 +7,13 @@ import { Color, ColorFixed, ColorScalable } from '../primitive/color.primitive';
  * https://github.com/Microsoft/TypeScript/issues/6579
  * (maybe CSSType will handle it right away, and then it will just be a matter of upgrading that)
  */
-export type ColorHex = string;
+export type ColorHex = ColorProperty;
 export type ColorBlendRatios = 0.25 | 0.5 | 0.75;
 export type ColorScalePosition = -3 | -2 | -1 | 1 | 2 | 3;
 export type ColorScales = { [key in ColorScalePosition]: ColorHex };
 
 export type PaletteFixed = { [key in ColorFixed]: ColorHex };
 export type PaletteScalable = { [key in ColorScalable]: ColorHex };
-
 export interface Palette {
   fixed: PaletteFixed;
   scalable: PaletteScalable;

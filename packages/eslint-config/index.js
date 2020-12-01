@@ -37,7 +37,7 @@ module.exports = {
     ],
 
     // typescript
-    '@typescript-eslint/ban-ts-comment': 'warn',
+    '@typescript-eslint/ban-ts-ignore': 'warn',
     '@typescript-eslint/no-useless-constructor': 'error',
     // '@typescript-eslint/no-object-literal-type-assertion': 'off', // both are on (this and angle-bracket) ...so turn one off or you can never assert
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
@@ -48,7 +48,6 @@ module.exports = {
     '@typescript-eslint/promise-function-async': 'warn',
     // '@typescript-eslint/explicit-member-accessibility': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', ignoreRestSiblings: true }],
-    'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error', { 'functions': false }],
     '@typescript-eslint/no-empty-function': ['error', {'allow': [ 'arrowFunctions' ] }],
     '@typescript-eslint/prefer-optional-chain': 'error',

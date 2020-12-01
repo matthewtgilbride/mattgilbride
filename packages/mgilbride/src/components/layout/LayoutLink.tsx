@@ -1,6 +1,6 @@
 import React, { CSSProperties, FC } from 'react';
 import { animated } from 'react-spring';
-import { CSSObject } from '@emotion/react';
+import { CSSObject } from '@emotion/core';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 import { makeResponsiveObject } from '../../utils/design';

@@ -1,4 +1,4 @@
-import { CSSObject } from '@emotion/react';
+import { CSSObject } from '@emotion/core';
 import {
   makeColor,
   makeResponsiveObject,
