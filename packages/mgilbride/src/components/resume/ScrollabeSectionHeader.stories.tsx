@@ -5,6 +5,7 @@ import {
   ScrollableSectionHeader,
   ScrollableSectionHeaderProps,
 } from './ScrollableSectionHeader';
+import { Layout } from '../layout/Layout';
 
 export default {
   title: 'Components/Resume/ScrollableSectionHeader',
@@ -22,7 +23,9 @@ export const scrollableSectionHeaderProps: ScrollableSectionHeaderProps = {
 };
 
 const Template: Story<ScrollableSectionHeaderProps> = (args) => (
-  <ScrollableSectionHeader {...args} />
+  <Layout>
+    <ScrollableSectionHeader {...args} />
+  </Layout>
 );
 
 export const base = Template.bind({});
