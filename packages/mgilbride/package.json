@@ -14,7 +14,7 @@
     "serve": "serve out",
     "clean": "rm -rf .next && rm -rf out",
     "deploy": "aws s3 sync out s3://www.mattgilbride.com",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
