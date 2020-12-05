@@ -13,6 +13,15 @@ module.exports = {
     }
   },
   rules: {
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '.storybook/**',
+          'src/**/*.stories.tsx',
+        ],
+      },
+    ],
     // react
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
     'react/jsx-no-bind': 'error',
@@ -26,5 +35,13 @@ module.exports = {
         controlComponents: ['Field', 'InputField'],
       },
     ],
-  }
+  },
+  overrides: [
+    {
+      files: ['src/**/*.stories.tsx'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
+    },
+  ]
 }
