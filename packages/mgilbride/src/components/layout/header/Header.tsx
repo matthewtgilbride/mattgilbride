@@ -1,6 +1,10 @@
 import React, { FC, useCallback, useState } from 'react';
 import { CSSObject } from '@emotion/core';
-import { makeResponsiveObject } from '../../../utils/design';
+import {
+  makeResponsiveObject,
+  makeSize,
+  makeSpace,
+} from '../../../utils/design';
 import { MenuButton } from './MenuButton';
 import { NavLink } from '../NavLink';
 import { beginAt } from '../Layout.styles';
@@ -8,6 +12,14 @@ import { beginAt } from '../Layout.styles';
 const styleHeader: CSSObject = {
   display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'center',
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  height: makeSize('xxl'),
+  paddingLeft: makeSpace('sm'),
+  paddingRight: makeSpace('sm'),
 };
 
 const styleMenu: CSSObject = {
@@ -20,8 +32,7 @@ const styleMenu: CSSObject = {
       width: 'unset',
     },
   }),
-  a: {
-    display: 'unset',
+  button: {
     ...makeResponsiveObject({
       beginAt,
       style: {
@@ -36,6 +47,9 @@ const styleMenuItems: CSSObject = {
   ...makeResponsiveObject({
     beginAt,
     style: {
+      li: {
+        paddingLeft: makeSpace('xxl'),
+      },
       display: 'flex',
     },
   }),

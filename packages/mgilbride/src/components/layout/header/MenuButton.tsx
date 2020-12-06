@@ -8,6 +8,7 @@ export const styleMenuButton = (open: boolean): CSSObject => ({
   backgroundColor: 'transparent',
   border: 'none',
   height: makeSize('md'),
+  width: makeSize('md'),
   svg: {
     height: '100%',
     line: {
@@ -38,7 +39,7 @@ export const MenuButton: FC<MenuButtonProps> = ({ open, onClick }) => {
 
   return (
     <button css={styleMenuButton(open)} onClick={onClick}>
-      <svg viewBox="0 0 100 100" width="40" height="40">
+      <svg viewBox="0 0 100 100">
         <animated.line
           style={spring}
           x1="5"

@@ -42,6 +42,7 @@ export const Layout: FC = ({ children }) => {
           rel="stylesheet"
         />
       </Head>
+      {/* TODO: put back once this is cleaned up <Global styles={meyerReset} /> */}
       <Global styles={documentReset} />
       <animated.div css={styleContainer} style={backgroundSpring}>
         <div css={styleHeaderContainer}>
