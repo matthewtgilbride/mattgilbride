@@ -4,12 +4,15 @@ import {
   makeResponsiveObject,
   makeSize,
   makeSpace,
+  makeColor,
 } from '../../../utils/design';
-import { MenuButton } from './MenuButton';
-import { NavLink } from '../NavLink';
+import { NavLink } from './nav/NavLink';
 import { beginAt } from '../Layout.styles';
+import { NavItems } from './nav/NavItems';
+import { NavButton } from './nav/NavButton';
+import { HomeLink } from './nav/HomeLink';
 
-const styleHeader: CSSObject = {
+const styleHeader = (open: boolean): CSSObject => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -20,9 +23,10 @@ const styleHeader: CSSObject = {
   height: makeSize('xxl'),
   paddingLeft: makeSpace('sm'),
   paddingRight: makeSpace('sm'),
-};
+  backgroundColor: open ? makeColor('primary') : 'unset',
+});
 
-const styleMenu: CSSObject = {
+const styleNav: CSSObject = {
   display: 'flex',
   justifyContent: 'space-between',
   width: '100%',
@@ -42,7 +46,7 @@ const styleMenu: CSSObject = {
   },
 };
 
-const styleMenuItems: CSSObject = {
+const styleNavItems: CSSObject = {
   display: 'none',
   ...makeResponsiveObject({
     beginAt,
@@ -59,25 +63,14 @@ export const Header: FC = () => {
   const [open, setOpen] = useState(false);
   const toggleOpen = useCallback((): void => setOpen(!open), [open]);
   return (
-    <header css={styleHeader}>
-      <div css={styleMenu}>
-        <MenuButton open={open} onClick={toggleOpen} />
-        <NavLink href="/">Matt Gilbride</NavLink>
+    <header css={styleHeader(open)}>
+      <div css={styleNav}>
+        <NavButton open={open} onClick={toggleOpen} />
+        <HomeLink open={open} href="/">
+          Matt Gilbride
+        </HomeLink>
       </div>
-      <ul css={styleMenuItems}>
-        <li>
-          <NavLink href="/about">About</NavLink>
-        </li>
-        <li>
-          <NavLink href="/resume">Resume</NavLink>
-        </li>
-        <li>
-          <NavLink href="/blog">Blog</NavLink>
-        </li>
-        <li>
-          <NavLink href="/contact">Contact</NavLink>
-        </li>
-      </ul>
+      <NavItems childCss={styleNavItems} />
     </header>
   );
 };

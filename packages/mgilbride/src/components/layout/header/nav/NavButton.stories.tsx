@@ -1,15 +1,15 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { MenuButton, MenuButtonProps } from './MenuButton';
+import { NavButton, MenuButtonProps } from './NavButton';
 
 export default {
   title: 'Components/Layout/Header/MenuButton',
-  component: MenuButton,
+  component: NavButton,
   excludeStories: /.*Props/,
 } as Meta;
 
-const Template: Story<MenuButtonProps> = (args) => <MenuButton {...args} />;
+const Template: Story<MenuButtonProps> = (args) => <NavButton {...args} />;
 
 export const Open = Template.bind({});
 Open.args = { open: true, onClick: action('clicked') };

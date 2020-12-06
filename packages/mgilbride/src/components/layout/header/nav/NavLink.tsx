@@ -1,22 +1,25 @@
 import React, { FC } from 'react';
-import { CSSObject } from '@emotion/serialize';
+import { CSSObject } from '@emotion/core';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 
-const styleNavLink = (active: boolean): CSSObject =>
-  active
+export const useActiveStyle = (href: LinkProps['href']): CSSObject => {
+  const { pathname } = useRouter();
+  const active = pathname === href;
+
+  return active
     ? {
         '&&&': { textDecoration: 'underline' },
       }
     : {};
+};
 
 export const NavLink: FC<LinkProps> = (props) => {
-  const { pathname } = useRouter();
-  const active = pathname === props.href;
+  const style = useActiveStyle(props.href);
   return (
     <Link {...props}>
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a css={styleNavLink(active)}>{props.children}</a>
+      <a css={style}>{props.children}</a>
     </Link>
   );
 };
