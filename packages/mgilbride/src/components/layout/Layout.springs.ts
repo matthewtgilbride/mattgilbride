@@ -1,8 +1,7 @@
 import { useSpring, useTransition } from 'react-spring';
-import { darkGray, white } from './Layout.styles';
 import { palette, responsiveBreakpoints } from '../../utils/design';
 
-const primary = palette.primary();
+const { primary, contrast, text } = palette;
 
 const onMobile = (): boolean => {
   if (typeof window === 'undefined') return false;
@@ -14,41 +13,41 @@ export const useLayoutSprings = (isFirstRender: boolean, open: boolean) => {
     from: isFirstRender
       ? {}
       : {
-          backgroundColor: open ? darkGray : primary,
+          backgroundColor: open ? contrast() : primary(),
         },
     to: {
-      backgroundColor: open ? primary : darkGray,
+      backgroundColor: open ? primary() : contrast(),
     },
   });
 
   const svgSpring = useSpring({
     from: {
-      stroke: open ? white : darkGray,
-      fill: open ? white : darkGray,
+      stroke: open ? text() : contrast(),
+      fill: open ? text() : contrast(),
     },
     to: {
-      stroke: open ? darkGray : white,
-      fill: open ? darkGray : white,
+      stroke: open ? contrast() : text(),
+      fill: open ? contrast() : text(),
     },
   });
 
   const linkSpring = useSpring({
     from: {
-      color: open ? darkGray : white,
+      color: open ? contrast() : text(),
     },
     to: {
-      color: open ? darkGray : white,
+      color: open ? contrast() : text(),
     },
   });
 
   const homeLinkSpring = useSpring({
     from: {
       opacity: 0,
-      color: open ? darkGray : white,
+      color: open ? contrast() : text(),
     },
     to: {
       opacity: 1,
-      color: open ? darkGray : white,
+      color: open ? contrast() : text(),
     },
   });
 

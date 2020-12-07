@@ -11,7 +11,7 @@ const paletteConfig: PaletteConfig = {
   error: '#dd2c00',
   warning: '#f2a51a',
   success: '#00bdaa',
-  contrast: 'black',
+  contrast: '#1c1d1d',
   text: '#dee3e2',
   gray: '#707677',
 };

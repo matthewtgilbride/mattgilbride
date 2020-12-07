@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { darkGray } from 'components/layout/Layout.styles';
 import {
   palette,
   makeSize,
@@ -8,16 +7,14 @@ import {
   responsiveBreakpoints,
 } from '../../utils/design';
 
-const lightGray = palette.gray(-25);
-
 const styleFooter: CSSObject = {
   position: 'sticky',
   bottom: -16,
   display: 'flex',
   alignSelf: 'flex-end',
   justifyContent: 'center',
-  borderTop: `1px solid ${lightGray}`,
-  backgroundColor: darkGray,
+  borderTop: `1px solid ${palette.gray(-25)}`,
+  backgroundColor: palette.contrast(),
   '> div': {
     display: 'flex',
     width: '100%',

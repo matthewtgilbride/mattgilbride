@@ -6,10 +6,9 @@ import {
   responsiveBreakpoints,
 } from '../../utils/design';
 
-export const white = palette.text();
-export const accent = palette.accent();
-export const darkGray = palette.gray(-75);
-export const primary = palette.primary(-50);
+const white = palette.text();
+const accent = palette.accent();
+const darkGray = palette.contrast();
 
 export const beginAt = 'tabletPortrait';
 

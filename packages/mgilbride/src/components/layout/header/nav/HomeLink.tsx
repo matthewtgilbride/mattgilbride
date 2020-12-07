@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Link, { LinkProps } from 'next/link';
 import { animated, useSpring } from 'react-spring';
 import { useActiveStyle } from './NavLink';
-import { darkGray, white } from '../../Layout.styles';
+import { palette } from '../../../../utils/design';
 
 export const HomeLink: FC<LinkProps & { open: boolean }> = ({
   open,
@@ -13,11 +13,11 @@ export const HomeLink: FC<LinkProps & { open: boolean }> = ({
   const spring = useSpring({
     from: {
       opacity: 0,
-      color: open ? darkGray : white,
+      color: open ? palette.contrast() : palette.text(),
     },
     to: {
       opacity: 1,
-      color: open ? darkGray : white,
+      color: open ? palette.contrast() : palette.text(),
     },
   });
   return (

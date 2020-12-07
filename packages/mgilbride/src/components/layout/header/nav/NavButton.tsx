@@ -1,8 +1,7 @@
 import React, { EventHandler, FC, SyntheticEvent } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useSpring } from 'react-spring';
-import { makeSize } from '../../../../utils/design';
-import { darkGray, white } from '../../Layout.styles';
+import { makeSize, palette } from '../../../../utils/design';
 
 export const styleMenuButton = (open: boolean): CSSObject => ({
   backgroundColor: 'transparent',
@@ -28,12 +27,12 @@ export interface MenuButtonProps {
 export const NavButton: FC<MenuButtonProps> = ({ open, onClick }) => {
   const spring = useSpring({
     from: {
-      stroke: open ? white : darkGray,
-      fill: open ? white : darkGray,
+      stroke: open ? palette.text() : palette.contrast(),
+      fill: open ? palette.text() : palette.contrast(),
     },
     to: {
-      stroke: open ? darkGray : white,
-      fill: open ? darkGray : white,
+      stroke: open ? palette.contrast() : palette.text(),
+      fill: open ? palette.contrast() : palette.text(),
     },
   });
 
