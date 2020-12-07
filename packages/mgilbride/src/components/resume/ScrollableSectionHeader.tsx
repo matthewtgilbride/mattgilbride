@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useSpring } from 'react-spring';
-import { makeColor, makeSpace } from '../../utils/design';
+import { palette, makeSpace } from '../../utils/design';
 
 const styleHeader = (open: boolean): CSSObject => ({
   display: 'flex',
@@ -9,17 +9,17 @@ const styleHeader = (open: boolean): CSSObject => ({
   margin: `${makeSpace('md')} 0`,
   padding: `${makeSpace('sm')} 0`,
   '> button': {
-    backgroundColor: makeColor('gray', -2),
+    backgroundColor: palette.gray(-50),
     cursor: 'pointer',
     border: '1px solid',
-    borderColor: makeColor('accent'),
+    borderColor: palette.accent(),
     borderRadius: '50%',
     width: 38,
     height: 38,
     ':hover,:focus': {
       boxShadow: 'none',
       outline: 'none',
-      backgroundColor: makeColor('gray', -1),
+      backgroundColor: palette.gray(-25),
     },
     '> img': {
       height: 16,

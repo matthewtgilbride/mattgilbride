@@ -1,7 +1,7 @@
 import React, { FC, SyntheticEvent, useMemo } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, config, useSpring } from 'react-spring';
-import { makeColor, makeSize, makeSpace } from '../utils/design';
+import { palette, makeSize, makeSpace } from '../utils/design';
 
 const styleContainer = (value: string): CSSObject => ({
   display: 'flex',
@@ -11,7 +11,7 @@ const styleContainer = (value: string): CSSObject => ({
     paddingBottom: makeSpace('xxs'),
   },
   select: {
-    color: value ? undefined : makeColor('gray'),
+    color: value ? undefined : palette.gray(),
     appearance: 'none',
   },
   'input, select, textarea': {
@@ -19,9 +19,9 @@ const styleContainer = (value: string): CSSObject => ({
     boxShadow: 'none',
     border: 'none',
     padding: makeSpace('xxs'),
-    backgroundColor: makeColor('gray', 3),
+    backgroundColor: palette.gray(75),
     '::placeholder': {
-      color: makeColor('gray'),
+      color: palette.gray(),
     },
   },
 });

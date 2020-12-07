@@ -1,15 +1,15 @@
 import { CSSObject, css } from '@emotion/core';
 import {
-  makeColor,
+  palette,
   makeResponsiveObject,
   makeSpace,
   responsiveBreakpoints,
 } from '../../utils/design';
 
-export const white = makeColor('light');
-export const accent = makeColor('accent');
-export const darkGray = makeColor('gray', -3);
-export const primary = makeColor('primary', -2);
+export const white = palette.text();
+export const accent = palette.accent();
+export const darkGray = palette.gray(-75);
+export const primary = palette.primary(-50);
 
 export const beginAt = 'tabletPortrait';
 
@@ -267,7 +267,7 @@ export const styleNav = (open: boolean): CSSObject => ({
     },
   },
   borderRadius: makeSpace('xxs'),
-  boxShadow: `0 0 8px 2px ${makeColor('gray', -2)}`,
+  boxShadow: `0 0 8px 2px ${palette.gray(-50)}`,
   ...makeResponsiveObject({
     beginAt,
     style: {
@@ -309,7 +309,7 @@ export const styleContent = (open: boolean): CSSObject => ({
   padding: makeSpace('sm'),
   margin: `0 ${makeSpace('xs')} ${makeSpace('xs')} ${makeSpace('xs')}`,
   borderRadius: makeSpace('xxs'),
-  boxShadow: `0 0 8px 2px ${makeColor('gray', -2)}`,
+  boxShadow: `0 0 8px 2px ${palette.gray(-50)}`,
   zIndex: open ? -1 : 'inherit',
   alignSelf: 'center',
   display: 'grid',

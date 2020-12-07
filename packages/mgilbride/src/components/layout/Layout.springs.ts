@@ -1,8 +1,8 @@
 import { useSpring, useTransition } from 'react-spring';
 import { darkGray, white } from './Layout.styles';
-import { makeColor, responsiveBreakpoints } from '../../utils/design';
+import { palette, responsiveBreakpoints } from '../../utils/design';
 
-const primary = makeColor('primary');
+const primary = palette.primary();
 
 const onMobile = (): boolean => {
   if (typeof window === 'undefined') return false;

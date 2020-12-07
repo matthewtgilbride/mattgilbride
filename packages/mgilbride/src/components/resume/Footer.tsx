@@ -2,13 +2,13 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { darkGray } from 'components/layout/Layout.styles';
 import {
-  makeColor,
+  palette,
   makeSize,
   makeSpace,
   responsiveBreakpoints,
 } from '../../utils/design';
 
-const lightGray = makeColor('gray', -1);
+const lightGray = palette.gray(-25);
 
 const styleFooter: CSSObject = {
   position: 'sticky',
@@ -36,9 +36,9 @@ const styleFooter: CSSObject = {
 };
 
 const styleButton: CSSObject = {
-  backgroundColor: makeColor('primary', -1),
+  backgroundColor: palette.primary(-25),
   cursor: 'pointer',
-  borderColor: makeColor('accent', -1),
+  borderColor: palette.accent(-25),
   borderStyle: 'solid',
   borderRadius: 4,
   width: 80,
@@ -47,11 +47,11 @@ const styleButton: CSSObject = {
   alignItems: 'center',
   padding: makeSpace('xxs'),
   marginLeft: makeSpace('xxs'),
-  color: makeColor('light'),
+  color: palette.text(),
   ':hover,:focus': {
     boxShadow: 'none',
     outline: 'none',
-    backgroundColor: makeColor('primary'),
+    backgroundColor: palette.primary(),
   },
   '> p': {
     margin: 0,

@@ -4,9 +4,8 @@ import {
   makeResponsiveObject,
   makeSize,
   makeSpace,
-  makeColor,
+  palette,
 } from '../../../utils/design';
-import { NavLink } from './nav/NavLink';
 import { beginAt } from '../Layout.styles';
 import { NavItems } from './nav/NavItems';
 import { NavButton } from './nav/NavButton';
@@ -23,7 +22,7 @@ const styleHeader = (open: boolean): CSSObject => ({
   height: makeSize('xxl'),
   paddingLeft: makeSpace('sm'),
   paddingRight: makeSpace('sm'),
-  backgroundColor: open ? makeColor('primary') : 'unset',
+  backgroundColor: open ? palette.primary() : 'unset',
 });
 
 const styleNav: CSSObject = {

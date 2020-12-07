@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import {
-  makeColor,
+  palette,
   makeSize,
   makeSpace,
   makeResponsiveObject,
@@ -22,12 +22,12 @@ const styleContainer: CSSObject = {
 
 const styleDescription: CSSObject = {
   textTransform: 'uppercase',
-  color: makeColor('primary'),
+  color: palette.primary(),
   margin: 'initial',
 };
 
 const styleDate: CSSObject = {
-  color: makeColor('secondary'),
+  color: palette.secondary(),
   fontSize: makeSize('xs'),
   fontWeight: 'normal',
   margin: 'initial',
