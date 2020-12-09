@@ -7,7 +7,6 @@ import {
 } from '../../utils/design';
 
 const white = palette.text();
-const accent = palette.accent();
 const darkGray = palette.contrast();
 
 export const beginAt = 'tabletPortrait';

@@ -15,11 +15,14 @@ export const useActiveStyle = (href: LinkProps['href']): CSSObject => {
 };
 
 export const NavLink: FC<LinkProps> = (props) => {
-  const style = useActiveStyle(props.href);
+  const activeStyle = useActiveStyle(props.href);
+  const style: CSSObject = {
+    textTransform: 'uppercase',
+  };
   return (
     <Link {...props}>
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a css={style}>{props.children}</a>
+      <a css={{ ...style, ...activeStyle }}>{props.children}</a>
     </Link>
   );
 };

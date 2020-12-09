@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Header } from './Header';
+import { action } from '@storybook/addon-actions';
+import { Header, HeaderProps } from './Header';
 
 export default {
   title: 'Components/Layout/Header',
@@ -8,6 +9,28 @@ export default {
   excludeStories: /.*Props/,
 } as Meta;
 
-const Template: Story = (args) => <Header {...args} />;
+const Template: Story<HeaderProps> = (args) => <Header {...args} />;
 
-export const Base = Template.bind({});
+export const MobileOpen = Template.bind({});
+MobileOpen.args = {
+  open: true,
+  toggleOpen: action('clicked'),
+};
+MobileOpen.parameters = {
+  viewport: {
+    defaultViewport: 'mobile1',
+  },
+};
+
+export const MobileClosed = Template.bind({});
+MobileClosed.args = {
+  open: false,
+  toggleOpen: action('clicked'),
+};
+MobileClosed.parameters = {
+  viewport: {
+    defaultViewport: 'mobile1',
+  },
+};
+
+export const Desktop = Template.bind({});

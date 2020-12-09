@@ -6,8 +6,8 @@ import { makeSize, palette } from '../../../../utils/design';
 export const styleMenuButton = (open: boolean): CSSObject => ({
   backgroundColor: 'transparent',
   border: 'none',
-  height: makeSize('md'),
-  width: makeSize('md'),
+  height: makeSize('sm'),
+  width: makeSize('sm'),
   svg: {
     height: '100%',
     line: {
@@ -19,12 +19,12 @@ export const styleMenuButton = (open: boolean): CSSObject => ({
   },
 });
 
-export interface MenuButtonProps {
+export interface NavButtonProps {
   open: boolean;
   onClick: EventHandler<SyntheticEvent<HTMLButtonElement>>;
 }
 
-export const NavButton: FC<MenuButtonProps> = ({ open, onClick }) => {
+export const NavButton: FC<NavButtonProps> = ({ open, onClick }) => {
   const spring = useSpring({
     from: {
       stroke: open ? palette.text() : palette.contrast(),

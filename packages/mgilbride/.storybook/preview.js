@@ -3,6 +3,7 @@ import { Global } from '@emotion/core';
 import { withNextRouter } from 'storybook-addon-next-router';
 import { addDecorator } from '@storybook/react';
 import { documentReset, meyerReset } from '../src/components/layout/Layout.styles';
+import { palette } from '../src/utils/design'
 
 addDecorator(
   withNextRouter({
@@ -18,5 +19,19 @@ const resetDecorator = Story => <Fragment><Global styles={meyerReset} /><Global 
 addDecorator(resetDecorator)
 
 export const parameters = {
+  layout: 'fullscreen',
   actions: { argTypesRegex: "^on[A-Z].*" },
+  backgrounds: {
+    default: 'dark',
+    values: [
+      {
+        name: 'dark',
+        value: palette.contrast()
+      },
+      {
+        name: 'light',
+        value: palette.text()
+      }
+    ]
+  }
 }
