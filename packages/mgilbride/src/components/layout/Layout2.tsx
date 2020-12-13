@@ -3,6 +3,7 @@ import { CSSObject } from '@emotion/core';
 import { Header } from './header/Header';
 import { ContentContainer } from './content/ContentContainer';
 import { NavMenu } from './nav/NavMenu';
+import { responsiveBreakpoints } from '../../utils/design';
 
 const styleContainer: CSSObject = {
   position: 'absolute',
@@ -10,6 +11,8 @@ const styleContainer: CSSObject = {
   bottom: 0,
   left: 0,
   right: 0,
+  maxWidth: responsiveBreakpoints.desktop,
+  margin: 'auto',
 };
 
 export const Layout: FC<{ footer?: ReactNode }> = ({ children, footer }) => {

@@ -21,15 +21,17 @@ const styleContent = (hasFooter: boolean): CSSObject => ({
   left: 0,
   right: 0,
   bottom: hasFooter ? headerHeight : 0,
+  padding: makeSpace('xxs'),
   overflowY: 'auto',
 });
 
 const styleFooter: CSSObject = {
   position: 'absolute',
-  height: makeSize('xxl'),
   bottom: 0,
   left: 0,
   right: 0,
+  padding: makeSpace('xxs'),
+  borderTop: `1px solid ${palette.text(-50)}`,
 };
 
 export const ContentContainer: FC<{ footer?: ReactNode }> = ({

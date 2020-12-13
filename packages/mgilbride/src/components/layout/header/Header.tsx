@@ -17,7 +17,7 @@ const styleHeader = (open: boolean): CSSObject => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  position: 'fixed',
+  position: 'absolute',
   zIndex: 1000,
   top: 0,
   left: 0,

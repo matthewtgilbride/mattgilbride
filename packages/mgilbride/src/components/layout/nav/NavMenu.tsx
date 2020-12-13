@@ -20,7 +20,6 @@ const styleContainer: CSSObject = {
   marginTop: makeSpace('xxs'),
   backgroundColor: palette.primary(),
   color: palette.contrast(),
-  // TODO: this is reusable between nav and main content area
   borderRadius: makeSpace('xxs'),
   ...makeResponsiveObject({
     beginAt,
@@ -40,7 +39,7 @@ const styleNavItems: CSSObject = {
   },
 };
 
-export const NavMenu: FC<{ open: boolean }> = ({ open}) => {
+export const NavMenu: FC<{ open: boolean }> = ({ open }) => {
   const transitions = useTransition(open, null, {
     from: { transform: 'translateY(-400px)' },
     enter: { transform: 'translateY(0)' },

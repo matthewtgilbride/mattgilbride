@@ -8,7 +8,9 @@ export default {
   excludeStories: /.*Props/,
 } as Meta;
 
-const Template: Story<{ footer?: ReactNode }> = (args) => <Layout {...args} />;
+const Template: Story<{ footer?: ReactNode; children?: ReactNode }> = (
+  args,
+) => <Layout {...args} />;
 
 export const NoContent = Template.bind({});
 
