@@ -1,7 +1,7 @@
 import React, { EventHandler, FC, SyntheticEvent } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useSpring } from 'react-spring';
-import { makeSize, palette } from '../../../../utils/design';
+import { makeSize, palette } from '../../../utils/design';
 
 export const styleMenuButton = (open: boolean): CSSObject => ({
   backgroundColor: 'transparent',

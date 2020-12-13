@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ContentContainer } from './ContentContainer';
+import { Layout } from './Layout2';
 
 export default {
-  title: 'Components/Layout/Content',
-  component: ContentContainer,
+  title: 'Components/Layout/Two',
+  component: Layout,
   excludeStories: /.*Props/,
 } as Meta;
 
-const Template: Story = (args) => <ContentContainer {...args} />;
+const Template: Story<{ footer?: ReactNode }> = (args) => <Layout {...args} />;
 
 export const NoContent = Template.bind({});
 

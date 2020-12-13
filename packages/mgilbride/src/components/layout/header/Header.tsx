@@ -7,9 +7,9 @@ import {
   palette,
 } from '../../../utils/design';
 import { beginAt } from '../Layout.styles';
-import { NavItems } from './nav/NavItems';
-import { NavButton } from './nav/NavButton';
-import { HomeLink } from './nav/HomeLink';
+import { NavItems } from '../nav/NavItems';
+import { NavButton } from '../nav/NavButton';
+import { HomeLink } from '../nav/HomeLink';
 
 export const headerHeight = makeSize('xxl');
 
@@ -18,6 +18,7 @@ const styleHeader = (open: boolean): CSSObject => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   position: 'fixed',
+  zIndex: 1000,
   top: 0,
   left: 0,
   right: 0,

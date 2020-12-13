@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { NavButtonProps, NavButton } from './NavButton';
 
 export default {
-  title: 'Components/Layout/Header/Nav/Button',
+  title: 'Components/Layout/Nav/Button',
   component: NavButton,
   excludeStories: /.*Props/,
 } as Meta;
