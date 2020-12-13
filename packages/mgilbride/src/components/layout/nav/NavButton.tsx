@@ -1,4 +1,4 @@
-import React, { EventHandler, FC, SyntheticEvent } from 'react';
+import React, { EventHandler, FC, SyntheticEvent, useRef } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useSpring } from 'react-spring';
 import { makeSize, palette } from '../../../utils/design';
@@ -10,12 +10,7 @@ export const styleMenuButton = (open: boolean): CSSObject => ({
   width: makeSize('sm'),
   svg: {
     height: '100%',
-    line: {
-      display: open ? undefined : 'none',
-    },
-    rect: {
-      display: open ? 'none' : undefined,
-    },
+    stroke: open ? palette.contrast() : palette.text(),
   },
 });
 
@@ -25,39 +20,61 @@ export interface NavButtonProps {
 }
 
 export const NavButton: FC<NavButtonProps> = ({ open, onClick }) => {
-  const spring = useSpring({
-    from: {
-      stroke: open ? palette.text() : palette.contrast(),
-      fill: open ? palette.text() : palette.contrast(),
-    },
+  const ref = useRef<SVGSVGElement | null>(null);
+  const topSpring = useSpring({
+    from: ref.current
+      ? {
+          y1: 5,
+          y2: open ? 5 : 95,
+          stroke: open ? palette.contrast() : palette.text(),
+        }
+      : {},
     to: {
+      y1: 5,
+      y2: open ? 95 : 5,
       stroke: open ? palette.contrast() : palette.text(),
-      fill: open ? palette.contrast() : palette.text(),
+    },
+  });
+
+  const middleSpring = useSpring({
+    from: ref.current
+      ? {
+          opacity: open ? 1 : 0,
+        }
+      : {},
+    to: {
+      opacity: open ? 0 : 1,
+    },
+  });
+
+  const bottomSpring = useSpring({
+    from: ref.current
+      ? {
+          y1: 95,
+          y2: open ? 95 : 5,
+          stroke: open ? palette.contrast() : palette.text(),
+        }
+      : {},
+    to: {
+      y1: 95,
+      y2: open ? 5 : 95,
+      stroke: open ? palette.contrast() : palette.text(),
     },
   });
 
   return (
     <button css={styleMenuButton(open)} onClick={onClick}>
-      <svg viewBox="0 0 100 100">
+      <svg viewBox="0 0 100 100" ref={ref}>
+        <animated.line {...topSpring} x1="0" x2="100" strokeWidth="10" />
         <animated.line
-          style={spring}
-          x1="5"
-          x2="95"
-          y1="0"
-          y2="90"
+          {...middleSpring}
+          x1="0"
+          x2="100"
+          y1="50"
+          y2="50"
           strokeWidth="10"
         />
-        <animated.line
-          style={spring}
-          x1="5"
-          x2="95"
-          y1="90"
-          y2="0"
-          strokeWidth="10"
-        />
-        <animated.rect style={spring} y="10" width="100" height="10" />
-        <animated.rect style={spring} y="45" width="100" height="10" />
-        <animated.rect style={spring} y="80" width="100" height="10" />
+        <animated.line {...bottomSpring} x1="0" x2="100" strokeWidth="10" />
       </svg>
     </button>
   );

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Layout } from './Layout';
+import { MobileOpen } from './header/Header.stories';
 
 export default {
   title: 'Components/Layout',
@@ -8,6 +9,23 @@ export default {
   excludeStories: /.*Props/,
 } as Meta;
 
-const Template: Story = (args) => <Layout {...args} />;
+const Template: Story<{ footer?: ReactNode; children?: ReactNode }> = (
+  args,
+) => <Layout {...args} />;
 
-export const Base = Template.bind({});
+export const Mobile = Template.bind({});
+Mobile.args = {
+  children: <div style={{ height: 10000 }}>Tall content</div>,
+  footer: <div>Footer Content</div>,
+};
+Mobile.parameters = {
+  viewport: {
+    defaultViewport: 'mobile1',
+  },
+};
+
+export const Desktop = Template.bind({});
+Desktop.args = {
+  children: <div style={{ height: 10000 }}>Tall content</div>,
+  footer: <div>Footer Content</div>,
+};

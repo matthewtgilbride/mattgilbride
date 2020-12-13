@@ -1,6 +1,6 @@
 import React, { FC, SyntheticEvent, useState } from 'react';
 import { CSSObject } from '@emotion/core';
-import { Layout } from '../../components/layout/Layout';
+import { Layout } from '../../components/layout/Layout__old';
 import {
   palette,
   makeResponsiveObject,

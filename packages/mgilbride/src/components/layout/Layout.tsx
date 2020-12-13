@@ -1,37 +1,25 @@
-import React, { FC, useCallback, useState } from 'react';
-import { Global } from '@emotion/core';
-import { animated } from 'react-spring';
+import React, { FC, ReactNode, useCallback, useState } from 'react';
+import { CSSObject, Global } from '@emotion/core';
 import Head from 'next/head';
-import { MenuIcon } from './MenuIcon';
-import {
-  documentReset,
-  styleContainer,
-  styleContent,
-  styleHeader,
-  styleHeaderContainer,
-  styleMenuButton,
-  styleNav,
-} from './Layout.styles';
-import { useLayoutSprings } from './Layout.springs';
-import { LayoutLink } from './LayoutLink';
+import { Header } from './header/Header';
+import { ContentContainer } from './content/ContentContainer';
+import { NavMenu } from './nav/NavMenu';
+import { responsiveBreakpoints } from '../../utils/design';
+import { documentReset, meyerReset } from './Layout.styles';
 
-export const Layout: FC = ({ children }) => {
+const styleContainer: CSSObject = {
+  position: 'absolute',
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  maxWidth: responsiveBreakpoints.desktop,
+  margin: 'auto',
+};
+
+export const Layout: FC<{ footer?: ReactNode }> = ({ children, footer }) => {
   const [open, setOpen] = useState(false);
-  const [isFirstRender, setFirstRender] = useState(true);
-
-  const onOpen = useCallback(() => {
-    setFirstRender(() => false);
-    setOpen((isOpen) => !isOpen);
-  }, []);
-
-  const {
-    backgroundSpring,
-    svgSpring,
-    linkSpring,
-    homeLinkSpring,
-    childrenSpring,
-    navSpring,
-  } = useLayoutSprings(isFirstRender, open);
+  const toggleOpen = useCallback(() => setOpen(!open), [open]);
 
   return (
     <>
@@ -42,55 +30,13 @@ export const Layout: FC = ({ children }) => {
           rel="stylesheet"
         />
       </Head>
-      {/* TODO: put back once this is cleaned up <Global styles={meyerReset} /> */}
+      <Global styles={meyerReset} />
       <Global styles={documentReset} />
-      <animated.div css={styleContainer} style={backgroundSpring}>
-        <div css={styleHeaderContainer}>
-          <div css={styleHeader}>
-            <button css={styleMenuButton} onClick={onOpen}>
-              <MenuIcon open={open} style={svgSpring} />
-            </button>
-            <LayoutLink isHome="desktop" style={linkSpring} href="/">
-              Matt Gilbride
-            </LayoutLink>
-            <LayoutLink isHome="mobile" style={homeLinkSpring} href="/">
-              Matt Gilbride
-            </LayoutLink>
-          </div>
-          <animated.nav css={styleNav(open)} style={navSpring}>
-            <ul>
-              <li>
-                <LayoutLink style={linkSpring} href="/about">
-                  About
-                </LayoutLink>
-              </li>
-              <li>
-                <LayoutLink style={linkSpring} href="/resume">
-                  Resume
-                </LayoutLink>
-              </li>
-              <li>
-                <LayoutLink style={linkSpring} href="/blog">
-                  Blog
-                </LayoutLink>
-              </li>
-              <li>
-                <LayoutLink style={linkSpring} href="/contact">
-                  Contact
-                </LayoutLink>
-              </li>
-            </ul>
-          </animated.nav>
-        </div>
-        {childrenSpring.map(
-          ({ item, key, props }) =>
-            item && (
-              <animated.div css={styleContent(open)} key={key} style={props}>
-                {children}
-              </animated.div>
-            ),
-        )}
-      </animated.div>
+      <div css={styleContainer}>
+        <Header {...{ open, toggleOpen }} />
+        <NavMenu open={open} />
+        <ContentContainer footer={footer}>{children}</ContentContainer>
+      </div>
     </>
   );
 };

@@ -11,7 +11,7 @@ const darkGray = palette.contrast();
 
 export const beginAt = 'tabletPortrait';
 
-export const meyerReset = css`
+export const meyerReset: ReturnType<typeof css> = css`
   /* http://meyerweb.com/eric/tools/css/reset/
    v4.0 | 20180602
    License: none (public domain)

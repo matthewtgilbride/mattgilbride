@@ -2,7 +2,7 @@ import React from 'react';
 import { CSSObject } from '@emotion/core';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { Layout } from '../../components/layout/Layout';
+import { Layout } from '../../components/layout/Layout__old';
 import {
   makeResponsiveObject,
   makeSpace,

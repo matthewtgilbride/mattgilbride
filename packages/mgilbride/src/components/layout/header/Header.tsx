@@ -25,7 +25,7 @@ const styleHeader = (open: boolean): CSSObject => ({
   height: headerHeight,
   paddingLeft: makeSpace('sm'),
   paddingRight: makeSpace('sm'),
-  backgroundColor: open ? palette.primary() : 'unset',
+  backgroundColor: open ? palette.primary() : palette.contrast(),
 });
 
 const styleNav: CSSObject = {
