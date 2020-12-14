@@ -160,6 +160,7 @@ export const documentReset = {
     backgroundColor: darkGray,
     color: white,
     fontFamily: 'Montserrat,sans-serif;',
+    lineHeight: 'normal',
   },
   html: {
     height: '100%',
@@ -173,6 +174,7 @@ export const documentReset = {
     padding: 0,
   },
   a: {
+    fontWeight: 500,
     cursor: 'pointer',
     ':hover': {
       textDecoration: 'underline',

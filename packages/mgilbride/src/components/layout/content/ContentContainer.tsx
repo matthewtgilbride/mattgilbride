@@ -21,7 +21,7 @@ const styleContent = (hasFooter: boolean): CSSObject => ({
   left: 0,
   right: 0,
   bottom: hasFooter ? headerHeight : 0,
-  padding: makeSpace('xxs'),
+  padding: makeSpace('sm'),
   overflowY: 'auto',
 });
 
@@ -30,7 +30,7 @@ const styleFooter: CSSObject = {
   bottom: 0,
   left: 0,
   right: 0,
-  padding: makeSpace('xxs'),
+  padding: makeSpace('sm'),
   borderTop: `1px solid ${palette.text(-50)}`,
 };
 
