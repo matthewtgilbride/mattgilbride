@@ -17,8 +17,11 @@ const styleContent: CSSObject = {
   flexDirection: 'column',
   img: {
     maxWidth: '45vh',
-    margin: 'auto',
     padding: makeSpace('lg'),
+  },
+  a: {
+    textDecoration: 'underline',
+    color: palette.text(),
   },
   h3: {
     fontWeight: 'bold',
@@ -27,11 +30,6 @@ const styleContent: CSSObject = {
     textAlign: 'center',
     padding: `${makeSpace('xxs')} 0`,
     margin: 0,
-    a: {
-      textDecoration: 'underline',
-      color: palette.text(),
-      textTransform: 'initial',
-    },
   },
 };
 

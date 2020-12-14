@@ -1,27 +1,42 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
-import { Layout } from '../../components/layout/Layout__old';
-import { makeSpace, responsiveBreakpoints } from '../../utils/design';
+import { Layout } from '../../components/layout/Layout';
+import {
+  makeSpace,
+  palette,
+  responsiveBreakpoints,
+  makeSize,
+} from '../../utils/design';
 import { ImgTrace } from '../../components/ImgTrace';
 
 const styleContainer: CSSObject = {
-  display: 'grid',
-  justifySelf: 'center',
-  justifyItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  margin: 'auto',
   maxWidth: responsiveBreakpoints.tabletPortrait,
   img: {
-    height: '50vh',
-    paddingBottom: makeSpace('sm'),
-  },
-  h1: {
-    fontStyle: 'italic',
-  },
-  h3: {
-    paddingTop: makeSpace('lg'),
+    maxWidth: '45vh',
+    padding: makeSpace('lg'),
   },
   a: {
     textDecoration: 'underline',
+    color: palette.text(),
+  },
+  h1: {
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    fontSize: makeSize('lg'),
+    margin: `${makeSpace('xl')} 0`,
+  },
+  h3: {
+    fontWeight: 'bold',
+    fontSize: makeSize('sm'),
+    paddingTop: makeSpace('lg'),
+  },
+  p: {
+    margin: `${makeSpace('sm')} 0`,
   },
 };
 
@@ -36,7 +51,7 @@ const About: FC = () => (
       <ImgTrace path="jamie.png" alt="Jamie" />
       <h3>and this is our dog</h3>
       <ImgTrace path="emmy.png" alt="Emmy" />
-      <h1 css={{ paddingTop: makeSpace('xl') }}>the long version</h1>
+      <h1>the long version</h1>
       <div>
         <p>
           I&apos;m a &quot;full stack&quot; engineer by trade. You can check out
