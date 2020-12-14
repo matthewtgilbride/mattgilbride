@@ -12,7 +12,7 @@ const styleContainer: CSSObject = {
   margin: makeSpace('sm'),
   marginTop: makeSpace('xxs'),
   borderRadius: makeSpace('xxs'),
-  boxShadow: `0 0 8px 2px ${palette.text(-50)}`,
+  boxShadow: `0 0 2px 1px ${palette.text(-50)}`,
 };
 
 const styleContent = (hasFooter: boolean): CSSObject => ({

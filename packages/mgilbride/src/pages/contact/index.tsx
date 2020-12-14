@@ -1,6 +1,6 @@
 import React, { FC, SyntheticEvent, useState } from 'react';
 import { CSSObject } from '@emotion/core';
-import { Layout } from '../../components/layout/Layout__old';
+import { Layout } from '../../components/layout/Layout';
 import {
   palette,
   makeResponsiveObject,
@@ -21,7 +21,6 @@ const styleContainer: CSSObject = {
   maxWidth: responsiveBreakpoints.phone,
   '> button': {
     marginTop: makeSpace('lg'),
-    cursor: 'pointer',
     boxShadow: 'none',
     border: 'none',
     borderRadius: 4,
