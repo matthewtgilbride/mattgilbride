@@ -2,30 +2,22 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
 import { Layout } from '../../components/layout/Layout';
-import {
-  makeSpace,
-  responsiveBreakpoints,
-  palette,
-  makeSize,
-} from '../../utils/design';
+import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 
 const styleContainer: CSSObject = {
   display: 'flex',
   flexDirection: 'column',
   padding: makeSpace('md'),
   maxWidth: responsiveBreakpoints.tabletPortrait,
-  h1: {
+  h2: {
     fontStyle: 'italic',
     fontWeight: 'bold',
-    fontSize: makeSize('lg'),
+    fontSize: makeSize('h2'),
     margin: `${makeSpace('xl')} 0`,
     textAlign: 'center',
   },
   a: {
-    textDecoration: 'underline',
-    color: palette.text(),
     textAlign: 'center',
-    margin: `${makeSpace('md')} 0`,
   },
   h3: {
     margin: `${makeSpace('xl')} 0`,
@@ -36,7 +28,7 @@ const styleContainer: CSSObject = {
 const Blog: FC = () => (
   <Layout>
     <div css={styleContainer}>
-      <h1>2020</h1>
+      <h2>2020</h2>
       <Link href="/blog/shoemaker">giving the shoemaker shoes</Link>
       <a href="https://chariotsolutions.com/blog/post/using-the-aws-cdk-in-real-life/">
         using the AWS CDK in real life

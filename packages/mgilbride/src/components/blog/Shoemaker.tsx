@@ -34,10 +34,6 @@ const styleContainer: CSSObject = {
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  a: {
-    textDecoration: 'underline',
-    color: palette.text(),
-  },
   ul: {
     paddingInlineStart: makeSpace('sm'),
     li: {

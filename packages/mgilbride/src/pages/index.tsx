@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
-import { makeSpace, palette } from '../utils/design';
+import { makeSpace } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
 import { ImgTrace } from '../components/ImgTrace';
 
@@ -16,12 +16,8 @@ const styleContent: CSSObject = {
   display: 'flex',
   flexDirection: 'column',
   img: {
-    maxWidth: '45vh',
+    maxWidth: '40vh',
     padding: makeSpace('lg'),
-  },
-  a: {
-    textDecoration: 'underline',
-    color: palette.text(),
   },
   h3: {
     fontWeight: 'bold',

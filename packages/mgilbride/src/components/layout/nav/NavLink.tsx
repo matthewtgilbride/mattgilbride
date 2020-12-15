@@ -11,7 +11,7 @@ export const useActiveStyle = (href: LinkProps['href']): CSSObject => {
     ? {
         '&&&': { textDecoration: 'underline' },
       }
-    : {};
+    : { textDecoration: 'initial' };
 };
 
 export const NavLink: FC<LinkProps> = (props) => {

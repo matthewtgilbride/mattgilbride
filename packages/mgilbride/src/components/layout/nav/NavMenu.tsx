@@ -37,6 +37,9 @@ const styleNavItems: CSSObject = {
   li: {
     padding: `${makeSpace('md')} 0`,
   },
+  a: {
+    color: palette.contrast(),
+  },
 };
 
 export const NavMenu: FC<{ open: boolean }> = ({ open }) => {

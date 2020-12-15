@@ -175,9 +175,12 @@ export const documentReset = {
   },
   a: {
     fontWeight: 500,
+    textDecoration: 'underline',
+    color: palette.text(),
     cursor: 'pointer',
     ':hover': {
       textDecoration: 'underline',
+      fontWeight: 'bold',
     },
   },
 };

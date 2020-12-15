@@ -17,22 +17,18 @@ const styleContainer: CSSObject = {
   margin: 'auto',
   maxWidth: responsiveBreakpoints.tabletPortrait,
   img: {
-    maxWidth: '45vh',
+    maxWidth: '40vh',
     padding: makeSpace('lg'),
   },
-  a: {
-    textDecoration: 'underline',
-    color: palette.text(),
-  },
-  h1: {
+  h2: {
     fontStyle: 'italic',
     fontWeight: 'bold',
-    fontSize: makeSize('lg'),
+    fontSize: makeSize('h2'),
     margin: `${makeSpace('xl')} 0`,
   },
-  h3: {
+  h4: {
     fontWeight: 'bold',
-    fontSize: makeSize('sm'),
+    fontSize: makeSize('h4'),
     paddingTop: makeSpace('lg'),
   },
   p: {
@@ -43,15 +39,15 @@ const styleContainer: CSSObject = {
 const About: FC = () => (
   <Layout>
     <div css={styleContainer}>
-      <h1>tl;dr</h1>
-      <h3>{`I'm a software engineer`}</h3>
-      <h3>from Philly</h3>
+      <h2>tl;dr</h2>
+      <h4>{`I'm a software engineer`}</h4>
+      <h4>from Philly</h4>
       <ImgTrace path="philly-globe.png" alt="Philly" />
-      <h3>this is my wife</h3>
+      <h4>this is my wife</h4>
       <ImgTrace path="jamie.png" alt="Jamie" />
-      <h3>and this is our dog</h3>
+      <h4>and this is our dog</h4>
       <ImgTrace path="emmy.png" alt="Emmy" />
-      <h1>the long version</h1>
+      <h2>the long version</h2>
       <div>
         <p>
           I&apos;m a &quot;full stack&quot; engineer by trade. You can check out
