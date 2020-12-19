@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import {
-  makeColor,
+  palette,
   makeSize,
   makeSpace,
   makeResponsiveObject,
@@ -25,6 +25,10 @@ export const styleContainer: CSSObject = {
   `,
   gridRowGap: makeSpace('sm'),
   alignItems: 'center',
+  h3: {
+    fontStyle: 'italic',
+    fontSize: makeSize('md'),
+  },
   h5: {
     margin: 0,
     fontWeight: 'normal',
@@ -43,7 +47,7 @@ export const styleContainer: CSSObject = {
 
 const styleTitle: CSSObject = {
   gridArea: 'top',
-  color: makeColor('primary'),
+  color: palette.primary(),
   ...makeResponsiveObject({
     beginAt: 'tabletPortrait',
     style: {
@@ -59,7 +63,7 @@ const styleIcon: CSSObject = {
   display: 'grid',
   alignItems: 'center',
   justifyItems: 'center',
-  background: makeColor('light'),
+  background: palette.text(),
   gridArea: 'bottomLeft',
   ...makeResponsiveObject({
     beginAt: 'tabletPortrait',
@@ -86,7 +90,7 @@ const styleOrg: CSSObject = {
 };
 
 const styleDate: CSSObject = {
-  color: makeColor('secondary'),
+  color: palette.secondary(),
   textTransform: 'initial',
 };
 

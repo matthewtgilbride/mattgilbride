@@ -20,12 +20,8 @@ const styleContainer: CSSObject = {
   display: 'grid',
   gridAutoRows: 'max-content',
   justifySelf: 'center',
+  margin: 'auto',
   maxWidth: responsiveBreakpoints.tabletPortrait,
-  h3: {
-    fontStyle: 'italic',
-    fontWeight: 'normal',
-    margin: 0,
-  },
   a: {
     textDecoration: 'underline',
   },
@@ -47,7 +43,7 @@ const Resume: NextPage = () => {
   const { pathname, asPath } = useRouter();
   const hash = asPath.substr(asPath.lastIndexOf('#'), asPath.length);
   return (
-    <Layout>
+    <Layout footer={<Footer />}>
       <div css={styleContainer}>
         <Section
           defaultClosed
@@ -395,7 +391,6 @@ const Resume: NextPage = () => {
           </JobOrDegreeBody>
         </Section>
       </div>
-      <Footer />
     </Layout>
   );
 };

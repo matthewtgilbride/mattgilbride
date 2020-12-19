@@ -2,25 +2,27 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
 import { Layout } from '../../components/layout/Layout';
-import { makeSpace, responsiveBreakpoints } from '../../utils/design';
+import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 
 const styleContainer: CSSObject = {
-  display: 'grid',
-  justifySelf: 'center',
-  justifyItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
   padding: makeSpace('md'),
+  margin: 'auto',
   maxWidth: responsiveBreakpoints.tabletPortrait,
-  '> div': {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  h1: {
+  h2: {
     fontStyle: 'italic',
+    fontWeight: 'bold',
+    fontSize: makeSize('h2'),
+    margin: `${makeSpace('xl')} 0`,
     textAlign: 'center',
   },
   a: {
-    textDecoration: 'underline',
+    textAlign: 'center',
+    margin: `${makeSpace('md')} 0`,
+  },
+  h3: {
+    margin: `${makeSpace('xl')} 0`,
     textAlign: 'center',
   },
 };
@@ -28,20 +30,18 @@ const styleContainer: CSSObject = {
 const Blog: FC = () => (
   <Layout>
     <div css={styleContainer}>
-      <div>
-        <h1>2020</h1>
-        <Link href="/blog/shoemaker">giving the shoemaker shoes</Link>
-        <a href="https://chariotsolutions.com/blog/post/using-the-aws-cdk-in-real-life/">
-          using the AWS CDK in real life
-        </a>
-        <a href="https://chariotsolutions.com/blog/post/vue-3-0-might-be-a-big-deal/">
-          Vue 3.0 might be a big deal
-        </a>
-        <a href="https://chariotsolutions.com/blog/post/using-the-aws-cdk-irl-part-2/">
-          using the AWS CDK in real life - part two
-        </a>
-      </div>
-      <div css={{ margin: 'auto' }}>...more coming soon...</div>
+      <h2>2020</h2>
+      <Link href="/blog/shoemaker">giving the shoemaker shoes</Link>
+      <a href="https://chariotsolutions.com/blog/post/using-the-aws-cdk-in-real-life/">
+        using the AWS CDK in real life
+      </a>
+      <a href="https://chariotsolutions.com/blog/post/vue-3-0-might-be-a-big-deal/">
+        Vue 3.0 might be a big deal
+      </a>
+      <a href="https://chariotsolutions.com/blog/post/using-the-aws-cdk-irl-part-2/">
+        using the AWS CDK in real life - part two
+      </a>
+      <h3>...more coming soon...</h3>
     </div>
   </Layout>
 );

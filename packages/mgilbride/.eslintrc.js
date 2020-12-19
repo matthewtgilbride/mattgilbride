@@ -43,5 +43,12 @@ module.exports = {
         'import/no-default-export': 'off',
       },
     },
+    {
+      files: 'src/components/svg/generated/*',
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        'import/no-default-export': 'off'
+      }
+    }
   ]
 }

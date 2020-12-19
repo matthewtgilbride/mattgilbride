@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { makeColor, makeSpace } from '../../utils/design';
+import { palette, makeSpace } from '../../utils/design';
 
 const styleContainer: CSSObject = {
   display: 'flex',
@@ -14,7 +14,7 @@ const styleIcon: CSSObject = {
   display: 'grid',
   alignItems: 'center',
   justifyItems: 'center',
-  background: makeColor('primary'),
+  background: palette.primary(),
 };
 
 const styleText: CSSObject = {

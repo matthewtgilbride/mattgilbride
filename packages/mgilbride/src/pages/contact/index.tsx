@@ -2,7 +2,7 @@ import React, { FC, SyntheticEvent, useState } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Layout } from '../../components/layout/Layout';
 import {
-  makeColor,
+  palette,
   makeResponsiveObject,
   makeSize,
   makeSpace,
@@ -15,24 +15,22 @@ const styleContainer: CSSObject = {
   gridTemplateColumns: '1fr',
   gridAutoRows: 'max-content',
   gridRowGap: makeSpace('sm'),
-  paddingTop: makeSpace('lg'),
   margin: '0 auto',
   minWidth: '75%',
   maxWidth: responsiveBreakpoints.phone,
   '> button': {
     marginTop: makeSpace('lg'),
-    cursor: 'pointer',
     boxShadow: 'none',
     border: 'none',
     borderRadius: 4,
-    backgroundColor: makeColor('primary'),
-    color: makeColor('light'),
+    backgroundColor: palette.primary(),
+    color: palette.text(),
     padding: makeSpace('xs'),
     fontSize: makeSize('md'),
     ':hover,:focus': {
       boxShadow: 'none',
       outline: 'none',
-      backgroundColor: makeColor('primary', 1),
+      backgroundColor: palette.primary(25),
     },
   },
   ...makeResponsiveObject({
@@ -40,6 +38,7 @@ const styleContainer: CSSObject = {
     style: {
       minWidth: '50%',
       maxWidth: responsiveBreakpoints.phoneLg,
+      paddingTop: makeSpace('lg'),
     },
   }),
 };
@@ -49,14 +48,14 @@ type PostState = 'initial' | 'loading' | 'success' | 'error';
 const styleMessage = (postState: PostState): string => {
   switch (postState) {
     case 'initial':
-      return makeColor('light');
+      return palette.text();
     case 'error':
-      return makeColor('error');
+      return palette.error();
     case 'loading':
-      return makeColor('accent');
+      return palette.accent();
     case 'success':
     default:
-      return makeColor('success');
+      return palette.success();
   }
 };
 

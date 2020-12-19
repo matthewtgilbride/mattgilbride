@@ -1,24 +1,19 @@
-import { Palette } from '@mgilbride/design-system/lib/types/composite/color.composite';
 import { ResponsiveBreakpoints } from '@mgilbride/design-system/lib/types/composite/responsive.composite';
 import { configureDesignUtils } from '@mgilbride/design-system/lib/utils';
 import { SizeConfig } from '@mgilbride/design-system/lib/types/composite/size.composite';
 import { FontConfig } from '@mgilbride/design-system/lib/types/composite/font.composite';
+import { PaletteConfig } from '@mgilbride/design-system/lib/utils/color/palette';
 
-const palette: Palette = {
-  fixed: {
-    dark: 'black',
-    light: 'white',
-  },
-  scalable: {
-    primary: '#00a1ab',
-    secondary: '#2fc4b2',
-    accent: '#ff5722',
-    error: '#dd2c00',
-    warning: '#f2a51a',
-    success: '#00bdaa',
-    light: '#dee3e2',
-    gray: '#707677',
-  },
+const paletteConfig: PaletteConfig = {
+  primary: '#00a1ab',
+  secondary: '#2fc4b2',
+  accent: '#ff5722',
+  error: '#dd2c00',
+  warning: '#f2a51a',
+  success: '#00bdaa',
+  contrast: '#1c1d1d',
+  text: '#dee3e2',
+  gray: '#707677',
 };
 
 export const responsiveBreakpoints: ResponsiveBreakpoints = {
@@ -110,14 +105,14 @@ const fontConfig: FontConfig = {
 };
 
 export const {
-  makeColor,
   makeResponsiveString,
   makeResponsiveObject,
-  makeSize,
+  palette,
   makeLineHeight,
+  makeSize,
   makeSpace,
 } = configureDesignUtils({
-  palette,
+  paletteConfig,
   responsiveBreakpoints,
   sizeConfig,
   fontConfig,

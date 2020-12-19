@@ -2,41 +2,52 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
 import { Layout } from '../../components/layout/Layout';
-import { makeSpace, responsiveBreakpoints } from '../../utils/design';
+import {
+  makeSpace,
+  palette,
+  responsiveBreakpoints,
+  makeSize,
+} from '../../utils/design';
 import { ImgTrace } from '../../components/ImgTrace';
 
 const styleContainer: CSSObject = {
-  display: 'grid',
-  justifySelf: 'center',
-  justifyItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  margin: 'auto',
   maxWidth: responsiveBreakpoints.tabletPortrait,
   img: {
-    height: '50vh',
-    paddingBottom: makeSpace('sm'),
+    maxWidth: '40vh',
+    padding: makeSpace('lg'),
   },
-  h1: {
+  h2: {
     fontStyle: 'italic',
+    fontWeight: 'bold',
+    fontSize: makeSize('h2'),
+    margin: `${makeSpace('xl')} 0`,
   },
-  h3: {
+  h4: {
+    fontWeight: 'bold',
+    fontSize: makeSize('h4'),
     paddingTop: makeSpace('lg'),
   },
-  a: {
-    textDecoration: 'underline',
+  p: {
+    margin: `${makeSpace('sm')} 0`,
   },
 };
 
 const About: FC = () => (
   <Layout>
     <div css={styleContainer}>
-      <h1>tl;dr</h1>
-      <h3>{`I'm a software engineer`}</h3>
-      <h3>from Philly</h3>
+      <h2>tl;dr</h2>
+      <h4>{`I'm a software engineer`}</h4>
+      <h4>from Philly</h4>
       <ImgTrace path="philly-globe.png" alt="Philly" />
-      <h3>this is my wife</h3>
+      <h4>this is my wife</h4>
       <ImgTrace path="jamie.png" alt="Jamie" />
-      <h3>and this is our dog</h3>
+      <h4>and this is our dog</h4>
       <ImgTrace path="emmy.png" alt="Emmy" />
-      <h1 css={{ paddingTop: makeSpace('xl') }}>the long version</h1>
+      <h2>the long version</h2>
       <div>
         <p>
           I&apos;m a &quot;full stack&quot; engineer by trade. You can check out

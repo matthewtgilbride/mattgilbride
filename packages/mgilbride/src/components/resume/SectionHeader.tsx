@@ -1,36 +1,36 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useSpring } from 'react-spring';
-import { makeColor, makeSpace } from '../../utils/design';
+import { makeSize, makeSpace, palette } from '../../utils/design';
+import { ChevronDown } from '../svg/ChevronDown';
 
 const styleHeader = (open: boolean): CSSObject => ({
   display: 'flex',
   justifyContent: 'space-between',
   margin: `${makeSpace('md')} 0`,
   padding: `${makeSpace('sm')} 0`,
+  fontSize: makeSize('h2'),
   '> button': {
-    backgroundColor: makeColor('gray', -2),
+    backgroundColor: palette.text(-65),
     cursor: 'pointer',
     border: '1px solid',
-    borderColor: makeColor('accent'),
+    borderColor: palette.accent(),
     borderRadius: '50%',
+    boxShadow: `inset 0 0 2px 1px ${palette.accent()}`,
     width: 38,
     height: 38,
-    ':hover,:focus': {
-      boxShadow: 'none',
-      outline: 'none',
-      backgroundColor: makeColor('gray', -1),
+    ':active,:hover': {
+      backgroundColor: palette.text(-50),
     },
-    '> img': {
+    '> svg': {
       height: 16,
       width: 16,
-      marginTop: open ? 4 : 2,
-      marginRight: open ? undefined : 2,
+      marginTop: 4,
     },
   },
 });
 
-export interface ScrollableSectionHeaderProps {
+export interface SectionHeaderProps {
   pathname: Location['pathname'];
   hash: Location['hash'];
   hashTarget: string;
@@ -39,7 +39,7 @@ export interface ScrollableSectionHeaderProps {
   text: string;
 }
 
-export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
+export const SectionHeader: FC<SectionHeaderProps> = ({
   hash,
   pathname,
   hashTarget,
@@ -47,7 +47,7 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
   open,
   text,
 }) => {
-  const buttonSpring = useSpring({
+  const springProps = useSpring({
     from: {
       transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
     },
@@ -73,15 +73,11 @@ export const ScrollableSectionHeader: FC<ScrollableSectionHeaderProps> = ({
   }, [hash, hashTarget, scrollToElement]);
 
   return (
-    <h1 css={styleHeader(open)} ref={el}>
+    <h2 css={styleHeader(open)} ref={el}>
       <a href={`${pathname}${hashTarget}`}>{text}</a>
-      <button onClick={onClick}>
-        <animated.img
-          style={buttonSpring}
-          src="/assets/svg/chevron-down-accent.svg"
-          alt="open"
-        />
-      </button>
-    </h1>
+      <animated.button style={springProps} onClick={onClick}>
+        <ChevronDown color={palette.accent()} />
+      </animated.button>
+    </h2>
   );
 };
