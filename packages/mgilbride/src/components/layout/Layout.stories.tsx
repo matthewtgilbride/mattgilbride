@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Layout } from './Layout';
-import { MobileOpen } from './header/Header.stories';
 
 export default {
   title: 'Components/Layout',

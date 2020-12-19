@@ -4,7 +4,7 @@ import { animated, useSpring } from 'react-spring';
 import { makeSize, makeSpace, palette } from '../../utils/design';
 import { ChevronDown } from '../svg/ChevronDown';
 
-const styleHeader = (open: boolean): CSSObject => ({
+const styleHeader: CSSObject = {
   display: 'flex',
   justifyContent: 'space-between',
   margin: `${makeSpace('md')} 0`,
@@ -28,7 +28,7 @@ const styleHeader = (open: boolean): CSSObject => ({
       marginTop: 4,
     },
   },
-});
+};
 
 export interface SectionHeaderProps {
   pathname: Location['pathname'];
@@ -73,7 +73,7 @@ export const SectionHeader: FC<SectionHeaderProps> = ({
   }, [hash, hashTarget, scrollToElement]);
 
   return (
-    <h2 css={styleHeader(open)} ref={el}>
+    <h2 css={styleHeader} ref={el}>
       <a href={`${pathname}${hashTarget}`}>{text}</a>
       <animated.button style={springProps} onClick={onClick}>
         <ChevronDown color={palette.accent()} />
