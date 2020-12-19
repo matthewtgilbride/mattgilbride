@@ -1,10 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { animated, useSpring } from 'react-spring';
 import { CSSObject } from '@emotion/core';
-import {
-  ScrollableSectionHeader,
-  ScrollableSectionHeaderProps,
-} from './ScrollableSectionHeader';
+import { SectionHeader, SectionHeaderProps } from './SectionHeader';
 
 const styleBody: CSSObject = {
   overflowY: 'hidden',
@@ -12,7 +9,7 @@ const styleBody: CSSObject = {
 
 export const Section: FC<{
   defaultClosed?: boolean;
-  headerProps: Omit<ScrollableSectionHeaderProps, 'onClick' | 'open'>;
+  headerProps: Omit<SectionHeaderProps, 'onClick' | 'open'>;
 }> = ({ defaultClosed, headerProps, children }) => {
   const [hasRenderedOnce, setHasRenderedOnce] = useState(false);
   useEffect(() => setHasRenderedOnce(true), []);
@@ -53,13 +50,13 @@ export const Section: FC<{
   });
 
   return (
-    <div>
-      <ScrollableSectionHeader
+    <section>
+      <SectionHeader
         {...{ ...headerProps, open, onClick: () => setOpen(!open) }}
       />
       <animated.div ref={bodyRef} style={bodySpring} css={styleBody}>
         {children}
       </animated.div>
-    </div>
+    </section>
   );
 };

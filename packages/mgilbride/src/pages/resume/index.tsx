@@ -2,7 +2,7 @@ import React from 'react';
 import { CSSObject } from '@emotion/core';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { Layout } from '../../components/layout/Layout__old';
+import { Layout } from '../../components/layout/Layout';
 import {
   makeResponsiveObject,
   makeSpace,
@@ -20,12 +20,8 @@ const styleContainer: CSSObject = {
   display: 'grid',
   gridAutoRows: 'max-content',
   justifySelf: 'center',
+  margin: 'auto',
   maxWidth: responsiveBreakpoints.tabletPortrait,
-  h3: {
-    fontStyle: 'italic',
-    fontWeight: 'normal',
-    margin: 0,
-  },
   a: {
     textDecoration: 'underline',
   },

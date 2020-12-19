@@ -15,7 +15,8 @@
     "clean": "rm -rf .next && rm -rf out",
     "deploy": "aws s3 sync out s3://www.mattgilbride.com",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "svgr": "svgr -d src/components/svg/generated public/assets/svg && yarn lint --fix"
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",
@@ -24,6 +25,7 @@
     "@mdx-js/loader": "^1.6.17",
     "@mgilbride/design-system": "^0.0.0",
     "@next/mdx": "^9.5.3",
+    "@svgr/cli": "^5.5.0",
     "image-trace-loader": "^1.0.2",
     "lqip-loader": "^2.2.1",
     "next": "^9.5.2",
@@ -41,6 +43,7 @@
     "@storybook/addon-essentials": "^6.2.0-alpha.1",
     "@storybook/addon-links": "^6.2.0-alpha.1",
     "@storybook/react": "^6.2.0-alpha.1",
+    "@svgr/core": "^5.5.0",
     "@types/jest": "^26.0.0",
     "@types/react": "16.9.34",
     "@typescript-eslint/eslint-plugin": "^2.28.0",

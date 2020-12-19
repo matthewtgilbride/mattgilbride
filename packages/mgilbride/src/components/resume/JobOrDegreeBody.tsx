@@ -3,13 +3,17 @@ import { CSSObject } from '@emotion/core';
 import { makeSize, makeSpace } from '../../utils/design';
 
 const styleContainer: CSSObject = {
-  padding: `${makeSpace('xxs')} 0 ${makeSpace('lg')} 0`,
+  margin: `${makeSpace('xl')} 0 ${makeSpace('xl')} 0`,
   p: {
     fontSize: makeSize('sm'),
-    padding: `0 ${makeSpace('md')}`,
+    margin: `${makeSpace('sm')} 0`,
+  },
+  ul: {
+    paddingInlineStart: makeSpace('lg'),
   },
   li: {
     marginTop: makeSpace('sm'),
+    listStyleType: 'disc',
   },
 };
 

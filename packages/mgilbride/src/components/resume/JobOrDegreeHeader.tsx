@@ -25,6 +25,10 @@ export const styleContainer: CSSObject = {
   `,
   gridRowGap: makeSpace('sm'),
   alignItems: 'center',
+  h3: {
+    fontStyle: 'italic',
+    fontSize: makeSize('md'),
+  },
   h5: {
     margin: 0,
     fontWeight: 'normal',

@@ -11,13 +11,7 @@ const styleContainer: CSSObject = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  paddingLeft: makeSpace('md'),
-  ...makeResponsiveObject({
-    beginAt: 'tabletPortrait',
-    style: {
-      flexDirection: 'row',
-    },
-  }),
+  margin: `${makeSpace('md')} 0`,
 };
 
 const styleDescription: CSSObject = {
@@ -31,6 +25,7 @@ const styleDate: CSSObject = {
   fontSize: makeSize('xs'),
   fontWeight: 'normal',
   margin: 'initial',
+  alignSelf: 'flex-start',
 };
 
 export const ChariotProjectHeader: FC<{
