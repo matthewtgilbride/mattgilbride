@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import { NavMenu } from './NavMenu';
 
 export default {
-  title: 'Components/Layout/Nav/Menu',
+  title: 'Components/Layout/Menu',
   component: NavMenu,
   excludeStories: /.*Props/,
 } as Meta;
