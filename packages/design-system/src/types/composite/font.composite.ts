@@ -1,7 +1,7 @@
 import { Size } from 'types/primitive/size.primitive';
 import { SizeHeadings } from 'types/composite/size.composite';
-import { ColorConfig } from 'types/composite/color.composite';
 import { FontFaceConfiguration } from 'polished/lib/types/fontFaceConfiguration';
+import { Color } from '../../utils/color/palette';
 
 export type FontSize = Size & SizeHeadings;
 export type FontFamilyType = 'system' | 'user-defined' | 'google';
@@ -35,14 +35,14 @@ export interface FontProperties {
   fontFamily?: FontFamily;
   fontWeight?: FontWeightName;
   fontStyle?: FontStyle;
-  fontColor?: ColorConfig;
+  fontColor?: Color;
   custom?: {
     fontSize: number;
     lineHeight?: number;
     fontFamily?: FontFamily;
     fontWeight?: FontWeightName;
     fontStyle?: FontStyle;
-    fontColor: ColorConfig;
+    fontColor: Color;
   };
 }
 
@@ -63,7 +63,7 @@ export interface FontConfig {
     fontFamily: FontFamily;
     fontStyle: FontStyle;
     fontWeight: FontWeightName;
-    fontColor?: ColorConfig;
+    fontColor?: Color;
   };
   headingSizeMap: {
     [key in SizeHeadings]: Size;
