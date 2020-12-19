@@ -1,14 +1,10 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useTransition } from 'react-spring';
-import {
-  makeResponsiveObject,
-  makeSpace,
-  palette,
-} from '../../../utils/design';
+import { makeResponsiveObject, makeSpace, palette } from '../../utils/design';
 import { NavItems } from './NavItems';
-import { headerHeight } from '../header/Header';
-import { beginAt } from '../Layout.styles';
+import { headerHeight } from './header/Header';
+import { beginAt } from './Layout.styles';
 
 const styleContainer: CSSObject = {
   position: 'fixed',

@@ -2,7 +2,7 @@ import React, { FC, useRef } from 'react';
 import Link, { LinkProps } from 'next/link';
 import { animated, useSpring } from 'react-spring';
 import { CSSObject } from '@emotion/core';
-import { useActiveStyle } from './NavLink';
+import { useActiveStyle } from '../NavLink';
 import { palette } from '../../../utils/design';
 
 export const HomeLink: FC<LinkProps & { open: boolean }> = ({

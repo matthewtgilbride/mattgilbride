@@ -8,6 +8,7 @@ const styleContainer: CSSObject = {
   gridTemplateRows: 'min-content',
   justifySelf: 'center',
   justifyItems: 'center',
+  margin: 'auto',
   maxWidth: responsiveBreakpoints.tabletPortrait,
   // because shoemaker is a long word in iphone SE
   wordBreak: 'break-word',

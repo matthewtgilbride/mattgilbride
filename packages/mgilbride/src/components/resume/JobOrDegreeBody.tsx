@@ -9,10 +9,10 @@ const styleContainer: CSSObject = {
     margin: `${makeSpace('sm')} 0`,
   },
   ul: {
-    paddingInlineStart: makeSpace('lg'),
+    paddingInlineStart: makeSpace('sm'),
   },
   li: {
-    marginTop: makeSpace('sm'),
+    margin: `${makeSpace('sm')} 0`,
     listStyleType: 'disc',
   },
 };

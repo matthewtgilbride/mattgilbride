@@ -15,7 +15,6 @@ const styleContainer: CSSObject = {
   gridTemplateColumns: '1fr',
   gridAutoRows: 'max-content',
   gridRowGap: makeSpace('sm'),
-  paddingTop: makeSpace('lg'),
   margin: '0 auto',
   minWidth: '75%',
   maxWidth: responsiveBreakpoints.phone,
@@ -39,6 +38,7 @@ const styleContainer: CSSObject = {
     style: {
       minWidth: '50%',
       maxWidth: responsiveBreakpoints.phoneLg,
+      paddingTop: makeSpace('lg'),
     },
   }),
 };

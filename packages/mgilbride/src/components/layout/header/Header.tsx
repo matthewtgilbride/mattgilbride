@@ -7,9 +7,9 @@ import {
   palette,
 } from '../../../utils/design';
 import { beginAt } from '../Layout.styles';
-import { NavItems } from '../nav/NavItems';
-import { NavButton } from '../nav/NavButton';
-import { HomeLink } from '../nav/HomeLink';
+import { NavItems } from '../NavItems';
+import { NavButton } from './NavButton';
+import { HomeLink } from './HomeLink';
 
 export const headerHeight = makeSize('xxl');
 

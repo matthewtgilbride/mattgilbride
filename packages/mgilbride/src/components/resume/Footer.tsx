@@ -10,21 +10,16 @@ import {
 const styleFooter: CSSObject = {
   backgroundColor: palette.contrast(),
   display: 'flex',
-  justifyContent: 'center',
-  '> div': {
+  maxWidth: responsiveBreakpoints.tabletPortrait,
+  justifyContent: 'space-between',
+  margin: `${makeSpace('xxs')} auto`,
+  padding: `0 ${makeSpace('xxs')}`,
+  div: {
     display: 'flex',
-    width: '100%',
-    maxWidth: responsiveBreakpoints.tabletPortrait,
-    justifyContent: 'space-between',
-    margin: makeSpace('xxs'),
-    '> div': {
-      display: 'flex',
-      alignSelf: 'center',
-      height: 'fit-content',
-      '> p': {
-        margin: 0,
-      },
-    },
+    alignSelf: 'center',
+  },
+  a: {
+    textDecoration: 'none',
   },
 };
 
@@ -41,13 +36,10 @@ const styleButton: CSSObject = {
   padding: makeSpace('xxs'),
   marginLeft: makeSpace('xxs'),
   color: palette.text(),
-  ':hover,:focus': {
-    boxShadow: 'none',
-    outline: 'none',
+  ':hover,:active': {
     backgroundColor: palette.primary(),
   },
   '> p': {
-    margin: 0,
     padding: `0 ${makeSpace('xxs')}`,
   },
   '> img': {
@@ -58,23 +50,21 @@ const styleButton: CSSObject = {
 export const Footer: FC = () => (
   <div css={styleFooter}>
     <div>
-      <div>
-        <p>Need a copy?</p>
-      </div>
-      <div>
-        <a href="/static/Gilbride_Matthew Resume_2020_07.docx">
-          <button css={styleButton}>
-            <img src="/assets/svg/doc.svg" alt="doc" />
-            <p>.docx</p>
-          </button>
-        </a>
-        <a href="/static/Gilbride_Matthew Resume_2020_07.pdf">
-          <button css={styleButton}>
-            <img src="/assets/svg/pdf.svg" alt="pdf" />
-            <p>.pdf</p>
-          </button>
-        </a>
-      </div>
+      <p>Need a copy?</p>
+    </div>
+    <div>
+      <a href="/static/Gilbride_Matthew Resume_2020_07.docx">
+        <button css={styleButton}>
+          <img src="/assets/svg/doc.svg" alt="doc" />
+          <p>.docx</p>
+        </button>
+      </a>
+      <a href="/static/Gilbride_Matthew Resume_2020_07.pdf">
+        <button css={styleButton}>
+          <img src="/assets/svg/pdf.svg" alt="pdf" />
+          <p>.pdf</p>
+        </button>
+      </a>
     </div>
   </div>
 );

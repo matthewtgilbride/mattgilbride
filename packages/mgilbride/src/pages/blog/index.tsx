@@ -8,6 +8,7 @@ const styleContainer: CSSObject = {
   display: 'flex',
   flexDirection: 'column',
   padding: makeSpace('md'),
+  margin: 'auto',
   maxWidth: responsiveBreakpoints.tabletPortrait,
   h2: {
     fontStyle: 'italic',
@@ -18,6 +19,7 @@ const styleContainer: CSSObject = {
   },
   a: {
     textAlign: 'center',
+    margin: `${makeSpace('md')} 0`,
   },
   h3: {
     margin: `${makeSpace('xl')} 0`,

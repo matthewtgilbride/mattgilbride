@@ -19,7 +19,7 @@ const styleHeader = (open: boolean): CSSObject => ({
     boxShadow: `inset 0 0 2px 1px ${palette.accent()}`,
     width: 38,
     height: 38,
-    ':hover,:active': {
+    ':active,:hover': {
       backgroundColor: palette.text(-50),
     },
     '> svg': {

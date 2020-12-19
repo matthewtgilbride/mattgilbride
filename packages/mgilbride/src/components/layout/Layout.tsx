@@ -3,7 +3,7 @@ import { CSSObject, Global } from '@emotion/core';
 import Head from 'next/head';
 import { Header } from './header/Header';
 import { ContentContainer } from './content/ContentContainer';
-import { NavMenu } from './nav/NavMenu';
+import { NavMenu } from './NavMenu';
 import { responsiveBreakpoints } from '../../utils/design';
 import { documentReset, meyerReset } from './Layout.styles';
 

@@ -32,6 +32,7 @@ const styleFooter: CSSObject = {
   right: 0,
   height: headerHeight,
   borderTop: `1px solid ${palette.text(-50)}`,
+  overflow: 'hidden',
 };
 
 export const ContentContainer: FC<{ footer?: ReactNode }> = ({
