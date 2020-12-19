@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { CSSObject } from '@emotion/core';
 import { headerHeight } from '../header/Header';
-import { makeSpace, makeSize, palette } from '../../../utils/design';
+import { makeSpace, palette } from '../../../utils/design';
 
 const styleContainer: CSSObject = {
   position: 'absolute',
