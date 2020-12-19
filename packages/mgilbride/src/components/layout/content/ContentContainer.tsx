@@ -30,7 +30,7 @@ const styleFooter: CSSObject = {
   bottom: 0,
   left: 0,
   right: 0,
-  padding: makeSpace('sm'),
+  height: headerHeight,
   borderTop: `1px solid ${palette.text(-50)}`,
 };
 

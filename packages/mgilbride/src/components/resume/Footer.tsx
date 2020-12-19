@@ -8,13 +8,9 @@ import {
 } from '../../utils/design';
 
 const styleFooter: CSSObject = {
-  position: 'sticky',
-  bottom: -16,
-  display: 'flex',
-  alignSelf: 'flex-end',
-  justifyContent: 'center',
-  borderTop: `1px solid ${palette.gray(-25)}`,
   backgroundColor: palette.contrast(),
+  display: 'flex',
+  justifyContent: 'center',
   '> div': {
     display: 'flex',
     width: '100%',

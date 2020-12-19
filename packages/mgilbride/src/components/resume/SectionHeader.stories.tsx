@@ -2,10 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Layout } from '../layout/Layout';
-import {
-  SectionHeader,
-  SectionHeaderProps,
-} from './SectionHeader';
+import { SectionHeader, SectionHeaderProps } from './SectionHeader';
 
 export default {
   title: 'Components/Resume/SectionHeader',

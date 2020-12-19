@@ -151,7 +151,7 @@ export const meyerReset: ReturnType<typeof css> = css`
   }
 `;
 
-export const documentReset = {
+export const documentReset: CSSObject = {
   body: {
     margin: 0,
     padding: 0,
