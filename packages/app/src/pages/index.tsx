@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import Link from 'next/link';
-import { makeSpace } from '../utils/design';
+import { GetStaticProps } from 'next';
+import { makeSize, makeSpace } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
-import { ImgTrace } from '../components/ImgTrace';
+import { client, PrismicContent } from '../prismic';
+import { ImgBlur } from '../components/ImgBlur';
 
 const styleContainer: CSSObject = {
   display: 'flex',
@@ -19,37 +20,44 @@ const styleContent: CSSObject = {
     maxWidth: '40vh',
     padding: makeSpace('lg'),
   },
-  h3: {
+  h1: {
+    textAlign: 'center',
+    textTransform: 'capitalize',
     fontWeight: 'bold',
+    fontSize: makeSize('h2'),
+    margin: `${makeSpace('xxs')} 0`,
   },
   p: {
     textAlign: 'center',
-    padding: `${makeSpace('xxs')} 0`,
-    margin: 0,
+    margin: `${makeSpace('sm')} 0`,
   },
 };
 
-const Home: FC = () => (
+interface HomeProps {
+  data: any;
+}
+
+const Home: FC<HomeProps> = ({ data }) => (
   <Layout>
     <div css={styleContainer}>
       <div css={styleContent}>
-        <h3>
-          <p>Yo</p>
-        </h3>
-        <ImgTrace path="profile_circle.png" alt="profile" />
+        <PrismicContent richText={data.greeting} />
+        <ImgBlur url={data.profile.url} alt={data.profile.alt} />
         <div>
-          <p>{`I'm Matt, from Philly`}</p>
-          <p>
-            I like writing{' '}
-            <a href="https://github.com/matthewtgilbride">code</a>, and dogs
-          </p>
-          <p>
-            check out my <Link href="/about">about</Link> page
-          </p>
+          <PrismicContent richText={data.copy} />
         </div>
       </div>
     </div>
   </Layout>
 );
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const doc = await client.getSingle('home', {});
+  return {
+    props: {
+      data: doc.data,
+    },
+  };
+};
 
 export default Home;

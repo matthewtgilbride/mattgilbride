@@ -19,7 +19,7 @@ export type ImgTraceProps = Record<string, unknown> & {
  * make sure something fires when the image is
  * downloaded to the browser, which seems to work.
  */
-const useImageIsLoaded = (): [
+export const useImageIsLoaded = (): [
   MutableRefObject<HTMLImageElement | null>,
   () => void,
   boolean,
