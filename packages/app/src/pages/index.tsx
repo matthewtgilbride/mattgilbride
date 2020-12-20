@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { GetStaticProps } from 'next';
+import { RichTextBlock } from 'prismic-reactjs';
 import { makeSize, makeSpace } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
 import { client, PrismicContent } from '../prismic';
@@ -33,8 +34,17 @@ const styleContent: CSSObject = {
   },
 };
 
+interface HomeDocument {
+  greeting: RichTextBlock[];
+  copy: RichTextBlock[];
+  profile: {
+    url: string;
+    alt: string;
+  };
+}
+
 interface HomeProps {
-  data: any;
+  data: HomeDocument;
 }
 
 const Home: FC<HomeProps> = ({ data }) => (

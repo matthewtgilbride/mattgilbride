@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useImageIsLoaded } from './ImgTrace';
+import { responsiveBreakpoints } from '../utils/design';
 
 export const ImgBlur: FC<{ url: string; alt: string }> = ({
   url,
@@ -7,6 +8,9 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
   ...rest
 }) => {
   const blurUrl = `${url}&blur=200`;
+
+  const mobileUrl = `${url}&width=${responsiveBreakpoints.phoneLg}`;
+  const tabletUrl = `${url}&width=${responsiveBreakpoints.tabletPortrait}`;
 
   const [ref, onLoad, loaded] = useImageIsLoaded();
 
@@ -18,14 +22,23 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
         {...rest}
         css={{ display: loaded ? 'none' : undefined }}
       />
-      <img
-        src={url}
-        alt={alt}
-        {...rest}
-        css={{ display: loaded ? undefined : 'none' }}
-        ref={ref}
-        onLoad={onLoad}
-      />
+      <picture>
+        <img
+          src={mobileUrl}
+          alt={alt}
+          ref={ref}
+          onLoad={onLoad}
+          css={{ display: loaded ? undefined : 'none' }}
+        />
+        <source
+          srcSet={tabletUrl}
+          media={`(min-width: ${responsiveBreakpoints.tabletPortrait}px`}
+        />
+        <source
+          srcSet={tabletUrl}
+          media={`(min-width: ${responsiveBreakpoints.laptop}px`}
+        />
+      </picture>
     </>
   );
 };
