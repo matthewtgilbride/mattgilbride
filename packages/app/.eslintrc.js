@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["@mgilbride", "plugin:react/recommended", "plugin:jsx-a11y/recommended"],
+  extends: ["@mattgilbride", "plugin:react/recommended", "plugin:jsx-a11y/recommended"],
   env: {
     browser: true,
   },

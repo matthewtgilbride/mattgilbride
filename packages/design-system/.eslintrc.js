@@ -1,5 +1,5 @@
 module.exports = {
-  extends: "@mgilbride",
+  extends: "@mattgilbride",
   parserOptions: {
     project: "tsconfig.json",
   },

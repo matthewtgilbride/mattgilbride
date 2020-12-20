@@ -6,7 +6,7 @@ Shared typescript compiler settings
 
 ```json
 {
-  "extends": "@mgilbride/tsconfig",
+  "extends": "@mattgilbride/tsconfig",
   "compilerOptions": {
     "baseUrl": "src",
     "outDir": "lib"

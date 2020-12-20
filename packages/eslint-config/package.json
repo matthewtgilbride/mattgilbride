@@ -1,13 +1,13 @@
 {
-  "name": "@mgilbride/eslint-config",
+  "name": "@mattgilbride/eslint-config",
   "version": "0.0.0",
   "description": "common eslint configuration",
   "keywords": [
     "eslint",
     "eslint-config"
   ],
-  "author": "Matthew T. Gilbride <mgilbride@chariotsolutions.com>",
-  "homepage": "https://github.com/matthewtgilbride/mgilbride#readme",
+  "author": "Matthew T. Gilbride <matthewtgilbride@gmail.com>",
+  "homepage": "https://github.com/matthewtgilbride/mattgilbride#readme",
   "license": "MIT",
   "main": "index.js",
   "publishConfig": {
@@ -15,10 +15,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matthewtgilbride/mgilbride.git"
+    "url": "git+https://github.com/matthewtgilbride/mattgilbride.git"
   },
   "bugs": {
-    "url": "https://github.com/matthewtgilbride/mgilbride/issues"
+    "url": "https://github.com/matthewtgilbride/mattgilbride/issues"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.28.0",

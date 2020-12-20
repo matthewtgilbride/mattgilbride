@@ -13,7 +13,6 @@ export interface StaticSiteProps {
   domainName: string;
   siteSubDomain: string;
   certificateArn: string;
-  assetsDirectory: string;
 }
 
 export class StaticSiteConstruct extends Construct {

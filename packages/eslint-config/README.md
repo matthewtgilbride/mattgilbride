@@ -8,7 +8,7 @@ TODO: figure out why dependencies need to be installed here instead of using pee
 
 ```
 module.exports = {
-  extends: "@mgilbride",
+  extends: "@mattgilbride",
   parserOptions: {
     project: "tsconfig.json",
   },
