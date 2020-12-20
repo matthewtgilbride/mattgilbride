@@ -395,4 +395,4 @@ const Resume: NextPage = () => {
   );
 };
 
-export default Resume; // eslint-disable-line import/no-default-export
+export default Resume;

@@ -93,4 +93,4 @@ const About: FC = () => (
   </Layout>
 );
 
-export default About; // eslint-disable-line import/no-default-export
+export default About;

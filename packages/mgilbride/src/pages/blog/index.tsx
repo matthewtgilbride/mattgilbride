@@ -46,4 +46,4 @@ const Blog: FC = () => (
   </Layout>
 );
 
-export default Blog; // eslint-disable-line import/no-default-export
+export default Blog;

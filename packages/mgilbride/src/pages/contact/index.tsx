@@ -163,4 +163,4 @@ const Contact: FC = () => {
   );
 };
 
-export default Contact; // eslint-disable-line import/no-default-export
+export default Contact;

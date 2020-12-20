@@ -34,8 +34,7 @@ export const handler = async (event: APIGatewayEvent): Promise<ProxyResult> => {
         },
       };
 
-      const response = await ses.sendEmail(params).promise();
-      console.debug(response);
+      await ses.sendEmail(params).promise();
 
       return {
         statusCode: 200,
@@ -50,7 +49,6 @@ export const handler = async (event: APIGatewayEvent): Promise<ProxyResult> => {
       headers,
     };
   } catch (e) {
-    console.error(e);
     const message = e.stack || JSON.stringify(e, null, 2);
     return {
       statusCode: 400,

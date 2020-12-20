@@ -49,6 +49,12 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'off',
         'import/no-default-export': 'off'
       }
+    },
+    {
+      files: 'src/pages/**/*',
+      rules: {
+        'import/no-default-export': 'off'
+      }
     }
   ]
 }

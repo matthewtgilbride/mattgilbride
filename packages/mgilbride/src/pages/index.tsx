@@ -52,4 +52,4 @@ const Home: FC = () => (
   </Layout>
 );
 
-export default Home; // eslint-disable-line import/no-default-export
+export default Home;

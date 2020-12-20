@@ -28,10 +28,12 @@ const styleContainer = (value: string): CSSObject => ({
 
 interface InputControl {
   type: 'input';
+  options?: undefined;
 }
 
 interface TextAreaControl {
   type: 'textarea';
+  options?: undefined;
 }
 
 interface SelectControl {
@@ -95,12 +97,7 @@ export const FormControl: FC<FormControlProps> = (props: FormControlProps) => {
       default:
         return <input {...{ ...controlProps }} />;
     }
-  }, [
-    controlProps,
-    props.type,
-    // @ts-ignore - there must be a way to handle the discriminated union better here
-    props.options,
-  ]);
+  }, [controlProps, props.type, props.options]);
 
   return (
     <div css={styleContainer(props.value)}>
