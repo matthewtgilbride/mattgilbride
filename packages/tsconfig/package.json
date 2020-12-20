@@ -1,5 +1,5 @@
 {
-  "name": "@mgilbride/tsconfig",
+  "name": "@mattgilbride/tsconfig",
   "version": "0.0.0",
   "description": "shared tsconfig across projects",
   "keywords": [
@@ -7,8 +7,8 @@
     "typescript",
     "tsc"
   ],
-  "author": "Matthew T. Gilbride <mgilbride@chariotsolutions.com>",
-  "homepage": "https://github.com/matthewtgilbride/mgilbride#readme",
+  "author": "Matthew T. Gilbride <matthewtgilbride@gmail.com>",
+  "homepage": "https://github.com/matthewtgilbride/mattgilbride#readme",
   "license": "MIT",
   "main": "tsconfig.json",
   "files": [
@@ -19,9 +19,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matthewtgilbride/mgilbride.git"
+    "url": "git+https://github.com/matthewtgilbride/mattgilbride.git"
   },
   "bugs": {
-    "url": "https://github.com/matthewtgilbride/mgilbride/issues"
+    "url": "https://github.com/matthewtgilbride/mattgilbride/issues"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@mgilbride/mgilbride",
+  "name": "@mattgilbride/app",
   "private": true,
   "description": "A simplified bare-bones starter for Gatsby",
   "version": "0.1.0",
@@ -23,7 +23,7 @@
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@mdx-js/loader": "^1.6.17",
-    "@mgilbride/design-system": "^0.0.0",
+    "@mattgilbride/design-system": "^0.0.0",
     "@next/mdx": "^9.5.3",
     "@svgr/cli": "^5.5.0",
     "image-trace-loader": "^1.0.2",
@@ -37,8 +37,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@mgilbride/eslint-config": "^0.0.0",
-    "@mgilbride/tsconfig": "^0.0.0",
+    "@mattgilbride/eslint-config": "^0.0.0",
+    "@mattgilbride/tsconfig": "^0.0.0",
     "@storybook/addon-actions": "^6.2.0-alpha.1",
     "@storybook/addon-essentials": "^6.2.0-alpha.1",
     "@storybook/addon-links": "^6.2.0-alpha.1",

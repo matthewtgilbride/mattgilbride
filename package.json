@@ -4,7 +4,7 @@
     "commitizen": "^4.0.4",
     "lerna": "^3.20.2"
   },
-  "name": "mgilbride",
+  "name": "mattgilbride",
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "commit": "yarn chk && git-cz",
@@ -12,12 +12,12 @@
     "lint": "lerna run lint --stream --",
     "test": "lerna run test --stream --",
     "chk": "yarn tsc && yarn lint --fix && yarn test",
-    "dev": "lerna run dev --scope=@mgilbride/mgilbride --stream",
-    "build": "lerna run build --scope=@mgilbride/mgilbride --stream",
-    "start": "lerna run start --scope=@mgilbride/mgilbride --stream",
-    "export": "lerna run export --scope=@mgilbride/mgilbride --stream",
-    "serve": "lerna run serve --scope=@mgilbride/mgilbride --stream",
-    "deploy-site": "cd packages/mgilbride && yarn deploy && cd ../..",
+    "dev": "lerna run dev --scope=@mattgilbride/app --stream",
+    "build": "lerna run build --scope=@mattgilbride/app --stream",
+    "start": "lerna run start --scope=@mattgilbride/app --stream",
+    "export": "lerna run export --scope=@mattgilbride/app --stream",
+    "serve": "lerna run serve --scope=@mattgilbride/app --stream",
+    "deploy-site": "cd packages/app && yarn deploy && cd ../..",
     "deploy-aws": "cd packages/aws-infrastructure && yarn deploy && cd ../..",
     "synth": "cd packages/aws-infrastructure && yarn synth && cd ../..",
     "destroy": "cd packages/aws-infrastructure && yarn destroy && cd ../.."

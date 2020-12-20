@@ -1,8 +1,8 @@
-import { ResponsiveBreakpoints } from '@mgilbride/design-system/lib/types/composite/responsive.composite';
-import { configureDesignUtils } from '@mgilbride/design-system/lib/utils';
-import { SizeConfig } from '@mgilbride/design-system/lib/types/composite/size.composite';
-import { FontConfig } from '@mgilbride/design-system/lib/types/composite/font.composite';
-import { PaletteConfig } from '@mgilbride/design-system/lib/utils/color/palette';
+import { ResponsiveBreakpoints } from '@mattgilbride/design-system/lib/types/composite/responsive.composite';
+import { configureDesignUtils } from '@mattgilbride/design-system/lib/utils';
+import { SizeConfig } from '@mattgilbride/design-system/lib/types/composite/size.composite';
+import { FontConfig } from '@mattgilbride/design-system/lib/types/composite/font.composite';
+import { PaletteConfig } from '@mattgilbride/design-system/lib/utils/color/palette';
 
 const paletteConfig: PaletteConfig = {
   primary: '#00a1ab',

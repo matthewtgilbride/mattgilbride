@@ -1,12 +1,12 @@
 {
-  "name": "@mgilbride/design-system",
+  "name": "@mattgilbride/design-system",
   "version": "0.0.0",
   "description": "low level CSS utility functions",
   "keywords": [
     "CSS"
   ],
-  "author": "Matthew T. Gilbride <mgilbride@chariotsolutions.com>",
-  "homepage": "https://github.com/matthewtgilbride/mgilbride#readme",
+  "author": "Matthew T. Gilbride <matthewtgilbride@gmail.com>",
+  "homepage": "https://github.com/matthewtgilbride/mattgilbride#readme",
   "license": "MIT",
   "directories": {
     "lib": "lib"
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matthewtgilbride/mgilbride.git"
+    "url": "git+https://github.com/matthewtgilbride/mattgilbride.git"
   },
   "scripts": {
     "lint": "eslint src/* --ext=.ts",
@@ -27,7 +27,7 @@
     "test": "jest"
   },
   "bugs": {
-    "url": "https://github.com/matthewtgilbride/mgilbride/issues"
+    "url": "https://github.com/matthewtgilbride/mattgilbride/issues"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -35,8 +35,8 @@
     "polished": "^3.5.1"
   },
   "devDependencies": {
-    "@mgilbride/eslint-config": "^0.0.0",
-    "@mgilbride/tsconfig": "^0.0.0",
+    "@mattgilbride/eslint-config": "^0.0.0",
+    "@mattgilbride/tsconfig": "^0.0.0",
     "@types/jest": "^26.0.0",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",

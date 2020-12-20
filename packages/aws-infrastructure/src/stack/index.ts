@@ -14,7 +14,7 @@ class SiteStack extends Stack {
       domainName,
       siteSubDomain,
       certificateArn,
-      assetsDirectory: '../../packages/mgilbride/public',
+      assetsDirectory: '../../packages/app/public',
     });
 
     new ContactEmailApiConstruct(this, id, {
