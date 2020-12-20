@@ -2,12 +2,7 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
 import { Layout } from '../../components/layout/Layout';
-import {
-  makeSpace,
-  palette,
-  responsiveBreakpoints,
-  makeSize,
-} from '../../utils/design';
+import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { ImgTrace } from '../../components/ImgTrace';
 
 const styleContainer: CSSObject = {

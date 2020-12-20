@@ -1,8 +1,40 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, {
+  FC,
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 export type ImgTraceProps = Record<string, unknown> & {
   path: string;
   alt: string;
+};
+
+/**
+ * Something about next and/or react
+ * causes the onLoad event to not always fire.
+ * Use both a ref and the onLoad event to
+ * make sure something fires when the image is
+ * downloaded to the browser, which seems to work.
+ */
+const useImageIsLoaded = (): [
+  MutableRefObject<HTMLImageElement | null>,
+  () => void,
+  boolean,
+] => {
+  const [loaded, setLoaded] = useState(false);
+  const onLoad = useCallback(() => setLoaded(true), []);
+
+  const ref = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    if (ref.current?.complete) {
+      setLoaded(true);
+    }
+  }, []);
+
+  return [ref, onLoad, loaded];
 };
 
 export const ImgTrace: FC<ImgTraceProps> = ({ path, alt, ...rest }) => {
@@ -10,16 +42,7 @@ export const ImgTrace: FC<ImgTraceProps> = ({ path, alt, ...rest }) => {
   const { trace } = require(`images/${path}?trace`);
   const raw = require(`images/${path}`);
 
-  const [loaded, setLoaded] = useState(false);
-  const [tries, setTries] = useState(0);
-  const ref = useRef<HTMLImageElement>(null);
-  useEffect(() => {
-    if (ref.current?.complete) {
-      setLoaded(true);
-    } else {
-      setTimeout(() => setTries(tries + 1), 100);
-    }
-  }, [tries]);
+  const [ref, onLoad, loaded] = useImageIsLoaded();
 
   return (
     <>
@@ -35,6 +58,7 @@ export const ImgTrace: FC<ImgTraceProps> = ({ path, alt, ...rest }) => {
         {...rest}
         css={{ display: loaded ? undefined : 'none' }}
         ref={ref}
+        onLoad={onLoad}
       />
     </>
   );

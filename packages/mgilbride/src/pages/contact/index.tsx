@@ -2,10 +2,10 @@ import React, { FC, SyntheticEvent, useState } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Layout } from '../../components/layout/Layout';
 import {
-  palette,
   makeResponsiveObject,
   makeSize,
   makeSpace,
+  palette,
   responsiveBreakpoints,
 } from '../../utils/design';
 import { FormControl } from '../../components/FormControl';
@@ -87,7 +87,7 @@ const Contact: FC = () => {
   const changeHandler = (key: keyof typeof values) => (value: string) =>
     setValues({ ...values, [key]: value });
 
-  const submitHandler = (e: SyntheticEvent): void => {
+  function submitHandler(e: SyntheticEvent): void {
     e.preventDefault();
     if (typeof window !== 'undefined') {
       const url = 'https://contact.mattgilbride.com'; // TODO: inject
@@ -111,7 +111,7 @@ const Contact: FC = () => {
           }, 1000);
         });
     }
-  };
+  }
 
   return (
     <Layout>

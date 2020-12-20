@@ -16,6 +16,7 @@
     "inlineSources": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization":false,
+    "skipLibCheck": true,
     "baseUrl": "src",
     "outDir": "lib"
   },
