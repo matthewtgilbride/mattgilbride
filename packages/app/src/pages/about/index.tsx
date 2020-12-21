@@ -34,14 +34,6 @@ const styleContainer: CSSObject = {
   },
 };
 
-const About: FC<{ data: any }> = ({ data }) => (
-  <Layout>
-    <div css={styleContainer}>
-      {data.body.map((item: Slice) => renderSlice(item))}
-    </div>
-  </Layout>
-);
-
 type Slice =
   | {
       slice_type: 'text';
@@ -59,16 +51,30 @@ type Slice =
       };
     };
 
-function renderSlice(slice: Slice) {
+const renderSlice = (slice: Slice): JSX.Element => {
   if (slice.slice_type === 'text') {
     return <PrismicContent richText={slice.primary.text} />;
   }
   return (
     <ImgBlur url={slice.primary.image.url} alt={slice.primary.image.alt} />
   );
+};
+
+interface AboutProps {
+  data: {
+    body: Slice[];
+  };
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+const About: FC<AboutProps> = ({ data }) => (
+  <Layout>
+    <div css={styleContainer}>
+      {data.body.map((item: Slice) => renderSlice(item))}
+    </div>
+  </Layout>
+);
+
+export const getStaticProps: GetStaticProps<AboutProps> = async () => {
   const doc = await client.getSingle('about', {});
   return {
     props: {

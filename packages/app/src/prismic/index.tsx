@@ -11,12 +11,25 @@ export const client = Prismic.client(
 );
 
 export const linkResolver = (doc: PrismicDocument): string => {
-  if (doc.type === 'about') {
-    return '/about';
+  switch (doc.type) {
+    case 'about':
+      return '/about';
+    case 'blog_post':
+      return `/blog/${doc.uid}`;
+    default:
+      return '/';
   }
-  return '/';
 };
 
 export const PrismicContent: FC<{ richText: RichTextBlock[] }> = ({
   richText,
 }) => <RichText render={richText} linkResolver={linkResolver} />;
+
+export type PrismicLink =
+  | ({
+      link_type: 'Document';
+    } & PrismicDocument)
+  | {
+      link_type: 'Web';
+      url: string;
+    };
