@@ -14,6 +14,12 @@ export const linkResolver = (doc: PrismicDocument): string => {
   switch (doc.type) {
     case 'about':
       return '/about';
+    case 'blog':
+      return '/blog';
+    case 'contact':
+      return '/contact';
+    case 'resume':
+      return '/resume';
     case 'blog_post':
       return `/blog/${doc.uid}`;
     default:

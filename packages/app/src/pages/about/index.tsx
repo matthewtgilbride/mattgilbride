@@ -51,7 +51,7 @@ type Slice =
       };
     };
 
-const renderSlice = (slice: Slice): JSX.Element => {
+const SliceComponent: FC<{ slice: Slice }> = ({ slice }) => {
   if (slice.slice_type === 'text') {
     return <PrismicContent richText={slice.primary.text} />;
   }
@@ -69,7 +69,9 @@ interface AboutProps {
 const About: FC<AboutProps> = ({ data }) => (
   <Layout>
     <div css={styleContainer}>
-      {data.body.map((item: Slice) => renderSlice(item))}
+      {data.body.map((slice: Slice) => (
+        <SliceComponent key={JSON.stringify(slice)} slice={slice} />
+      ))}
     </div>
   </Layout>
 );

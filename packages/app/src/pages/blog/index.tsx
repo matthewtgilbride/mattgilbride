@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
@@ -51,11 +51,15 @@ const Blog: FC<BlogProps> = ({ data }) => (
   <Layout>
     <div css={styleContainer}>
       {data.body.map(({ items, primary }) => (
-        <>
+        <Fragment key={JSON.stringify({ items, primary })}>
           <PrismicContent richText={primary.year} />
           {items.map((item) => {
             if (item.link.link_type === 'Web') {
-              return <a href={item.link.url}>{item.title}</a>;
+              return (
+                <a key={item.title} href={item.link.url}>
+                  {item.title}
+                </a>
+              );
             }
             return (
               <Link key={item.title} href={linkResolver(item.link)}>
@@ -63,7 +67,7 @@ const Blog: FC<BlogProps> = ({ data }) => (
               </Link>
             );
           })}
-        </>
+        </Fragment>
       ))}
       <h3>...more coming soon...</h3>
     </div>
