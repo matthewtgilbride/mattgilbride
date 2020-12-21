@@ -20,7 +20,7 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
         src={blurUrl}
         alt={alt}
         {...rest}
-        css={{ display: loaded ? 'none' : undefined }}
+        css={{ '&&&': { display: loaded ? 'none' : undefined }}}
       />
       <picture>
         <img
@@ -28,7 +28,7 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
           alt={alt}
           ref={ref}
           onLoad={onLoad}
-          css={{ display: loaded ? undefined : 'none' }}
+          css={{ '&&&': { display: loaded ? undefined : 'none' }}}
         />
         <source
           srcSet={tabletUrl}

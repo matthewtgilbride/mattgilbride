@@ -23,7 +23,6 @@ const styleContent: CSSObject = {
   },
   h1: {
     textAlign: 'center',
-    textTransform: 'capitalize',
     fontWeight: 'bold',
     fontSize: makeSize('h2'),
     margin: `${makeSpace('xxs')} 0`,
