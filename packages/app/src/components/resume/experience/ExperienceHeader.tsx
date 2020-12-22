@@ -5,7 +5,7 @@ import {
   makeSize,
   makeSpace,
   makeResponsiveObject,
-} from '../../utils/design';
+} from '../../../utils/design';
 
 export interface JobHeaderProps {
   orgCopy: string;
@@ -94,7 +94,7 @@ const styleDate: CSSObject = {
   textTransform: 'initial',
 };
 
-export const JobOrDegreeHeader: FC<JobHeaderProps> = ({
+export const ExperienceHeader: FC<JobHeaderProps> = ({
   orgCopy,
   orgUrl,
   dateCopy,
