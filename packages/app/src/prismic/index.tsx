@@ -39,3 +39,8 @@ export type PrismicLink =
       link_type: 'Web';
       url: string;
     };
+
+export interface PrismicImage {
+  alt: string;
+  url: string;
+}

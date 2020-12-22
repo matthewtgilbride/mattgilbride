@@ -1,6 +1,6 @@
 import React from 'react';
 import { CSSObject } from '@emotion/core';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { Layout } from '../../components/layout/Layout';
 import {
@@ -9,12 +9,15 @@ import {
   responsiveBreakpoints,
 } from '../../utils/design';
 import { JobOrDegreeHeader } from '../../components/resume/JobOrDegreeHeader';
-import { SkillHeader } from '../../components/resume/SkillHeader';
-import { SkillBody } from '../../components/resume/SkillBody';
+import { SkillHeader } from '../../components/resume/skill/SkillHeader';
+import { SkillBody } from '../../components/resume/skill/SkillBody';
 import { JobOrDegreeBody } from '../../components/resume/JobOrDegreeBody';
 import { Section } from '../../components/resume/Section';
 import { Footer } from '../../components/resume/Footer';
 import { ChariotProjectHeader } from '../../components/resume/ChariotProjectHeader';
+import { client } from '../../prismic';
+import { ResumeProps, SkillSlice } from './model';
+import { Skill } from '../../components/resume/skill/Skill';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -39,7 +42,7 @@ const styleSkills: CSSObject = {
   }),
 };
 
-const Resume: NextPage = () => {
+const Resume: NextPage<ResumeProps> = ({ data }) => {
   const { pathname, asPath } = useRouter();
   const hash = asPath.substr(asPath.lastIndexOf('#'), asPath.length);
   return (
@@ -55,84 +58,14 @@ const Resume: NextPage = () => {
           }}
         >
           <div css={styleSkills}>
-            <div>
-              <SkillHeader
-                imgSrc="/assets/svg/curly-brackets.svg"
-                imgSize={24}
-                text="Languages / Frameworks"
-              />
-              <SkillBody>
-                <h5>Day to Day</h5>
-                <ul>
-                  <li>Javascript &bull; Typescript &bull; Node</li>
-                  <li>React &bull; Vue &bull; HTML &bull; CSS</li>
-                  <li>Scala &bull; Akka &bull; Python &bull; Flask</li>
-                  <li>SQL &bull; Postgres</li>
-                </ul>
-                <h5>Previous Projects</h5>
-                <ul>
-                  <li>Java &bull; Spring</li>
-                  <li>Neo4j &bull; Apache Spark &bull; Cassandra</li>
-                </ul>
-                <h5>Dabbled</h5>
-                <ul>
-                  <li>Clojure &bull; Haskell</li>
-                </ul>
-              </SkillBody>
-            </div>
-            <div>
-              <SkillHeader
-                imgSrc="/assets/svg/infrastructure.svg"
-                imgSize={24}
-                text="Infrastructure"
-              />
-              <SkillBody>
-                <h5>General</h5>
-                <ul>
-                  <li>Git &bull; GitHub &bull; GitLab</li>
-                  <li>nginx &bull; Apache Tomcat</li>
-                  <li>Docker</li>
-                  <li>Jenkins</li>
-                </ul>
-                <h5>AWS</h5>
-                <ul>
-                  <li>EC2 &bull; ECS</li>
-                  <li>VPC &bull; ALB &bull; Route 53</li>
-                  <li>Lambda &bull; Kinesis</li>
-                  <li>IAM &bull; Cognito</li>
-                  <li>Cloudformation &bull; Terraform &bull; CDK</li>
-                </ul>
-              </SkillBody>
-            </div>
-            <div>
-              <SkillHeader
-                imgSrc="/assets/svg/architecture.svg"
-                imgSize={24}
-                text="Architecture"
-              />
-              <SkillBody>
-                <ul>
-                  <li>REST</li>
-                  <li>Event Sourcing and CQRS</li>
-                  <li>Domain Driven Design</li>
-                </ul>
-              </SkillBody>
-            </div>
-            <div>
-              <SkillHeader
-                imgSrc="/assets/svg/process.svg"
-                imgSize={28}
-                text="Process"
-              />
-              <SkillBody>
-                <ul>
-                  <li>Agile/Scrum</li>
-                  <li>Specification writing</li>
-                  <li>User acceptance testing</li>
-                  <li>Go-live and production support</li>
-                </ul>
-              </SkillBody>
-            </div>
+            {data.body
+              .filter((i) => i.slice_type === 'skill_group')
+              .map((slice) => (
+                <Skill
+                  key={JSON.stringify(slice)}
+                  slice={slice as SkillSlice}
+                />
+              ))}
           </div>
         </Section>
         <Section
@@ -393,6 +326,15 @@ const Resume: NextPage = () => {
       </div>
     </Layout>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const doc = await client.getSingle('resume', {});
+  return {
+    props: {
+      data: doc.data,
+    },
+  };
 };
 
 export default Resume;
