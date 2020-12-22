@@ -11,7 +11,11 @@ import {
 import { Section } from '../../components/resume/Section';
 import { Footer } from '../../components/resume/Footer';
 import { client } from '../../prismic';
-import { ExperienceSlice, ResumeProps, SkillSlice } from './model';
+import {
+  ExperienceSlice,
+  ResumeProps,
+  SkillSlice,
+} from '../../components/resume/model';
 import { Skill } from '../../components/resume/skill/Skill';
 import { Experience } from '../../components/resume/experience/Experience';
 

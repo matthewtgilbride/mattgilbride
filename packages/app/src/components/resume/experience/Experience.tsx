@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ExperienceSlice } from '../../../pages/resume/model';
+import { ExperienceSlice } from '../model';
 import { ExperienceHeader } from './ExperienceHeader';
 import { ExperienceBody } from './ExperienceBody';
 import { PrismicContent } from '../../../prismic';

@@ -1,5 +1,5 @@
 import React, { FC, Fragment } from 'react';
-import { SkillSlice } from '../../../pages/resume/model';
+import { SkillSlice } from '../model';
 import { SkillHeader } from './SkillHeader';
 import { SkillBody } from './SkillBody';
 import { PrismicContent } from '../../../prismic';

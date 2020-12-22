@@ -91,10 +91,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
     Prismic.Predicates.at('document.type', 'blog_post'),
   );
 
+  const paths: string[] = allPosts.results.map((p) => `/blog/${p.uid}`);
+
   return {
-    paths: allPosts.results.map((p) => ({
-      params: { uid: p.uid as string },
-    })),
-    fallback: true,
+    paths,
+    fallback: false,
   };
 };
