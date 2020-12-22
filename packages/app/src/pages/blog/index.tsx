@@ -1,8 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
+import { RichTextBlock } from 'prismic-reactjs';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
+import {
+  linkResolver,
+  PrismicClient,
+  PrismicContent,
+  PrismicLink,
+} from '../../prismic';
 
 const styleContainer: CSSObject = {
   display: 'flex',
@@ -19,7 +27,7 @@ const styleContainer: CSSObject = {
   },
   a: {
     textAlign: 'center',
-    margin: `${makeSpace('md')} 0`,
+    marginBottom: makeSpace('md'),
   },
   h3: {
     margin: `${makeSpace('xl')} 0`,
@@ -27,23 +35,56 @@ const styleContainer: CSSObject = {
   },
 };
 
-const Blog: FC = () => (
+interface BlogProps {
+  data: {
+    body: {
+      primary: { year: RichTextBlock[] };
+      items: {
+        title: string;
+        link: PrismicLink;
+      }[];
+    }[];
+  };
+}
+
+const Blog: FC<BlogProps> = ({ data }) => (
   <Layout>
     <div css={styleContainer}>
-      <h2>2020</h2>
-      <Link href="/blog/shoemaker">giving the shoemaker shoes</Link>
-      <a href="https://chariotsolutions.com/blog/post/using-the-aws-cdk-in-real-life/">
-        using the AWS CDK in real life
-      </a>
-      <a href="https://chariotsolutions.com/blog/post/vue-3-0-might-be-a-big-deal/">
-        Vue 3.0 might be a big deal
-      </a>
-      <a href="https://chariotsolutions.com/blog/post/using-the-aws-cdk-irl-part-2/">
-        using the AWS CDK in real life - part two
-      </a>
+      {data.body.map(({ items, primary }) => (
+        <Fragment key={JSON.stringify({ items, primary })}>
+          <PrismicContent richText={primary.year} />
+          {items.map((item) => {
+            if (item.link.link_type === 'Web') {
+              return (
+                <a key={item.title} href={item.link.url}>
+                  {item.title}
+                </a>
+              );
+            }
+            return (
+              <Link key={item.title} href={linkResolver(item.link)}>
+                {item.title}
+              </Link>
+            );
+          })}
+        </Fragment>
+      ))}
       <h3>...more coming soon...</h3>
     </div>
   </Layout>
 );
+
+export const getStaticProps: GetStaticProps<BlogProps> = async ({
+  preview = null,
+  previewData = {},
+}) => {
+  const doc = await PrismicClient().getSingle('blog', previewData);
+  return {
+    props: {
+      data: doc.data,
+      preview,
+    },
+  };
+};
 
 export default Blog;
