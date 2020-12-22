@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
 import Prismic from 'prismic-javascript';
 import { Document } from 'prismic-javascript/types/documents';
-import { RichTextBlock, RichText } from 'prismic-reactjs';
+import { RichText, RichTextBlock } from 'prismic-reactjs';
+import { DefaultClient } from 'prismic-javascript/types/client';
 
 export type PrismicDocument = Document;
 
-// TODO: clean up URL and build a strogly typed client
-export const client = Prismic.client(
-  'https://mattgilbride.cdn.prismic.io/api/v2',
-);
+const prismicUrl = 'https://mattgilbride.cdn.prismic.io/api/v2';
+// TODO: clean up URL and build a strongly typed client
+export const PrismicClient = (req?: unknown): DefaultClient =>
+  Prismic.client(prismicUrl, { req });
 
 export const linkResolver = (doc: PrismicDocument): string => {
   switch (doc.type) {

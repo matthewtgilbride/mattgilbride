@@ -10,7 +10,7 @@ import {
 } from '../../utils/design';
 import { Section } from '../../components/resume/Section';
 import { Footer } from '../../components/resume/Footer';
-import { client } from '../../prismic';
+import { PrismicClient } from '../../prismic';
 import {
   ExperienceSlice,
   ResumeProps,
@@ -112,11 +112,15 @@ const Resume: NextPage<ResumeProps> = ({ data }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const doc = await client.getSingle('resume', {});
+export const getStaticProps: GetStaticProps = async ({
+  preview = null,
+  previewData = {},
+}) => {
+  const doc = await PrismicClient().getSingle('resume', previewData);
   return {
     props: {
       data: doc.data,
+      preview,
     },
   };
 };

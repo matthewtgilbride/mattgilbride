@@ -3,7 +3,7 @@ import { RichTextBlock } from 'prismic-reactjs';
 import { CSSObject } from '@emotion/core';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Prismic from 'prismic-javascript';
-import { client, PrismicContent } from '../../prismic';
+import { PrismicClient, PrismicContent } from '../../prismic';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { Layout } from '../../components/layout/Layout';
 
@@ -77,17 +77,24 @@ export default BlogPost;
 
 export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
   params,
+  preview = false,
+  previewData = {},
 }) => {
-  const post = await client.getByUID('blog_post', params?.uid as string, {});
+  const post = await PrismicClient().getByUID(
+    'blog_post',
+    params?.uid as string,
+    previewData,
+  );
   return {
     props: {
       data: post.data,
+      preview,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await client.query(
+  const allPosts = await PrismicClient().query(
     Prismic.Predicates.at('document.type', 'blog_post'),
   );
 
@@ -95,6 +102,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: process.env.NODE_ENV === 'development',
   };
 };

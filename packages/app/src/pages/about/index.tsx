@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import { RichTextBlock } from 'prismic-reactjs';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
-import { client, PrismicContent } from '../../prismic';
+import { PrismicClient, PrismicContent } from '../../prismic';
 import { ImgBlur } from '../../components/ImgBlur';
 
 const styleContainer: CSSObject = {
@@ -76,11 +76,15 @@ const About: FC<AboutProps> = ({ data }) => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps<AboutProps> = async () => {
-  const doc = await client.getSingle('about', {});
+export const getStaticProps: GetStaticProps<AboutProps> = async ({
+  preview = null,
+  previewData = {},
+}) => {
+  const doc = await PrismicClient().getSingle('about', previewData);
   return {
     props: {
       data: doc.data,
+      preview,
     },
   };
 };

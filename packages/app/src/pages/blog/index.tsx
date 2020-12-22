@@ -6,8 +6,8 @@ import { RichTextBlock } from 'prismic-reactjs';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import {
-  client,
   linkResolver,
+  PrismicClient,
   PrismicContent,
   PrismicLink,
 } from '../../prismic';
@@ -74,11 +74,15 @@ const Blog: FC<BlogProps> = ({ data }) => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps<BlogProps> = async () => {
-  const doc = await client.getSingle('blog', {});
+export const getStaticProps: GetStaticProps<BlogProps> = async ({
+  preview = null,
+  previewData = {},
+}) => {
+  const doc = await PrismicClient().getSingle('blog', previewData);
   return {
     props: {
       data: doc.data,
+      preview,
     },
   };
 };
