@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Layout } from '../layout/Layout';
-import { JobHeaderProps, JobOrDegreeHeader } from './JobOrDegreeHeader';
+import { Layout } from '../../layout/Layout';
+import { JobHeaderProps, ExperienceHeader } from './ExperienceHeader';
 
 export default {
   title: 'Components/Resume/JobOrDegreeHeader',
-  component: JobOrDegreeHeader,
+  component: ExperienceHeader,
   excludeStories: /.*Props/,
 } as Meta;
 
@@ -19,7 +19,7 @@ export const baseProps: JobHeaderProps = {
 };
 
 const Template: Story<JobHeaderProps> = (args) => (
-  <JobOrDegreeHeader {...args} />
+  <ExperienceHeader {...args} />
 );
 
 export const Base = Template.bind({});
@@ -27,7 +27,7 @@ Base.args = baseProps;
 
 const LayoutTemplate: Story<JobHeaderProps> = (args) => (
   <Layout>
-    <JobOrDegreeHeader {...args} />
+    <ExperienceHeader {...args} />
   </Layout>
 );
 
