@@ -67,7 +67,7 @@ interface AboutProps {
 }
 
 const About: FC<AboutProps> = ({ data }) => (
-  <Layout>
+  <Layout seo={{ pageTitle: 'About' }}>
     <div css={styleContainer}>
       {data.body.map((slice: Slice) => (
         <SliceComponent key={JSON.stringify(slice)} slice={slice} />

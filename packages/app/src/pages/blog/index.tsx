@@ -48,7 +48,7 @@ interface BlogProps {
 }
 
 const Blog: FC<BlogProps> = ({ data }) => (
-  <Layout>
+  <Layout seo={{ pageTitle: 'Blog' }}>
     <div css={styleContainer}>
       {data.body.map(({ items, primary }) => (
         <Fragment key={JSON.stringify({ items, primary })}>

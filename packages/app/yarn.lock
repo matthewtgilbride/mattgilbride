@@ -1837,7 +1837,7 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@mdx-js/loader@^1.6.17", "@mdx-js/loader@^1.6.19":
+"@mdx-js/loader@^1.6.19":
   version "1.6.22"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-1.6.22.tgz#d9e8fe7f8185ff13c9c8639c048b123e30d322c4"
   integrity sha512-9CjGwy595NaxAYp0hF9B/A0lH6C8Rms97e2JS9d3jVUtILn6pT5i5IV965ra3lIWc7Rs1GG1tBdVF7dCowYe6Q==
@@ -1893,11 +1893,6 @@
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-10.0.3.tgz#ef1077d78bf500855576f83090d6fb1ec96272f8"
   integrity sha512-xjJt2VXoSxAydskmt77nJuEtRL782E4ltaj5JtMzJ8YkNUMMu3d5ktpCR+Q3INKHF/RY6zHJ9QzyE3/s1ikbNg==
-
-"@next/mdx@^9.5.3":
-  version "9.5.5"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.5.5.tgz#c5742c7db722905c4c7456098c1f2ba1cae3994d"
-  integrity sha512-IdwwXrxqNhZuEeyVdCKtv1R2CqIsAZm/rtCUbE5WImFW3VK8nrSFDFi+JkoWoDcHgGgaJYgfoYAoieHV5POGJg==
 
 "@next/polyfill-module@10.0.3":
   version "10.0.3"
@@ -12597,6 +12592,11 @@ scheduler@^0.19.1:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+schema-dts@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-0.8.2.tgz#4a478eec4119023456e3c41b23744af69ff7a8fc"
+  integrity sha512-whRg7QF9wmPfrwAi4NRT/bjMBIdHvzpr4excNN00hn+U2aFXx9NB3JKfooUMJLDqpGEqnZpA61f5muw9lQ50ZA==
 
 schema-utils@2.7.1, schema-utils@^2.5.0, schema-utils@^2.6.5, schema-utils@^2.6.6, schema-utils@^2.7.0, schema-utils@^2.7.1:
   version "2.7.1"
