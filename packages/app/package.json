@@ -13,7 +13,7 @@
     "export": "next export",
     "serve": "serve out",
     "clean": "rm -rf .next && rm -rf out",
-    "deploy": "aws s3 sync out s3://www.mattgilbride.com",
+    "deploy": "aws s3 sync out s3://www.mattgilbride.com --cache-control max-age=86400",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook",
     "svgr": "svgr -d src/components/svg/generated public/assets/svg && yarn lint --fix"

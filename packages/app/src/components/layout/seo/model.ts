@@ -153,5 +153,5 @@ export interface ManifestProperties {
 export interface WebsiteConfig {
   pathPrefix: string;
   siteMetadataConfig: SiteSEOProperties;
-  // manifestConfig: ManifestProperties; TODO:x
+  // manifestConfig: ManifestProperties; TODO: wire up when we make PWA
 }
