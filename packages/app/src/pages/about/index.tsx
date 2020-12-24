@@ -12,6 +12,7 @@ const styleContainer: CSSObject = {
   maxWidth: responsiveBreakpoints.tabletPortrait,
   img: {
     maxWidth: '40vh',
+    maxHeight: '40vh',
     padding: `${makeSpace('lg')} 0`,
     display: 'block',
     margin: '0 auto',

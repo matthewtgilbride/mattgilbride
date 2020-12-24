@@ -7,9 +7,9 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
   alt,
   ...rest
 }) => {
-  const blurUrl = `${url}&blur=200`;
+  const blurUrl = `${url}&blur=200&width=${responsiveBreakpoints.phone}`;
 
-  const mobileUrl = `${url}&width=${responsiveBreakpoints.phoneLg}`;
+  const mobileUrl = `${url}&width=${responsiveBreakpoints.phone}`;
   const tabletUrl = `${url}&width=${responsiveBreakpoints.tabletPortrait}`;
 
   const [ref, onLoad, loaded] = useImageIsLoaded();
@@ -18,6 +18,11 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
     <>
       <img
         src={blurUrl}
+        width="100%"
+        height="100%"
+        loading="lazy"
+        ref={ref}
+        onLoad={onLoad}
         alt={alt}
         {...rest}
         css={{ '&&&': { display: loaded ? 'none' : undefined } }}
@@ -25,9 +30,10 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
       <picture>
         <img
           src={mobileUrl}
+          width="100%"
+          height="100%"
           alt={alt}
-          ref={ref}
-          onLoad={onLoad}
+          loading="lazy"
           css={{ '&&&': { display: loaded ? undefined : 'none' } }}
         />
         <source
@@ -35,7 +41,7 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
           media={`(min-width: ${responsiveBreakpoints.tabletPortrait}px`}
         />
         <source
-          srcSet={tabletUrl}
+          srcSet={url}
           media={`(min-width: ${responsiveBreakpoints.laptop}px`}
         />
       </picture>
