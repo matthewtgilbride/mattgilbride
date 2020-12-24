@@ -7,7 +7,8 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
   alt,
   ...rest
 }) => {
-  const blurUrl = `${url}&blur=200&width=${responsiveBreakpoints.phone}`;
+  // TODO: this assumes we're using the same circular images everywhere which might not always be true
+  const blurUrl = `${url}&px=50&mask=ellipse&width=${responsiveBreakpoints.phone}`;
 
   const mobileUrl = `${url}&width=${responsiveBreakpoints.phone}`;
   const tabletUrl = `${url}&width=${responsiveBreakpoints.tabletPortrait}`;

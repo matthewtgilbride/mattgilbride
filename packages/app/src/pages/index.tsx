@@ -19,7 +19,7 @@ const styleContent: CSSObject = {
   flexDirection: 'column',
   img: {
     maxWidth: '40vh',
-    maxHeight: '40vh',
+    height: 'auto',
     padding: makeSpace('lg'),
   },
   h1: {
