@@ -20,7 +20,7 @@ const styleContent: CSSObject = {
   img: {
     maxWidth: '40vh',
     height: 'auto',
-    padding: makeSpace('lg'),
+    padding: `${makeSpace('lg')} 0`,
   },
   h1: {
     textAlign: 'center',
