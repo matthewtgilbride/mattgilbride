@@ -79,7 +79,6 @@ export const SEO: FC<PageSEOProperties> = ({
     <>
       <Head>
         <title>{metaTitle}</title>
-        <html lang={siteMetadata.siteLanguage} />
         <script type="application/ld+json" id="website-json-ld">
           {JSON.stringify(jsonLD, null, 2)}
         </script>
