@@ -4,7 +4,7 @@ import { Header } from './header/Header';
 import { ContentContainer } from './content/ContentContainer';
 import { NavMenu } from './NavMenu';
 import { responsiveBreakpoints } from '../../utils/design';
-import { documentReset, meyerReset } from './Layout.styles';
+import { documentReset, fontMontserrat, meyerReset } from './Layout.styles';
 import { PageSEOProperties } from './seo/model';
 import { SEO } from './seo/SEORoot';
 
@@ -30,6 +30,7 @@ export const Layout: FC<LayoutProps> = ({ children, seo, footer }) => {
   return (
     <>
       <SEO {...seo} />
+      <Global styles={fontMontserrat} />
       <Global styles={meyerReset} />
       <Global styles={documentReset} />
       <div css={styleContainer}>

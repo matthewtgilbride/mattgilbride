@@ -6,14 +6,9 @@ class MyDocument extends Document {
   // eslint-disable-next-line class-methods-use-this
   render(): JSX.Element {
     return (
+      // this line is the only reason the _document file exists: https://github.com/vercel/next.js/issues/19361
       <Html lang={websiteConfig.siteMetadataConfig.siteLanguage}>
-        <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
