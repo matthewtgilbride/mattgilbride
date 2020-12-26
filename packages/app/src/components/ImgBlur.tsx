@@ -50,8 +50,8 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
     <>
       <img
         src={blurUrl}
-        width="100%"
-        height="100%"
+        width={responsiveBreakpoints.phone}
+        height={responsiveBreakpoints.phone}
         loading="lazy"
         ref={ref}
         onLoad={onLoad}
@@ -62,8 +62,8 @@ export const ImgBlur: FC<{ url: string; alt: string }> = ({
       <picture>
         <img
           src={mobileUrl}
-          width="100%"
-          height="100%"
+          width={responsiveBreakpoints.phone}
+          height={responsiveBreakpoints.phone}
           alt={alt}
           loading="lazy"
           css={{ '&&&': { display: loaded ? undefined : 'none' } }}
