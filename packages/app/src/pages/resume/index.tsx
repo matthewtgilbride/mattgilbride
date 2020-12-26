@@ -43,7 +43,7 @@ const Resume: NextPage<ResumeProps> = ({ data }) => {
   const { pathname, asPath } = useRouter();
   const hash = asPath.substr(asPath.lastIndexOf('#'), asPath.length);
   return (
-    <Layout footer={<Footer />}>
+    <Layout footer={<Footer />} seo={{ pageTitle: 'Resume' }}>
       <div css={styleContainer}>
         <Section
           defaultClosed

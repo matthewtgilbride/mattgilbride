@@ -26,7 +26,7 @@ export const Base = Template.bind({});
 Base.args = baseProps;
 
 const LayoutTemplate: Story<JobHeaderProps> = (args) => (
-  <Layout>
+  <Layout seo={{ pageTitle: 'home' }}>
     <ExperienceHeader {...args} />
   </Layout>
 );
