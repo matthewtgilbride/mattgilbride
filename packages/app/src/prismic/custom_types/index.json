@@ -1,0 +1,31 @@
+[{
+  "id": "home",
+  "name": "Home",
+  "repeatable": false,
+  "value": "home.json"
+},{
+  "id": "about",
+  "name": "About",
+  "repeatable": false,
+  "value": "about.json"
+}, {
+  "id": "contact",
+  "name": "Contact",
+  "repeatable": false,
+  "value": "contact.json"
+},{
+  "id": "resume",
+  "name": "Resume",
+  "repeatable": false,
+  "value": "resume.json"
+}, {
+  "id": "blog",
+  "name": "Blog",
+  "repeatable": true,
+  "value": "blog.json"
+}, {
+  "id": "blog_post",
+  "name": "Blog post",
+  "repeatable": true,
+  "value": "blog_post.json"
+}]

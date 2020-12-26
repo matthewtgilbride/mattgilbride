@@ -1,0 +1,45 @@
+{
+  "Main" : {
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "year" : [ ]
+        },
+        "choices" : {
+          "year" : {
+            "type" : "Slice",
+            "fieldset" : "year",
+            "description" : "Year heading and list of links to posts for that year",
+            "icon" : "format_list_numbered",
+            "display" : "list",
+            "non-repeat" : {
+              "year" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2",
+                  "label" : "year"
+                }
+              }
+            },
+            "repeat" : {
+              "title" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "title"
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "link"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

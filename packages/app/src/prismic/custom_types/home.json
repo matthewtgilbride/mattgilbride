@@ -1,0 +1,30 @@
+{
+  "Main" : {
+    "greeting" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label" : "greeting",
+        "placeholder" : "yo"
+      }
+    },
+    "profile" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : {
+          "width" : null,
+          "height" : null
+        },
+        "thumbnails" : [ ],
+        "label" : "profile"
+      }
+    },
+    "copy" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, hyperlink",
+        "label" : "copy"
+      }
+    }
+  }
+}

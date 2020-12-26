@@ -1,0 +1,123 @@
+{
+  "Main" : {
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "skill_group" : [ ],
+          "experience_group" : [ ]
+        },
+        "choices" : {
+          "skill_group" : {
+            "type" : "Slice",
+            "fieldset" : "Skill Group",
+            "description" : "Group of related skills",
+            "icon" : "adb",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "title"
+                }
+              },
+              "icon" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "icon"
+                }
+              },
+              "icon_size" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "icon size"
+                }
+              }
+            },
+            "repeat" : {
+              "subgroup_title" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "subgroup title"
+                }
+              },
+              "subgroup_copy" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "list-item",
+                  "label" : "subgroup copy"
+                }
+              }
+            }
+          },
+          "experience_group" : {
+            "type" : "Slice",
+            "fieldset" : "Experience Group",
+            "description" : "Group to go in experience or education",
+            "icon" : "account_balance",
+            "display" : "list",
+            "non-repeat" : {
+              "type" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "experience", "education" ],
+                  "default_value" : "experience",
+                  "label" : "type"
+                }
+              },
+              "title" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "title"
+                }
+              },
+              "date" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "date"
+                }
+              },
+              "icon" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "icon"
+                }
+              },
+              "icon_size" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "icon size"
+                }
+              },
+              "link_text" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "link text"
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "link"
+                }
+              },
+              "copy" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label" : "copy"
+                }
+              }
+            },
+            "repeat" : { }
+          }
+        }
+      }
+    }
+  }
+}
