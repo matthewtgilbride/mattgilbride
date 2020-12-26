@@ -5,18 +5,11 @@ import { RichTextBlock } from 'prismic-reactjs';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { PrismicClient, PrismicContent } from '../../prismic';
-import { ImgBlur } from '../../components/ImgBlur';
+import { NextImageContainer } from '../../components/NextImageContainer';
 
 const styleContainer: CSSObject = {
   margin: 'auto',
   maxWidth: responsiveBreakpoints.tabletPortrait,
-  img: {
-    maxWidth: '40vh',
-    height: 'auto',
-    padding: `${makeSpace('lg')} 0`,
-    display: 'block',
-    margin: '0 auto',
-  },
   h2: {
     fontStyle: 'italic',
     fontWeight: 'bold',
@@ -33,6 +26,14 @@ const styleContainer: CSSObject = {
   p: {
     margin: `${makeSpace('sm')} 0`,
   },
+};
+
+const styleNextImage: CSSObject = {
+  maxWidth: '40vh',
+  height: 'auto',
+  padding: `${makeSpace('lg')} 0`,
+  display: 'block',
+  margin: '0 auto',
 };
 
 type Slice =
@@ -57,7 +58,13 @@ const SliceComponent: FC<{ slice: Slice }> = ({ slice }) => {
     return <PrismicContent richText={slice.primary.text} />;
   }
   return (
-    <ImgBlur url={slice.primary.image.url} alt={slice.primary.image.alt} />
+    <NextImageContainer
+      cssProp={styleNextImage}
+      src={slice.primary.image.url}
+      alt={slice.primary.image.alt}
+      width={responsiveBreakpoints.tabletPortrait}
+      height={responsiveBreakpoints.tabletPortrait}
+    />
   );
 };
 
