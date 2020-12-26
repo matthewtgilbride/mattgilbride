@@ -24,14 +24,14 @@ export const websiteConfig: WebsiteConfig = {
     siteTitle: 'Matt Gilbride',
     siteTitleAlt: 'Matt Gilbride ',
     siteDescription: "Matt Gilbride's personal website",
-    siteImage: 'src/images/cesium-logo.png',
+    siteImage: '/images/profile_circle.png',
     siteUrl: getSiteUrl(),
     siteHeadline: 'Matt Gilbride',
     siteLanguage: 'en',
     siteOgLanguage: 'en_US',
     siteAuthor: 'Matt Gilbride',
     siteBaseKeywords: ['Matt Gilbride'],
-    linkedinProfileUrl: 'https://www.linkedin.com/company/cesium-gs/',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/matthewgilbride/',
   },
 };
 
@@ -87,7 +87,7 @@ export const SEO: FC<PageSEOProperties> = ({
         <meta name="image" content={metaImage} />
         <meta name="author" content={metaAuthor} />
         <meta name="keywords" content={metaKeywords.join(', ')} />
-        <link rel="canonical" href={siteMetadata.siteUrl} />
+        <link rel="canonical" href={`${siteMetadata.siteUrl}/${pathname}`} />
       </Head>
       {siteMetadata.facebookProfileUrl && (
         <SEOFacebookLinkedin
