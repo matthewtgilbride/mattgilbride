@@ -114,7 +114,7 @@ const Contact: FC = () => {
   }
 
   return (
-    <Layout>
+    <Layout seo={{ pageTitle: 'Contact' }}>
       <form css={styleContainer} onSubmit={submitHandler}>
         <span style={{ color: styleMessage(postState) }}>
           {submitMessage(postState)}

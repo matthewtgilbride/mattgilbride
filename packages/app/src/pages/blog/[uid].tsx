@@ -63,7 +63,7 @@ interface BlogPostProps {
 }
 
 const BlogPost: FC<BlogPostProps> = ({ data }) => (
-  <Layout>
+  <Layout seo={{ pageTitle: data.title[0].text ?? 'Matt Gilbride' }}>
     <article css={styleContainer}>
       <div>
         <PrismicContent richText={data.title} />

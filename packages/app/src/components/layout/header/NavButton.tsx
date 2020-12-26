@@ -63,7 +63,7 @@ export const NavButton: FC<NavButtonProps> = ({ open, onClick }) => {
   });
 
   return (
-    <button css={styleMenuButton(open)} onClick={onClick}>
+    <button css={styleMenuButton(open)} onClick={onClick} aria-label="menu">
       <svg viewBox="0 0 100 100" ref={ref}>
         <animated.line {...topSpring} x1="0" x2="100" strokeWidth="10" />
         <animated.line

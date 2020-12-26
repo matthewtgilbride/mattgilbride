@@ -27,7 +27,7 @@ export const Base = Template.bind({});
 Base.args = scrollableSectionHeaderProps;
 
 const LayoutTemplate: Story<SectionHeaderProps> = (args) => (
-  <Layout>
+  <Layout seo={{ pageTitle: 'home' }}>
     <SectionHeader {...args} />
   </Layout>
 );

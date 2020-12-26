@@ -22,7 +22,7 @@ const styleContainer: CSSObject = {
 };
 
 const UnderConstruction: FC = () => (
-  <Layout>
+  <Layout seo={{ pageTitle: 'Under Construction' }}>
     <div css={styleContainer}>Yo this shit is under construction</div>
   </Layout>
 );

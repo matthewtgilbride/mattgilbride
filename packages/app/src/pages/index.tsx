@@ -19,7 +19,8 @@ const styleContent: CSSObject = {
   flexDirection: 'column',
   img: {
     maxWidth: '40vh',
-    padding: makeSpace('lg'),
+    height: 'auto',
+    padding: `${makeSpace('lg')} 0`,
   },
   h1: {
     textAlign: 'center',
@@ -47,7 +48,7 @@ interface HomeProps {
 }
 
 const Home: FC<HomeProps> = ({ data }) => (
-  <Layout>
+  <Layout seo={{ pageTitle: 'Home' }}>
     <div css={styleContainer}>
       <div css={styleContent}>
         <PrismicContent richText={data.greeting} />

@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Layout } from './Layout';
+import { Layout, LayoutProps } from './Layout';
 
 export default {
   title: 'Components/Layout',
@@ -8,12 +8,13 @@ export default {
   excludeStories: /.*Props/,
 } as Meta;
 
-const Template: Story<{ footer?: ReactNode; children?: ReactNode }> = (
-  args,
-) => <Layout {...args} />;
+const Template: Story<PropsWithChildren<LayoutProps>> = (args) => (
+  <Layout {...args} />
+);
 
 export const Mobile = Template.bind({});
 Mobile.args = {
+  seo: { pageTitle: 'home' },
   children: <div style={{ height: 10000 }}>Tall content</div>,
   footer: <div>Footer Content</div>,
 };
@@ -25,6 +26,7 @@ Mobile.parameters = {
 
 export const Desktop = Template.bind({});
 Desktop.args = {
+  seo: { pageTitle: 'home' },
   children: <div style={{ height: 10000 }}>Tall content</div>,
   footer: <div>Footer Content</div>,
 };
