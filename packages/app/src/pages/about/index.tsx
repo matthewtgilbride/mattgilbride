@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import { RichTextBlock } from 'prismic-reactjs';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
-import { PrismicClient, PrismicContent } from '../../prismic';
+import { PrismicClient, PrismicContent, PrismicImage } from '../../prismic';
 import { NextImageContainer } from '../../components/NextImageContainer';
 
 const styleContainer: CSSObject = {
@@ -30,9 +30,7 @@ const styleContainer: CSSObject = {
 
 const styleNextImage: CSSObject = {
   maxWidth: '40vh',
-  height: 'auto',
   padding: `${makeSpace('lg')} 0`,
-  display: 'block',
   margin: '0 auto',
 };
 
@@ -46,10 +44,7 @@ type Slice =
   | {
       slice_type: 'image';
       primary: {
-        image: {
-          url: string;
-          alt: string;
-        };
+        image: PrismicImage;
       };
     };
 
@@ -62,8 +57,8 @@ const SliceComponent: FC<{ slice: Slice }> = ({ slice }) => {
       cssProp={styleNextImage}
       src={slice.primary.image.url}
       alt={slice.primary.image.alt}
-      width={responsiveBreakpoints.tabletPortrait}
-      height={responsiveBreakpoints.tabletPortrait}
+      width={slice.primary.image.dimensions.width}
+      height={slice.primary.image.dimensions.height}
     />
   );
 };

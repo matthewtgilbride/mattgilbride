@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import { RichTextBlock } from 'prismic-reactjs';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
-import { PrismicClient, PrismicContent } from '../prismic';
+import { PrismicClient, PrismicContent, PrismicImage } from '../prismic';
 import { NextImageContainer } from '../components/NextImageContainer';
 
 const styleContainer: CSSObject = {
@@ -16,7 +16,6 @@ const styleContainer: CSSObject = {
 
 const styleNextImage: CSSObject = {
   maxWidth: '40vh',
-  height: 'auto',
   padding: `${makeSpace('lg')} 0`,
 };
 
@@ -38,10 +37,7 @@ const styleContent: CSSObject = {
 interface HomeDocument {
   greeting: RichTextBlock[];
   copy: RichTextBlock[];
-  profile: {
-    url: string;
-    alt: string;
-  };
+  profile: PrismicImage;
 }
 
 interface HomeProps {
@@ -57,8 +53,8 @@ const Home: FC<HomeProps> = ({ data }) => (
           cssProp={styleNextImage}
           src={data.profile.url}
           alt={data.profile.alt}
-          width={responsiveBreakpoints.tabletPortrait}
-          height={responsiveBreakpoints.tabletPortrait}
+          width={data.profile.dimensions.width}
+          height={data.profile.dimensions.height}
         />
         <div>
           <PrismicContent richText={data.copy} />
