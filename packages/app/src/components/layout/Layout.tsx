@@ -7,6 +7,7 @@ import { responsiveBreakpoints } from '../../utils/design';
 import { documentReset, fontMontserrat, meyerReset } from './Layout.styles';
 import { PageSEOProperties } from './seo/model';
 import { SEO } from './seo/SEORoot';
+import { Footer } from './Footer';
 
 const styleContainer: CSSObject = {
   position: 'absolute',
@@ -36,7 +37,9 @@ export const Layout: FC<LayoutProps> = ({ children, seo, footer }) => {
       <div css={styleContainer}>
         <Header {...{ open, toggleOpen }} />
         <NavMenu open={open} />
-        <ContentContainer footer={footer}>{children}</ContentContainer>
+        <ContentContainer footer={footer ?? <Footer />}>
+          {children}
+        </ContentContainer>
       </div>
     </>
   );

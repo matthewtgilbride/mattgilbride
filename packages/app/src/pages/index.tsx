@@ -16,7 +16,7 @@ const styleContainer: CSSObject = {
 
 const styleNextImage: CSSObject = {
   maxWidth: '40vh',
-  padding: `${makeSpace('lg')} 0`,
+  margin: `${makeSpace('xs')} 0`,
 };
 
 const styleContent: CSSObject = {
@@ -30,7 +30,7 @@ const styleContent: CSSObject = {
   },
   p: {
     textAlign: 'center',
-    margin: `${makeSpace('sm')} 0`,
+    margin: `${makeSpace('xxs')} 0`,
   },
 };
 

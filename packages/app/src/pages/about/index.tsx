@@ -14,13 +14,13 @@ const styleContainer: CSSObject = {
     fontStyle: 'italic',
     fontWeight: 'bold',
     fontSize: makeSize('h2'),
-    margin: `${makeSpace('xl')} 0`,
+    margin: `${makeSpace('md')} 0`,
     textAlign: 'center',
   },
   h4: {
     fontWeight: 'bold',
     fontSize: makeSize('h4'),
-    paddingTop: makeSpace('lg'),
+    margin: `${makeSpace('sm')} 0`,
     textAlign: 'center',
   },
   p: {
@@ -30,7 +30,7 @@ const styleContainer: CSSObject = {
 
 const styleNextImage: CSSObject = {
   maxWidth: '40vh',
-  padding: `${makeSpace('lg')} 0`,
+  padding: `${makeSpace('sm')} 0`,
   margin: '0 auto',
 };
 

@@ -22,7 +22,7 @@ const styleContainer: CSSObject = {
     fontStyle: 'italic',
     fontWeight: 'bold',
     fontSize: makeSize('h2'),
-    margin: `${makeSpace('xl')} 0`,
+    margin: `${makeSpace('md')} 0`,
     textAlign: 'center',
   },
   a: {
@@ -30,7 +30,7 @@ const styleContainer: CSSObject = {
     marginBottom: makeSpace('md'),
   },
   h3: {
-    margin: `${makeSpace('xl')} 0`,
+    margin: `${makeSpace('sm')} 0`,
     textAlign: 'center',
   },
 };
