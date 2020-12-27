@@ -8,6 +8,7 @@ import { documentReset, fontMontserrat, meyerReset } from './Layout.styles';
 import { PageSEOProperties } from './seo/model';
 import { SEO } from './seo/SEORoot';
 import { Footer } from './Footer';
+import { usePalette } from '../../utils/usePalette';
 
 const styleContainer: CSSObject = {
   position: 'absolute',
@@ -27,13 +28,14 @@ export interface LayoutProps {
 export const Layout: FC<LayoutProps> = ({ children, seo, footer }) => {
   const [open, setOpen] = useState(false);
   const toggleOpen = useCallback(() => setOpen(!open), [open]);
+  const { palette } = usePalette();
 
   return (
     <>
       <SEO {...seo} />
       <Global styles={fontMontserrat} />
       <Global styles={meyerReset} />
-      <Global styles={documentReset} />
+      <Global styles={documentReset(palette)} />
       <div css={styleContainer}>
         <Header {...{ open, toggleOpen }} />
         <NavMenu open={open} />

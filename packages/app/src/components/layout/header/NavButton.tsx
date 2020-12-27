@@ -1,9 +1,14 @@
 import React, { EventHandler, FC, SyntheticEvent, useRef } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useSpring } from 'react-spring';
-import { makeSize, palette } from '../../../utils/design';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
+import { makeSize } from '../../../utils/design';
+import { usePalette } from '../../../utils/usePalette';
 
-export const styleMenuButton = (open: boolean): CSSObject => ({
+export const styleMenuButton = (
+  palette: Palette,
+  open: boolean,
+): CSSObject => ({
   backgroundColor: 'transparent',
   border: 'none',
   height: makeSize('sm'),
@@ -21,6 +26,7 @@ export interface NavButtonProps {
 
 export const NavButton: FC<NavButtonProps> = ({ open, onClick }) => {
   const ref = useRef<SVGSVGElement | null>(null);
+  const { palette } = usePalette();
   const topSpring = useSpring({
     from: ref.current
       ? {
@@ -63,7 +69,11 @@ export const NavButton: FC<NavButtonProps> = ({ open, onClick }) => {
   });
 
   return (
-    <button css={styleMenuButton(open)} onClick={onClick} aria-label="menu">
+    <button
+      css={styleMenuButton(palette, open)}
+      onClick={onClick}
+      aria-label="menu"
+    >
       <svg viewBox="0 0 100 100" ref={ref}>
         <animated.line {...topSpring} x1="0" x2="100" strokeWidth="10" />
         <animated.line

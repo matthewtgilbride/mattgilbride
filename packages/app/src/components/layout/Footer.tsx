@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { makeSize, makeSpace, palette } from 'utils/design';
+import { makeSize, makeSpace } from 'utils/design';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
 import { Github, Linkedin } from '../svg/generated';
+import { usePalette } from '../../utils/usePalette';
 
-const clazz: CSSObject = {
+const clazz = (palette: Palette): CSSObject => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -18,18 +20,21 @@ const clazz: CSSObject = {
     height: '100%',
     width: '100%',
   },
-};
+});
 
-export const Footer: FC = () => (
-  <div css={clazz}>
-    <a href="https://github.com/matthewtgilbride" aria-label="github">
-      <Github />
-    </a>
-    <a
-      href="https://www.linkedin.com/in/matthewgilbride/"
-      aria-label="linkedin"
-    >
-      <Linkedin />
-    </a>
-  </div>
-);
+export const Footer: FC = () => {
+  const { palette } = usePalette();
+  return (
+    <div css={clazz(palette)}>
+      <a href="https://github.com/matthewtgilbride" aria-label="github">
+        <Github />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/matthewgilbride/"
+        aria-label="linkedin"
+      >
+        <Linkedin />
+      </a>
+    </div>
+  );
+};

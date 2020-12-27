@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { palette, makeSize, makeSpace } from '../../../utils/design';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
+import { makeSize, makeSpace } from '../../../utils/design';
+import { usePalette } from '../../../utils/usePalette';
 
-const styleContainer: CSSObject = {
+const styleContainer = (palette: Palette): CSSObject => ({
   padding: `
     ${makeSpace('xxs')} 
     ${makeSpace('md')} 
@@ -24,8 +26,9 @@ const styleContainer: CSSObject = {
     fontSize: makeSize('sm'),
     listStyleType: 'none',
   },
-};
+});
 
-export const SkillBody: FC = ({ children }) => (
-  <div css={styleContainer}>{children}</div>
-);
+export const SkillBody: FC = ({ children }) => {
+  const { palette } = usePalette();
+  return <div css={styleContainer(palette)}>{children}</div>;
+};

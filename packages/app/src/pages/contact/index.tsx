@@ -1,16 +1,17 @@
 import React, { FC, SyntheticEvent, useState } from 'react';
 import { CSSObject } from '@emotion/core';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
 import { Layout } from '../../components/layout/Layout';
 import {
   makeResponsiveObject,
   makeSize,
   makeSpace,
-  palette,
   responsiveBreakpoints,
 } from '../../utils/design';
 import { FormControl } from '../../components/FormControl';
+import { usePalette } from '../../utils/usePalette';
 
-const styleContainer: CSSObject = {
+const styleContainer = (palette: Palette): CSSObject => ({
   display: 'grid',
   gridTemplateColumns: '1fr',
   gridAutoRows: 'max-content',
@@ -24,7 +25,7 @@ const styleContainer: CSSObject = {
     border: 'none',
     borderRadius: 4,
     backgroundColor: palette.primary(),
-    color: palette.text(),
+    color: palette.contrast(),
     padding: makeSpace('xs'),
     fontSize: makeSize('md'),
     ':hover,:focus': {
@@ -41,11 +42,11 @@ const styleContainer: CSSObject = {
       paddingTop: makeSpace('lg'),
     },
   }),
-};
+});
 
 type PostState = 'initial' | 'loading' | 'success' | 'error';
 
-const styleMessage = (postState: PostState): string => {
+const styleMessage = (palette: Palette, postState: PostState): string => {
   switch (postState) {
     case 'initial':
       return palette.text();
@@ -113,10 +114,12 @@ const Contact: FC = () => {
     }
   }
 
+  const { palette } = usePalette();
+
   return (
     <Layout seo={{ pageTitle: 'Contact' }}>
-      <form css={styleContainer} onSubmit={submitHandler}>
-        <span style={{ color: styleMessage(postState) }}>
+      <form css={styleContainer(palette)} onSubmit={submitHandler}>
+        <span style={{ color: styleMessage(palette, postState) }}>
           {submitMessage(postState)}
         </span>
         <FormControl

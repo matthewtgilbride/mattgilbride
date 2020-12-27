@@ -1,27 +1,33 @@
 import React, { FC, SyntheticEvent, useMemo } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, config, useSpring } from 'react-spring';
-import { palette, makeSize, makeSpace } from '../utils/design';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
+import { makeSize, makeSpace } from '../utils/design';
+import { usePalette } from '../utils/usePalette';
 
-const styleContainer = (value: string): CSSObject => ({
+const styleContainer = (palette: Palette, value: string): CSSObject => ({
   display: 'flex',
   flexDirection: 'column',
   label: {
     fontSize: makeSize('xs'),
     paddingBottom: makeSpace('xxs'),
   },
-  select: {
-    color: value ? undefined : palette.gray(),
-    appearance: 'none',
-  },
   'input, select, textarea': {
     borderRadius: 4,
     boxShadow: 'none',
     border: 'none',
     padding: makeSpace('xxs'),
-    backgroundColor: palette.gray(75),
+    backgroundColor: palette.text(),
+    color: palette.contrast(),
     '::placeholder': {
-      color: palette.gray(),
+      color: palette.contrast(-25),
+    },
+  },
+  select: {
+    color: value ? undefined : palette.contrast(-25),
+    appearance: 'none',
+    ':focus': {
+      outline: 'none',
     },
   },
 });
@@ -99,8 +105,10 @@ export const FormControl: FC<FormControlProps> = (props: FormControlProps) => {
     }
   }, [controlProps, props.type, props.options]);
 
+  const { palette } = usePalette();
+
   return (
-    <div css={styleContainer(props.value)}>
+    <div css={styleContainer(palette, props.value)}>
       <animated.label style={labelSpring}>{props.labelText}</animated.label>
       {control}
     </div>

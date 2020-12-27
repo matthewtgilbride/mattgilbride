@@ -1,5 +1,5 @@
 import { css, CSSObject } from '@emotion/core';
-import { palette } from '../../utils/design';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
 
 export const beginAt = 'tabletPortrait';
 
@@ -344,7 +344,7 @@ export const meyerReset: ReturnType<typeof css> = css`
   }
 `;
 
-export const documentReset: CSSObject = {
+export const documentReset = (palette: Palette): CSSObject => ({
   body: {
     margin: 0,
     padding: 0,
@@ -376,4 +376,4 @@ export const documentReset: CSSObject = {
       fontWeight: 'bold',
     },
   },
-};
+});

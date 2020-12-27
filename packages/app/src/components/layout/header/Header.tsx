@@ -1,19 +1,20 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
 import {
   makeResponsiveObject,
   makeSize,
   makeSpace,
-  palette,
 } from '../../../utils/design';
 import { beginAt } from '../Layout.styles';
 import { NavItems } from '../NavItems';
 import { NavButton } from './NavButton';
 import { HomeLink } from './HomeLink';
+import { usePalette } from '../../../utils/usePalette';
 
 export const headerHeight = makeSize('xxl');
 
-const styleHeader = (open: boolean): CSSObject => ({
+const styleHeader = (palette: Palette, open: boolean): CSSObject => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -55,6 +56,7 @@ const styleNavItems: CSSObject = {
     style: {
       li: {
         paddingLeft: makeSpace('xxl'),
+        alignSelf: 'center',
       },
       display: 'flex',
     },
@@ -66,14 +68,17 @@ export interface HeaderProps {
   toggleOpen: () => void;
 }
 
-export const Header: FC<HeaderProps> = ({ open, toggleOpen }) => (
-  <header css={styleHeader(open)}>
-    <div css={styleNav}>
-      <NavButton open={open} onClick={toggleOpen} />
-      <HomeLink open={open} href="/">
-        Matt Gilbride
-      </HomeLink>
-    </div>
-    <NavItems childCss={styleNavItems} />
-  </header>
-);
+export const Header: FC<HeaderProps> = ({ open, toggleOpen }) => {
+  const { palette } = usePalette();
+  return (
+    <header css={styleHeader(palette, open)}>
+      <div css={styleNav}>
+        <NavButton open={open} onClick={toggleOpen} />
+        <HomeLink open={open} href="/">
+          Matt Gilbride
+        </HomeLink>
+      </div>
+      <NavItems childCss={styleNavItems} />
+    </header>
+  );
+};

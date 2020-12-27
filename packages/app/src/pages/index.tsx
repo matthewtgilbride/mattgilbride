@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { GetStaticProps } from 'next';
 import { RichTextBlock } from 'prismic-reactjs';
-import { makeSize, makeSpace, responsiveBreakpoints } from '../utils/design';
+import { makeSize, makeSpace } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
 import { PrismicClient, PrismicContent, PrismicImage } from '../prismic';
 import { NextImageContainer } from '../components/NextImageContainer';
