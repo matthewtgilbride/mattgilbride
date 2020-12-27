@@ -22,10 +22,13 @@ const clazz: CSSObject = {
 
 export const Footer: FC = () => (
   <div css={clazz}>
-    <a href="https://github.com/matthewtgilbride">
+    <a href="https://github.com/matthewtgilbride" aria-label="github">
       <Github />
     </a>
-    <a href="https://www.linkedin.com/in/matthewgilbride/">
+    <a
+      href="https://www.linkedin.com/in/matthewgilbride/"
+      aria-label="linkedin"
+    >
       <Linkedin />
     </a>
   </div>
