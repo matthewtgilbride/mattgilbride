@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { animated, useTransition } from 'react-spring';
-import { makeResponsiveObject, makeSpace, palette } from '../../utils/design';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
+import { makeResponsiveObject, makeSpace } from '../../utils/design';
 import { NavItems } from './NavItems';
 import { headerHeight } from './header/Header';
 import { beginAt } from './Layout.styles';
+import { usePalette } from '../../utils/usePalette';
 
-const styleContainer: CSSObject = {
+const styleContainer = (palette: Palette): CSSObject => ({
   position: 'fixed',
   top: headerHeight,
   zIndex: 999,
@@ -23,9 +25,9 @@ const styleContainer: CSSObject = {
       display: 'none',
     },
   }),
-};
+});
 
-const styleNavItems: CSSObject = {
+const styleNavItems = (palette: Palette): CSSObject => ({
   display: 'flex',
   flexDirection: 'column',
   margin: makeSpace('xs'),
@@ -36,7 +38,7 @@ const styleNavItems: CSSObject = {
   a: {
     color: palette.contrast(),
   },
-};
+});
 
 export const NavMenu: FC<{ open: boolean }> = ({ open }) => {
   const transitions = useTransition(open, null, {
@@ -44,13 +46,14 @@ export const NavMenu: FC<{ open: boolean }> = ({ open }) => {
     enter: { transform: 'translateY(0)' },
     leave: { transform: 'translateY(-400px)' },
   });
+  const { palette } = usePalette();
   return (
     <>
       {transitions.map(
         ({ item, key, props }) =>
           item && (
-            <animated.div css={styleContainer} key={key} style={props}>
-              <NavItems childCss={styleNavItems} />
+            <animated.div css={styleContainer(palette)} key={key} style={props}>
+              <NavItems childCss={styleNavItems(palette)} />
             </animated.div>
           ),
       )}

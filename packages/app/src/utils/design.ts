@@ -107,7 +107,6 @@ const fontConfig: FontConfig = {
 export const {
   makeResponsiveString,
   makeResponsiveObject,
-  palette,
   makeLineHeight,
   makeSize,
   makeSpace,

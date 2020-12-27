@@ -1,9 +1,11 @@
 import React, { FC, ReactNode } from 'react';
 import { CSSObject } from '@emotion/core';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
 import { headerHeight } from '../header/Header';
-import { makeSpace, palette } from '../../../utils/design';
+import { makeSpace } from '../../../utils/design';
+import { usePalette } from '../../../utils/usePalette';
 
-const styleContainer: CSSObject = {
+const styleContainer = (palette: Palette): CSSObject => ({
   position: 'absolute',
   top: headerHeight,
   bottom: 0,
@@ -13,7 +15,7 @@ const styleContainer: CSSObject = {
   marginTop: makeSpace('xxs'),
   borderRadius: makeSpace('xxs'),
   boxShadow: `0 0 2px 1px ${palette.text(-50)}`,
-};
+});
 
 const styleContent = (hasFooter: boolean): CSSObject => ({
   position: 'absolute',
@@ -25,7 +27,7 @@ const styleContent = (hasFooter: boolean): CSSObject => ({
   overflowY: 'auto',
 });
 
-const styleFooter: CSSObject = {
+const styleFooter = (palette: Palette): CSSObject => ({
   position: 'absolute',
   bottom: 0,
   left: 0,
@@ -33,16 +35,19 @@ const styleFooter: CSSObject = {
   height: headerHeight,
   borderTop: `1px solid ${palette.text(-50)}`,
   overflow: 'hidden',
-};
+});
 
 export const ContentContainer: FC<{ footer?: ReactNode }> = ({
   children,
   footer,
-}) => (
-  <div css={styleContainer}>
-    <div role="main" css={styleContent(!!footer)}>
-      {children}
+}) => {
+  const { palette } = usePalette();
+  return (
+    <div css={styleContainer(palette)}>
+      <div role="main" css={styleContent(!!footer)}>
+        {children}
+      </div>
+      {footer && <footer css={styleFooter(palette)}>{footer}</footer>}
     </div>
-    {footer && <footer css={styleFooter}>{footer}</footer>}
-  </div>
-);
+  );
+};

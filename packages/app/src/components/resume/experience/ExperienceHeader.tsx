@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
+import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
 import {
-  palette,
+  makeResponsiveObject,
   makeSize,
   makeSpace,
-  makeResponsiveObject,
 } from '../../../utils/design';
+import { usePalette } from '../../../utils/usePalette';
 
 export interface JobHeaderProps {
   orgCopy: string;
@@ -45,7 +46,7 @@ export const styleContainer: CSSObject = {
   }),
 };
 
-const styleTitle: CSSObject = {
+const styleTitle = (palette: Palette): CSSObject => ({
   gridArea: 'top',
   color: palette.primary(),
   ...makeResponsiveObject({
@@ -54,16 +55,16 @@ const styleTitle: CSSObject = {
       gridArea: 'middle',
     },
   }),
-};
+});
 
-const styleIcon: CSSObject = {
+const styleIcon = (palette: Palette): CSSObject => ({
   borderRadius: '50%',
   height: makeSpace(44, 'px'),
   width: makeSpace(44, 'px'),
   display: 'grid',
   alignItems: 'center',
   justifyItems: 'center',
-  background: palette.text(),
+  background: palette.gray(60),
   gridArea: 'bottomLeft',
   ...makeResponsiveObject({
     beginAt: 'tabletPortrait',
@@ -71,7 +72,7 @@ const styleIcon: CSSObject = {
       gridArea: 'left',
     },
   }),
-};
+});
 
 const styleOrg: CSSObject = {
   display: 'flex',
@@ -89,10 +90,10 @@ const styleOrg: CSSObject = {
   }),
 };
 
-const styleDate: CSSObject = {
+const styleDate = (palette: Palette): CSSObject => ({
   color: palette.secondary(),
   textTransform: 'initial',
-};
+});
 
 export const ExperienceHeader: FC<JobHeaderProps> = ({
   orgCopy,
@@ -101,19 +102,22 @@ export const ExperienceHeader: FC<JobHeaderProps> = ({
   titleCopy,
   imgUrl,
   imgSize,
-}) => (
-  <div css={styleContainer}>
-    <div css={styleIcon}>
-      <img src={imgUrl} alt={orgCopy} height={imgSize} width={imgSize} />
+}) => {
+  const { palette } = usePalette();
+  return (
+    <div css={styleContainer}>
+      <div css={styleIcon(palette)}>
+        <img src={imgUrl} alt={orgCopy} height={imgSize} width={imgSize} />
+      </div>
+      <div css={styleTitle(palette)}>
+        <h3>{titleCopy}</h3>
+      </div>
+      <div css={styleOrg}>
+        <h5>
+          <a href={orgUrl}>{orgCopy}</a>
+        </h5>
+        <h5 css={styleDate(palette)}>{dateCopy}</h5>
+      </div>
     </div>
-    <div css={styleTitle}>
-      <h3>{titleCopy}</h3>
-    </div>
-    <div css={styleOrg}>
-      <h5>
-        <a href={orgUrl}>{orgCopy}</a>
-      </h5>
-      <h5 css={styleDate}>{dateCopy}</h5>
-    </div>
-  </div>
-);
+  );
+};
