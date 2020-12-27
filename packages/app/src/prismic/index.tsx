@@ -44,4 +44,8 @@ export type PrismicLink =
 export interface PrismicImage {
   alt: string;
   url: string;
+  dimensions: {
+    width: number;
+    height: number;
+  };
 }

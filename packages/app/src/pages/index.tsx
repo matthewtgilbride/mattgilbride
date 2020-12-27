@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
 import { GetStaticProps } from 'next';
 import { RichTextBlock } from 'prismic-reactjs';
-import { makeSize, makeSpace } from '../utils/design';
+import { makeSize, makeSpace, responsiveBreakpoints } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
-import { PrismicClient, PrismicContent } from '../prismic';
-import { ImgBlur } from '../components/ImgBlur';
+import { PrismicClient, PrismicContent, PrismicImage } from '../prismic';
+import { NextImageContainer } from '../components/NextImageContainer';
 
 const styleContainer: CSSObject = {
   display: 'flex',
@@ -14,14 +14,14 @@ const styleContainer: CSSObject = {
   height: '100%',
 };
 
+const styleNextImage: CSSObject = {
+  maxWidth: '40vh',
+  padding: `${makeSpace('lg')} 0`,
+};
+
 const styleContent: CSSObject = {
   display: 'flex',
   flexDirection: 'column',
-  img: {
-    maxWidth: '40vh',
-    height: 'auto',
-    padding: `${makeSpace('lg')} 0`,
-  },
   h1: {
     textAlign: 'center',
     fontWeight: 'bold',
@@ -37,10 +37,7 @@ const styleContent: CSSObject = {
 interface HomeDocument {
   greeting: RichTextBlock[];
   copy: RichTextBlock[];
-  profile: {
-    url: string;
-    alt: string;
-  };
+  profile: PrismicImage;
 }
 
 interface HomeProps {
@@ -52,7 +49,13 @@ const Home: FC<HomeProps> = ({ data }) => (
     <div css={styleContainer}>
       <div css={styleContent}>
         <PrismicContent richText={data.greeting} />
-        <ImgBlur url={data.profile.url} alt={data.profile.alt} />
+        <NextImageContainer
+          cssProp={styleNextImage}
+          src={data.profile.url}
+          alt={data.profile.alt}
+          width={data.profile.dimensions.width}
+          height={data.profile.dimensions.height}
+        />
         <div>
           <PrismicContent richText={data.copy} />
         </div>
