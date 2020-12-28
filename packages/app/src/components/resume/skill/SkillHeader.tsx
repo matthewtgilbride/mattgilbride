@@ -16,7 +16,7 @@ const styleIcon = (palette: Palette): CSSObject => ({
   display: 'grid',
   alignItems: 'center',
   justifyItems: 'center',
-  background: palette.primary(),
+  background: palette.primary(15),
 });
 
 const styleText: CSSObject = {

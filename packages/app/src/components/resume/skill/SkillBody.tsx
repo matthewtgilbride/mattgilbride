@@ -16,7 +16,7 @@ const styleContainer = (palette: Palette): CSSObject => ({
     color: palette.secondary(),
   },
   ul: {
-    backgroundColor: palette.gray(-50),
+    backgroundColor: palette.contrast(-10),
     borderRadius: makeSpace('xs'),
     padding: `${makeSpace('xxs')} ${makeSpace('xs')}`,
     margin: `${makeSpace('xs')} 0 0 0`,

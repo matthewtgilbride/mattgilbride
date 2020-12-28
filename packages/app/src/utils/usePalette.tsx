@@ -36,7 +36,7 @@ const barcaPalette = configurePalette({
 
 export type PaletteType = 'sixers' | 'barca';
 
-const defaultPalette: PaletteType = 'sixers';
+const defaultPalette: PaletteType = 'barca';
 const LOCAL_STORAGE_KEY = 'palette';
 
 const paletteMap: { [key in PaletteType]: Palette } = {

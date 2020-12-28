@@ -30,12 +30,12 @@ export const ColorSchemePicker: FC = () => {
         onValueChange={selectPalette}
         options={[
           {
-            text: 'Sixers',
-            value: 'sixers',
-          },
-          {
             text: 'Barça ',
             value: 'barca',
+          },
+          {
+            text: 'Sixers',
+            value: 'sixers',
           },
         ]}
       />
