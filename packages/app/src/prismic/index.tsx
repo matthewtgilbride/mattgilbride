@@ -1,8 +1,14 @@
-import React, { FC } from 'react';
+import React, { createElement, FC, ReactNode } from 'react';
 import Prismic from 'prismic-javascript';
 import { Document } from 'prismic-javascript/types/documents';
-import { RichText, RichTextBlock } from 'prismic-reactjs';
+import {
+  Elements,
+  HTMLSerializer,
+  RichText,
+  RichTextBlock,
+} from 'prismic-reactjs';
 import { DefaultClient } from 'prismic-javascript/types/client';
+import Link from 'next/link';
 
 export type PrismicDocument = Document;
 
@@ -28,9 +34,32 @@ export const linkResolver = (doc: PrismicDocument): string => {
   }
 };
 
+export const htmlSerializer: HTMLSerializer<ReactNode> = (
+  type,
+  element,
+  content,
+  children,
+  key,
+) => {
+  if (type === Elements.hyperlink && element.data.link_type === 'Document') {
+    return createElement(
+      Link,
+      { key, href: linkResolver(element.data) },
+      content,
+    );
+  }
+  return null;
+};
+
 export const PrismicContent: FC<{ richText: RichTextBlock[] }> = ({
   richText,
-}) => <RichText render={richText} linkResolver={linkResolver} />;
+}) => (
+  <RichText
+    render={richText}
+    linkResolver={linkResolver}
+    htmlSerializer={htmlSerializer}
+  />
+);
 
 export type PrismicLink =
   | ({
