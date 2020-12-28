@@ -2,7 +2,13 @@ import {
   configurePalette,
   Palette,
 } from '@mattgilbride/design-system/lib/utils/color/palette';
-import React, { createContext, FC, useContext, useState } from 'react';
+import React, {
+  createContext,
+  FC,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 const sixersPalette = configurePalette({
   primary: '#BB9754',
@@ -30,6 +36,9 @@ const barcaPalette = configurePalette({
 
 export type PaletteType = 'sixers' | 'barca';
 
+const defaultPalette: PaletteType = 'sixers';
+const LOCAL_STORAGE_KEY = 'palette';
+
 const paletteMap: { [key in PaletteType]: Palette } = {
   sixers: sixersPalette,
   barca: barcaPalette,
@@ -43,13 +52,18 @@ interface PaletteState {
 const PaletteContext = createContext<PaletteState | undefined>(undefined);
 
 export const PaletteProvider: FC = ({ children }) => {
-  const storedValue: string | null =
-    typeof window === 'undefined' ? 'sixers' : localStorage.getItem('palette');
-  const [state, setState] = useState<PaletteType>(
-    (storedValue ?? 'sixers') as PaletteType,
-  );
+  const inBrowser = typeof window !== 'undefined';
+  const [state, setState] = useState<PaletteType>(defaultPalette);
+  useEffect(() => {
+    if (inBrowser) {
+      setState(
+        (localStorage.getItem(LOCAL_STORAGE_KEY) as PaletteType) ??
+          defaultPalette,
+      );
+    }
+  }, [inBrowser]);
   const setPalette = (paletteType: PaletteType): void => {
-    localStorage.setItem('palette', paletteType);
+    localStorage.setItem(LOCAL_STORAGE_KEY, paletteType);
     setState(paletteType);
   };
   return (
