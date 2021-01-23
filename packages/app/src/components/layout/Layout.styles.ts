@@ -376,4 +376,10 @@ export const documentReset = (palette: Palette): CSSObject => ({
       fontWeight: 'bold',
     },
   },
+  strong: {
+    fontWeight: 'bold',
+  },
+  em: {
+    fontStyle: 'italic',
+  },
 });

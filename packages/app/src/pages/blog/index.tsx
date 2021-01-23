@@ -69,7 +69,6 @@ const Blog: FC<BlogProps> = ({ data }) => (
           })}
         </Fragment>
       ))}
-      <h3>...more coming soon...</h3>
     </div>
   </Layout>
 );
