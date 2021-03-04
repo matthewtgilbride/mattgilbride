@@ -52,13 +52,13 @@ export const Footer: FC = () => {
         <p>Need a copy?</p>
       </div>
       <div>
-        <a href="/static/Gilbride_Matthew Resume_2020_07.docx">
+        <a href="/static/Gilbride_Matthew Resume_2021_03.docx">
           <button css={styleButton(palette)}>
             <img src="/assets/svg/doc.svg" alt="doc" />
             <p>.docx</p>
           </button>
         </a>
-        <a href="/static/Gilbride_Matthew Resume_2020_07.pdf">
+        <a href="/static/Gilbride_Matthew Resume_2021_03.pdf">
           <button css={styleButton(palette)}>
             <img src="/assets/svg/pdf.svg" alt="pdf" />
             <p>.pdf</p>
