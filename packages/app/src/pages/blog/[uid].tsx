@@ -3,9 +3,11 @@ import { RichTextBlock } from 'prismic-reactjs';
 import { CSSObject } from '@emotion/core';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Prismic from 'prismic-javascript';
+import { QueryOptions } from 'prismic-javascript/types/ResolvedApi';
 import { PrismicClient, PrismicContent } from '../../prismic';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { Layout } from '../../components/layout/Layout';
+import { Slice, SliceType } from '../../components/Slice';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -52,13 +54,7 @@ const styleContainer: CSSObject = {
 interface BlogPostProps {
   data: {
     title: RichTextBlock[];
-    body: [
-      {
-        primary: {
-          text: RichTextBlock[];
-        };
-      },
-    ];
+    body: SliceType[];
   };
 }
 
@@ -67,7 +63,9 @@ const BlogPost: FC<BlogPostProps> = ({ data }) => (
     <article css={styleContainer}>
       <div>
         <PrismicContent richText={data.title} />
-        <PrismicContent richText={data.body[0].primary.text} />
+        {data.body.map((slice: SliceType) => (
+          <Slice key={JSON.stringify(slice)} slice={slice} />
+        ))}
       </div>
     </article>
   </Layout>
@@ -83,7 +81,7 @@ export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
   const post = await PrismicClient().getByUID(
     'blog_post',
     params?.uid as string,
-    previewData,
+    previewData as QueryOptions,
   );
   return {
     props: {
