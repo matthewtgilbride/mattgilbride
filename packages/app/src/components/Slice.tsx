@@ -1,6 +1,7 @@
 import { RichTextBlock } from 'prismic-reactjs';
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
+import Gist from 'react-gist';
 import { PrismicContent, PrismicImage } from '../prismic';
 import { NextImageContainer } from './NextImageContainer';
 import { makeResponsiveObject, makeSpace } from '../utils/design';
@@ -13,11 +14,6 @@ const styleNextImage: CSSObject = {
     beginAt: 'tabletPortrait',
     style: { maxWidth: '40vw' },
   }),
-};
-
-const styleGistContainer: CSSObject = {
-  maxWidth: '80vw',
-  margin: 'auto',
 };
 
 export type SliceType =
@@ -38,6 +34,9 @@ export type SliceType =
       primary: {
         url: {
           html: string;
+          type: string;
+          embed_url: string;
+          provider_name: string;
         };
       };
     };
@@ -47,12 +46,9 @@ export const Slice: FC<{ slice: SliceType }> = ({ slice }) => {
     return <PrismicContent richText={slice.primary.text} />;
   }
   if (slice.slice_type === 'gist') {
-    return (
-      <div
-        css={styleGistContainer}
-        dangerouslySetInnerHTML={{ __html: slice.primary.url.html }}
-      />
-    );
+    const parts = slice.primary.url.embed_url.split('/');
+    const id = parts.slice().reverse()[0];
+    return <Gist id={id} />;
   }
   return (
     <NextImageContainer
