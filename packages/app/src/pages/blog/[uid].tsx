@@ -39,11 +39,24 @@ const styleContainer: CSSObject = {
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  ul: {
+  'ul, ol': {
     paddingInlineStart: makeSpace('sm'),
+    margin: `${makeSpace('lg')} 0`,
     li: {
-      margin: `${makeSpace('md')} 0`,
+      margin: `${makeSpace('xs')} 0`,
+    },
+  },
+  ul: {
+    li: {
       listStyleType: 'disc',
+    },
+  },
+  ol: {
+    li: {
+      listStyleType: 'number',
+    },
+    'li::marker': {
+      fontWeight: 'bold',
     },
   },
   p: {
