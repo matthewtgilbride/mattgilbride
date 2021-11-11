@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/core';
-import { makeSize, makeSpace } from 'utils/design';
 import { Palette } from '@mattgilbride/design-system/lib/utils/color/palette';
+import { makeSize, makeSpace } from '../../utils/design';
 import { Github, Linkedin } from '../svg/generated';
 import { usePalette } from '../../utils/usePalette';
 

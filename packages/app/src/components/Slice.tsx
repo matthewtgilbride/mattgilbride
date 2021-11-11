@@ -5,6 +5,7 @@ import Gist from 'react-gist';
 import { PrismicContent, PrismicImage } from '../prismic';
 import { NextImageContainer } from './NextImageContainer';
 import { makeResponsiveObject, makeSpace } from '../utils/design';
+import { Code } from './Code';
 
 const styleNextImage: CSSObject = {
   maxWidth: '80vw',
@@ -39,6 +40,13 @@ export type SliceType =
           provider_name: string;
         };
       };
+    }
+  | {
+      slice_type: 'code';
+      primary: {
+        language: string;
+        block: RichTextBlock[];
+      };
     };
 
 export const Slice: FC<{ slice: SliceType }> = ({ slice }) => {
@@ -49,6 +57,14 @@ export const Slice: FC<{ slice: SliceType }> = ({ slice }) => {
     const parts = slice.primary.url.embed_url.split('/');
     const id = parts.slice().reverse()[0];
     return <Gist id={id} />;
+  }
+  if (slice.slice_type === 'code') {
+    return (
+      <Code
+        language={slice.primary.language}
+        block={slice.primary.block.map((r) => r.text).join('\n')}
+      />
+    );
   }
   return (
     <NextImageContainer
