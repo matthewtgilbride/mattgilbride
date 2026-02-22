@@ -1,0 +1,1189 @@
+{
+  "title": [
+    {
+      "type": "heading1",
+      "text": "The Prodigal Java Returns",
+      "spans": []
+    }
+  ],
+  "body": [
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "tl;dr - Java isn't my favorite, but it's not so bad.  Use the good parts.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 73,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "I started my career as a non-programmer, discovering my love for writing code through Microsoft Office, with the oft-maligned Visual Basic for Applications (VBA).\u00a0 I used it to automate menial tasks at my first job after college. I loved it.\u00a0\u00a0My next job was at SAP, where I was exposed to their proprietary language, called ABAP.",
+            "spans": [
+              {
+                "start": 325,
+                "end": 329,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://en.wikipedia.org/wiki/ABAP"
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "For a while, I was only exposed to \"mainstream\" programming languages like Java and Python via my pursuit of a master's degree in computer science. The graduate level course on programming languages was taught entirely in Haskell. In hindsight, the professor's approach was laudable. Unfortunately, I was not the only student who spent most of the term thinking: \"Doesn't the industry just want me to know Java, Javascript, or Python? Who in the world uses Haskell? How is this going to help me?\".",
+            "spans": [
+              {
+                "start": 222,
+                "end": 229,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://en.wikipedia.org/wiki/Haskell_(programming_language)"
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Sure enough, my next job found me building traditional MVC web apps with Java, the Spring Framework, and a sprinkling of JavaScript and jQuery on the front end.\u00a0 So the students' concerns in that class were valid...right?",
+            "spans": []
+          },
+          {
+            "type": "heading2",
+            "text": "Taking the Red Functional Programming Pill",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$d2cae663-8fc9-4411-aa09-6c6a84b5bceb",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "image": {
+          "dimensions": {
+            "width": 1200,
+            "height": 719
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://images.prismic.io/mattgilbride/d5be9bfe-6875-4113-8f3d-cf02a8f5b94e_1416.jpg?auto=compress,format",
+          "id": "YYM46hIAACQArMwM",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        }
+      },
+      "items": [
+        {}
+      ],
+      "id": "image$9bb48ffa-5515-413f-99fd-f1d0f402b130",
+      "slice_type": "image",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "Fast forward a number of years, and my primary programming languages have been Typescript, Scala, and Python (in that order).  Of those three, Scala is simultaneously the most frustrating and the most enlightening.  I often feel more productive in the other two...but I can't help but miss some of Scala's features when working in Typescript or Python. Algebraic data types, pattern matching, and monads used to be big scary terms to me. But now that I've used them, I miss them when they aren't there.",
+            "spans": [
+              {
+                "start": 397,
+                "end": 403,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "I'll spare the academic explanation of a monad.  Suffice to say it is a concept in functional programming that is hard to appreciate until you've used it.  During my original stint with Java, the team updated to Java 8 shortly before I left.  Java 8 was a watershed release, introducing a lot of the functional programming features that originally attracted people to Scala.  I didn't have a chance to experience them in Java before I did so in other languages.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "This year, I've finally found myself on another Java project.  I was less than excited at first, but I must say, I've been pleasantly surprised.  Java has grown.  But I find that many Java developers still haven't taken the proverbial \"red pill\" yet.  So for those who haven't, I wanted to provide a clear example of the benefits.",
+            "spans": []
+          },
+          {
+            "type": "heading2",
+            "text": "So Call Me Maybe (Monad)",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "The most common demonstration of the concept is the maybe monad, an extremely helpful wrapper around variables which may or may not contain a value.  This concept, commonly known in Java as a \"null pointer\", is also known to history as the billion dollar mistake.  In a nutshell, any variable in Java can either be a value of the specified type, or it can be null.  This possibility is the source of much pain and suffering.  But it doesn't have to be that way.  To demonstrate, I came up with an extremely contrived example.",
+            "spans": [
+              {
+                "start": 52,
+                "end": 63,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://en.wikipedia.org/wiki/Monad_(functional_programming)#An_example:_Maybehttps://"
+                }
+              },
+              {
+                "start": 117,
+                "end": 147,
+                "type": "em"
+              },
+              {
+                "start": 236,
+                "end": 262,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://www.youtube.com/watch?v=ybrQvs4x0Ps"
+                }
+              },
+              {
+                "start": 359,
+                "end": 363,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Let's say we have a function.  It takes as it's input some JSON, and it is required to either: ",
+            "spans": []
+          },
+          {
+            "type": "o-list-item",
+            "text": "return a nonempty string at a particular path, or ",
+            "spans": [
+              {
+                "start": 9,
+                "end": 17,
+                "type": "strong"
+              },
+              {
+                "start": 47,
+                "end": 49,
+                "type": "strong"
+              },
+              {
+                "start": 47,
+                "end": 49,
+                "type": "em"
+              }
+            ]
+          },
+          {
+            "type": "o-list-item",
+            "text": "throw an exception (if a nonempty string cannot be found at that path).",
+            "spans": [
+              {
+                "start": 0,
+                "end": 18,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Here's the happy path (pardon the pun):",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$2fe7f6fb-32a4-4fca-aed8-5580d73efd01",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "json",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "{ \"foo\": { \"bar\": \"baz\" } }",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$901b9750-b776-4eb8-adcc-674105aef2a4",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "We want to return the value at foo.bar, which is \"baz\".  Great.  But what if our input could be any of the following?",
+            "spans": [
+              {
+                "start": 31,
+                "end": 38,
+                "type": "strong"
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$0b1cd30a-3ca9-4f61-b179-fe3229930d75",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "json",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "{ \"foo\": { \"bar\": \"\" } }",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "{ \"foo\": { \"bar\": null } }",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "{ \"foo\": {} }",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "{ \"foo\": null }",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "{}",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "null",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$2c11d91d-8882-461f-bcec-dc1d80fed465",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "In Java, a naive implementation of this method would look something like this:",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$f84704a3-3d1a-476e-95aa-16c50fdf761a",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "java",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "public String naiveGetter(Map<String, Map<String, String>> inconsistentMap) {\n    return inconsistentMap.get(\"foo\").get(\"bar\");\n}",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$31bef09d-c67c-4860-9dd9-b9667bb1d7db",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "It would succeed for the happy path case, and fail, sometimes catastrophically, for all of the others.  Out in the wild, code like this is unlikely to make it to production.  Most Java developers are forced into some semblance of defensive programming when accessing nested data structures.  In this example, the solution that handles all cases looks something like this:",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$5143c1fb-146e-4f2c-92dd-79d63adf7c1f",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "java",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "public String imperativeGetter(Map<String, Map<String, String>> inconsistentMap) {\n    if (inconsistentMap != null && inconsistentMap.get(\"foo\") != null) {\n        Map<String, String> foo = inconsistentMap.get(\"foo\");\n        if (foo != null && foo.get(\"bar\") != null) {\n            String bar = foo.get(\"bar\");\n            if (bar != null && bar.length() > 0) {\n                return bar;\n            }\n        }\n    }\n    throw new IllegalArgumentException(\"JSON is in unexpected shape!\");\n}",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$7fb59309-0cf4-4122-b60c-31d599c9294f",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "This is...fine.  But let's think about what it means for someone reading this code for the first time.  It involves:",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Three nested if statements",
+            "spans": [
+              {
+                "start": 6,
+                "end": 12,
+                "type": "strong"
+              },
+              {
+                "start": 13,
+                "end": 15,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "text": "6 total boolean conditions (two apiece, e.g. \"this object isn't null AND this key isn't null\")",
+            "spans": [
+              {
+                "start": 0,
+                "end": 7,
+                "type": "strong"
+              },
+              {
+                "start": 51,
+                "end": 57,
+                "type": "em"
+              },
+              {
+                "start": 69,
+                "end": 72,
+                "type": "strong"
+              },
+              {
+                "start": 78,
+                "end": 81,
+                "type": "em"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "text": "An early return statement",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "That may seem trivial, but that's actually a lot of cognitive overhead.  Especially because this is, in the end, a pretty simple requirement.  ",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Now, we aren't being totally fair to Java 7 here.  There are other ways to do this, one of which isn't far from how one would do it in idiomatic Python (see \"EAFP\"):",
+            "spans": [
+              {
+                "start": 158,
+                "end": 162,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://docs.python.org/3/glossary.html#term-eafphttps://"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$a4a3aef7-3bd5-4845-88ed-466ecd45e286",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "java",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "public String betterImperativeGetter(Map<String, Map<String, String>> inconsistentMap) {\n    String bar;\n    try {\n        bar = inconsistentMap.get(\"foo\").get(\"bar\");\n    } catch (NullPointerException npe) {\n        throw new IllegalArgumentException(\"JSON is in unexpected shape!\");\n    }\n    if (StringUtils.isEmpty(bar)) {\n        throw new IllegalArgumentException(\"JSON is in unexpected shape!\");\n    }\n    return bar;\n}",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$a8b78b77-32b0-4c47-ac20-de888582eda8",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "That's...better...I think?  There's still some annoying noise in there.  Throwing the same exception twice is no fun.  Nor is dealing with the bar variable four times: once to define it, once to assign it, once to check its value, and one final time to return it.",
+            "spans": [
+              {
+                "start": 143,
+                "end": 146,
+                "type": "strong"
+              },
+              {
+                "start": 156,
+                "end": 160,
+                "type": "strong"
+              },
+              {
+                "start": 156,
+                "end": 160,
+                "type": "em"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Here's how functional programming, and specifically the maybe monad (in Java, the Optional type), cleans this up:",
+            "spans": [
+              {
+                "start": 56,
+                "end": 67,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://en.wikipedia.org/wiki/Monad_(functional_programming)#An_example:_Maybehttps://"
+                }
+              },
+              {
+                "start": 82,
+                "end": 90,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$2a8648be-168a-4430-8a40-6420f1c7517b",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "java",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "public String functionalGetter(Map<String, Map<String, String>> inconsistentMap) {\n    return Optional\n            .ofNullable(inconsistentMap)\n            .map(outerMap -> outerMap.get(\"foo\"))\n            .map(innerMap -> innerMap.get(\"bar\"))\n            .filter(StringUtils::isNotEmpty)\n            .orElseThrow(() -> new IllegalArgumentException(\"JSON is in unexpected shape!\"));\n}",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$04eee166-0a89-4083-b707-ac2084006b6e",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "There is still complexity here.  And if you're not used to some of the syntax, like lambda functions denoted with the \"arrow\" -> syntax, it can be uncomfortable at first.  But there are some important bits of complexity that are removed completely by the monad.",
+            "spans": [
+              {
+                "start": 126,
+                "end": 128,
+                "type": "strong"
+              },
+              {
+                "start": 229,
+                "end": 247,
+                "type": "strong"
+              },
+              {
+                "start": 229,
+                "end": 247,
+                "type": "em"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Take the documentation of the Optional.map function, for example:",
+            "spans": [
+              {
+                "start": 30,
+                "end": 42,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#map-java.util.function.Function-"
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "\"If a value is present, apply the provided mapping function to it, and if the result is non-null, return an Optional describing the result. Otherwise return an empty Optional.\"",
+            "spans": [
+              {
+                "start": 1,
+                "end": 3,
+                "type": "em"
+              },
+              {
+                "start": 1,
+                "end": 3,
+                "type": "strong"
+              },
+              {
+                "start": 71,
+                "end": 73,
+                "type": "em"
+              },
+              {
+                "start": 71,
+                "end": 73,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "You see those ifs in there?  Things like that are baked into the monad.  And it doesn't only apply to the map function.  This means you don't have to muddy your code with the conditional logic.  That's important.  Let's look at that functional method again, with comments along the way:",
+            "spans": [
+              {
+                "start": 14,
+                "end": 16,
+                "type": "strong"
+              },
+              {
+                "start": 50,
+                "end": 70,
+                "type": "em"
+              },
+              {
+                "start": 106,
+                "end": 109,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Optional.ofNullable",
+            "spans": [
+              {
+                "start": 0,
+                "end": 19,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#ofNullable-T-"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$c1e15f96-4727-4cab-a654-18522a88eef0",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "java",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "public String functionalGetter(Map<String, Map<String, String>> inconsistentMap) {\n    return Optional",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "            // If the inconsistentMap itself is null, this line results in Optional.EMPTY...\n            .ofNullable(inconsistentMap)\n            .map(outerMap -> outerMap.get(\"foo\")) // ...and this never executes...\n            .map(innerMap -> innerMap.get(\"bar\")) // ...nor this...\n            .filter(StringUtils::isNotEmpty) // ...or this.\n            .orElseThrow(() -> new IllegalArgumentException(\"JSON is in unexpected shape!\"));",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "            // The whole thing jumps down to this line, which throws an exception",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "            // if we encounter EMPTY at any point along the way.\n}",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$7ae7ac8e-5c58-496a-811b-57012c03e5dd",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "Optional.map",
+            "spans": [
+              {
+                "start": 0,
+                "end": 12,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#map-java.util.function.Function-"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$04b7eef6-a785-49f2-8b5b-38b66fcebbcc",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "java",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "public String functionalGetter(Map<String, Map<String, String>> inconsistentMap) {\n    return Optional\n            .ofNullable(inconsistentMap)",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "            // if a map operation returns null, the result of the entire computation is Optional.EMPTY...\n            .map(outerMap -> outerMap.get(\"foo\")) \n            .map(innerMap -> innerMap.get(\"bar\")) // ...and this never executes...\n            .filter(StringUtils::isNotEmpty) // ...nor this.\n            .orElseThrow(() -> new IllegalArgumentException(\"JSON is in unexpected shape!\"));",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "            // Again we jump down here, having encountered EMPTY.\n}",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$c0a2d3a8-0d91-45ba-8553-9bc3c805819e",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "Optional.filter",
+            "spans": [
+              {
+                "start": 0,
+                "end": 15,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#filter-java.util.function.Predicate-"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$7e8485df-dc73-4a0a-b3d0-1d5d1b3a7dca",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "java",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "public String functionalGetter(Map<String, Map<String, String>> inconsistentMap) {\n    return Optional\n            .ofNullable(inconsistentMap)\n            .map(outerMap -> outerMap.get(\"foo\")) \n            .map(innerMap -> innerMap.get(\"bar\"))\n            // If the value is present, AND it passes the supplied check,",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "            // it is returned, otherwise the result, again, is Optional.EMPTY.\n            .filter(StringUtils::isNotEmpty)\n            .orElseThrow(() -> new IllegalArgumentException(\"JSON is in unexpected shape!\"));",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "            // And again we jump down here.\n}",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$02e28a14-98c0-4f2d-89f7-8c0497fa1fc1",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "Once you get used to these \"monadic\" operators, they start to feel really expressive.  And it's hard to look back at all those imperative if/else and try/catch statements with indifference, especially when the language offers better \"Options\"....",
+            "spans": [
+              {
+                "start": 234,
+                "end": 240,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "....GET IT!?!?",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$5bf8155c-0360-4dca-8da5-34de60ba212e",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "image": {
+          "dimensions": {
+            "width": 480,
+            "height": 293
+          },
+          "alt": "laughing",
+          "copyright": null,
+          "url": "https://images.prismic.io/mattgilbride/7030b5bd-81ab-459b-b6bd-e0a1aa9871ea_tom-cult-laugh.gif?auto=compress,format",
+          "id": "YYbEXxIAACMAvCaq",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        }
+      },
+      "items": [
+        {}
+      ],
+      "id": "image$3f5f356c-1ea6-4349-a90d-99fba53ce258",
+      "slice_type": "image",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "heading2",
+            "text": "Still a Typescript Fanboy",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "It's worth noting that my favorite solution to this particular problem doesn't involve monads at all. Typescript (due to a recently accepted ECMAScript standard) supports the optional chaining operator, which is demonstrably more readable than the monadic approach I just advocated:",
+            "spans": [
+              {
+                "start": 152,
+                "end": 160,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://github.com/tc39/proposal-optional-chaining"
+                }
+              },
+              {
+                "start": 175,
+                "end": 201,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$e1ca7aac-2374-4f9e-9b8b-f86b19e142e4",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "typescript",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "type InconsistentMap = { [key:string]: { [key:string]: string | null } | null } | null",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "function typescriptGetter(inconsistentMap: InconsistentMap): string {",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "    const bar = inconsistentMap?.foo?.bar",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "    if (!bar) throw Error(\"JSON is in unexpected shape!\")",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "    return bar;",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "}",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$9d7137e3-97ba-49b6-8daa-92acfbe23b2b",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "It's hard to argue with the straightforwardness of the above.  The only issue I have with Typescript is all the baggage that comes with the negation operator: !bar.  Javascript experts will know this evaluates to true if bar is:",
+            "spans": [
+              {
+                "start": 159,
+                "end": 163,
+                "type": "strong"
+              },
+              {
+                "start": 221,
+                "end": 224,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "text": "null",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "NaN",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "0",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "\"\"",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "undefined",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "And OK...fine...most people know that.  And Typescript eliminates two of those cases (we know we're dealing with strings).  However, my pedantic self, having taken the aforementioned red pill, still likes the \"purely\" functional approach.  Admitting that might mean that I've lost a bit of pragmatism over the years.  And honestly, there are probably even cooler solutions to this problem, contrived as it is, in other languages (looking at you, clojure).  ",
+            "spans": [
+              {
+                "start": 446,
+                "end": 453,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://clojure.org"
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Finally, I would be remiss if I didn't also call out Rust, which doesn't really have null references at all.  Here's a Rust implementation for the same problem:",
+            "spans": [
+              {
+                "start": 65,
+                "end": 110,
+                "type": "em"
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$317bcd15-fac3-4c98-a187-e66925f9018e",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "language": "rust",
+        "block": [
+          {
+            "type": "paragraph",
+            "text": "type InnerMap = HashMap<String, String>;",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "type OuterMap = HashMap<String, InnerMap>;",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "fn get_maybe_bar(inconsistent_map: Option<OuterMap>) -> Option<String> {",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "    inconsistent_map?.get(\"foo\")?.get(\"bar\").cloned()",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "}",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "fn get_bar_or_error(inconsistent_map: Option<OuterMap>) -> Result<String, String> {",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "    get_maybe_bar(inconsistent_map).ok_or(\"JSON is in unexpected shape!\".into())",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "}",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "fn get_bar_or_panic(inconsistent_map: Option<OuterMap>) -> String {",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "    get_maybe_bar(inconsistent_map).expect(\"JSON is in unexpected shape!\")",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "}",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "code$a5ef4bd2-ffa1-4cfa-bef9-5287039b069b",
+      "slice_type": "code",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "paragraph",
+            "text": "I've recently written an article about my first impressions of rust, so I won't go into the nuance that makes the above code a bit confusing to the uninitiated.  There are a few things that I'd like to call out, however:",
+            "spans": [
+              {
+                "start": 42,
+                "end": 67,
+                "type": "hyperlink",
+                "data": {
+                  "id": "YAGCCxEAACAAgMj0",
+                  "type": "blog_post",
+                  "tags": [],
+                  "lang": "en-us",
+                  "slug": "misadventures-in-rust",
+                  "first_publication_date": "2021-09-29T01:57:10+0000",
+                  "last_publication_date": "2021-10-01T21:24:42+0000",
+                  "uid": "misadventures-in-rust",
+                  "link_type": "Document",
+                  "isBroken": false
+                }
+              }
+            ]
+          },
+          {
+            "type": "o-list-item",
+            "text": "Rust has a similarly useful \"question mark\" operator.",
+            "spans": []
+          },
+          {
+            "type": "o-list-item",
+            "text": "Rust is really explicit about exceptions.  If your function might throw an exception, its return type must be a Result.",
+            "spans": [
+              {
+                "start": 8,
+                "end": 23,
+                "type": "em"
+              },
+              {
+                "start": 102,
+                "end": 109,
+                "type": "em"
+              },
+              {
+                "start": 112,
+                "end": 118,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://doc.rust-lang.org/std/result/"
+                }
+              }
+            ]
+          },
+          {
+            "type": "o-list-item",
+            "text": "If you really want to ignore the above safeguard, you can have the entire program crash (a.k.a. \"panic\") when it encounters an error.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "There's a lot that I like in there.  I could go on and on, but that's enough for now...",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "The point is, Java ain't so bad. Its evolution has actually been quite impressive.  Don't knock it until you've tried it (again).",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$86e6588d-80c6-4c88-8ddf-1d211f4cc588",
+      "slice_type": "text",
+      "slice_label": null
+    }
+  ],
+  "uid": "coming-back-to-java"
+}
