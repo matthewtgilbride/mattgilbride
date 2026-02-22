@@ -1,22 +1,10 @@
-import React, { Fragment } from 'react'
-import { Global } from '@emotion/core';
-import { withNextRouter } from 'storybook-addon-next-router';
-import { addDecorator } from '@storybook/react';
-import { documentReset, meyerReset } from '../src/components/layout/Layout.styles';
-import { palette } from '../src/utils/design'
+import React from 'react'
+import {RouterContext} from "next/dist/shared/lib/router-context";
+import {barcaPalette, PaletteProvider} from "../src/utils/usePalette";
+import {addDecorator} from "@storybook/react";
 
-addDecorator(
-  withNextRouter({
-    path: '/', // defaults to `/`
-    asPath: '/', // defaults to `/`
-    query: {}, // defaults to `{}`
-    push() {} // defaults to using addon actions integration, can override any method in the router
-  })
-);
-
-const resetDecorator = Story => <Fragment><Global styles={meyerReset} /><Global styles={documentReset} /><Story /></Fragment>
-
-addDecorator(resetDecorator)
+const paletteDecorator = Story => <PaletteProvider><Story /></PaletteProvider>
+addDecorator(paletteDecorator);
 
 export const parameters = {
   layout: 'fullscreen',
@@ -26,12 +14,15 @@ export const parameters = {
     values: [
       {
         name: 'dark',
-        value: palette.contrast()
+        value: barcaPalette.contrast
       },
       {
         name: 'light',
-        value: palette.text()
+        value: barcaPalette.text
       }
     ]
-  }
+  },
+  nextRouter: {
+    Provider: RouterContext.Provider,
+  },
 }

@@ -3,6 +3,7 @@ import { CSSObject } from '@emotion/core';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
 import { RichTextBlock } from 'prismic-reactjs';
+import { QueryOptions } from 'prismic-javascript/types/ResolvedApi';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import {
@@ -77,7 +78,10 @@ export const getStaticProps: GetStaticProps<BlogProps> = async ({
   preview = null,
   previewData = {},
 }) => {
-  const doc = await PrismicClient().getSingle('blog', previewData);
+  const doc = await PrismicClient().getSingle(
+    'blog',
+    previewData as QueryOptions,
+  );
   return {
     props: {
       data: doc.data,

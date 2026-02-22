@@ -4,7 +4,7 @@ import { SizeConfig } from '@mattgilbride/design-system/lib/types/composite/size
 import { FontConfig } from '@mattgilbride/design-system/lib/types/composite/font.composite';
 import { PaletteConfig } from '@mattgilbride/design-system/lib/utils/color/palette';
 
-const paletteConfig: PaletteConfig = {
+export const paletteConfig: PaletteConfig = {
   primary: '#00a1ab',
   secondary: '#2fc4b2',
   accent: '#ff5722',

@@ -24,7 +24,7 @@ export const websiteConfig: WebsiteConfig = {
     siteTitle: 'Matt Gilbride',
     siteTitleAlt: 'Matt Gilbride ',
     siteDescription: "Matt Gilbride's personal website",
-    siteImage: '/images/profile_circle.png',
+    siteImage: 'https://www.mattgilbride.com/images/philly-globe.png',
     siteUrl: getSiteUrl(),
     siteHeadline: 'Matt Gilbride',
     siteLanguage: 'en',

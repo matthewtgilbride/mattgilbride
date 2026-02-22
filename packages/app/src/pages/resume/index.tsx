@@ -2,6 +2,7 @@ import React from 'react';
 import { CSSObject } from '@emotion/core';
 import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { QueryOptions } from 'prismic-javascript/types/ResolvedApi';
 import { Layout } from '../../components/layout/Layout';
 import {
   makeResponsiveObject,
@@ -116,7 +117,10 @@ export const getStaticProps: GetStaticProps = async ({
   preview = null,
   previewData = {},
 }) => {
-  const doc = await PrismicClient().getSingle('resume', previewData);
+  const doc = await PrismicClient().getSingle(
+    'resume',
+    previewData as QueryOptions,
+  );
   return {
     props: {
       data: doc.data,

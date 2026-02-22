@@ -10,7 +10,7 @@ import React, {
   useState,
 } from 'react';
 
-const sixersPalette = configurePalette({
+export const sixersPalette = configurePalette({
   primary: '#BB9754',
   secondary: '#BB9754',
   accent: '#ED174C',
@@ -22,7 +22,7 @@ const sixersPalette = configurePalette({
   gray: '#707677',
 });
 
-const barcaPalette = configurePalette({
+export const barcaPalette = configurePalette({
   primary: '#A70042',
   secondary: '#A70042',
   accent: '#EDBC00',
