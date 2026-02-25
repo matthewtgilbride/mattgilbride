@@ -10,7 +10,8 @@
     "deploy": "aws s3 sync out s3://www.mattgilbride.com --cache-control max-age=86400",
     "lint": "eslint src/* --ext=.ts,.tsx --no-error-on-unmatched-pattern",
     "tsc": "tsc",
-    "clean": "rm -rf .next && rm -rf out"
+    "clean": "rm -rf .next && rm -rf out",
+    "cdk": "cd infrastructure && npx cdk"
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",
