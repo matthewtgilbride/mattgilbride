@@ -14,14 +14,12 @@
     "destroy": "tsc && cdk destroy"
   },
   "dependencies": {
-    "@aws-cdk/aws-certificatemanager": "1.80.0",
-    "@aws-cdk/aws-cloudfront": "1.80.0",
-    "@aws-cdk/aws-iam": "1.80.0",
-    "@aws-cdk/aws-route53": "1.80.0",
-    "@aws-cdk/aws-route53-targets": "1.80.0",
-    "@aws-cdk/aws-s3": "1.80.0",
-    "@aws-cdk/core": "1.80.0",
-    "aws-cdk": "1.80.0",
-    "typescript": "^3.8.3"
+    "aws-cdk-lib": "^2.180.0",
+    "aws-cdk": "^2.180.0",
+    "constructs": "^10.0.0",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
   }
 }

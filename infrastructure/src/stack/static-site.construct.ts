@@ -1,13 +1,10 @@
-import { Construct, RemovalPolicy } from '@aws-cdk/core';
-import { ARecord, HostedZone, RecordTarget } from '@aws-cdk/aws-route53';
-import { Bucket } from '@aws-cdk/aws-s3';
-import {
-  CloudFrontWebDistribution,
-  OriginProtocolPolicy,
-  SecurityPolicyProtocol,
-  SSLMethod,
-} from '@aws-cdk/aws-cloudfront';
-import { CloudFrontTarget } from '@aws-cdk/aws-route53-targets';
+import { RemovalPolicy } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import * as acm from 'aws-cdk-lib/aws-certificatemanager';
+import * as route53 from 'aws-cdk-lib/aws-route53';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
+import * as targets from 'aws-cdk-lib/aws-route53-targets';
 
 export interface StaticSiteProps {
   domainName: string;
@@ -19,13 +16,19 @@ export class StaticSiteConstruct extends Construct {
   constructor(scope: Construct, id: string, props: StaticSiteProps) {
     super(scope, `${id}-StaticSiteConstruct`);
 
-    const zone = HostedZone.fromLookup(this, `${id}-HostedZone`, {
+    const zone = route53.HostedZone.fromLookup(this, `${id}-HostedZone`, {
       domainName: props.domainName,
     });
     const siteDomain = `${props.siteSubDomain}.${props.domainName}`;
 
+    const certificate = acm.Certificate.fromCertificateArn(
+      this,
+      `${id}-Certificate`,
+      props.certificateArn,
+    );
+
     // Content bucket
-    const siteBucket = new Bucket(this, `${id}-SiteBucket`, {
+    const siteBucket = new s3.Bucket(this, `${id}-SiteBucket`, {
       bucketName: siteDomain,
       websiteIndexDocument: 'index.html',
       publicReadAccess: true,
@@ -37,21 +40,23 @@ export class StaticSiteConstruct extends Construct {
     });
 
     // CloudFront distribution that provides HTTPS
-    const distribution = new CloudFrontWebDistribution(
+    const distribution = new cloudfront.CloudFrontWebDistribution(
       this,
       `${id}-SiteDistribution`,
       {
-        aliasConfiguration: {
-          acmCertRef: props.certificateArn,
-          names: [siteDomain],
-          sslMethod: SSLMethod.SNI,
-          securityPolicy: SecurityPolicyProtocol.TLS_V1_1_2016,
-        },
+        viewerCertificate: cloudfront.ViewerCertificate.fromAcmCertificate(
+          certificate,
+          {
+            aliases: [siteDomain],
+            sslMethod: cloudfront.SSLMethod.SNI,
+            securityPolicy: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2021,
+          },
+        ),
         originConfigs: [
           {
             customOriginSource: {
               domainName: siteBucket.bucketWebsiteDomainName,
-              originProtocolPolicy: OriginProtocolPolicy.HTTP_ONLY,
+              originProtocolPolicy: cloudfront.OriginProtocolPolicy.HTTP_ONLY,
             },
             behaviors: [{ isDefaultBehavior: true }],
           },
@@ -60,9 +65,11 @@ export class StaticSiteConstruct extends Construct {
     );
 
     // Route53 alias record for the CloudFront distribution
-    new ARecord(this, 'SiteAliasRecord', {
+    new route53.ARecord(this, 'SiteAliasRecord', {
       recordName: siteDomain,
-      target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+      target: route53.RecordTarget.fromAlias(
+        new targets.CloudFrontTarget(distribution),
+      ),
       zone,
     });
   }
