@@ -18,19 +18,14 @@ yarn install
 ### Run locally
 
 ```sh
-NODE_OPTIONS=--openssl-legacy-provider yarn dev
+yarn dev
 ```
 
 ### Build
 
 ```sh
-NODE_OPTIONS=--openssl-legacy-provider yarn build
+yarn build
 ```
-
-> **Note:** `NODE_OPTIONS=--openssl-legacy-provider` is required because the
-> current versions of Next.js (11) and webpack use the MD4 hashing algorithm,
-> which is not supported by Node.js 22's OpenSSL. This workaround will no
-> longer be needed once Next.js and its dependencies are upgraded.
 
 ### Deploy
 
