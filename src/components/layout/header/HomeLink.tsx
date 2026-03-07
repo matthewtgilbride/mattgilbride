@@ -1,11 +1,11 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, PropsWithChildren, useRef } from 'react';
 import Link, { LinkProps } from 'next/link';
 import { animated, useSpring } from 'react-spring';
 import { CSSObject } from '@emotion/core';
 import { useActiveStyle } from '../NavLink';
 import { usePalette } from '../../../utils/usePalette';
 
-export const HomeLink: FC<LinkProps & { open: boolean }> = ({
+export const HomeLink: FC<PropsWithChildren<LinkProps & { open: boolean }>> = ({
   open,
   href,
   children,

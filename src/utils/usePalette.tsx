@@ -5,6 +5,7 @@ import {
 import React, {
   createContext,
   FC,
+  PropsWithChildren,
   useContext,
   useEffect,
   useState,
@@ -51,7 +52,7 @@ interface PaletteState {
 
 const PaletteContext = createContext<PaletteState | undefined>(undefined);
 
-export const PaletteProvider: FC = ({ children }) => {
+export const PaletteProvider: FC<PropsWithChildren> = ({ children }) => {
   const inBrowser = typeof window !== 'undefined';
   const [state, setState] = useState<PaletteType>(defaultPalette);
   useEffect(() => {

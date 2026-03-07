@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Palette } from 'design-system/utils/color/palette';
 import { makeSize, makeSpace } from '../../../utils/design';
@@ -28,7 +28,7 @@ const styleContainer = (palette: Palette): CSSObject => ({
   },
 });
 
-export const SkillBody: FC = ({ children }) => {
+export const SkillBody: FC<PropsWithChildren> = ({ children }) => {
   const { palette } = usePalette();
   return <div css={styleContainer(palette)}>{children}</div>;
 };

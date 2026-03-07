@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, PropsWithChildren, ReactNode } from 'react';
 import { CSSObject } from '@emotion/core';
 import { Palette } from 'design-system/utils/color/palette';
 import { headerHeight } from '../header/Header';
@@ -37,7 +37,7 @@ const styleFooter = (palette: Palette): CSSObject => ({
   overflow: 'hidden',
 });
 
-export const ContentContainer: FC<{ footer?: ReactNode }> = ({
+export const ContentContainer: FC<PropsWithChildren<{ footer?: ReactNode }>> = ({
   children,
   footer,
 }) => {

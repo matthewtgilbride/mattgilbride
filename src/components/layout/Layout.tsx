@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useCallback, useState } from 'react';
+import React, { FC, PropsWithChildren, ReactNode, useCallback, useState } from 'react';
 import { CSSObject, Global } from '@emotion/core';
 import { Header } from './header/Header';
 import { ContentContainer } from './content/ContentContainer';
@@ -25,7 +25,7 @@ export interface LayoutProps {
   footer?: ReactNode;
 }
 
-export const Layout: FC<LayoutProps> = ({ children, seo, footer }) => {
+export const Layout: FC<PropsWithChildren<LayoutProps>> = ({ children, seo, footer }) => {
   const [open, setOpen] = useState(false);
   const toggleOpen = useCallback(() => setOpen(!open), [open]);
   const { palette } = usePalette();

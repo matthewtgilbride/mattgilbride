@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { CSSObject } from '@emotion/core';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
@@ -14,7 +14,7 @@ export const useActiveStyle = (href: LinkProps['href']): CSSObject => {
     : { textDecoration: 'initial' };
 };
 
-export const NavLink: FC<LinkProps> = (props) => {
+export const NavLink: FC<PropsWithChildren<LinkProps>> = (props) => {
   const activeStyle = useActiveStyle(props.href);
   const style: CSSObject = {
     textTransform: 'uppercase',

@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC, PropsWithChildren, useCallback, useEffect, useState } from 'react';
 import { animated, useSpring } from 'react-spring';
 import { CSSObject } from '@emotion/core';
 import { SectionHeader, SectionHeaderProps } from './SectionHeader';
@@ -7,10 +7,10 @@ const styleBody: CSSObject = {
   overflowY: 'hidden',
 };
 
-export const Section: FC<{
+export const Section: FC<PropsWithChildren<{
   defaultClosed?: boolean;
   headerProps: Omit<SectionHeaderProps, 'onClick' | 'open'>;
-}> = ({ defaultClosed, headerProps, children }) => {
+}>> = ({ defaultClosed, headerProps, children }) => {
   const [hasRenderedOnce, setHasRenderedOnce] = useState(false);
   useEffect(() => setHasRenderedOnce(true), []);
 
@@ -26,7 +26,7 @@ export const Section: FC<{
 
   const [bodyHeight, setBodyHeight] = useState(0);
   const bodyRef = useCallback(
-    (node) => {
+    (node: HTMLDivElement | null) => {
       if (node !== null && open && bodyHeight === 0) {
         setBodyHeight(node.getBoundingClientRect().height);
       }
