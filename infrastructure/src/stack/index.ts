@@ -1,4 +1,5 @@
-import { App, Construct, Stack, StackProps } from '@aws-cdk/core';
+import { App, Stack, StackProps } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import { StaticSiteConstruct } from './static-site.construct';
 
 class SiteStack extends Stack {
@@ -21,7 +22,7 @@ const app = new App();
 
 new SiteStack(app, 'homepage', {
   env: {
-    region: process.env.AWS_DEFAULT_REGION,
-    account: process.env.AWS_ACCOUNT_NUMBER,
+    region: process.env.AWS_DEFAULT_REGION || process.env.CDK_DEFAULT_REGION,
+    account: process.env.AWS_ACCOUNT_NUMBER || process.env.CDK_DEFAULT_ACCOUNT,
   },
 });
