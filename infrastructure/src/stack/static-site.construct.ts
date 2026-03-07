@@ -32,6 +32,7 @@ export class StaticSiteConstruct extends Construct {
       bucketName: siteDomain,
       websiteIndexDocument: 'index.html',
       publicReadAccess: true,
+      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ACLS,
 
       // The default removal policy is RETAIN, which means that cdk destroy will not attempt to delete
       // the new bucket, and it will remain in your account until manually deleted. By setting the policy to
