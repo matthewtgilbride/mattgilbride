@@ -6,4 +6,6 @@ out/
 *.log
 .DS_Store
 /.env
+/.envrc
 infrastructure/lib/
+.claude/
