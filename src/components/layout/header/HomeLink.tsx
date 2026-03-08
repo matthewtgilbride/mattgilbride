@@ -29,11 +29,10 @@ export const HomeLink: FC<PropsWithChildren<LinkProps & { open: boolean }>> = ({
     },
   });
   return (
-    <Link href={href}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <animated.a ref={ref} css={{ ...style, ...activeStyle }} style={spring}>
+    <animated.span ref={ref} style={spring}>
+      <Link href={href} css={{ ...style, ...activeStyle }}>
         {children}
-      </animated.a>
-    </Link>
+      </Link>
+    </animated.span>
   );
 };

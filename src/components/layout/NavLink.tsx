@@ -20,9 +20,8 @@ export const NavLink: FC<PropsWithChildren<LinkProps>> = (props) => {
     textTransform: 'uppercase',
   };
   return (
-    <Link {...props}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a css={{ ...style, ...activeStyle }}>{props.children}</a>
+    <Link {...props} css={{ ...style, ...activeStyle }}>
+      {props.children}
     </Link>
   );
 };

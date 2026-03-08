@@ -15,6 +15,7 @@ export const NextImageContainer: FC<ImageProps & { cssProp: CSSObject }> = ({
     <Image
       blurDataURL={blurDataURL ?? profileBlur}
       placeholder={placeholder ?? 'blur'}
+      style={{ width: '100%', height: 'auto' }}
       {...rest}
     />
   </div>
