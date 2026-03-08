@@ -1,0 +1,27 @@
+import React, { FC, PropsWithChildren } from 'react';
+import { CSSObject } from '@emotion/react';
+import Link, { LinkProps } from 'next/link';
+import { useRouter } from 'next/router';
+
+export const useActiveStyle = (href: LinkProps['href']): CSSObject => {
+  const { pathname } = useRouter();
+  const active = pathname === href;
+
+  return active
+    ? {
+        '&&&': { textDecoration: 'underline' },
+      }
+    : { textDecoration: 'initial' };
+};
+
+export const NavLink: FC<PropsWithChildren<LinkProps>> = (props) => {
+  const activeStyle = useActiveStyle(props.href);
+  const style: CSSObject = {
+    textTransform: 'uppercase',
+  };
+  return (
+    <Link {...props} css={{ ...style, ...activeStyle }}>
+      {props.children}
+    </Link>
+  );
+};

@@ -1,0 +1,294 @@
+{
+  "body": [
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "heading2",
+            "text": "tl;dr",
+            "spans": []
+          },
+          {
+            "type": "heading4",
+            "text": "I'm a software engineer",
+            "spans": []
+          },
+          {
+            "type": "heading4",
+            "text": "From Philly",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$64f06516-d8a5-4fc0-9f34-c6eb7a845ab0",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "image": {
+          "dimensions": {
+            "width": 1080,
+            "height": 1080
+          },
+          "alt": "philly",
+          "copyright": null,
+          "url": "https://images.prismic.io/mattgilbride/111a9116-3aac-4547-bca4-130dccf3d1a4_philly-globe.png?auto=compress,format",
+          "id": "X99eRxEAACIA6LqA",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "transparent"
+          }
+        }
+      },
+      "items": [
+        {}
+      ],
+      "id": "image$1e43a3f8-d26c-41c7-aad7-6602fe69eda0",
+      "slice_type": "image",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "heading4",
+            "text": "this is my wife",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$65d6b11c-7b63-4340-86f0-69f5f58a2507",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "image": {
+          "dimensions": {
+            "width": 1080,
+            "height": 1080
+          },
+          "alt": "wife",
+          "copyright": null,
+          "url": "https://images.prismic.io/mattgilbride/3efcffe0-e233-4184-b92b-4f3bfc6e81d9_jamie.png?auto=compress,format",
+          "id": "X99enhEAACMA6Lv-",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "transparent"
+          }
+        }
+      },
+      "items": [
+        {}
+      ],
+      "id": "image$6388233f-5752-4485-853b-5f9a72c8290b",
+      "slice_type": "image",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "heading4",
+            "text": "this is our son",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$00843458-fadf-45ef-960d-7f6a87835494",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "image": {
+          "dimensions": {
+            "width": 640,
+            "height": 640
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://images.prismic.io/mattgilbride/61c4cc8f-86b8-4593-a448-11d9ee06a7ce_jordi-modified.png?auto=compress,format",
+          "id": "YWotWxEAACMAIddj",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "transparent"
+          }
+        }
+      },
+      "items": [
+        {}
+      ],
+      "id": "image$ef3daf4d-0af6-44a0-b6f6-11d6b47e7400",
+      "slice_type": "image",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "heading4",
+            "text": "and this is our dog",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$b16d4cbe-3c2a-495b-bda2-bc0ed95ccb01",
+      "slice_type": "text",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "image": {
+          "dimensions": {
+            "width": 1080,
+            "height": 1080
+          },
+          "alt": "dog",
+          "copyright": null,
+          "url": "https://images.prismic.io/mattgilbride/fb64b4b2-657e-478f-a60e-0587a1e03c44_emmy.png?auto=compress,format",
+          "id": "X99ekhEAACAA6LvH",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "transparent"
+          }
+        }
+      },
+      "items": [
+        {}
+      ],
+      "id": "image$a27ab135-4378-4855-8ec5-6aa912387029",
+      "slice_type": "image",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "heading2",
+            "text": "the long version",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I'm a \"full stack\" engineer by trade. You can check out my\u00a0resume\u00a0for more about that.",
+            "spans": [
+              {
+                "start": 59,
+                "end": 65,
+                "type": "hyperlink",
+                "data": {
+                  "id": "X-EtfREAACAA8Nfy",
+                  "type": "resume",
+                  "tags": [],
+                  "lang": "en-us",
+                  "slug": "resume",
+                  "first_publication_date": "2020-12-21T23:28:20+0000",
+                  "last_publication_date": "2021-10-02T10:41:14+0000",
+                  "link_type": "Document",
+                  "isBroken": false
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "This site serves as a place for people to find out more about me, and a place for\u00a0me to write down my thoughts. Most of those thoughts will be about programming for now, so I'll keep this particular page focused on everything else.",
+            "spans": [
+              {
+                "start": 82,
+                "end": 110,
+                "type": "hyperlink",
+                "data": {
+                  "id": "X99n4xEAACMA6OTu",
+                  "type": "blog",
+                  "tags": [],
+                  "lang": "en-us",
+                  "slug": "blog",
+                  "first_publication_date": "2020-12-20T15:04:06+0000",
+                  "last_publication_date": "2021-11-11T03:29:13+0000",
+                  "link_type": "Document",
+                  "isBroken": false
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "I'm a happily married man to my wife Jamie. We have a beautiful baby boy named Jordi and an adorable dog named Emmy.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I was born and raised here in Philly, though my mom's family is from Barcelona. Many moons ago I was fluent in Spanish. I do my best to maintain my skills in that language as well. I prefer travelling to Spanish speaking countries not only because I love the culture, but also because I love the practice. That's right, we're talkin' 'bout practice.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Speaking of practice, I'm a big F.C. Barcelona fan, and an even bigger fan of the Philadelphia 76ers. I follow all Philly sports closely, but I'd say the passion level goes Sixers, Eagles, Flyers, Phillies, in that order. #trusttheprocess",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I also enjoy playing tennis, hiking, biking, running, skiing, and snowboarding, amongst other things. I'm not much of a cook, but like most I'm dangerous with a handful of recipes. On the music front, my bag is mostly blues and rock but I've got a pretty eclectic taste.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Oh...and my top 3 movies of all time are Forrest Gump, The Shawshank Redemption, and The Big Lebowski.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "That's all for now. If you are interested in connecting for any reason, please don't hesitate to\u00a0reach out!",
+            "spans": [
+              {
+                "start": 97,
+                "end": 106,
+                "type": "hyperlink",
+                "data": {
+                  "id": "X-El2xEAACEA8LWc",
+                  "type": "contact",
+                  "tags": [],
+                  "lang": "en-us",
+                  "slug": "contact",
+                  "first_publication_date": "2020-12-21T22:46:54+0000",
+                  "last_publication_date": "2020-12-21T22:46:54+0000",
+                  "link_type": "Document",
+                  "isBroken": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$af9a27f5-3040-4f42-b640-215387c735c6",
+      "slice_type": "text",
+      "slice_label": null
+    }
+  ]
+}

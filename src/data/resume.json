@@ -1,0 +1,853 @@
+{
+  "body": [
+    {
+      "primary": {
+        "title": "Code",
+        "icon": {
+          "dimensions": {
+            "width": 150,
+            "height": 150
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://mattgilbride.cdn.prismic.io/mattgilbride/d9dc34ab-4a1c-4cc1-aa9a-a5c8125cf30a_coding.svg",
+          "id": "YVgtgxIAACIAszm7",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 24
+      },
+      "items": [
+        {
+          "subgroup_title": "Day to Day",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "Javascript \u2022 Typescript \u2022 Node \u2022 React",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Java \u2022 Spring",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Python \u2022 Flask",
+              "spans": []
+            }
+          ]
+        },
+        {
+          "subgroup_title": "Previous Projects",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "Scala \u2022 Akka",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Vue",
+              "spans": []
+            }
+          ]
+        },
+        {
+          "subgroup_title": "Dabbled",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "Rust",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Clojure",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Haskell",
+              "spans": []
+            }
+          ]
+        }
+      ],
+      "id": "skill_group$9b433263-2c3a-4bd7-a90e-529f23181c0a",
+      "slice_type": "skill_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "title": "Data",
+        "icon": {
+          "dimensions": {
+            "width": 150,
+            "height": 150
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://mattgilbride.cdn.prismic.io/mattgilbride/0dda7e36-44f5-44d3-8ebd-38efffbbb624_server.svg",
+          "id": "YVgr1xIAACQAszJU",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 24
+      },
+      "items": [
+        {
+          "subgroup_title": "Relational",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "Postgres",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "MySQL",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Oracle DB",
+              "spans": []
+            }
+          ]
+        },
+        {
+          "subgroup_title": "Non-Relational",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "Redis",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "DynamoDB",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Cassandra",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Neo4j",
+              "spans": []
+            }
+          ]
+        },
+        {
+          "subgroup_title": "Analytics",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "Snowflake",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Apache Spark",
+              "spans": []
+            }
+          ]
+        }
+      ],
+      "id": "skill_group$ad2d4c7d-5edd-45e5-b60b-fe528bef038a",
+      "slice_type": "skill_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "title": "Infrastructure",
+        "icon": {
+          "dimensions": {
+            "width": 150,
+            "height": 150
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://mattgilbride.cdn.prismic.io/mattgilbride/14d436fc-7221-4364-807c-3e160be1650c_cloud-computing.svg",
+          "id": "YVgtDhIAACIAsze0",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 24
+      },
+      "items": [
+        {
+          "subgroup_title": "AWS",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "VPC \u2022 EC2 \u2022 ECS \u2022 ALB",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Lambda",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Route 53",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "IAM \u2022 Cognito",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Cloudformation \u2022 Terraform \u2022 CDK",
+              "spans": []
+            }
+          ]
+        },
+        {
+          "subgroup_title": "General",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "nginx \u2022 Apache Tomcat",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Apache Kafka",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Docker",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Jenkins",
+              "spans": []
+            }
+          ]
+        }
+      ],
+      "id": "skill_group$40f41c7c-b177-4b00-ad21-57bb46d97fbe",
+      "slice_type": "skill_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "title": "Architecture",
+        "icon": {
+          "dimensions": {
+            "width": 150,
+            "height": 150
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://mattgilbride.cdn.prismic.io/mattgilbride/06f63d1d-997e-4e81-bc2d-4bc76044af74_sketch.svg",
+          "id": "YVgt3hIAACUAsztM",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 24
+      },
+      "items": [
+        {
+          "subgroup_title": "Systems Design",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "Event Sourcing \u2022 CQRS",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Domain Driven Design",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Actor Systems",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Message Brokers",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "REST",
+              "spans": []
+            }
+          ]
+        },
+        {
+          "subgroup_title": "Process",
+          "subgroup_copy": [
+            {
+              "type": "list-item",
+              "text": "Git",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Agile/Scrum",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Continuous Integration \u2022 Continuous Deployment",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Test Driven Development",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Behavior Driven Development",
+              "spans": []
+            }
+          ]
+        }
+      ],
+      "id": "skill_group$3e8a7630-c1c9-4fd0-a75d-89b4bf7d082f",
+      "slice_type": "skill_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "type": "experience",
+        "title": "Lead Software Engineer - Platforms Data & Architecture",
+        "date": "December 2020 - Present",
+        "icon": {
+          "dimensions": {
+            "width": 360,
+            "height": 360
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://images.prismic.io/mattgilbride/54a15353-fa42-4870-ab74-688752b23cb4_c1.webp?auto=compress,format",
+          "id": "YAwtyhIAACEA3nQR",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 44,
+        "link_text": "Capital One",
+        "link": {
+          "link_type": "Web",
+          "key": "df9d406f-420f-4c96-8492-017877847536",
+          "url": "https://www.capitalone.com/tech/software-engineering/"
+        },
+        "copy": [
+          {
+            "type": "paragraph",
+            "text": "I work within Capital One's retail banking line of business.  We handle the tech that drives consumer products like checking and savings accounts, among others.  My group is focused on developing an enterprise-scale solutions for maintaining product and customer information.  Some work involves lifting and shifting legacy technology stacks onto modern, cloud native, micro-services based architectures.  I can't give too many specifics, but here are some things I've worked on:",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Synchronizing updates to customer data with Apache Kafka.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Creating a singular home for product definition, via services written in Node and Python.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Driving the adoption of enterprise CI/CD pipeline technology.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Replacing a legacy Angular application with React.",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "experience_group$d1e94b04-a4a1-48ec-8c17-af2050b017a5",
+      "slice_type": "experience_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "type": "experience",
+        "title": "Software Architect",
+        "date": "May 2017 - December 2020",
+        "icon": {
+          "dimensions": {
+            "width": 36,
+            "height": 36
+          },
+          "alt": "chariot",
+          "copyright": null,
+          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/10ab8efb-0c89-4f0e-85af-100f35476c5a_chariot.svg",
+          "id": "X-EukBEAACMA8Ny7",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 36,
+        "link_text": "Chariot Solutions",
+        "link": {
+          "link_type": "Web",
+          "key": "42dffe96-94c8-466a-8f53-eb0d4a110f80",
+          "url": "https://chariotsolutions.com/"
+        },
+        "copy": [
+          {
+            "type": "paragraph",
+            "text": "Chariot builds software products with small teams of highly capable engineers, or integrates into existing teams to help them get things done.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I loved it there for many reasons. Mainly the people. That includes my fellow Charioteers as well as the various engineering organizations I got to work with. The most rewarding part of the job was the opportunity it provided me to learn rapidly. I enjoy having a deeply technical role that still includes interacting with people regularly, and that's exactly what I had at Chariot.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Here are some of the things I worked on:",
+            "spans": []
+          },
+          {
+            "type": "heading5",
+            "text": "A DATA MANAGEMENT PLATFORM FOR NEUROSCIENCE RESEARCHERS",
+            "spans": []
+          },
+          {
+            "type": "heading6",
+            "text": "December 2019 - June 2020",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I joined an incredibly talented team at a local startup. Their product facilitates the creation and publication of massive scientific datasets. I was given the opportunity to contribute across the entirety of their stack, which included the following:",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Web apps written in Vue, some of which used Nuxt to generate static sites.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "A Node service, written in Typescript, for streaming large zip archives to the web clients.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "A core REST API, written in Scala, backed by an RDS Postgres instance and files of various sizes written to S3.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Another REST API for managing graph data structures, written in Python, backed by a Neo4j database.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "An nginx API gateway.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Lots of AWS infrastructure provisioned via Terraform. Most services run in ECS containers, but other work involved a mix of S3, CloudWatch Logs, Kinesis Firehose, and Lambda.",
+            "spans": []
+          },
+          {
+            "type": "heading5",
+            "text": "USING IOT ENABLED OUTLETS TO MANAGE INDUSTRIAL PLUG LOAD",
+            "spans": []
+          },
+          {
+            "type": "heading6",
+            "text": "June 2019 - November 2019",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I lead a project to build a web application and backing REST API for another local startup. Our client had built an impressive machine learning pipeline leveraging IOT data from smart outlets. They offered clients who operate large industrial or office buildings a way to reduce energy costs associated with devices plugged into outlets.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "What they needed was an application that allowed users to monitor and manage that system. The features we built included a variety of data visualizations, interactive data grids, and basic CRUD operations. We used the following technologies to get the job done:",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "A Node REST service written in Typescript, backed by a Postgres RDS database.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "A web app written in React, with Typescript.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "A separate library of React components encapsulating a custom design system.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "User authentication with Cognito",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Run in ECS, deployed via CodeBuild, and provisioned with Cloudformation",
+            "spans": []
+          },
+          {
+            "type": "heading5",
+            "text": "A BANKING SYSTEM TO MANAGE THE PROCESSING OF WIRE TRANSFERS",
+            "spans": []
+          },
+          {
+            "type": "heading6",
+            "text": "May 2017 - May 2019",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I joined a small team developing a wire transfer application serving small and medium sized financial institutions. The business requirements included providing a detailed audit trail of all actions taken, by whom, and when. Additionally, the system needed to support highly customizable workflows driven by the various financial processes in which wire transfers are involved.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "We addressed those requirements by building with the following stack:",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "A web app written in React",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "Multiple microservices written in Scala and Akka HTTP, using a CQRS and Event Sourcing architectural pattern. Events were written to Cassandra, with projections written to Postgres.",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "User authentication with Keycloak",
+            "spans": []
+          },
+          {
+            "type": "list-item",
+            "text": "An nginx API gateway",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "experience_group$12eba471-1433-494d-94f4-da61310f381d",
+      "slice_type": "experience_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "type": "experience",
+        "title": "Senior Software Engineer",
+        "date": "Aug. 2015 - May 2017",
+        "icon": {
+          "dimensions": {
+            "width": 36,
+            "height": 36
+          },
+          "alt": "reuters",
+          "copyright": null,
+          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/87d0cf8a-632c-45b4-9a16-4af99c01dcb0_reuters.svg",
+          "id": "X-FL_xEAACEA8WB-",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 36,
+        "link_text": "Thomson Reuters",
+        "link": {
+          "link_type": "Web",
+          "key": "5375a8a2-e2f8-4451-b782-477dd7ebd52e",
+          "url": "https://legal.thomsonreuters.com/en/products/c-track"
+        },
+        "copy": [
+          {
+            "type": "paragraph",
+            "text": "I was a senior developer on an enterprise Court Management System (CMS). The software serves courts in the U.S. and abroad, streamlining processes such as document management, courtroom scheduling, financial accounting, and much more.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "As a member of the accounting team, I helped implement a configurable financial system to support various processes including fee calculation, payment processing, and general ledger accounting.",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "experience_group$17dd4bcc-fdc4-4503-bddb-0c012728712c",
+      "slice_type": "experience_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "type": "experience",
+        "title": "Senior Application Consultant",
+        "date": "Dec. 2011 - Aug. 2015",
+        "icon": {
+          "dimensions": {
+            "width": 36,
+            "height": 36
+          },
+          "alt": "sap",
+          "copyright": null,
+          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/d5a163f7-4c0f-41ad-906f-d7da81139d20_sap.svg",
+          "id": "X-FeSxEAACEA8bGU",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 36,
+        "link_text": "SAP",
+        "link": {
+          "link_type": "Web",
+          "key": "e3f544b5-61cd-436c-87df-3bc3367cc008",
+          "url": "https://www.sap.com/products/digital-supply-chain/supply-chain-logistics.html"
+        },
+        "copy": [
+          {
+            "type": "paragraph",
+            "text": "I implemented highly configurable SAP products in the logistics space. I focused on two products; Transportation Management (TM) and Extended Warehouse Management (EWM). This job was technical in nature, but didn't overtly require programming skills. I spent much of my time understanding whether complex business requirements could be solved via configuration alone, or required more technical enhancements.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "After some time, I had spent enough time debugging the software to be able to develop those enhancements on my own. I really enjoyed the work for a period of time. I love the logistics space, so although I wanted to spend more of my days writing code, I was happy with a more hands-on role that involved walking the warehouse floor.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Eventually, a desire to travel less and code more meant I had to move on.",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "experience_group$5f9bfa75-2902-4786-9684-c7fc85e852c8",
+      "slice_type": "experience_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "type": "experience",
+        "title": "Supply Chain Analyst",
+        "date": "Aug. 2009 - Nov. 2011",
+        "icon": {
+          "dimensions": {
+            "width": 32,
+            "height": 32
+          },
+          "alt": "boeing",
+          "copyright": null,
+          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/27a1957d-a9f7-40a5-881c-9a08af044bea_boeing.svg",
+          "id": "X-FeqxEAACMA8bOS",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 28,
+        "link_text": "Boeing",
+        "link": {
+          "link_type": "Web",
+          "key": "fb00973f-f9e9-49e0-ac5f-65e2d5f0f8a0",
+          "url": "https://www.boeing.com/"
+        },
+        "copy": [
+          {
+            "type": "paragraph",
+            "text": "As a supply chain major coming out of undergraduate school, this was a great job. A lot of things I did revolved around spreadsheets, and involved interacting on a production floor. I fell in love with coding via the Microsoft Office Suite (Excel, VBA, and Access).",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Little did I know, a decade later Microsoft would be popular for different things and I would be a Typescript fanboy.",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "experience_group$6651808a-039e-464e-883d-0ff6242b2c28",
+      "slice_type": "experience_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "type": "education",
+        "title": "M.S. Computer Science",
+        "date": "Fall 2013 - Spring 2017",
+        "icon": {
+          "dimensions": {
+            "width": 36,
+            "height": 36
+          },
+          "alt": "drexel",
+          "copyright": null,
+          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/cc5ce81a-32da-4019-bd3d-9a0f39b3a074_drexel.svg",
+          "id": "X-FfEREAACAA8bVb",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 36,
+        "link_text": "Drexel University",
+        "link": {
+          "link_type": "Web",
+          "key": "4e6485af-984d-4c2c-8ccd-c88dd4a893df",
+          "url": "https://drexel.edu/cci/academics/computer-science-department/"
+        },
+        "copy": [
+          {
+            "type": "paragraph",
+            "text": "GPA: 3.9",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "After too many years of dabbling, I committed to a technical career by pursuing a technical education.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "The final few quarters of my degree were spent with a research group studying graph databases, specifically the exploration of graph data structures as they evolve over time. I worked with a brilliant Ph.D student named Vera Zaychik Moffitt. We have all moved on since then. If you\u00a0d like to know more about the work, the website (which I built, don't judge) still exists\u00a0here.",
+            "spans": [
+              {
+                "start": 372,
+                "end": 376,
+                "type": "strong"
+              },
+              {
+                "start": 372,
+                "end": 376,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://portaldb.github.io/"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "experience_group$8a235e9b-a43e-4dc3-b619-09928df03dda",
+      "slice_type": "experience_group",
+      "slice_label": null
+    },
+    {
+      "primary": {
+        "type": "education",
+        "title": "B.S. Supply Chain Info. Systems",
+        "date": "Fall 2005 - Spring 2009",
+        "icon": {
+          "dimensions": {
+            "width": 36,
+            "height": 36
+          },
+          "alt": "penn state",
+          "copyright": null,
+          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/d2dbb4ba-e75e-42e0-92c3-256dbf7fb33a_penn-state.svg",
+          "id": "X-FfeBEAACMA8bcf",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "#fff"
+          }
+        },
+        "icon_size": 36,
+        "link_text": "Penn State University",
+        "link": {
+          "link_type": "Web",
+          "key": "753b045f-5494-4da3-9a8c-1339a4684d3f",
+          "url": "https://www.smeal.psu.edu/scis"
+        },
+        "copy": [
+          {
+            "type": "paragraph",
+            "text": "GPA: 3.8",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I studied Supply Chain Information Systems, and minored in Spanish and International Business. SCIS was a degree from Penn State's business college. It was like a business degree combined with an industrial engineering degree, with less physics and more accounting.",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "experience_group$687102da-8aa3-4818-b374-88498308b20e",
+      "slice_type": "experience_group",
+      "slice_label": null
+    }
+  ]
+}

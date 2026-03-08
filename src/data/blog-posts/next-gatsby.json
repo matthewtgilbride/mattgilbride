@@ -1,0 +1,280 @@
+{
+  "title": [
+    {
+      "type": "heading1",
+      "text": "Next > Gatsby and you don't need GraphQL",
+      "spans": []
+    }
+  ],
+  "body": [
+    {
+      "primary": {
+        "text": [
+          {
+            "type": "heading2",
+            "text": "tl;dr I basically agree with Jared Palmer.",
+            "spans": [
+              {
+                "start": 29,
+                "end": 41,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://jaredpalmer.com/gatsby-vs-nextjs"
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "This site was originally built with Gatsby.  It was my first foray into Static Site Generation (SSG) after building multiple \"traditional\" Single Page Apps (SPAs) at my day job.  ",
+            "spans": [
+              {
+                "start": 36,
+                "end": 42,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://www.gatsbyjs.com/"
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "While I'm at it...I should note that there is really nothing \"traditional\" about SPAs in the first place...but that's neither here nor there.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I didn't debate much between Gatsby and Next.  I knew Gatsby was popular and well documented.  I had limited exposure to GraphQL at the time, so the fact that Gatsby forced me to use it was a plus.",
+            "spans": [
+              {
+                "start": 40,
+                "end": 44,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://nextjs.org/"
+                }
+              }
+            ]
+          },
+          {
+            "type": "heading3",
+            "text": "You don't need GraphQL.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "I've had this feeling for some time now: GraphQL is a powerful, useful, widely adopted technology...that isn't necessary for many of its users.  I'm aware of a litany of legitimate use cases for it.  But I've seen more use of GraphQL for the wrong reasons than the right ones.  Before I go further, let me regurgitate a few obvious benefits of GraphQL:",
+            "spans": [
+              {
+                "start": 242,
+                "end": 247,
+                "type": "em"
+              },
+              {
+                "start": 242,
+                "end": 247,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "heading4",
+            "text": "1. It prevents \"over-fetching\"",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "GraphQL servers send exactly the content requested by the client and nothing more.  This minimizes the amount of data being sent over the network, drastically improving user experiences in many cases.",
+            "spans": []
+          },
+          {
+            "type": "heading4",
+            "text": "2. Responses look like requests",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "A GraphQL client can make strong assumptions about the shape of a JSON response based on a query.  That's nice.  It means that clients and servers have to agree more explicitly on API contracts.  I like that. ",
+            "spans": []
+          },
+          {
+            "type": "heading4",
+            "text": "3. It provides a single API for disparate data",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "When projects involve multiple APIs, a GraphQL server provides a single, powerful integration point for clients.  It can hide complexity from clients by allowing them to request data across multiple APIs -- in a single query -- without even knowing it.",
+            "spans": []
+          },
+          {
+            "type": "heading3",
+            "text": "Solve problems you actually have.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Of the above, number one is the primary reason to use GraphQL.  However, \"over-fetching\" isn't a very real problem for most.  Sure, Facebook has this problem, which is why they built the tool.  But unless you're also a massive social media network -- serving media-rich apps across multiple platforms -- chances are that \"over-fetching\" isn't actually an issue for you.  Sending some reasonably sized JSON payloads over the network isn't going to crash people's browsers.  I promise.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Number two is nice, but it's not the only way to provide clear API contracts.  The OpenAPI spec is mature, and the ecosystem around it is strong (side note -- check out connexion).  The fact that GraphQL requests look like the corresponding responses is useful.  However, Javascript clients consuming those responses will still suffer from type related bugs that are better caught with a type checker like Typescript.  And if you want to use Typescript -- you'll either need to define all of your types twice (once in a GraphQL schema and once in Typescript) -- or use something like GraphQL Codegen to generate one from the other.  And those generated types are going to be ugly.",
+            "spans": [
+              {
+                "start": 169,
+                "end": 178,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://connexion.readthedocs.io/en/latest/https://"
+                }
+              },
+              {
+                "start": 584,
+                "end": 599,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://graphql-code-generator.com/"
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Similarly, number three is nice, but it's not the only way to unify multiple APIs.  GraphQL did not invent the reverse proxy.  A few hundred lines of nginx config is probably enough for most scenarios.  There is no rule prohibiting a Javascript client making multiple requests to fetch data needed for a feature.  Neither is there a law that REST APIs be overly dogmatic about what \"REST\" means...such that they are awkward for their consumers to use.  ",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "If any of the downsides to not having GraphQL become unwieldy -- by all means -- use it.  But make sure those downsides are real problems for you first.  GraphQL isn't going to replace much of your existing architecture.  It will exist in addition to whatever you already have.  You'll still need to persist information in a database of some kind, and you'll still need mechanisms to send traffic over a network.  From a big picture perspective, make sure GraphQL is actually reducing complexity, not introducing more.",
+            "spans": [
+              {
+                "start": 27,
+                "end": 30,
+                "type": "em"
+              },
+              {
+                "start": 27,
+                "end": 30,
+                "type": "strong"
+              },
+              {
+                "start": 124,
+                "end": 128,
+                "type": "em"
+              },
+              {
+                "start": 124,
+                "end": 128,
+                "type": "strong"
+              },
+              {
+                "start": 236,
+                "end": 250,
+                "type": "em"
+              },
+              {
+                "start": 236,
+                "end": 250,
+                "type": "strong"
+              },
+              {
+                "start": 467,
+                "end": 495,
+                "type": "em"
+              },
+              {
+                "start": 467,
+                "end": 495,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "heading3",
+            "text": "Gatsby is to GraphQL as Angular is to RxJS.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Now, back to the subject of Gatsby vs. Next.  Both GraphQL and RxJS are powerful abstractions, but they are totally unnecessary for simple use cases.  ",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "There's not really a good reason to turn a single HTTP request into an Observable.  It emits only one item, which kind of defeats the purpose of observables.  Most users need not burden themselves with the cognitive overhead of the \"reactive\" approach for the purpose of simple data fetching.  But that's the pattern Angular shoves down your throat.  ",
+            "spans": [
+              {
+                "start": 71,
+                "end": 81,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://rxjs-dev.firebaseapp.com/guide/observable"
+                }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "For static websites, there's not really a good reason to fetch data -- jam it into a GraphQL schema -- and then immediately query that schema to generate pages.  Why not skip the extra step in the middle?  Well...if you're using Gatsby...you don't have a choice.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "And that's the point.  One of the oft discussed reasons for React's rise to popularity its approach to be a \"library\" as opposed to the Angular \"framework\".  Library vs. framework debate aside, I personally enjoy React because it leaves me in charge of how data is fetched.  I can keep it simple when things are simple, and use RxJS when they aren't -- and I have.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "This site is currently fed by the Prismic CMS.  There is no other data fetching concern, so there is really no reason for GraphQL.  With Next, the choice not to use GraphQL is up to me.",
+            "spans": [
+              {
+                "start": 34,
+                "end": 45,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://prismic.io/"
+                }
+              },
+              {
+                "start": 154,
+                "end": 157,
+                "type": "em"
+              },
+              {
+                "start": 154,
+                "end": 157,
+                "type": "strong"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "There are some other reasons I prefer Next to Gatsby, but I won't go into them here.  There is plenty of debate out there in the community by people better informed than me.",
+            "spans": []
+          },
+          {
+            "type": "paragraph",
+            "text": "In conclusion, please read this as an \"I don't like GraphQL post\".  Read it as another cautionary tale to \"use the right tool for the right job\".",
+            "spans": []
+          }
+        ]
+      },
+      "items": [
+        {}
+      ],
+      "id": "text$e4ccb998-0d90-4366-bb49-f1efe4074fef",
+      "slice_type": "text",
+      "slice_label": null
+    }
+  ],
+  "uid": "next-gatsby"
+}

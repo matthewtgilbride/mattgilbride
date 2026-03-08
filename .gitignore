@@ -1,7 +1,11 @@
 node_modules/
+.next/
+out/
 .idea
 *.iml
 *.log
-
-packages/design-system/lib
+.DS_Store
 /.env
+/.envrc
+infrastructure/lib/
+.claude/

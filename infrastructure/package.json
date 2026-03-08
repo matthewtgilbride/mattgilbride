@@ -1,0 +1,25 @@
+{
+  "name": "mattgilbride-infrastructure",
+  "version": "0.0.0",
+  "description": "aws deployment via the aws cdk",
+  "author": "Matthew T. Gilbride <matthewtgilbride@gmail.com>",
+  "homepage": "https://github.com/matthewtgilbride/mattgilbride#readme",
+  "license": "MIT",
+  "main": "src/stack/index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "watch": "tsc -w",
+    "synth": "tsc && cdk synth",
+    "deploy": "tsc && cdk deploy",
+    "destroy": "tsc && cdk destroy"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.180.0",
+    "aws-cdk": "^2.180.0",
+    "constructs": "^10.0.0",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
+  }
+}

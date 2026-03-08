@@ -1,33 +1,40 @@
 {
-  "license": "MIT",
-  "dependencies": {
-    "commitizen": "^4.0.4",
-    "lerna": "^3.20.2"
-  },
   "name": "mattgilbride",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "commit": "yarn chk && git-cz",
-    "tsc": "lerna run tsc --stream --",
-    "lint": "lerna run lint --stream --",
-    "test": "lerna run test --stream --",
-    "chk": "yarn tsc && yarn lint --fix && yarn test",
-    "dev": "lerna run dev --scope=@mattgilbride/app --stream",
-    "build": "lerna run build --scope=@mattgilbride/app --stream",
-    "start": "lerna run start --scope=@mattgilbride/app --stream",
-    "export": "lerna run export --scope=@mattgilbride/app --stream",
-    "serve": "lerna run serve --scope=@mattgilbride/app --stream",
-    "deploy-site": "cd packages/app && yarn deploy && cd ../..",
-    "deploy-aws": "cd packages/aws-infrastructure && yarn deploy && cd ../..",
-    "synth": "cd packages/aws-infrastructure && yarn synth && cd ../..",
-    "destroy": "cd packages/aws-infrastructure && yarn destroy && cd ../.."
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "aws s3 sync out s3://www.mattgilbride.com --cache-control max-age=86400",
+    "lint": "next lint",
+    "tsc": "tsc",
+    "clean": "rm -rf .next && rm -rf out",
+    "cdk": "cd infrastructure && npx cdk"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "next": "14",
+    "polished": "^3.5.1",
+    "prismic-reactjs": "^1.3.3",
+    "react": "18",
+    "react-dom": "18",
+    "react-gist": "^1.2.2",
+    "react-spring": "^8.0.27",
+    "react-syntax-highlighter": "^15.4.4",
+    "schema-dts": "^0.8.2"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "3.1.0"
+    "@types/node": "20",
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "@types/react-syntax-highlighter": "^13.5.2",
+    "eslint": "8",
+    "eslint-config-next": "14",
+    "typescript": "5"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "resolutions": {
+    "@types/react": "18"
   }
 }
