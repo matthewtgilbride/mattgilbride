@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { CSSObject } from '@emotion/react';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
-import { Slice, SliceType } from '../../components/Slice';
+import { ContentBlock, ContentBlockType } from '../../components/ContentBlock';
 import aboutData from '../../data/about.json';
 
 const styleContainer: CSSObject = {
@@ -28,15 +28,15 @@ const styleContainer: CSSObject = {
 
 interface AboutProps {
   data: {
-    body: SliceType[];
+    body: ContentBlockType[];
   };
 }
 
 const About: FC<AboutProps> = ({ data }) => (
   <Layout seo={{ pageTitle: 'About' }}>
     <div css={styleContainer}>
-      {data.body.map((slice: SliceType) => (
-        <Slice key={JSON.stringify(slice)} slice={slice} />
+      {data.body.map((block: ContentBlockType) => (
+        <ContentBlock key={JSON.stringify(block)} block={block} />
       ))}
     </div>
   </Layout>

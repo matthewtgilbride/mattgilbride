@@ -1,8 +1,25 @@
 import React, { FC, ReactNode } from 'react';
 import Link from 'next/link';
 
+type BlockType =
+  | 'heading1'
+  | 'heading2'
+  | 'heading3'
+  | 'heading4'
+  | 'heading5'
+  | 'heading6'
+  | 'list-item'
+  | 'o-list-item'
+  | 'paragraph';
+
+type SpanType = 'hyperlink' | 'strong' | 'em';
+
+type LinkType = 'Document' | 'Web';
+
+type DocumentType = 'about' | 'blog' | 'resume' | 'blog_post';
+
 export interface RichTextBlock {
-  type: string;
+  type: BlockType;
   text: string;
   spans: RichTextSpan[];
 }
@@ -10,19 +27,18 @@ export interface RichTextBlock {
 export interface RichTextSpan {
   start: number;
   end: number;
-  type: string;
-  data?: PrismicLink & Record<string, unknown>;
+  type: SpanType;
+  data?: ContentLink;
 }
 
-export type PrismicLink = {
-  link_type: string;
-  type?: string;
+export type ContentLink = {
+  link_type: LinkType;
+  type?: DocumentType;
   uid?: string;
   url?: string;
-  [key: string]: unknown;
 };
 
-export interface PrismicImage {
+export interface ContentImage {
   alt: string;
   url: string;
   dimensions: {
@@ -31,7 +47,7 @@ export interface PrismicImage {
   };
 }
 
-const linkResolver = (doc: { type: string; uid?: string }): string => {
+const linkResolver = (doc: { type?: DocumentType; uid?: string }): string => {
   switch (doc.type) {
     case 'about':
       return '/about';
@@ -64,7 +80,7 @@ function renderSpans(text: string, spans: RichTextSpan[]): ReactNode {
     if (span.type === 'hyperlink' && span.data) {
       if (span.data.link_type === 'Document') {
         result.push(
-          <Link key={span.start} href={linkResolver(span.data as { type: string; uid?: string })}>
+          <Link key={span.start} href={linkResolver(span.data)}>
             {content}
           </Link>,
         );
@@ -149,6 +165,6 @@ function groupListItems(blocks: RichTextBlock[]): ReactNode[] {
   return result;
 }
 
-export const PrismicContent: FC<{ richText: RichTextBlock[] }> = ({
-  richText,
-}) => <>{groupListItems(richText)}</>;
+export const RichText: FC<{ blocks: RichTextBlock[] }> = ({
+  blocks,
+}) => <>{groupListItems(blocks)}</>;

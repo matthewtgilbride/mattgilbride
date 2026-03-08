@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import {
-  PrismicContent,
-  PrismicLink,
+  RichText,
+  ContentLink,
   RichTextBlock,
-} from '../../components/PrismicContent';
+} from '../../components/RichText';
 import blogData from '../../data/blog.json';
 
-const linkResolver = (doc: { type: string; uid?: string }): string => {
+const linkResolver = (doc: ContentLink): string => {
   switch (doc.type) {
     case 'blog_post':
       return `/blog/${doc.uid}`;
@@ -48,7 +48,7 @@ interface BlogProps {
       primary: { year: RichTextBlock[] };
       items: {
         title: string;
-        link: PrismicLink;
+        link: ContentLink;
       }[];
     }[];
   };
@@ -59,17 +59,17 @@ const Blog: FC<BlogProps> = ({ data }) => (
     <div css={styleContainer}>
       {data.body.map(({ items, primary }) => (
         <Fragment key={JSON.stringify({ items, primary })}>
-          <PrismicContent richText={primary.year} />
+          <RichText blocks={primary.year} />
           {items.map((item) => {
             if (item.link.link_type === 'Web') {
               return (
-                <a key={item.title} href={(item.link as any).url}>
+                <a key={item.title} href={item.link.url}>
                   {item.title}
                 </a>
               );
             }
             return (
-              <Link key={item.title} href={linkResolver(item.link as any)}>
+              <Link key={item.title} href={linkResolver(item.link)}>
                 {item.title}
               </Link>
             );

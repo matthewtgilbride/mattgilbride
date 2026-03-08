@@ -1,10 +1,10 @@
-import { PrismicImage, PrismicLink, RichTextBlock } from '../PrismicContent';
+import { ContentImage, ContentLink, RichTextBlock } from '../RichText';
 
 export interface SkillSlice {
   slice_type: 'skill_group';
   primary: {
     title: string;
-    icon: PrismicImage;
+    icon: ContentImage;
     icon_size: number;
   };
   items: {
@@ -19,9 +19,9 @@ export interface ExperienceSlice {
     type: 'experience' | 'education';
     date: string;
     link_text: string;
-    link: PrismicLink;
+    link: ContentLink;
     title: string;
-    icon: PrismicImage;
+    icon: ContentImage;
     icon_size: number;
     copy: RichTextBlock[];
   };

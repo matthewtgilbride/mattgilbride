@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { ExperienceSlice } from '../model';
 import { ExperienceHeader } from './ExperienceHeader';
 import { ExperienceBody } from './ExperienceBody';
-import { PrismicContent } from '../../PrismicContent';
+import { RichText } from '../../RichText';
 
 export const Experience: FC<{ slice: ExperienceSlice }> = ({ slice }) => (
   <div>
@@ -15,7 +15,7 @@ export const Experience: FC<{ slice: ExperienceSlice }> = ({ slice }) => (
       titleCopy={slice.primary.title}
     />
     <ExperienceBody>
-      <PrismicContent richText={slice.primary.copy} />
+      <RichText blocks={slice.primary.copy} />
     </ExperienceBody>
   </div>
 );
