@@ -1,5 +1,4 @@
-import { RichTextBlock } from 'prismic-reactjs';
-import { PrismicImage, PrismicLink } from '../PrismicContent';
+import { PrismicImage, PrismicLink, RichTextBlock } from '../PrismicContent';
 
 export interface SkillSlice {
   slice_type: 'skill_group';

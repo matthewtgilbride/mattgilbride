@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/react';
-import { RichTextBlock } from 'prismic-reactjs';
 import { makeSize, makeSpace } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
-import { PrismicContent, PrismicImage } from '../components/PrismicContent';
+import { PrismicContent, PrismicImage, RichTextBlock } from '../components/PrismicContent';
 import { NextImageContainer } from '../components/NextImageContainer';
 import homeData from '../data/home.json';
 

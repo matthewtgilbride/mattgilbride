@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
-import { RichTextBlock } from 'prismic-reactjs';
 import { CSSObject } from '@emotion/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
-import { PrismicContent } from '../../components/PrismicContent';
+import { PrismicContent, RichTextBlock } from '../../components/PrismicContent';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { Layout } from '../../components/layout/Layout';
 import { Slice, SliceType } from '../../components/Slice';

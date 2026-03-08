@@ -1,12 +1,12 @@
 import React, { FC, Fragment } from 'react';
 import { CSSObject } from '@emotion/react';
 import Link from 'next/link';
-import { RichTextBlock } from 'prismic-reactjs';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import {
   PrismicContent,
   PrismicLink,
+  RichTextBlock,
 } from '../../components/PrismicContent';
 import blogData from '../../data/blog.json';
 
