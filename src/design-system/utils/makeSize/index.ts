@@ -12,11 +12,6 @@ export const configureMakeSize: ConfigureMakeSize = ({
 }) => {
   const sizeMap = buildSizeMap(sizeConfig);
 
-  // TODO: remove this or only put it on in dev mode
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
-  // window.sizeMap = sizeMap; // eslint-disable-line no-undef
-
   const makeSize = (...args: SizeArgs): string => {
     if (args.length === 2) {
       baselineGridMismatchWarning(sizeConfig, args[0]);

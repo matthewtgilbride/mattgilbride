@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "deploy": "aws s3 sync out s3://www.mattgilbride.com --cache-control max-age=86400",
-    "lint": "eslint src/* --ext=.ts,.tsx --no-error-on-unmatched-pattern",
+    "lint": "next lint",
     "tsc": "tsc",
     "clean": "rm -rf .next && rm -rf out",
     "cdk": "cd infrastructure && npx cdk"
@@ -30,6 +30,8 @@
     "@types/react": "18",
     "@types/react-dom": "18",
     "@types/react-syntax-highlighter": "^13.5.2",
+    "eslint": "8",
+    "eslint-config-next": "14",
     "typescript": "5"
   },
   "resolutions": {
