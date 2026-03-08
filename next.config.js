@@ -4,4 +4,7 @@ module.exports = {
   images: {
     unoptimized: true,
   },
+  compiler: {
+    emotion: true,
+  },
 };

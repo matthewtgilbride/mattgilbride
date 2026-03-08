@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { Palette } from 'design-system/utils/color/palette';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { usePalette } from '../../utils/usePalette';

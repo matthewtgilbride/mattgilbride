@@ -1,6 +1,6 @@
 import { RichTextBlock } from 'prismic-reactjs';
 import React, { FC } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import Gist from 'react-gist';
 import { PrismicContent, PrismicImage } from './PrismicContent';
 import { NextImageContainer } from './NextImageContainer';

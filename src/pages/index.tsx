@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { RichTextBlock } from 'prismic-reactjs';
 import { makeSize, makeSpace } from '../utils/design';
 import { Layout } from '../components/layout/Layout';

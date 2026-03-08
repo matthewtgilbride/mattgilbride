@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { Palette } from 'design-system/utils/color/palette';
 import { makeSize, makeSpace } from '../../../utils/design';
 import { usePalette } from '../../../utils/usePalette';

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { Layout } from './layout/Layout';
 import { makeSpace } from '../utils/design';
 

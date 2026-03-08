@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { RichTextBlock } from 'prismic-reactjs';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';

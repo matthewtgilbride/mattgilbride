@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren, useRef } from 'react';
 import Link, { LinkProps } from 'next/link';
 import { animated, useSpring } from 'react-spring';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { useActiveStyle } from '../NavLink';
 import { usePalette } from '../../../utils/usePalette';
 

@@ -1,5 +1,5 @@
 import React, { FC, Fragment } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import Link from 'next/link';
 import { RichTextBlock } from 'prismic-reactjs';
 import { Layout } from '../../components/layout/Layout';

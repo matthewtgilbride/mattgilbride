@@ -1,5 +1,5 @@
 import React from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { Layout } from '../../components/layout/Layout';

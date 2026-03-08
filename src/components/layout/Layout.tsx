@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren, ReactNode, useCallback, useState } from 'react';
-import { CSSObject, Global } from '@emotion/core';
+import { CSSObject, Global } from '@emotion/react';
 import { Header } from './header/Header';
 import { ContentContainer } from './content/ContentContainer';
 import { NavMenu } from './NavMenu';

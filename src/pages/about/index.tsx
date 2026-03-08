@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { Slice, SliceType } from '../../components/Slice';

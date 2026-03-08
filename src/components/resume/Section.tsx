@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, useCallback, useEffect, useState } from 'react';
 import { animated, useSpring } from 'react-spring';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { SectionHeader, SectionHeaderProps } from './SectionHeader';
 
 const styleBody: CSSObject = {

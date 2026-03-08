@@ -1,5 +1,5 @@
 import React, { FC, useCallback } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import { FormControl } from '../FormControl';
 import { PaletteType, usePalette } from '../../utils/usePalette';
 import { makeSpace } from '../../utils/design';

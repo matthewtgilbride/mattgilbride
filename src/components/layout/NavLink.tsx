@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from '@emotion/react';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 

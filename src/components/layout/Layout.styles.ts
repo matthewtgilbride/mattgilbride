@@ -1,4 +1,4 @@
-import { css, CSSObject } from '@emotion/core';
+import { css, CSSObject } from '@emotion/react';
 import { Palette } from 'design-system/utils/color/palette';
 
 export const beginAt = 'tabletPortrait';
