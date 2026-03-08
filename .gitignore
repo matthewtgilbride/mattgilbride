@@ -9,3 +9,4 @@ out/
 /.envrc
 infrastructure/lib/
 .claude/
+tsconfig.tsbuildinfo
