@@ -60,6 +60,31 @@ const styleContainer: CSSObject = {
   p: {
     margin: `${makeSpace('sm')} 0`,
   },
+  pre: {
+    backgroundColor: '#1e1e2e',
+    color: '#cdd6f4',
+    borderRadius: 8,
+    padding: makeSpace('sm'),
+    margin: `${makeSpace('md')} 0`,
+    overflowX: 'auto',
+    fontSize: '0.9em',
+    lineHeight: 1.6,
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  'pre code': {
+    fontFamily: "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
+    backgroundColor: 'transparent',
+    padding: 0,
+    borderRadius: 0,
+  },
+  code: {
+    fontFamily: "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
+    backgroundColor: 'rgba(128, 128, 128, 0.15)',
+    padding: '2px 6px',
+    borderRadius: 4,
+    fontSize: '0.9em',
+  },
 };
 
 // Each MDX file needs an explicit dynamic() call because webpack can't resolve
