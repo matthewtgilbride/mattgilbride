@@ -36,7 +36,7 @@
           },
           "alt": "philly",
           "copyright": null,
-          "url": "https://images.prismic.io/mattgilbride/111a9116-3aac-4547-bca4-130dccf3d1a4_philly-globe.png?auto=compress,format",
+          "url": "/images/philly-globe.png",
           "id": "X99eRxEAACIA6LqA",
           "edit": {
             "x": 0,
@@ -79,7 +79,7 @@
           },
           "alt": "wife",
           "copyright": null,
-          "url": "https://images.prismic.io/mattgilbride/3efcffe0-e233-4184-b92b-4f3bfc6e81d9_jamie.png?auto=compress,format",
+          "url": "/images/jamie.png",
           "id": "X99enhEAACMA6Lv-",
           "edit": {
             "x": 0,
@@ -122,7 +122,7 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://images.prismic.io/mattgilbride/61c4cc8f-86b8-4593-a448-11d9ee06a7ce_jordi-modified.png?auto=compress,format",
+          "url": "/images/jordi-modified.png",
           "id": "YWotWxEAACMAIddj",
           "edit": {
             "x": 0,
@@ -165,7 +165,7 @@
           },
           "alt": "dog",
           "copyright": null,
-          "url": "https://images.prismic.io/mattgilbride/fb64b4b2-657e-478f-a60e-0587a1e03c44_emmy.png?auto=compress,format",
+          "url": "/images/emmy.png",
           "id": "X99ekhEAACAA6LvH",
           "edit": {
             "x": 0,

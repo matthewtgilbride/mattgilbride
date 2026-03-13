@@ -10,7 +10,7 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://mattgilbride.cdn.prismic.io/mattgilbride/d9dc34ab-4a1c-4cc1-aa9a-a5c8125cf30a_coding.svg",
+          "url": "/assets/svg/coding.svg",
           "id": "YVgtgxIAACIAszm7",
           "edit": {
             "x": 0,
@@ -92,7 +92,7 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://mattgilbride.cdn.prismic.io/mattgilbride/0dda7e36-44f5-44d3-8ebd-38efffbbb624_server.svg",
+          "url": "/assets/svg/server.svg",
           "id": "YVgr1xIAACQAszJU",
           "edit": {
             "x": 0,
@@ -179,7 +179,7 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://mattgilbride.cdn.prismic.io/mattgilbride/14d436fc-7221-4364-807c-3e160be1650c_cloud-computing.svg",
+          "url": "/assets/svg/cloud-computing.svg",
           "id": "YVgtDhIAACIAsze0",
           "edit": {
             "x": 0,
@@ -261,7 +261,7 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://mattgilbride.cdn.prismic.io/mattgilbride/06f63d1d-997e-4e81-bc2d-4bc76044af74_sketch.svg",
+          "url": "/assets/svg/sketch.svg",
           "id": "YVgt3hIAACUAsztM",
           "edit": {
             "x": 0,
@@ -350,7 +350,7 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://images.prismic.io/mattgilbride/54a15353-fa42-4870-ab74-688752b23cb4_c1.webp?auto=compress,format",
+          "url": "/images/c1.webp",
           "id": "YAwtyhIAACEA3nQR",
           "edit": {
             "x": 0,
@@ -413,7 +413,7 @@
           },
           "alt": "chariot",
           "copyright": null,
-          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/10ab8efb-0c89-4f0e-85af-100f35476c5a_chariot.svg",
+          "url": "/assets/svg/chariot.svg",
           "id": "X-EukBEAACMA8Ny7",
           "edit": {
             "x": 0,
@@ -596,7 +596,7 @@
           },
           "alt": "reuters",
           "copyright": null,
-          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/87d0cf8a-632c-45b4-9a16-4af99c01dcb0_reuters.svg",
+          "url": "/assets/svg/reuters.svg",
           "id": "X-FL_xEAACEA8WB-",
           "edit": {
             "x": 0,
@@ -644,7 +644,7 @@
           },
           "alt": "sap",
           "copyright": null,
-          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/d5a163f7-4c0f-41ad-906f-d7da81139d20_sap.svg",
+          "url": "/assets/svg/sap.svg",
           "id": "X-FeSxEAACEA8bGU",
           "edit": {
             "x": 0,
@@ -697,7 +697,7 @@
           },
           "alt": "boeing",
           "copyright": null,
-          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/27a1957d-a9f7-40a5-881c-9a08af044bea_boeing.svg",
+          "url": "/assets/svg/boeing.svg",
           "id": "X-FeqxEAACMA8bOS",
           "edit": {
             "x": 0,
@@ -745,7 +745,7 @@
           },
           "alt": "drexel",
           "copyright": null,
-          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/cc5ce81a-32da-4019-bd3d-9a0f39b3a074_drexel.svg",
+          "url": "/assets/svg/drexel.svg",
           "id": "X-FfEREAACAA8bVb",
           "edit": {
             "x": 0,
@@ -813,7 +813,7 @@
           },
           "alt": "penn state",
           "copyright": null,
-          "url": "https://prismic-io.s3.amazonaws.com/mattgilbride/d2dbb4ba-e75e-42e0-92c3-256dbf7fb33a_penn-state.svg",
+          "url": "/assets/svg/penn-state.svg",
           "id": "X-FfeBEAACMA8bcf",
           "edit": {
             "x": 0,
