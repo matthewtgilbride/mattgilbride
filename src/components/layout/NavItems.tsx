@@ -6,9 +6,6 @@ export const NavItems: FC<{ childCss: CSSObject }> = ({ childCss }) => (
   <nav>
     <ul css={childCss}>
       <li>
-        <NavLink href="/about">About</NavLink>
-      </li>
-      <li>
         <NavLink href="/resume">Resume</NavLink>
       </li>
       <li>
