@@ -32,7 +32,7 @@ const styleButton = (palette: Palette): CSSObject => ({
   alignItems: 'center',
   padding: makeSpace('xxs'),
   marginLeft: makeSpace('xxs'),
-  color: palette.accent(),
+  color: palette.contrast(),
   ':hover,:active': {
     backgroundColor: palette.primary(-25),
   },
