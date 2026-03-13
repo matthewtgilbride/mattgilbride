@@ -62,6 +62,10 @@ const styleContainer: CSSObject = {
   },
 };
 
+// Each MDX file needs an explicit dynamic() call because webpack can't resolve
+// template literal imports like `import(`../../content/blog/${uid}.mdx`)`.
+// dynamic() also code-splits so only the viewed post's content is downloaded.
+// Trade-off: new blog posts require adding a line here.
 const mdxComponents: Record<string, React.ComponentType> = {
   shoemaker: dynamic(() => import('../../content/blog/shoemaker.mdx')),
   'next-gatsby': dynamic(() => import('../../content/blog/next-gatsby.mdx')),

@@ -1,21 +1,24 @@
 import React, { FC, Fragment } from 'react';
-import { SkillSlice } from '../model';
+import { SkillGroup } from '../model';
 import { SkillHeader } from './SkillHeader';
 import { SkillBody } from './SkillBody';
-import { RichText } from '../../RichText';
 
-export const Skill: FC<{ slice: SkillSlice }> = ({ slice }) => (
+export const Skill: FC<{ group: SkillGroup }> = ({ group }) => (
   <div>
     <SkillHeader
-      imgSrc={slice.primary.icon.url}
-      imgSize={slice.primary.icon_size}
-      text={slice.primary.title}
+      imgSrc={group.icon.src}
+      imgSize={group.icon.size}
+      text={group.title}
     />
     <SkillBody>
-      {slice.items.map((item) => (
-        <Fragment key={JSON.stringify(item)}>
-          {item.subgroup_title && <h5>{item.subgroup_title}</h5>}
-          <RichText blocks={item.subgroup_copy} />
+      {group.subgroups.map((sub) => (
+        <Fragment key={sub.title || 'default'}>
+          {sub.title && <h5>{sub.title}</h5>}
+          <ul>
+            {sub.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </Fragment>
       ))}
     </SkillBody>

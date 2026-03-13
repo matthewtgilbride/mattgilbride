@@ -10,14 +10,10 @@ import {
 } from '../../utils/design';
 import { Section } from '../../components/resume/Section';
 import { Footer } from '../../components/resume/Footer';
-import {
-  ExperienceSlice,
-  ResumeProps,
-  SkillSlice,
-} from '../../components/resume/model';
+import { ResumeProps } from '../../components/resume/model';
 import { Skill } from '../../components/resume/skill/Skill';
 import { Experience } from '../../components/resume/experience/Experience';
-import resumeData from '../../data/resume.json';
+import { skills, experiences } from '../../content/resume';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -55,14 +51,9 @@ const Resume: NextPage<ResumeProps> = ({ data }) => {
           }}
         >
           <div css={styleSkills}>
-            {data.body
-              .filter((i) => i.slice_type === 'skill_group')
-              .map((slice) => (
-                <Skill
-                  key={JSON.stringify(slice)}
-                  slice={slice as SkillSlice}
-                />
-              ))}
+            {data.skills.map((group) => (
+              <Skill key={group.title} group={group} />
+            ))}
           </div>
         </Section>
         <Section
@@ -73,17 +64,10 @@ const Resume: NextPage<ResumeProps> = ({ data }) => {
             text: 'Experience',
           }}
         >
-          {data.body
-            .filter(
-              (i) =>
-                i.slice_type === 'experience_group' &&
-                i.primary.type === 'experience',
-            )
-            .map((slice) => (
-              <Experience
-                key={JSON.stringify(slice)}
-                slice={slice as ExperienceSlice}
-              />
+          {data.experiences
+            .filter((e) => e.kind === 'experience')
+            .map((entry) => (
+              <Experience key={entry.title} entry={entry} />
             ))}
         </Section>
         <Section
@@ -94,17 +78,10 @@ const Resume: NextPage<ResumeProps> = ({ data }) => {
             text: 'Education',
           }}
         >
-          {data.body
-            .filter(
-              (i) =>
-                i.slice_type === 'experience_group' &&
-                i.primary.type === 'education',
-            )
-            .map((slice) => (
-              <Experience
-                key={JSON.stringify(slice)}
-                slice={slice as ExperienceSlice}
-              />
+          {data.experiences
+            .filter((e) => e.kind === 'education')
+            .map((entry) => (
+              <Experience key={entry.title} entry={entry} />
             ))}
         </Section>
       </div>
@@ -114,7 +91,7 @@ const Resume: NextPage<ResumeProps> = ({ data }) => {
 
 export const getStaticProps = async () => ({
   props: {
-    data: resumeData,
+    data: { skills, experiences },
   },
 });
 
