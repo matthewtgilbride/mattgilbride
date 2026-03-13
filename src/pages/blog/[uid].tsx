@@ -3,10 +3,9 @@ import { CSSObject } from '@emotion/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
-import { RichText, RichTextBlock } from '../../components/RichText';
+import dynamic from 'next/dynamic';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { Layout } from '../../components/layout/Layout';
-import { ContentBlock, ContentBlockType } from '../../components/ContentBlock';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -63,46 +62,54 @@ const styleContainer: CSSObject = {
   },
 };
 
+const mdxComponents: Record<string, React.ComponentType> = {
+  shoemaker: dynamic(() => import('../../content/blog/shoemaker.mdx')),
+  'next-gatsby': dynamic(() => import('../../content/blog/next-gatsby.mdx')),
+  'misadventures-in-rust': dynamic(
+    () => import('../../content/blog/misadventures-in-rust.mdx'),
+  ),
+  'coming-back-to-java': dynamic(
+    () => import('../../content/blog/coming-back-to-java.mdx'),
+  ),
+};
+
 interface BlogPostProps {
-  data: {
-    title: RichTextBlock[];
-    body: ContentBlockType[];
-  };
+  uid: string;
+  title: string;
 }
 
-const BlogPost: FC<BlogPostProps> = ({ data }) => (
-  <Layout seo={{ pageTitle: data.title[0].text ?? 'Matt Gilbride' }}>
-    <article css={styleContainer}>
-      <div>
-        <RichText blocks={data.title} />
-        {data.body.map((block: ContentBlockType) => (
-          <ContentBlock key={JSON.stringify(block)} block={block} />
-        ))}
-      </div>
-    </article>
-  </Layout>
-);
+const BlogPost: FC<BlogPostProps> = ({ uid, title }) => {
+  const Content = mdxComponents[uid];
+  return (
+    <Layout seo={{ pageTitle: title }}>
+      <article css={styleContainer}>
+        <div>
+          <Content />
+        </div>
+      </article>
+    </Layout>
+  );
+};
 
 export default BlogPost;
 
 export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
   params,
 }) => {
-  const dataDir = path.join(process.cwd(), 'src', 'data', 'blog-posts');
-  const filePath = path.join(dataDir, `${params?.uid}.json`);
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  const post = JSON.parse(raw);
+  const contentDir = path.join(process.cwd(), 'src', 'content', 'blog');
+  const mdxPath = path.join(contentDir, `${params?.uid}.mdx`);
+  const raw = fs.readFileSync(mdxPath, 'utf-8');
+  const match = raw.match(/title:\s*"([^"]+)"/);
+  const title = match ? match[1] : 'Matt Gilbride';
   return {
-    props: {
-      data: { title: post.title, body: post.body },
-    },
+    props: { uid: params?.uid as string, title },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const dataDir = path.join(process.cwd(), 'src', 'data', 'blog-posts');
-  const files = fs.readdirSync(dataDir).filter((f) => f.endsWith('.json'));
-  const paths = files.map((f) => `/blog/${f.replace('.json', '')}`);
+  const contentDir = path.join(process.cwd(), 'src', 'content', 'blog');
+  const files = fs.readdirSync(contentDir).filter((f) => f.endsWith('.mdx'));
+  const paths = files.map((f) => `/blog/${f.replace('.mdx', '')}`);
   return {
     paths,
     fallback: false,

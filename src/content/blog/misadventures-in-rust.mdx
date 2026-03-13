@@ -1,0 +1,149 @@
+export const metadata = {
+  title: "(Mis)Adventures in Rust",
+  uid: "misadventures-in-rust",
+};
+
+# (Mis)Adventures in Rust
+
+**tl;dr - I built something with Rust. Check out the project on Github, and the result here: codenames.mattgilbride.com.**[Github](https://github.com/matthewtgilbride/codenames), and the result here: [codenames.mattgilbride.com](http://codenames.mattgilbride.com).
+
+## **Why Rust?**
+
+The first time I heard of it, my thought was "I'm not a systems programmer, so low-level languages aren't for me." Later, I learned of WebAssembly, and found it really interesting. I’m pretty bullish on WebAssembly (and Web Components) over the long term, and the WebAssembly MVP only supported certain languages.  This all prompted me to start reading "[The Book](https://doc.rust-lang.org/book/)". After a few chapters, I was hooked.
+
+### **The Cathedral and the Bazaar**
+
+Another thing that drew me to Rust (and Go, for that matter) was that type checking, building, formatting, testing, and dependency management were first class citizens of the language toolchain itself. This cathedral is a welcome change from the bazaars I'd inhabited before (especially the Javascript/Typescript bazaar that is practically uninhabitable).
+
+In a Typescript project, all of these concerns have to be configured independently.  Worse, each individual concern has to be explicitly set up to properly interact with *all the others*: 
+
+- **Building** with webpack, rollup, esbuild, or one of many, many more.
+- **Formatting** with eslint, predominantly, but there are others.
+- **Testing** with jest, mocha, or chai.
+- **Type Checking** with typescript or flow.
+
+This is annoying enough that the [Rome](https://rome.tools/) project was created to address it.  Fittingly, the Rome team just announced that they are [re-writing the entire thing in Rust](https://rome.tools/blog/2021/09/21/rome-will-be-rewritten-in-rust).
+
+One doesn't "build" Python projects, per-se, but you still have choices. They mostly require less configuration, but they are nonetheless **third party** dependencies:
+
+- **Formatting** with black, isort, pylint, or flake8.
+- **Testing** with pytest or unittest.
+- **Type Checking** with mypy, pytype, or pyre.
+
+In both Javascript and Python, even **managing the third party dependencies themselves is a decision***. *For Javascript: do you use npm or yarn? For python: pip, pipenv, virtualenv, or conda?
+
+Java, and other JVM based languages like Scala, fall closer to the "Cathedral" side of this analogy. Type checking and building are essentially the same and are built in. Even if some concerns are developed by third parties, they are de-facto standards. Dependency management, be it with sbt, gradle, or maven, uses the Apache Ivy project under the hood. If you're starting a Scala project, you're going to use scalafmt for formatting and ScalaTest for testing. So this "Cathedral vs. Bazaar" argument isn't quite as strong there.
+
+It's still notable, however, that if you're going to start a Rust or Go project today, you'll need to include and configure the following in order to type check, build, format, and test your code:
+
+- **Nothing**
+
+All of those things are first class concerns of the language toolchain and/or standard library in Rust and Go. 
+
+That's nice.
+
+### **Native Binaries**
+
+While code written in most JVM based languages may not require as many decisions with regards to building, testing, and formatting code, they still require the JVM itself to **run** code. Both Rust and Go generate **native binaries**. While this does mean that you need to *target* specific platforms, the native toolchains support compilation to any platform. The important point here is that, to *consume* a project written in Rust or Go, all you need to do is install the binary for your platform. No additional setup required.  That’s pretty neat.
+
+### **Type Systems and Functional Programming**
+
+Over the past couple of years, my primary programming languages have been Typescript, Scala, and Python (in that order). I fell in love with Typescript after converting a reasonably sized React app from Javascript to Typescript. I've written how much I love the idea of gradual type systems. Writing Typescript, or Python with [type hints](https://docs.python.org/3/library/typing.html), feels like the best of both (dynamically and statically typed) worlds.  
+
+I’ve also fully bought into functional programming, however, and while there are lots of benefits to gradual typing, I can't help but miss some of Scala's features when working in Typescript or Python. Algebraic data types, pattern matching, and monads used to be big scary terms to me. But now that I've used them, I miss them when they aren't there. Once I got a few chapters into “The Book”, I realized that many of the nice features I’ve found in other languages are available, and ergonomic, in Rust.  More on that in just a bit...
+
+## **Building Something**
+
+Like most, I learn by doing. So I decided to implement a REST API for a board game that is popular among my friends and family. [Codenames](https://codenamesgame.com) is a rudimentary game where players try to get their teammates to guess certain words by giving other words as clues. A set of 25 words are assigned randomly to a Blue Team, a Red Team, or no team at all. One word is the dedicated "death" card. If any player guesses the "death" card, then his or her team automatically loses.
+
+### **Pointers, References, Values, and “Ownership”**
+
+My initial reaction when reading the rust book was "oh man...pointers...references...the stack and the heap...😳". It truly was a departure from languages I already knew. I can't remember a single time I've thought about whether I was allocating memory to the stack or the heap. Not once in my entire career. Not in Java. Not in Scala. Not in Python. *Certainly* not in Javascript. I've never written anything beyond hello world in a language from the C family, so I guess I just don't really think about allocating memory *at all*.  
+
+Suffice to say that pointers and/or references were out of my comfort zone, and the (in)famous borrow checker was even more so. You really don't think about references, vis a vis values, in garbage collected languages. Sure, we all know that "arguments are passed by reference" in Java, but do we really ever *think about it*?
+
+Here's a [great example](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/service.rs#L101-L128) of your’s truly, flailing around with pointers and the borrow checker:
+
+<GistEmbed id="e83aa2b1320ea31626050abeaf9aa369" />
+
+This code compiles...and it...*works*...but I have a lot of reservations about it.  In short:
+
+<ContentImage src="/images/i-dont-know-what-im-doing.jpg" alt="" width={1920} height={1080} />
+
+The [&mut self](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/service.rs#L102) means that this member function needs to be called from a mutable reference to the containing struct.  I don’t even remember why I needed that.  I *think* the underlying [dao](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/dao.rs#L5-L9) trait, which is currently implemented in [redis](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/actix/src/game/dao.rs#L17-L30), needed a mutable reference.  I don’t understand why *that* is, either, but I was able to follow the compiler errors to the promised land.  And user-friendly compiler errors are a big pro of the language.
+
+The [rest of the function arguments](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/service.rs#L103-L105) are references.  I *kind of* know what I’m doing there, insofar as I want the caller of this function to maintain ownership of these read-only values after it returns.  
+
+In the body of the function, I have to specify [let &player](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/service.rs#L111) (as opposed to just “player”, without the reference), because otherwise I have *a reference to a reference to a Player.*
+
+And finally,  my return statements involve a calls to [.clone()](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/service.rs#L122).  Attempting to dereference this variable with the * operator fails because it is a “shared reference” that can’t be “moved”, which I get...kind of.  There are calls to the clone method all over the place in this code base, which is apparently pretty common for newcomers to the language.  I’m ok with it...for now...
+
+ ¯\_(ツ)_/¯
+
+### **Iterators, Options, Results, and Pattern Matching**
+
+Rust supports many of the niceties of functional programming, including [iterators and closures](https://doc.rust-lang.org/book/ch13-00-functional-features.html#functional-language-features-iterators-and-closures).  
+
+In my domain model, a game contains a list of turns, and each turn *may* [contain a list of guesses](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/model/turn.rs#L9).  That’s because a [turn](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/model/turn.rs#L24-L27) is an [enum](https://doc.rust-lang.org/rust-by-example/custom_types/enum.html) that represents two states: “Pending”, meaning that the spymaster’s teammates are awaiting their clue; and “Started”, meaning the spymaster has given a clue and their teammate(s) are guessing words. 
+
+In many cases, I simply want to retrieve the list of all guesses that have occurred in the game, regardless of which turn they occurred in.  This is a great [example](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/model/info.rs#L48-L57) of how useful Rust’s iterators (or a solid collection abstraction in any language) are:
+
+<GistEmbed id="92a4ec2acdd87fc5089072cbd24f517a" />
+
+The [filter_map](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter_map) function allows me to filter and transform values of the collections in a single operation (replacing the need for separate “filter” and “map” steps).  So I can pluck out only turns that are in the “Started” state, and then get the list of guesses accordingly.  Then, it is trivial to [flatten](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.flatten) this nested “list of lists” into a single list.  
+
+Without a robust, functional collections library, this problem typically breaks down into a couple of nested **for** loops that **mutate** an initially empty list.  One instantiates the list, and then adds elements inside the second of those two loops.  In my humble opinion, the solution above is much better.  
+
+And that’s...nice.
+
+Rust also has optional values, error handling, and pattern matching.  Combining these features can produce some elegant results.  It’s one of the things I really loved when I started with Scala, and Rust doesn’t disappoint.
+
+First, let’s dive into the [tiny helper](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/model/info.rs#L42-L46) I wrote to get the currently active turn in any game:
+
+<GistEmbed id="a68e8407a43475cbcfc6d542cfd51312" />
+
+There are a couple of interesting things going on with the [Option](https://doc.rust-lang.org/std/option) type here.  First of all, Rust [slices](https://doc.rust-lang.org/book/ch04-03-slices.html) have a handy [first](https://doc.rust-lang.org/std/primitive.slice.html#method.first) method.  It returns an Option whose value contains the first element, or [None](https://doc.rust-lang.org/std/option/enum.Option.html#variant.None) if the list is empty.  In my domain model, games contain a list of turns, starting with the most recent turn.  This list should never be empty, because every game starts with the first turn in a “Pending” state, and they are only added or modified, never removed, from there.  I’m able to represent this invariant by combining that method with the Option’s [expect](https://doc.rust-lang.org/std/option/enum.Option.html#method.expect) method. I return the value contained in the option, or panic with a developer-friendly runtime error.  Because if the turns list is empty at any point, I’ve introduced a glaring bug.
+
+This combination allows me to treat the current turn in any game almost like a field on the struct, without having to reason about the underlying list of turns. 
+
+That’s...pretty nice.
+
+Now let's check out this [example](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/model/info.rs#L59-L94):
+
+<GistEmbed id="12390249fde653974034d471591679e9" />
+
+Note the [return type](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/model/info.rs#L63) of this function.  Not only does the [Result](https://doc.rust-lang.org/std/result) type signify to the caller that this function could throw an error, it comes with some [handy safeguards](https://doc.rust-lang.org/std/result/#results-must-be-used) and built-in operations for dealing with that fact.  Most notably the [question mark operator](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator), which I use [here](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/model/mod.rs#L59).
+
+Finally, [pattern matching](https://doc.rust-lang.org/book/ch18-00-patterns.html) is a powerful feature that is hard to appreciate until you’ve used it.  Before breaking down how it works in the above example, let's look at a more [straightforward one](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/model/error.rs#L38-L66):
+
+<GistEmbed id="8645d6b8f8cb090ce800414396115d3f" />
+
+Here we see the most basic pattern match against a "sum" Algebraic Data Type.   Importantly in Rust, [matches are exhaustive](https://doc.rust-lang.org/book/ch06-02-match.html#matches-are-exhaustive), which means if I add a new entry to the enum, the compiler will make sure I handle it everywhere.  This type of thing can approximated in Typescript with [discriminated unions](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions) and the [never](https://www.typescriptlang.org/docs/handbook/basic-types.html#never) type, but it's not quite the same...
+
+Pattern matching provides a nice alternative to the **if** or **switch **control flow that would be necessary in languages that don't support it.  In many cases, it is also *much more powerful* than those approaches.  Rust provides an [exhaustive pattern syntax](https://doc.rust-lang.org/book/ch18-03-pattern-syntax.html#pattern-syntax) that can handle a litany of use cases.  Let's go back to the prior example, where I want to describe the following scenarios:
+
+- Error: the current turn is already in the “Started” state
+- Error: the specified player doesn’t exist
+- Error: the specified player is not a spymaster
+- Error: the specified player is not on the right team
+- Success: the turn was started
+
+<GistEmbed id="3151febea746165bb9a0b5f770aba2ef" />
+
+Without pattern matching, this would likely come down to a number of **if** and early **return** statements.  With pattern matching, it reads (at least...to me) more or less like the bullet points above.   The above code takes advantage of [matching named variables](https://doc.rust-lang.org/book/ch18-03-pattern-syntax.html#matching-named-variables), [destructuring](https://doc.rust-lang.org/book/ch18-03-pattern-syntax.html#destructuring-to-break-apart-values), [ignoring values in a pattern](https://doc.rust-lang.org/book/ch18-03-pattern-syntax.html#ignoring-values-in-a-pattern), and [extra conditionals](https://doc.rust-lang.org/book/ch18-03-pattern-syntax.html#extra-conditionals-with-match-guards).  Rust can even warn against [unreachable patterns](https://doc.rust-lang.org/rustc/lints/listing/warn-by-default.html#unreachable-patterns).  If I come back to this code in the future and decide to list the Success case first (which would introduce a bug), I’ll see a warning that some of the subsequent patterns are unreachable.  
+
+All of this is just...really nice.
+
+<ContentImage src="/images/kp_nooice.gif" alt="" width={496} height={254} />
+
+## **Strong Recommend**
+
+I picked up Rust expecting something way out of my comfort zone, and the borrow checker certainly was.  What I *didn’t* expect to find was so many of my favorite features from other languages.  
+
+There are lots of little things to like that I haven’t even touched on, such as the module system.  It’s incredibly well thought out.  I’ll miss being able to re-export things like [this](https://github.com/matthewtgilbride/codenames/blob/140bb1edd70b328de15bee6711e770ffeb420eff/service/domain/src/game/model/mod.rs#L3-L7) when I go back to other languages. (If you’d like to know exactly what that does and why it’s useful, don’t hesitate to [reach out](/) for an explanation).  And I could go on…
+
+There are some other bits of this project that I would elaborate on if I weren’t trying to focus on my experience with Rust.  It’s yet another AWS deployment with their [CDK](https://aws.amazon.com/cdk/), which I absolutely love, and have written about before.  It is *not* a serverless approach, but I may refactor that soon.  It’s also yet another web UI leveraging [NextJS](https://nextjs.org/), which powers this site.
+
+Perhaps the most important digression would be the topic of WebAssembly, which led me to Rust in the first place.  If you look closely, you’ll notice that there is a subdirectory of the project called [wasm](https://github.com/matthewtgilbride/codenames/tree/140bb1edd70b328de15bee6711e770ffeb420eff/service/wasm).  It no longer works, but at a point in time this was an implementation of the REST service on the [WasmCloud](https://wasmcloud.dev/) platform.  WasmCloud is one of many projects geared at leveraging WebAssembly outside of the browser.  Per [their FAQ](https://wasmcloud.dev/faq/): “Wasm is designed as a portable and performant compilation target for programming languages enabling secure, deny-by-default deployment on the web, in the browser, on your server, the edge, or wherever you would like to run your workload.”  WasmCloud is an exciting project, backed by an incredibly welcoming community.  Ultimately, I chose to finish this project up with a simple actix-web server running on EC2.  But while this isn’t a WebAssembly project (yet), I’ll be tracking WasmCloud closely going forward.  It’s one of the most exciting things I’m aware of in terms of emerging technology, and it’s being driven by some really smart people.
+
+Anyway, if you’ve gotten this far, thanks for humoring me.  Rust is a delightful language.  Don’t let the borrow checker scare you.  For my part, I’d jump at an opportunity to work on a Rust project full time.  For now, it’s become my hobby language of choice.  You should definitely check it out.
