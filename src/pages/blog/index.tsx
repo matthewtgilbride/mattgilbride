@@ -3,21 +3,7 @@ import { CSSObject } from '@emotion/react';
 import Link from 'next/link';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
-import {
-  RichText,
-  ContentLink,
-  RichTextBlock,
-} from '../../components/RichText';
-import blogData from '../../data/blog.json';
-
-const linkResolver = (doc: ContentLink): string => {
-  switch (doc.type) {
-    case 'blog_post':
-      return `/blog/${doc.uid}`;
-    default:
-      return '/';
-  }
-};
+import { blogIndex, BlogYear } from '../../content/blog-index';
 
 const styleContainer: CSSObject = {
   display: 'flex',
@@ -43,37 +29,26 @@ const styleContainer: CSSObject = {
 };
 
 interface BlogProps {
-  data: {
-    body: {
-      primary: { year: RichTextBlock[] };
-      items: {
-        title: string;
-        link: ContentLink;
-      }[];
-    }[];
-  };
+  data: BlogYear[];
 }
 
 const Blog: FC<BlogProps> = ({ data }) => (
   <Layout seo={{ pageTitle: 'Blog' }}>
     <div css={styleContainer}>
-      {data.body.map(({ items, primary }) => (
-        <Fragment key={JSON.stringify({ items, primary })}>
-          <RichText blocks={primary.year} />
-          {items.map((item) => {
-            if (item.link.link_type === 'Web') {
-              return (
-                <a key={item.title} href={item.link.url}>
-                  {item.title}
-                </a>
-              );
-            }
-            return (
-              <Link key={item.title} href={linkResolver(item.link)}>
-                {item.title}
+      {data.map(({ year, posts }) => (
+        <Fragment key={year}>
+          <h2>{year}</h2>
+          {posts.map((post) =>
+            post.href.startsWith('http') ? (
+              <a key={post.title} href={post.href}>
+                {post.title}
+              </a>
+            ) : (
+              <Link key={post.title} href={post.href}>
+                {post.title}
               </Link>
-            );
-          })}
+            ),
+          )}
         </Fragment>
       ))}
     </div>
@@ -82,7 +57,7 @@ const Blog: FC<BlogProps> = ({ data }) => (
 
 export const getStaticProps = async () => ({
   props: {
-    data: blogData,
+    data: blogIndex,
   },
 });
 

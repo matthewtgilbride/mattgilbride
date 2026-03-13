@@ -1,0 +1,229 @@
+export const metadata = {
+  title: "The Prodigal Java Returns",
+  uid: "coming-back-to-java",
+};
+
+# The Prodigal Java Returns
+
+**tl;dr - Java isn't my favorite, but it's not so bad.  Use the good parts.**
+
+I started my career as a non-programmer, discovering my love for writing code through Microsoft Office, with the oft-maligned Visual Basic for Applications (VBA).  I used it to automate menial tasks at my first job after college. I loved it.  My next job was at SAP, where I was exposed to their proprietary language, called [ABAP](https://en.wikipedia.org/wiki/ABAP).
+
+For a while, I was only exposed to "mainstream" programming languages like Java and Python via my pursuit of a master's degree in computer science. The graduate level course on programming languages was taught entirely in [Haskell](https://en.wikipedia.org/wiki/Haskell_(programming_language)). In hindsight, the professor's approach was laudable. Unfortunately, I was not the only student who spent most of the term thinking: "Doesn't the industry just want me to know Java, Javascript, or Python? Who in the world uses Haskell? How is this going to help me?".
+
+Sure enough, my next job found me building traditional MVC web apps with Java, the Spring Framework, and a sprinkling of JavaScript and jQuery on the front end.  So the students' concerns in that class were valid...right?
+
+## Taking the Red Functional Programming Pill
+
+<ContentImage src="/images/1416.jpg" alt="" width={1200} height={719} />
+
+Fast forward a number of years, and my primary programming languages have been Typescript, Scala, and Python (in that order).  Of those three, Scala is simultaneously the most frustrating and the most enlightening.  I often feel more productive in the other two...but I can't help but miss some of Scala's features when working in Typescript or Python. Algebraic data types, pattern matching, and **monads** used to be big scary terms to me. But now that I've used them, I miss them when they aren't there.
+
+I'll spare the academic explanation of a monad.  Suffice to say it is a concept in functional programming that is hard to appreciate until you've used it.  During my original stint with Java, the team updated to Java 8 shortly before I left.  Java 8 was a watershed release, introducing a lot of the functional programming features that originally attracted people to Scala.  I didn't have a chance to experience them in Java before I did so in other languages.
+
+This year, I've finally found myself on another Java project.  I was less than excited at first, but I must say, I've been pleasantly surprised.  Java has grown.  But I find that many Java developers still haven't taken the proverbial "red pill" yet.  So for those who haven't, I wanted to provide a clear example of the benefits.
+
+## So Call Me Maybe (Monad)
+
+The most common demonstration of the concept is the [maybe monad](https://en.wikipedia.org/wiki/Monad_(functional_programming)#An_example:_Maybehttps://), an extremely helpful wrapper around variables which *may or may not contain a value*.  This concept, commonly known in Java as a "null pointer", is also known to history as [the billion dollar mistake](https://www.youtube.com/watch?v=ybrQvs4x0Ps).  In a nutshell, any variable in Java can either be a value of the specified type, or it can be **null**.  This possibility is the source of much pain and suffering.  But it doesn't have to be that way.  To demonstrate, I came up with an extremely contrived example.
+
+Let's say we have a function.  It takes as it's input some JSON, and it is required to either: 
+
+1. return a **nonempty** string at a particular path, ***or*** 
+1. **throw an exception** (if a nonempty string cannot be found at that path).
+
+Here's the happy path (pardon the pun):
+
+```json
+{ "foo": { "bar": "baz" } }
+```
+
+We want to return the value at **foo.bar**, which is "baz".  Great.  But what if our input could be any of the following?
+
+```json
+{ "foo": { "bar": "" } }
+{ "foo": { "bar": null } }
+{ "foo": {} }
+{ "foo": null }
+{}
+null
+```
+
+In Java, a naive implementation of this method would look something like this:
+
+```java
+public String naiveGetter(Map<String, Map<String, String>> inconsistentMap) {
+    return inconsistentMap.get("foo").get("bar");
+}
+```
+
+It would succeed for the happy path case, and fail, sometimes catastrophically, for all of the others.  Out in the wild, code like this is unlikely to make it to production.  Most Java developers are forced into some semblance of defensive programming when accessing nested data structures.  In this example, the solution that handles all cases looks something like this:
+
+```java
+public String imperativeGetter(Map<String, Map<String, String>> inconsistentMap) {
+    if (inconsistentMap != null && inconsistentMap.get("foo") != null) {
+        Map<String, String> foo = inconsistentMap.get("foo");
+        if (foo != null && foo.get("bar") != null) {
+            String bar = foo.get("bar");
+            if (bar != null && bar.length() > 0) {
+                return bar;
+            }
+        }
+    }
+    throw new IllegalArgumentException("JSON is in unexpected shape!");
+}
+```
+
+This is...fine.  But let's think about what it means for someone reading this code for the first time.  It involves:
+
+- Three **nested** **if** statements
+- **6 total** boolean conditions (two apiece, e.g. "this *object* isn't null **AND** this *key* isn't null")
+- An early return statement
+
+That may seem trivial, but that's actually a lot of cognitive overhead.  Especially because this is, in the end, a pretty simple requirement.  
+
+Now, we aren't being totally fair to Java 7 here.  There are other ways to do this, one of which isn't far from how one would do it in idiomatic Python (see "[EAFP](https://docs.python.org/3/glossary.html#term-eafphttps://)"):
+
+```java
+public String betterImperativeGetter(Map<String, Map<String, String>> inconsistentMap) {
+    String bar;
+    try {
+        bar = inconsistentMap.get("foo").get("bar");
+    } catch (NullPointerException npe) {
+        throw new IllegalArgumentException("JSON is in unexpected shape!");
+    }
+    if (StringUtils.isEmpty(bar)) {
+        throw new IllegalArgumentException("JSON is in unexpected shape!");
+    }
+    return bar;
+}
+```
+
+That's...better...I think?  There's still some annoying noise in there.  Throwing the same exception twice is no fun.  Nor is dealing with the **bar** variable ***four*** times: once to define it, once to assign it, once to check its value, and one final time to return it.
+
+Here's how functional programming, and specifically the [maybe monad](https://en.wikipedia.org/wiki/Monad_(functional_programming)#An_example:_Maybehttps://) (in Java, the [Optional](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html) type), cleans this up:
+
+```java
+public String functionalGetter(Map<String, Map<String, String>> inconsistentMap) {
+    return Optional
+            .ofNullable(inconsistentMap)
+            .map(outerMap -> outerMap.get("foo"))
+            .map(innerMap -> innerMap.get("bar"))
+            .filter(StringUtils::isNotEmpty)
+            .orElseThrow(() -> new IllegalArgumentException("JSON is in unexpected shape!"));
+}
+```
+
+There is still complexity here.  And if you're not used to some of the syntax, like lambda functions denoted with the "arrow" **->** syntax, it can be uncomfortable at first.  But there are some important bits of complexity that are ***removed completely*** by the monad.
+
+Take the documentation of the [Optional.map](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#map-java.util.function.Function-) function, for example:
+
+"***If*** a value is present, apply the provided mapping function to it, and ***if*** the result is non-null, return an Optional describing the result. Otherwise return an empty Optional."
+
+You see those **if**s in there?  Things like that are *baked into the monad*.  And it doesn't only apply to the **map** function.  This means you don't have to muddy your code with the conditional logic.  That's important.  Let's look at that functional method again, with comments along the way:
+
+[Optional.ofNullable](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#ofNullable-T-)
+
+```java
+public String functionalGetter(Map<String, Map<String, String>> inconsistentMap) {
+    return Optional
+            // If the inconsistentMap itself is null, this line results in Optional.EMPTY...
+            .ofNullable(inconsistentMap)
+            .map(outerMap -> outerMap.get("foo")) // ...and this never executes...
+            .map(innerMap -> innerMap.get("bar")) // ...nor this...
+            .filter(StringUtils::isNotEmpty) // ...or this.
+            .orElseThrow(() -> new IllegalArgumentException("JSON is in unexpected shape!"));
+            // The whole thing jumps down to this line, which throws an exception
+            // if we encounter EMPTY at any point along the way.
+}
+```
+
+[Optional.map](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#map-java.util.function.Function-)
+
+```java
+public String functionalGetter(Map<String, Map<String, String>> inconsistentMap) {
+    return Optional
+            .ofNullable(inconsistentMap)
+            // if a map operation returns null, the result of the entire computation is Optional.EMPTY...
+            .map(outerMap -> outerMap.get("foo")) 
+            .map(innerMap -> innerMap.get("bar")) // ...and this never executes...
+            .filter(StringUtils::isNotEmpty) // ...nor this.
+            .orElseThrow(() -> new IllegalArgumentException("JSON is in unexpected shape!"));
+            // Again we jump down here, having encountered EMPTY.
+}
+```
+
+[Optional.filter](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#filter-java.util.function.Predicate-)
+
+```java
+public String functionalGetter(Map<String, Map<String, String>> inconsistentMap) {
+    return Optional
+            .ofNullable(inconsistentMap)
+            .map(outerMap -> outerMap.get("foo")) 
+            .map(innerMap -> innerMap.get("bar"))
+            // If the value is present, AND it passes the supplied check,
+            // it is returned, otherwise the result, again, is Optional.EMPTY.
+            .filter(StringUtils::isNotEmpty)
+            .orElseThrow(() -> new IllegalArgumentException("JSON is in unexpected shape!"));
+            // And again we jump down here.
+}
+```
+
+Once you get used to these "monadic" operators, they start to feel really expressive.  And it's hard to look back at all those imperative if/else and try/catch statements with indifference, especially when the language offers better "**Option**s"....
+
+....GET IT!?!?
+
+<ContentImage src="/images/tom-cult-laugh.gif" alt="laughing" width={480} height={293} />
+
+## Still a Typescript Fanboy
+
+It's worth noting that my favorite solution to this particular problem doesn't involve monads at all. Typescript (due to a recently accepted ECMAScript [standard](https://github.com/tc39/proposal-optional-chaining)) supports the [optional chaining operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining), which is demonstrably more readable than the monadic approach I just advocated:
+
+```typescript
+type InconsistentMap = { [key:string]: { [key:string]: string | null } | null } | null
+
+function typescriptGetter(inconsistentMap: InconsistentMap): string {
+    const bar = inconsistentMap?.foo?.bar
+    if (!bar) throw Error("JSON is in unexpected shape!")
+    return bar;
+}
+```
+
+It's hard to argue with the straightforwardness of the above.  The only issue I have with Typescript is all the baggage that comes with the negation operator: **!bar**.  Javascript experts will know this evaluates to true if **bar** is:
+
+- null
+- NaN
+- 0
+- ""
+- undefined
+
+And OK...fine...most people know that.  And Typescript eliminates two of those cases (we know we're dealing with strings).  However, my pedantic self, having taken the aforementioned red pill, still likes the "purely" functional approach.  Admitting that might mean that I've lost a bit of pragmatism over the years.  And honestly, there are probably even cooler solutions to this problem, contrived as it is, in other languages (looking at you, [clojure](https://clojure.org)).  
+
+Finally, I would be remiss if I didn't also call out Rust, which *doesn't really have null references at all.  *Here's a Rust implementation for the same problem:
+
+```rust
+type InnerMap = HashMap<String, String>;
+type OuterMap = HashMap<String, InnerMap>;
+
+fn get_maybe_bar(inconsistent_map: Option<OuterMap>) -> Option<String> {
+    inconsistent_map?.get("foo")?.get("bar").cloned()
+}
+
+fn get_bar_or_error(inconsistent_map: Option<OuterMap>) -> Result<String, String> {
+    get_maybe_bar(inconsistent_map).ok_or("JSON is in unexpected shape!".into())
+}
+
+fn get_bar_or_panic(inconsistent_map: Option<OuterMap>) -> String {
+    get_maybe_bar(inconsistent_map).expect("JSON is in unexpected shape!")
+}
+```
+
+I've recently written an article about my [first impressions of rust](/blog/misadventures-in-rust), so I won't go into the nuance that makes the above code a bit confusing to the uninitiated.  There are a few things that I'd like to call out, however:
+
+1. Rust has a similarly useful "question mark" operator.
+1. Rust is *really explicit* about exceptions.  If your function might throw an exception, its return type *must be* a [Result](https://doc.rust-lang.org/std/result/).
+1. If you really want to ignore the above safeguard, you can have the entire program crash (a.k.a. "panic") when it encounters an error.
+
+There's a lot that I like in there.  I could go on and on, but that's enough for now...
+
+The point is, Java ain't so bad. Its evolution has actually been quite impressive.  Don't knock it until you've tried it (again).

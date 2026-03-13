@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { CSSObject } from '@emotion/react';
+import Link from 'next/link';
 import { makeSize, makeSpace } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
-import { RichText, ContentImage, RichTextBlock } from '../components/RichText';
 import { NextImageContainer } from '../components/NextImageContainer';
-import homeData from '../data/home.json';
+import { homeContent } from '../content/home';
 
 const styleContainer: CSSObject = {
   display: 'flex',
@@ -33,40 +33,28 @@ const styleContent: CSSObject = {
   },
 };
 
-interface HomeDocument {
-  greeting: RichTextBlock[];
-  copy: RichTextBlock[];
-  profile: ContentImage;
-}
-
-interface HomeProps {
-  data: HomeDocument;
-}
-
-const Home: FC<HomeProps> = ({ data }) => (
+const Home = () => (
   <Layout seo={{ pageTitle: 'Home' }}>
     <div css={styleContainer}>
       <div css={styleContent}>
-        <RichText blocks={data.greeting} />
+        <h1>{homeContent.greeting}</h1>
         <NextImageContainer
           cssProp={styleNextImage}
-          src={data.profile.url}
-          alt={data.profile.alt}
-          width={data.profile.dimensions.width}
-          height={data.profile.dimensions.height}
+          src={homeContent.profile.src}
+          alt={homeContent.profile.alt}
+          width={homeContent.profile.width}
+          height={homeContent.profile.height}
         />
         <div>
-          <RichText blocks={data.copy} />
+          <p>I&apos;m Matt, from Philly</p>
+          <p>I like writing code, and dogs</p>
+          <p>
+            check out my <Link href="/about">about</Link> page
+          </p>
         </div>
       </div>
     </div>
   </Layout>
 );
-
-export const getStaticProps = async () => ({
-  props: {
-    data: homeData,
-  },
-});
 
 export default Home;

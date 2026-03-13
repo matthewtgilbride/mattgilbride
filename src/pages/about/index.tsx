@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { CSSObject } from '@emotion/react';
+import dynamic from 'next/dynamic';
 import { Layout } from '../../components/layout/Layout';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
-import { ContentBlock, ContentBlockType } from '../../components/ContentBlock';
-import aboutData from '../../data/about.json';
+
+const AboutContent = dynamic(() => import('../../content/about.mdx'));
 
 const styleContainer: CSSObject = {
   margin: 'auto',
@@ -26,26 +27,12 @@ const styleContainer: CSSObject = {
   },
 };
 
-interface AboutProps {
-  data: {
-    body: ContentBlockType[];
-  };
-}
-
-const About: FC<AboutProps> = ({ data }) => (
+const About = () => (
   <Layout seo={{ pageTitle: 'About' }}>
     <div css={styleContainer}>
-      {data.body.map((block: ContentBlockType) => (
-        <ContentBlock key={JSON.stringify(block)} block={block} />
-      ))}
+      <AboutContent />
     </div>
   </Layout>
 );
-
-export const getStaticProps = async () => ({
-  props: {
-    data: aboutData,
-  },
-});
 
 export default About;

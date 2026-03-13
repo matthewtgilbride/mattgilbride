@@ -1,0 +1,56 @@
+export const metadata = {
+  title: "Next > Gatsby and you don't need GraphQL",
+  uid: "next-gatsby",
+};
+
+# Next > Gatsby and you don't need GraphQL
+
+## tl;dr I basically agree with [Jared Palmer](https://jaredpalmer.com/gatsby-vs-nextjs).
+
+This site was originally built with [Gatsby](https://www.gatsbyjs.com/).  It was my first foray into Static Site Generation (SSG) after building multiple "traditional" Single Page Apps (SPAs) at my day job.  
+
+While I'm at it...I should note that there is really nothing "traditional" about SPAs in the first place...but that's neither here nor there.
+
+I didn't debate much between Gatsby and [Next](https://nextjs.org/).  I knew Gatsby was popular and well documented.  I had limited exposure to GraphQL at the time, so the fact that Gatsby forced me to use it was a plus.
+
+### You don't need GraphQL.
+
+I've had this feeling for some time now: GraphQL is a powerful, useful, widely adopted technology...that isn't necessary for many of its users.  I'm aware of a litany of legitimate use cases for it.  But I've seen more use of GraphQL for the ***wrong*** reasons than the right ones.  Before I go further, let me regurgitate a few obvious benefits of GraphQL:
+
+#### 1. It prevents "over-fetching"
+
+GraphQL servers send exactly the content requested by the client and nothing more.  This minimizes the amount of data being sent over the network, drastically improving user experiences in many cases.
+
+#### 2. Responses look like requests
+
+A GraphQL client can make strong assumptions about the shape of a JSON response based on a query.  That's nice.  It means that clients and servers have to agree more explicitly on API contracts.  I like that. 
+
+#### 3. It provides a single API for disparate data
+
+When projects involve multiple APIs, a GraphQL server provides a single, powerful integration point for clients.  It can hide complexity from clients by allowing them to request data across multiple APIs -- in a single query -- without even knowing it.
+
+### Solve problems you actually have.
+
+Of the above, number one is the primary reason to use GraphQL.  However, "over-fetching" isn't a very real problem for most.  Sure, Facebook has this problem, which is why they built the tool.  But unless you're also a massive social media network -- serving media-rich apps across multiple platforms -- chances are that "over-fetching" isn't actually an issue for you.  Sending some reasonably sized JSON payloads over the network isn't going to crash people's browsers.  I promise.
+
+Number two is nice, but it's not the only way to provide clear API contracts.  The OpenAPI spec is mature, and the ecosystem around it is strong (side note -- check out [connexion](https://connexion.readthedocs.io/en/latest/https://)).  The fact that GraphQL requests look like the corresponding responses is useful.  However, Javascript clients consuming those responses will still suffer from type related bugs that are better caught with a type checker like Typescript.  And if you want to use Typescript -- you'll either need to define all of your types twice (once in a GraphQL schema and once in Typescript) -- or use something like [GraphQL Codegen](https://graphql-code-generator.com/) to generate one from the other.  And those generated types are going to be ugly.
+
+Similarly, number three is nice, but it's not the only way to unify multiple APIs.  GraphQL did not invent the reverse proxy.  A few hundred lines of nginx config is probably enough for most scenarios.  There is no rule prohibiting a Javascript client making multiple requests to fetch data needed for a feature.  Neither is there a law that REST APIs be overly dogmatic about what "REST" means...such that they are awkward for their consumers to use.  
+
+If any of the downsides to ***not*** having GraphQL become unwieldy -- by all means -- use it.  But make sure those downsides are ***real*** problems for you first.  GraphQL isn't going to replace much of your existing architecture.  It will exist ***in addition to*** whatever you already have.  You'll still need to persist information in a database of some kind, and you'll still need mechanisms to send traffic over a network.  From a big picture perspective, make sure GraphQL is ***actually reducing complexity***, not introducing more.
+
+### Gatsby is to GraphQL as Angular is to RxJS.
+
+Now, back to the subject of Gatsby vs. Next.  Both GraphQL and RxJS are powerful abstractions, but they are totally unnecessary for simple use cases.  
+
+There's not really a good reason to turn a single HTTP request into an [Observable](https://rxjs-dev.firebaseapp.com/guide/observable).  It emits only one item, which kind of defeats the purpose of observables.  Most users need not burden themselves with the cognitive overhead of the "reactive" approach for the purpose of simple data fetching.  But that's the pattern Angular shoves down your throat.  
+
+For static websites, there's not really a good reason to fetch data -- jam it into a GraphQL schema -- and then immediately query that schema to generate pages.  Why not skip the extra step in the middle?  Well...if you're using Gatsby...you don't have a choice.
+
+And that's the point.  One of the oft discussed reasons for React's rise to popularity its approach to be a "library" as opposed to the Angular "framework".  Library vs. framework debate aside, I personally enjoy React because it leaves me in charge of how data is fetched.  I can keep it simple when things are simple, and use RxJS when they aren't -- and I have.
+
+This site is currently fed by the [Prismic CMS](https://prismic.io/).  There is no other data fetching concern, so there is really no reason for GraphQL.  With Next, the choice ***not*** to use GraphQL is up to me.
+
+There are some other reasons I prefer Next to Gatsby, but I won't go into them here.  There is plenty of debate out there in the community by people better informed than me.
+
+In conclusion, please read this as an "I don't like GraphQL post".  Read it as another cautionary tale to "use the right tool for the right job".

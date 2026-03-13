@@ -1,21 +1,21 @@
 import React, { FC } from 'react';
-import { ExperienceSlice } from '../model';
+import { ExperienceEntry } from '../model';
 import { ExperienceHeader } from './ExperienceHeader';
 import { ExperienceBody } from './ExperienceBody';
-import { RichText } from '../../RichText';
+import { ContentBlocks } from '../ContentBlocks';
 
-export const Experience: FC<{ slice: ExperienceSlice }> = ({ slice }) => (
+export const Experience: FC<{ entry: ExperienceEntry }> = ({ entry }) => (
   <div>
     <ExperienceHeader
-      imgUrl={slice.primary.icon.url}
-      imgSize={slice.primary.icon_size}
-      orgUrl={slice.primary.link.url as string}
-      orgCopy={slice.primary.link_text}
-      dateCopy={slice.primary.date}
-      titleCopy={slice.primary.title}
+      imgUrl={entry.icon.src}
+      imgSize={entry.icon.size}
+      orgUrl={entry.org.href}
+      orgCopy={entry.org.name}
+      dateCopy={entry.date}
+      titleCopy={entry.title}
     />
     <ExperienceBody>
-      <RichText blocks={slice.primary.copy} />
+      <ContentBlocks blocks={entry.content} />
     </ExperienceBody>
   </div>
 );
