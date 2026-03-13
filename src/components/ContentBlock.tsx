@@ -1,8 +1,7 @@
-import { RichTextBlock } from 'prismic-reactjs';
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/react';
 import Gist from 'react-gist';
-import { PrismicContent, PrismicImage } from './PrismicContent';
+import { RichText, ContentImage, RichTextBlock } from './RichText';
 import { NextImageContainer } from './NextImageContainer';
 import { makeResponsiveObject, makeSpace } from '../utils/design';
 import { Code } from './Code';
@@ -17,7 +16,7 @@ const styleNextImage: CSSObject = {
   }),
 };
 
-export type SliceType =
+type ContentBlockType =
   | {
       slice_type: 'text';
       primary: {
@@ -27,7 +26,7 @@ export type SliceType =
   | {
       slice_type: 'image';
       primary: {
-        image: PrismicImage;
+        image: ContentImage;
       };
     }
   | {
@@ -49,30 +48,32 @@ export type SliceType =
       };
     };
 
-export const Slice: FC<{ slice: SliceType }> = ({ slice }) => {
-  if (slice.slice_type === 'text') {
-    return <PrismicContent richText={slice.primary.text} />;
+export type { ContentBlockType };
+
+export const ContentBlock: FC<{ block: ContentBlockType }> = ({ block }) => {
+  if (block.slice_type === 'text') {
+    return <RichText blocks={block.primary.text} />;
   }
-  if (slice.slice_type === 'gist') {
-    const parts = slice.primary.url.embed_url.split('/');
+  if (block.slice_type === 'gist') {
+    const parts = block.primary.url.embed_url.split('/');
     const id = parts.slice().reverse()[0];
     return <Gist id={id} />;
   }
-  if (slice.slice_type === 'code') {
+  if (block.slice_type === 'code') {
     return (
       <Code
-        language={slice.primary.language}
-        block={slice.primary.block.map((r) => r.text).join('\n')}
+        language={block.primary.language}
+        block={block.primary.block.map((r) => r.text).join('\n')}
       />
     );
   }
   return (
     <NextImageContainer
       cssProp={styleNextImage}
-      src={slice.primary.image.url}
-      alt={slice.primary.image.alt}
-      width={slice.primary.image.dimensions.width}
-      height={slice.primary.image.dimensions.height}
+      src={block.primary.image.url}
+      alt={block.primary.image.alt}
+      width={block.primary.image.dimensions.width}
+      height={block.primary.image.dimensions.height}
     />
   );
 };

@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import { CSSObject } from '@emotion/react';
-import { RichTextBlock } from 'prismic-reactjs';
 import { makeSize, makeSpace } from '../utils/design';
 import { Layout } from '../components/layout/Layout';
-import { PrismicContent, PrismicImage } from '../components/PrismicContent';
+import { RichText, ContentImage, RichTextBlock } from '../components/RichText';
 import { NextImageContainer } from '../components/NextImageContainer';
 import homeData from '../data/home.json';
 
@@ -37,7 +36,7 @@ const styleContent: CSSObject = {
 interface HomeDocument {
   greeting: RichTextBlock[];
   copy: RichTextBlock[];
-  profile: PrismicImage;
+  profile: ContentImage;
 }
 
 interface HomeProps {
@@ -48,7 +47,7 @@ const Home: FC<HomeProps> = ({ data }) => (
   <Layout seo={{ pageTitle: 'Home' }}>
     <div css={styleContainer}>
       <div css={styleContent}>
-        <PrismicContent richText={data.greeting} />
+        <RichText blocks={data.greeting} />
         <NextImageContainer
           cssProp={styleNextImage}
           src={data.profile.url}
@@ -57,7 +56,7 @@ const Home: FC<HomeProps> = ({ data }) => (
           height={data.profile.dimensions.height}
         />
         <div>
-          <PrismicContent richText={data.copy} />
+          <RichText blocks={data.copy} />
         </div>
       </div>
     </div>

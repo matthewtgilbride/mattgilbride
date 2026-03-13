@@ -1,13 +1,12 @@
 import React, { FC } from 'react';
-import { RichTextBlock } from 'prismic-reactjs';
 import { CSSObject } from '@emotion/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
-import { PrismicContent } from '../../components/PrismicContent';
+import { RichText, RichTextBlock } from '../../components/RichText';
 import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { Layout } from '../../components/layout/Layout';
-import { Slice, SliceType } from '../../components/Slice';
+import { ContentBlock, ContentBlockType } from '../../components/ContentBlock';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -67,7 +66,7 @@ const styleContainer: CSSObject = {
 interface BlogPostProps {
   data: {
     title: RichTextBlock[];
-    body: SliceType[];
+    body: ContentBlockType[];
   };
 }
 
@@ -75,9 +74,9 @@ const BlogPost: FC<BlogPostProps> = ({ data }) => (
   <Layout seo={{ pageTitle: data.title[0].text ?? 'Matt Gilbride' }}>
     <article css={styleContainer}>
       <div>
-        <PrismicContent richText={data.title} />
-        {data.body.map((slice: SliceType) => (
-          <Slice key={JSON.stringify(slice)} slice={slice} />
+        <RichText blocks={data.title} />
+        {data.body.map((block: ContentBlockType) => (
+          <ContentBlock key={JSON.stringify(block)} block={block} />
         ))}
       </div>
     </article>
