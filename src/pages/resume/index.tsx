@@ -3,17 +3,12 @@ import { CSSObject } from '@emotion/react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { Layout } from '../../components/layout/Layout';
-import {
-  makeResponsiveObject,
-  makeSpace,
-  responsiveBreakpoints,
-} from '../../utils/design';
+import { makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { Section } from '../../components/resume/Section';
 import { Footer } from '../../components/resume/Footer';
 import { ResumeProps } from '../../components/resume/model';
-import { Skill } from '../../components/resume/skill/Skill';
 import { Experience } from '../../components/resume/experience/Experience';
-import { skills, experiences } from '../../content/resume';
+import { experiences, background } from '../../content/resume';
 
 const styleContainer: CSSObject = {
   display: 'grid',
@@ -23,16 +18,10 @@ const styleContainer: CSSObject = {
   maxWidth: responsiveBreakpoints.tabletPortrait,
 };
 
-const styleSkills: CSSObject = {
-  display: 'grid',
-  gridTemplateColumns: '1fr',
-  gridColumnGap: makeSpace('xxl'),
-  ...makeResponsiveObject({
-    beginAt: 'tabletPortrait',
-    style: {
-      gridTemplateColumns: '1fr 1fr',
-    },
-  }),
+const styleBackground: CSSObject = {
+  p: {
+    margin: `${makeSpace('sm')} 0`,
+  },
 };
 
 const Resume: NextPage<ResumeProps> = ({ data }) => {
@@ -43,20 +32,6 @@ const Resume: NextPage<ResumeProps> = ({ data }) => {
       <div css={styleContainer}>
         <Section
           defaultClosed
-          headerProps={{
-            hash,
-            pathname,
-            hashTarget: '#skills',
-            text: 'Skills',
-          }}
-        >
-          <div css={styleSkills}>
-            {data.skills.map((group) => (
-              <Skill key={group.title} group={group} />
-            ))}
-          </div>
-        </Section>
-        <Section
           headerProps={{
             hash,
             pathname,
@@ -71,6 +46,22 @@ const Resume: NextPage<ResumeProps> = ({ data }) => {
             ))}
         </Section>
         <Section
+          defaultClosed
+          headerProps={{
+            hash,
+            pathname,
+            hashTarget: '#background',
+            text: 'Background',
+          }}
+        >
+          <div css={styleBackground}>
+            {data.background.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </Section>
+        <Section
+          defaultClosed
           headerProps={{
             hash,
             pathname,
@@ -91,7 +82,7 @@ const Resume: NextPage<ResumeProps> = ({ data }) => {
 
 export const getStaticProps = async () => ({
   props: {
-    data: { skills, experiences },
+    data: { experiences, background },
   },
 });
 
