@@ -1,13 +1,10 @@
-import {
-  SkillGroup,
-  ExperienceEntry,
-} from '../../content/resume';
+import { ExperienceEntry } from '../../content/resume';
 
-export type { SkillGroup, ExperienceEntry };
+export type { ExperienceEntry };
 
 export interface ResumeProps {
   data: {
-    skills: SkillGroup[];
     experiences: ExperienceEntry[];
+    background: string[];
   };
 }
