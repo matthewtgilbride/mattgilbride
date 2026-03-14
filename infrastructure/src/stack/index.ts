@@ -1,4 +1,5 @@
 import { App, Stack, StackProps } from 'aws-cdk-lib';
+import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
 import { StaticSiteConstruct } from './static-site.construct';
 
@@ -8,7 +9,7 @@ class SiteStack extends Stack {
 
     const domainName = `mattgilbride.com`;
     const siteSubDomain = 'www';
-    const certificateArn = process.env.CERTIFICATE_ARN as string;
+    const certificateArn = StringParameter.fromStringParameterName(this, 'CertArnParam', 'certificateArn').stringValue;
 
     new StaticSiteConstruct(this, id, {
       domainName,
