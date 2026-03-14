@@ -8,14 +8,14 @@ import { makeSize, makeSpace, responsiveBreakpoints } from '../../utils/design';
 import { Layout } from '../../components/layout/Layout';
 
 const styleContainer: CSSObject = {
-  display: 'grid',
-  gridTemplateRows: 'min-content',
-  justifySelf: 'center',
-  justifyItems: 'center',
   margin: 'auto',
+  width: '100%',
   maxWidth: responsiveBreakpoints.tabletPortrait,
+  padding: `0 ${makeSpace('sm')}`,
+  boxSizing: 'border-box',
   // because shoemaker is a long word in iphone SE
   wordBreak: 'break-word',
+  overflow: 'hidden',
   h1: {
     fontSize: makeSize('h1'),
     margin: `${makeSpace('xl')} 0`,
@@ -84,6 +84,17 @@ const styleContainer: CSSObject = {
     padding: '2px 6px',
     borderRadius: 4,
     fontSize: '0.9em',
+  },
+  img: {
+    maxWidth: '100%',
+    height: 'auto',
+  },
+  iframe: {
+    maxWidth: '100%',
+  },
+  '.gist': {
+    maxWidth: '100%',
+    overflowX: 'auto',
   },
 };
 
