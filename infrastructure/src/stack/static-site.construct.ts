@@ -47,20 +47,34 @@ export class StaticSiteConstruct extends Construct {
       `${id}-SiteDistribution`,
       {
         certificate,
-        domainNames: [siteDomain],
+        domainNames: [siteDomain, props.domainName],
         minimumProtocolVersion: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2021,
         sslSupportMethod: cloudfront.SSLMethod.SNI,
         defaultBehavior: {
           origin: new origins.HttpOrigin(siteBucket.bucketWebsiteDomainName, {
             protocolPolicy: cloudfront.OriginProtocolPolicy.HTTP_ONLY,
           }),
+          viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         },
       },
     );
 
-    // Route53 alias record for the CloudFront distribution
+    // Preserve the logical ID from the original CloudFrontWebDistribution deployment
+    // to avoid replacing the existing distribution (which would fail due to CNAME conflicts)
+    const cfnDistribution = distribution.node.defaultChild as cloudfront.CfnDistribution;
+    cfnDistribution.overrideLogicalId('homepageStaticSiteConstructhomepageSiteDistributionCFDistributionE401C628');
+
+    // Route53 alias records for the CloudFront distribution
     new route53.ARecord(this, 'SiteAliasRecord', {
       recordName: siteDomain,
+      target: route53.RecordTarget.fromAlias(
+        new targets.CloudFrontTarget(distribution),
+      ),
+      zone,
+    });
+
+    new route53.ARecord(this, 'ApexAliasRecord', {
+      recordName: props.domainName,
       target: route53.RecordTarget.fromAlias(
         new targets.CloudFrontTarget(distribution),
       ),
