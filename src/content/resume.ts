@@ -123,8 +123,40 @@ export const skills: SkillGroup[] = [
 export const experiences: ExperienceEntry[] = [
   {
     kind: 'experience',
+    title: 'Software Engineer - Android Platform Security',
+    date: 'March 2022 - Present',
+    icon: { src: '/assets/svg/google.svg', size: 36 },
+    org: {
+      name: 'Google',
+      href: 'https://www.android.com/',
+    },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'I work on security features of the Android Operating System. Our team is responsible for protecting billions of Android users from a wide range of security threats.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Some of the user-facing features I have contributed to include:',
+      },
+      {
+        type: 'list-item',
+        text: 'Android Safe Browsing \u2014 protecting users from dangerous websites and downloads across the platform.',
+      },
+      {
+        type: 'list-item',
+        text: 'Android Advanced Protection Mode \u2014 providing the strongest security settings for users at elevated risk, such as journalists and public officials.',
+      },
+      {
+        type: 'paragraph',
+        text: "Beyond these visible features, I've worked across a range of platform security efforts that are harder to summarize but equally critical to keeping Android secure.",
+      },
+    ],
+  },
+  {
+    kind: 'experience',
     title: 'Lead Software Engineer - Platforms Data & Architecture',
-    date: 'December 2020 - Present',
+    date: 'December 2020 - March 2022',
     icon: { src: '/images/c1.webp', size: 44 },
     org: {
       name: 'Capital One',
@@ -133,7 +165,7 @@ export const experiences: ExperienceEntry[] = [
     content: [
       {
         type: 'paragraph',
-        text: "I work within Capital One's retail banking line of business.  We handle the tech that drives consumer products like checking and savings accounts, among others.  My group is focused on developing an enterprise-scale solutions for maintaining product and customer information.  Some work involves lifting and shifting legacy technology stacks onto modern, cloud native, micro-services based architectures.  I can't give too many specifics, but here are some things I've worked on:",
+        text: "I worked within Capital One's retail banking line of business, handling the tech that drives consumer products like checking and savings accounts. My group focused on developing enterprise-scale solutions for maintaining product and customer information, including lifting and shifting legacy technology stacks onto modern, cloud-native, microservices-based architectures.",
       },
       {
         type: 'list-item',
