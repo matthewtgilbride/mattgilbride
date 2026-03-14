@@ -59,11 +59,6 @@ export class StaticSiteConstruct extends Construct {
       },
     );
 
-    // Preserve the logical ID from the original CloudFrontWebDistribution deployment
-    // to avoid replacing the existing distribution (which would fail due to CNAME conflicts)
-    const cfnDistribution = distribution.node.defaultChild as cloudfront.CfnDistribution;
-    cfnDistribution.overrideLogicalId('homepageStaticSiteConstructhomepageSiteDistributionCFDistributionE401C628');
-
     // Route53 alias records for the CloudFront distribution
     new route53.ARecord(this, 'SiteAliasRecord', {
       recordName: siteDomain,
