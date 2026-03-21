@@ -1,16 +1,3 @@
-import { ReactNode } from 'react';
-
-export interface SkillSubgroup {
-  title?: string;
-  items: string[];
-}
-
-export interface SkillGroup {
-  title: string;
-  icon: { src: string; size: number };
-  subgroups: SkillSubgroup[];
-}
-
 export type ContentBlock =
   | { type: 'paragraph'; text: string; link?: { text: string; href: string } }
   | { type: 'heading5'; text: string }
@@ -26,105 +13,51 @@ export interface ExperienceEntry {
   content: ContentBlock[];
 }
 
-export const skills: SkillGroup[] = [
-  {
-    title: 'Code',
-    icon: { src: '/assets/svg/coding.svg', size: 24 },
-    subgroups: [
-      {
-        title: 'Day to Day',
-        items: [
-          'Javascript \u2022 Typescript \u2022 Node \u2022 React',
-          'Java \u2022 Spring',
-          'Python \u2022 Flask',
-        ],
-      },
-      {
-        title: 'Previous Projects',
-        items: ['Scala \u2022 Akka', 'Vue'],
-      },
-      {
-        title: 'Dabbled',
-        items: ['Rust', 'Clojure', 'Haskell'],
-      },
-    ],
-  },
-  {
-    title: 'Data',
-    icon: { src: '/assets/svg/server.svg', size: 24 },
-    subgroups: [
-      {
-        title: 'Relational',
-        items: ['Postgres', 'MySQL', 'Oracle DB'],
-      },
-      {
-        title: 'Non-Relational',
-        items: ['Redis', 'DynamoDB', 'Cassandra', 'Neo4j'],
-      },
-      {
-        title: 'Analytics',
-        items: ['Snowflake', 'Apache Spark'],
-      },
-    ],
-  },
-  {
-    title: 'Infrastructure',
-    icon: { src: '/assets/svg/cloud-computing.svg', size: 24 },
-    subgroups: [
-      {
-        title: 'AWS',
-        items: [
-          'VPC \u2022 EC2 \u2022 ECS \u2022 ALB',
-          'Lambda',
-          'Route 53',
-          'IAM \u2022 Cognito',
-          'Cloudformation \u2022 Terraform \u2022 CDK',
-        ],
-      },
-      {
-        title: 'General',
-        items: [
-          'nginx \u2022 Apache Tomcat',
-          'Apache Kafka',
-          'Docker',
-          'Jenkins',
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Architecture',
-    icon: { src: '/assets/svg/sketch.svg', size: 24 },
-    subgroups: [
-      {
-        title: 'Systems Design',
-        items: [
-          'Event Sourcing \u2022 CQRS',
-          'Domain Driven Design',
-          'Actor Systems',
-          'Message Brokers',
-          'REST',
-        ],
-      },
-      {
-        title: 'Process',
-        items: [
-          'Git',
-          'Agile/Scrum',
-          'Continuous Integration \u2022 Continuous Deployment',
-          'Test Driven Development',
-          'Behavior Driven Development',
-        ],
-      },
-    ],
-  },
+export const background: string[] = [
+  "I have a deep appreciation for programming languages and type systems. I prefer languages with robust type systems that shift bugs and design problems as far left as possible. That said, I've worked professionally in over a dozen languages, and if my career has taught me anything, it's that the best tool is the one that fits the problem \u2014 and that I can pick up new ones quickly. With AI transforming how we write software, that adaptability matters more than ever. These days, markdown might be the most important programming language of all \u2014 and I've been leaning into that.",
+  'At Google, I work on Android Platform Security, writing Rust, Java, Kotlin, C, and C++ across the platform. My current focus is a system using uprobes and eBPF for rapid deployment of telemetry and abuse mitigation. I\'ve also contributed to user-facing features like Safe Browsing and Advanced Protection Mode, and developed static analysis tooling with Android Lint.',
+  'I started my career in supply chain and logistics, where I fell in love with programming through Excel and VBA. That led me to SAP, where I went from configuring warehouse systems to debugging and extending them in ABAP.',
+  'A master\'s degree in computer science opened the door to full-time software engineering. At Thomson Reuters, I worked on a large-scale enterprise Java application. At Chariot Solutions, I got to work across a wide variety of stacks on short-cycle consulting projects \u2014 Scala and Akka for event-sourced systems, React and Vue on the frontend, Node and Python for APIs, all deployed on AWS with Terraform and CloudFormation.',
+  'At Capital One, I worked on cloud-native microservices in a large retail banking organization \u2014 building data synchronization pipelines with Kafka, services in Node and Python, and driving CI/CD adoption.',
 ];
 
 export const experiences: ExperienceEntry[] = [
   {
     kind: 'experience',
+    title: 'Software Engineer - Android Platform Security',
+    date: 'March 2022 - Present',
+    icon: { src: '/assets/svg/google.svg', size: 36 },
+    org: {
+      name: 'Google',
+      href: 'https://www.android.com/',
+    },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'I work on security features of the Android Operating System. Our team is responsible for protecting billions of Android users from a wide range of security threats.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Some of the user-facing features I have contributed to include:',
+      },
+      {
+        type: 'list-item',
+        text: 'Android Safe Browsing \u2014 protecting users from dangerous websites and downloads across the platform.',
+      },
+      {
+        type: 'list-item',
+        text: 'Android Advanced Protection Mode \u2014 providing the strongest security settings for users at elevated risk, such as journalists and public officials.',
+      },
+      {
+        type: 'paragraph',
+        text: "Beyond these visible features, I've worked across a range of platform security efforts that are harder to summarize but equally critical to keeping Android secure.",
+      },
+    ],
+  },
+  {
+    kind: 'experience',
     title: 'Lead Software Engineer - Platforms Data & Architecture',
-    date: 'December 2020 - Present',
+    date: 'December 2020 - March 2022',
     icon: { src: '/images/c1.webp', size: 44 },
     org: {
       name: 'Capital One',
@@ -133,23 +66,7 @@ export const experiences: ExperienceEntry[] = [
     content: [
       {
         type: 'paragraph',
-        text: "I work within Capital One's retail banking line of business.  We handle the tech that drives consumer products like checking and savings accounts, among others.  My group is focused on developing an enterprise-scale solutions for maintaining product and customer information.  Some work involves lifting and shifting legacy technology stacks onto modern, cloud native, micro-services based architectures.  I can't give too many specifics, but here are some things I've worked on:",
-      },
-      {
-        type: 'list-item',
-        text: 'Synchronizing updates to customer data with Apache Kafka.',
-      },
-      {
-        type: 'list-item',
-        text: 'Creating a singular home for product definition, via services written in Node and Python.',
-      },
-      {
-        type: 'list-item',
-        text: 'Driving the adoption of enterprise CI/CD pipeline technology.',
-      },
-      {
-        type: 'list-item',
-        text: 'Replacing a legacy Angular application with React.',
+        text: "I worked within Capital One's retail banking line of business, building enterprise-scale solutions for product and customer data. The work involved modernizing legacy systems onto cloud-native microservices architectures using Node, Python, React, and Kafka.",
       },
     ],
   },
@@ -162,96 +79,8 @@ export const experiences: ExperienceEntry[] = [
     content: [
       {
         type: 'paragraph',
-        text: 'Chariot builds software products with small teams of highly capable engineers, or integrates into existing teams to help them get things done.',
+        text: 'Chariot builds software products with small teams of highly capable engineers. I worked on three consulting projects spanning fintech, IoT energy management, and neuroscience data platforms. The variety was the best part \u2014 each project brought a different stack, a different domain, and a different team.',
       },
-      {
-        type: 'paragraph',
-        text: "I loved it there for many reasons. Mainly the people. That includes my fellow Charioteers as well as the various engineering organizations I got to work with. The most rewarding part of the job was the opportunity it provided me to learn rapidly. I enjoy having a deeply technical role that still includes interacting with people regularly, and that's exactly what I had at Chariot.",
-      },
-      {
-        type: 'paragraph',
-        text: 'Here are some of the things I worked on:',
-      },
-      {
-        type: 'heading5',
-        text: 'A DATA MANAGEMENT PLATFORM FOR NEUROSCIENCE RESEARCHERS',
-      },
-      { type: 'heading6', text: 'December 2019 - June 2020' },
-      {
-        type: 'paragraph',
-        text: 'I joined an incredibly talented team at a local startup. Their product facilitates the creation and publication of massive scientific datasets. I was given the opportunity to contribute across the entirety of their stack, which included the following:',
-      },
-      {
-        type: 'list-item',
-        text: 'Web apps written in Vue, some of which used Nuxt to generate static sites.',
-      },
-      {
-        type: 'list-item',
-        text: 'A Node service, written in Typescript, for streaming large zip archives to the web clients.',
-      },
-      {
-        type: 'list-item',
-        text: 'A core REST API, written in Scala, backed by an RDS Postgres instance and files of various sizes written to S3.',
-      },
-      {
-        type: 'list-item',
-        text: 'Another REST API for managing graph data structures, written in Python, backed by a Neo4j database.',
-      },
-      { type: 'list-item', text: 'An nginx API gateway.' },
-      {
-        type: 'list-item',
-        text: 'Lots of AWS infrastructure provisioned via Terraform. Most services run in ECS containers, but other work involved a mix of S3, CloudWatch Logs, Kinesis Firehose, and Lambda.',
-      },
-      {
-        type: 'heading5',
-        text: 'USING IOT ENABLED OUTLETS TO MANAGE INDUSTRIAL PLUG LOAD',
-      },
-      { type: 'heading6', text: 'June 2019 - November 2019' },
-      {
-        type: 'paragraph',
-        text: 'I lead a project to build a web application and backing REST API for another local startup. Our client had built an impressive machine learning pipeline leveraging IOT data from smart outlets. They offered clients who operate large industrial or office buildings a way to reduce energy costs associated with devices plugged into outlets.',
-      },
-      {
-        type: 'paragraph',
-        text: 'What they needed was an application that allowed users to monitor and manage that system. The features we built included a variety of data visualizations, interactive data grids, and basic CRUD operations. We used the following technologies to get the job done:',
-      },
-      {
-        type: 'list-item',
-        text: 'A Node REST service written in Typescript, backed by a Postgres RDS database.',
-      },
-      {
-        type: 'list-item',
-        text: 'A web app written in React, with Typescript.',
-      },
-      {
-        type: 'list-item',
-        text: 'A separate library of React components encapsulating a custom design system.',
-      },
-      { type: 'list-item', text: 'User authentication with Cognito' },
-      {
-        type: 'list-item',
-        text: 'Run in ECS, deployed via CodeBuild, and provisioned with Cloudformation',
-      },
-      {
-        type: 'heading5',
-        text: 'A BANKING SYSTEM TO MANAGE THE PROCESSING OF WIRE TRANSFERS',
-      },
-      { type: 'heading6', text: 'May 2017 - May 2019' },
-      {
-        type: 'paragraph',
-        text: 'I joined a small team developing a wire transfer application serving small and medium sized financial institutions. The business requirements included providing a detailed audit trail of all actions taken, by whom, and when. Additionally, the system needed to support highly customizable workflows driven by the various financial processes in which wire transfers are involved.',
-      },
-      {
-        type: 'paragraph',
-        text: 'We addressed those requirements by building with the following stack:',
-      },
-      { type: 'list-item', text: 'A web app written in React' },
-      {
-        type: 'list-item',
-        text: 'Multiple microservices written in Scala and Akka HTTP, using a CQRS and Event Sourcing architectural pattern. Events were written to Cassandra, with projections written to Postgres.',
-      },
-      { type: 'list-item', text: 'User authentication with Keycloak' },
-      { type: 'list-item', text: 'An nginx API gateway' },
     ],
   },
   {
@@ -286,15 +115,7 @@ export const experiences: ExperienceEntry[] = [
     content: [
       {
         type: 'paragraph',
-        text: "I implemented highly configurable SAP products in the logistics space. I focused on two products; Transportation Management (TM) and Extended Warehouse Management (EWM). This job was technical in nature, but didn't overtly require programming skills. I spent much of my time understanding whether complex business requirements could be solved via configuration alone, or required more technical enhancements.",
-      },
-      {
-        type: 'paragraph',
-        text: "After some time, I had spent enough time debugging the software to be able to develop those enhancements on my own. I really enjoyed the work for a period of time. I love the logistics space, so although I wanted to spend more of my days writing code, I was happy with a more hands-on role that involved walking the warehouse floor.",
-      },
-      {
-        type: 'paragraph',
-        text: 'Eventually, a desire to travel less and code more meant I had to move on.',
+        text: 'I implemented and extended SAP products in the logistics space, focusing on Transportation Management and Extended Warehouse Management. The role started as configuration but evolved into development as I learned to build custom enhancements in ABAP.',
       },
     ],
   },

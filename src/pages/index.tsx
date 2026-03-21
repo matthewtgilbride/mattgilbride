@@ -51,7 +51,7 @@ const Home = () => (
       </div>
       <div css={styleAbout}>
         <p>
-          I&apos;m a software engineer based in Philadelphia, with over a decade
+          I&apos;m a software engineer based in Philadelphia, with over 15 years
           of experience across a variety of industries and tech stacks. For the
           last four years, I&apos;ve been working on the Android Platform
           Security team at Google.
