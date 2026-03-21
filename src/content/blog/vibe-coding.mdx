@@ -9,9 +9,9 @@ export const metadata = {
 
 ## The Experiment
 
-The AI space right now is drowning in grift. I've never seen this much snake oil in my career, though I wasn't around for the dotcom boom so maybe it's been worse. Between the breathless LinkedIn posts and the startups wrapping a ChatGPT API call in a landing page, it's hard to take any of it seriously.
+I should admit up front that I use AI coding tools heavily at work, so I'm probably more adept than most at getting value out of them. I should also admit that the AI space right now is drowning in grift — but that's a topic for another post.
 
-I should admit that I use these tools heavily at work too, so I'm probably more adept than most at getting value out of them. But when I sat down with Claude Code — Anthropic's CLI tool — to tackle some long-overdue technical debt on a couple of side projects, I still wasn't expecting to be impressed. I just wanted to migrate off Prismic CMS, modernize some styling, fix some mobile layout bugs, and clean up years of accumulated cruft.
+When I sat down with Claude Code — Anthropic's CLI tool — to tackle some long-overdue technical debt on a couple of side projects, I wasn't expecting to be this impressed, and subsequently, inspired. I just wanted to migrate off Prismic CMS, modernize some styling, fix some mobile layout bugs, and clean up years of accumulated cruft.
 
 What I didn't expect was how much I'd end up doing. Over the course of several sessions, the scope ballooned to include a serverless migration of a Rust backend, infrastructure fixes across multiple repos, and — for reasons I can no longer fully explain — asking an AI to check Amtrak train fares by navigating a website through a browser extension.
 
@@ -21,7 +21,7 @@ It kept going because the friction that normally kills side projects was largely
 
 Across two repos and about 15 pull requests, the work included:
 
-- **A full content migration** from Prismic JSON to MDX, including downloading CDN-hosted images, building custom components, and deleting thousands of lines of a custom rich text renderer that I have no idea why I ever thought was a good idea.
+- **A full content migration** from Prismic JSON to MDX, including downloading CDN-hosted images, building custom components, and deleting thousands of lines of a custom rich text renderer. Why did I build a custom rich text renderer? Excellent question. I have no answer.
 - **A theme system overhaul** — 188 lines down to 51.
 - **An HTTPS fix** for the apex domain that had been bugging me for months — changes across two repos and three AWS services.
 - **A serverless migration** of my codenames game's Rust API from EC2 to Lambda Function URLs behind CloudFront. No more server to babysit.
@@ -59,9 +59,9 @@ That said, the *magnitude* of what a single motivated engineer can accomplish in
 
 **The "full-stack" engineer becomes real.** I'm not even sure what I am primarily anymore. An operating systems engineer? A builder of security-related things? I don't know what any of that means, exactly, and CSS has always been the part where I slow down and start Googling. Having a tool that can translate "make this not overflow on mobile" into the right combination of `max-width`, `overflow`, and `box-sizing` declarations — while I verify the result — means I'm less constrained by the boundaries of my deepest expertise, wherever those happen to be this year.
 
-**Infrastructure work loses its activation energy.** (For the non-chemists: activation energy is the minimum energy needed to start a reaction. The reaction might be thermodynamically favorable — worth doing — but if the barrier to getting started is too high, it just doesn't happen.) Adding CloudFront access logging to two sites required maybe 20 lines of CDK code total. But *without* a tool like this, the actual work involves reading CDK docs, remembering the S3 bucket ownership requirements for CloudFront log delivery, and testing the deployment. That's an hour of context-switching for something that delivers value in minutes.
+**Infrastructure work loses its activation energy.** (Full disclosure: my AI co-author came up with this metaphor and I liked it enough to keep it. For the non-chemists: activation energy is the minimum energy needed to start a reaction. The reaction might be thermodynamically favorable — worth doing — but if the barrier to getting started is too high, it just doesn't happen.) Adding CloudFront access logging to two sites required maybe 20 lines of CDK code total. But *without* a tool like this, the actual work involves reading CDK docs, remembering the S3 bucket ownership requirements for CloudFront log delivery, and testing the deployment. That's an hour of context-switching for something that delivers value in minutes.
 
-**Maintenance becomes approachable.** The codenames project hadn't been meaningfully updated in over a year. The frontend was on old versions of Next.js and React, the backend was running on an EC2 instance I was paying for but rarely thinking about, and there was Storybook config for a project with maybe four components. (What was I thinking?) Cleaning all of that up in a single session — upgrading dependencies, migrating to serverless, removing dead code — is the kind of housekeeping that compounds in value but never feels urgent enough to prioritize.
+**Maintenance becomes approachable.** The codenames project hadn't been meaningfully updated in over a year. The frontend was on old versions of Next.js and React, the backend was running on an EC2 instance I was paying for but rarely thinking about, and there was Storybook config for a project with maybe four components. This is now the second time in this post I'm confronting a past decision that made absolutely no sense, so I'm starting to see a pattern. Cleaning all of that up in a single session — upgrading dependencies, migrating to serverless, removing dead code — is the kind of housekeeping that compounds in value but never feels urgent enough to prioritize.
 
 ## The 10x Engineer, Revisited
 
