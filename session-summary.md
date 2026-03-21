@@ -1,6 +1,6 @@
 # Modernizing My Personal Site with Claude Code: A Session Summary
 
-This document captures the full scope of a multi-hour pairing session between me (Matt Gilbride) and Claude Code (Anthropic's CLI agent). The goal was to modernize my personal website, mattgilbride.com — a Next.js static site hosted on AWS S3/CloudFront. What started as a content migration snowballed into a series of bug fixes, design changes, and infrastructure debugging.
+This document captures the full scope of multiple pairing sessions between me (Matt Gilbride) and Claude Code (Anthropic's CLI agent). It started with modernizing my personal website, mattgilbride.com — a Next.js static site hosted on AWS S3/CloudFront — and expanded to include my codenames side project, infrastructure work across multiple repos, and even non-coding tasks like checking train fares via browser automation.
 
 ---
 
@@ -13,9 +13,14 @@ This document captures the full scope of a multi-hour pairing session between me
 5. [Phase 4: Content and Design Polish](#phase-4-content-and-design-polish)
 6. [Phase 5: Mobile Responsive Fixes](#phase-5-mobile-responsive-fixes)
 7. [Phase 6: Infrastructure Investigation](#phase-6-infrastructure-investigation)
-8. [Recurring Challenges](#recurring-challenges)
-9. [All Pull Requests](#all-pull-requests)
-10. [Tech Stack Reference](#tech-stack-reference)
+8. [Phase 7: Infrastructure Fix — HTTPS for Apex Domain](#phase-7-infrastructure-fix--https-for-apex-domain)
+9. [Phase 8: Resume Content Updates](#phase-8-resume-content-updates)
+10. [Phase 9: Codenames Modernization](#phase-9-codenames-modernization)
+11. [Phase 10: Telegram Integration & Browser Automation](#phase-10-telegram-integration--browser-automation)
+12. [Phase 11: CloudFront Access Logging](#phase-11-cloudfront-access-logging)
+13. [Recurring Challenges](#recurring-challenges)
+14. [All Pull Requests](#all-pull-requests)
+15. [Tech Stack Reference](#tech-stack-reference)
 
 ---
 
@@ -157,6 +162,88 @@ This was deferred since the certificate is managed in a different repository.
 
 ---
 
+## Phase 7: Infrastructure Fix — HTTPS for Apex Domain
+
+**PRs: #53, #54 (mattgilbride), plus companion PR in aws-infrastructure repo**
+
+The infrastructure investigation from Phase 6 identified that `mattgilbride.com` (apex domain) had no HTTPS because the wildcard cert didn't cover it and CloudFront had no alias for it. This phase fixed it:
+
+1. Added `mattgilbride.com` as a SAN on the ACM wildcard certificate (in the `aws-infrastructure` repo)
+2. Added the apex domain to CloudFront's `domainNames` and created a Route53 A record pointing to CloudFront
+3. Switched certificate ARN lookup from env var to SSM Parameter Store for consistency
+4. Cleaned up a `overrideLogicalId` hack that was no longer needed after a stack recreation
+
+### Result: HTTPS working on both `mattgilbride.com` and `www.mattgilbride.com`
+
+---
+
+## Phase 8: Resume Content Updates
+
+**PRs: #52, #55, #56**
+
+A series of content updates to the resume page:
+
+1. **Added Google experience** (#52) — Added Android Platform Security role at Google (Safe Browsing, Advanced Protection Mode), updated Capital One to past tense, added Google logo SVG
+2. **Updated years of experience** (#55) — Changed "over a decade" to "over 15 years" to reflect experience since 2009
+3. **Replaced Skills with Background narrative** (#56) — Removed the buzzword-style Skills grid and replaced it with a prose "Background" section summarizing career arc and technical philosophy. Deleted 3 unused Skill components (~100 lines). Reordered sections to Experience → Background → Education, all collapsed by default.
+
+### Result: -323 lines of component code replaced with ~9 lines of meaningful prose
+
+---
+
+## Phase 9: Codenames Modernization
+
+**PRs: #13, #14, #15, #16 (codenames repo)**
+
+The codenames side project — a multiplayer word game built with a Rust backend and Next.js frontend — got a major infrastructure overhaul:
+
+1. **Upgraded frontend** (#13) — Next.js 14 and React 18
+2. **Removed Storybook** (#14) — Unused dev dependency cleanup
+3. **Replaced EC2 with Lambda Function URL** (#15) — The Rust API was running on an EC2 instance. Migrated to a Lambda Function URL behind CloudFront, eliminating server management. CDK infrastructure rewritten to use `Distribution` (v2 API) with proper CORS cache/origin request policies.
+4. **Removed Actix cruft** (#16) — Cleaned up remaining artifacts from the old Actix web server setup
+
+### Result: Serverless architecture, lower cost, no EC2 to maintain
+
+---
+
+## Phase 10: Telegram Integration & Browser Automation
+
+**Session: March 21, 2026**
+
+This session demonstrated Claude Code's ability to operate beyond traditional coding tasks:
+
+### Telegram Channel Setup
+
+Configured a Telegram bot as a communication channel to Claude Code using the plugin system. Set up bot token, paired the user's Telegram account via pairing code, and locked down access to allowlist-only mode. This enabled sending tasks to Claude from a phone while Claude worked on a remote dev machine.
+
+### Amtrak Fare Search (Browser Automation)
+
+Used the Claude-in-Chrome browser extension to search Amtrak.com for train fares (Wilmington DE → NYC). Navigated the booking form, selected stations from autocomplete dropdowns, picked dates from the calendar widget, and scraped fare results across multiple pages. Found cheapest coach options for morning outbound (arrive before 9am) and afternoon return (~4:30pm departure).
+
+**Challenges**: Amtrak's site was intermittently throwing errors, and the search form sometimes failed to submit via click — had to discover that direct URL navigation with query parameters worked as a workaround. Searching multiple dates required significant back-and-forth with a UI not designed for batch comparison.
+
+---
+
+## Phase 11: CloudFront Access Logging
+
+**PRs: #57 (mattgilbride), #17 (codenames)**
+
+**Session: March 21, 2026**
+
+Added CloudFront access logging to both sites to understand who's visiting:
+
+1. **Checked existing traffic** via CloudWatch metrics — mattgilbride.com gets ~1,300-2,500 requests/day; codenames is mostly quiet (~30/day) with occasional spikes
+2. **Added logging infrastructure** to both repos via CDK:
+   - Created S3 log buckets with `BUCKET_OWNER_PREFERRED` object ownership (required for CF log delivery)
+   - Configured CloudFront distributions to write access logs
+   - Codenames uses separate prefixes (`app-logs/` and `api-logs/`) for its two distributions
+3. **Deployed both stacks** and verified logs appeared within minutes
+4. **Analyzed first logs** — confirmed the user's visit from a Philly-area edge location (PHL51-P3), Android device, with detailed per-request data including cache hit/miss status, response times, and content types
+
+### Result: Full visibility into site traffic with per-request detail
+
+---
+
 ## Recurring Challenges
 
 ### Zombie Next.js Processes
@@ -201,6 +288,22 @@ The Claude-in-Chrome browser extension had recurring issues:
 | [#48](https://github.com/matthewtgilbride/mattgilbride/pull/48) | Remove broken contact link from about page | 1 | +1/-1 |
 | [#49](https://github.com/matthewtgilbride/mattgilbride/pull/49) | Consolidate home and about into single landing page | 5 | +36/-108 |
 | [#50](https://github.com/matthewtgilbride/mattgilbride/pull/50) | Fix blog post layout overflow on all viewports | 1 | +15/-4 |
+| [#52](https://github.com/matthewtgilbride/mattgilbride/pull/52) | Add Google experience to resume | 2 | +40/-2 |
+| [#53](https://github.com/matthewtgilbride/mattgilbride/pull/53) | Enable HTTPS for apex domain | 2 | +18/-3 |
+| [#54](https://github.com/matthewtgilbride/mattgilbride/pull/54) | Remove CloudFront logical ID override | 1 | +0/-5 |
+| [#55](https://github.com/matthewtgilbride/mattgilbride/pull/55) | Update years of experience on home page | 1 | +1/-1 |
+| [#56](https://github.com/matthewtgilbride/mattgilbride/pull/56) | Replace Skills with Background narrative on resume | 6 | +33/-356 |
+| [#57](https://github.com/matthewtgilbride/mattgilbride/pull/57) | Enable CloudFront access logging | 1 | +8/-0 |
+
+### Codenames Repo
+
+| PR | Title | Files | Lines |
+|----|-------|-------|-------|
+| [#13](https://github.com/matthewtgilbride/codenames/pull/13) | Upgrade frontend to Next.js 14 and React 18 | - | - |
+| [#14](https://github.com/matthewtgilbride/codenames/pull/14) | Remove Storybook | - | - |
+| [#15](https://github.com/matthewtgilbride/codenames/pull/15) | Replace EC2 with Lambda Function URL | - | - |
+| [#16](https://github.com/matthewtgilbride/codenames/pull/16) | Remove actix crate and remaining cruft | - | - |
+| [#17](https://github.com/matthewtgilbride/codenames/pull/17) | Enable CloudFront access logging | 1 | +11/-1 |
 
 **Note**: PRs #43 and #44 have identical stats because #43 was closed and recreated as #44.
 
@@ -208,11 +311,22 @@ The Claude-in-Chrome browser extension had recurring issues:
 
 ## Tech Stack Reference
 
+### mattgilbride.com
 - **Framework**: Next.js 14 with static export (`output: 'export'`)
 - **Styling**: Emotion CSS-in-JS (`@emotion/react`, `CSSObject`)
 - **Content**: MDX with custom components (`ContentImage`, `GistEmbed`, `CodeBlock`)
 - **Hosting**: AWS S3 (static files) + CloudFront (CDN/HTTPS)
-- **Infrastructure**: AWS CDK (TypeScript)
+- **Infrastructure**: AWS CDK v2 (TypeScript)
 - **DNS**: Route53
 - **CI/CD**: Manual — `yarn build && yarn deploy` + CloudFront invalidation
+
+### codenames.mattgilbride.com
+- **Frontend**: Next.js 14 / React 18, static export to S3 + CloudFront
+- **Backend**: Rust compiled to Lambda, served via Lambda Function URL + CloudFront
+- **Database**: DynamoDB
+- **Infrastructure**: AWS CDK v2 (TypeScript)
+
+### Agent Tooling
 - **Agent**: Claude Code (Opus 4.6) with Claude-in-Chrome browser extension
+- **Communication**: Telegram bot channel for remote task dispatch
+- **AWS**: CLI access for CloudWatch metrics, S3 log inspection, CDK deployments
