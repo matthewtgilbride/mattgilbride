@@ -41,6 +41,12 @@ export class StaticSiteConstruct extends Construct {
       removalPolicy: RemovalPolicy.DESTROY, // NOT recommended for production code
     });
 
+    // Access log bucket for CloudFront
+    const logBucket = new s3.Bucket(this, `${id}-CfLogsBucket`, {
+      objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_PREFERRED,
+      removalPolicy: RemovalPolicy.DESTROY,
+    });
+
     // CloudFront distribution that provides HTTPS
     const distribution = new cloudfront.Distribution(
       this,
@@ -50,6 +56,8 @@ export class StaticSiteConstruct extends Construct {
         domainNames: [siteDomain, props.domainName],
         minimumProtocolVersion: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2021,
         sslSupportMethod: cloudfront.SSLMethod.SNI,
+        logBucket,
+        logFilePrefix: 'cloudfront-logs/',
         defaultBehavior: {
           origin: new origins.HttpOrigin(siteBucket.bucketWebsiteDomainName, {
             protocolPolicy: cloudfront.OriginProtocolPolicy.HTTP_ONLY,
