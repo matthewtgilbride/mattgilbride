@@ -111,6 +111,9 @@ const mdxComponents: Record<string, React.ComponentType> = {
   'coming-back-to-java': dynamic(
     () => import('../../content/blog/coming-back-to-java.mdx'),
   ),
+  'vibe-coding': dynamic(
+    () => import('../../content/blog/vibe-coding.mdx'),
+  ),
 };
 
 interface BlogPostProps {
