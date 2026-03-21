@@ -10,6 +10,15 @@ export interface BlogYear {
 
 export const blogIndex: BlogYear[] = [
   {
+    year: '2026',
+    posts: [
+      {
+        title: 'Vibe Coding and the Unlocking of Software Engineers',
+        href: '/blog/vibe-coding',
+      },
+    ],
+  },
+  {
     year: '2021',
     posts: [
       {
