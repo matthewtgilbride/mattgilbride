@@ -1,0 +1,74 @@
+export const metadata = {
+  title: "Vibe Coding and the Unlocking of Software Engineers",
+  uid: "vibe-coding",
+};
+
+# Vibe Coding and the Unlocking of Software Engineers
+
+**tl;dr - I spent a week doing real work with an AI agent. Software engineers aren't going anywhere, but the definition of "productive" is about to change dramatically.**
+
+## The Experiment
+
+A couple of weeks ago, I sat down with Claude Code — Anthropic's CLI agent — and spent the better part of a week using it for everything. Not a toy demo. Not "write me a fizzbuzz." Real work across multiple repositories, languages, and infrastructure.
+
+It started with my personal site. I wanted to migrate off Prismic CMS, modernize the styling, fix some mobile layout bugs, and clean up years of accumulated cruft. It ended with me deploying a serverless migration of a Rust backend, configuring Telegram as a remote command channel, and asking an AI to check Amtrak train fares by navigating a website through a browser extension.
+
+I didn't plan for any of that scope. It just kept going, because the friction that normally stops side projects in their tracks was largely absent.
+
+## What Actually Happened
+
+Across two repos and about 15 pull requests, the work included:
+
+- **A full content migration** from Prismic JSON to MDX, including downloading CDN-hosted images, building custom components, and deleting thousands of lines of a custom rich text renderer nobody wanted to maintain.
+- **A theme system overhaul** that replaced a multi-palette color picker with a clean light/dark mode toggle — cutting 188 lines of code down to 51.
+- **An infrastructure fix** that had been nagging me for months: the apex domain `mattgilbride.com` didn't support HTTPS because the wildcard cert didn't cover it and CloudFront had no alias for it. This required coordinated changes across two repos.
+- **A serverless migration** of my codenames game's Rust API from EC2 to Lambda Function URLs behind CloudFront. No more server to babysit.
+- **CloudFront access logging** added to both sites — because I was curious whether anyone actually visits them. (Someone played codenames on March 15th. Whoever you are: hello.)
+
+Each of those bullets represents something I'd been meaning to do for months or years. The kind of thing that's always worth doing but never worth starting, because the activation energy is too high when you're doing it alone, in your spare time, while also holding down a day job.
+
+## The "Unlocking" Thesis
+
+There's a narrative in the industry right now that AI is going to replace software engineers. I think that's exactly wrong. What I experienced over this week wasn't replacement. It was *unlocking*.
+
+The hard parts of software engineering have never been typing code. They're judgment calls. Should this be a Lambda or a container? Is this abstraction going to help us or haunt us in six months? Why is this CSS Grid layout overflowing on mobile when the inspector says everything fits? These are the questions that actually determine whether a project succeeds, and they require the kind of contextual understanding that comes from years of building things, breaking things, and maintaining the things that other people built and broke before you.
+
+What AI removes is the tax between having an answer to those questions and seeing it realized.
+
+I knew my apex domain needed a SAN on the certificate, a CloudFront alias, and a Route53 record. What I didn't want to do was spend an hour remembering the CDK API for ACM certificates, cross-referencing the SSM parameter store, and debugging the CloudFormation diff. Claude handled the mechanical translation from intent to implementation while I focused on whether the approach was right.
+
+That's not replacement. That's leverage.
+
+## What Doesn't Change
+
+I want to be clear about what AI *didn't* do well, because this is where I think a lot of the hype gets ahead of reality.
+
+**Debugging required partnership, not delegation.** The mobile layout bug — where a CSS Grid container with `justifyItems: 'center'` was allowing its child to size to intrinsic width and overflow — took real back-and-forth. Claude tried several fixes that addressed symptoms rather than the root cause. I had to drive the investigation: inspecting computed styles through the browser extension, measuring element widths via JavaScript, and ultimately recognizing that the grid was unnecessary overhead for a single-column layout. The fix was 15 lines. Getting there required understanding how CSS Grid actually works, not just what the MDN docs say it does.
+
+**Operational knowledge mattered constantly.** Claude didn't know that my codenames CDK stack needed `AWS_DEFAULT_REGION` and `AWS_ACCOUNT_NUMBER` environment variables. It tried `npm` when my repos use `yarn` — more than once. It didn't anticipate CloudFront's log delivery delay, or that zombie Next.js processes would accumulate on sequential ports. These are the kinds of things you only know from having operated software in production, and no amount of training data substitutes for that experience.
+
+**Taste is still a human concern.** When I asked Claude to replace the Skills section on my resume, it could generate prose, but the decision to replace a buzzword grid with a narrative about my career arc — and the judgment that this would better represent me to colleagues — was mine. AI can execute on a creative direction. It can't tell you which direction is right for your audience.
+
+## What Does Change
+
+That said, the *magnitude* of what a single motivated engineer can accomplish in a short period of time is about to increase dramatically. And I think the implications of this are underappreciated.
+
+**Side projects become viable again.** Every engineer I know has a graveyard of half-finished projects. Not because the ideas were bad, but because the distance between "I know what to build" and "it's built" involves dozens of hours of mechanical work that's hard to justify when you have a family, a job, and approximately zero spare time. That distance just got a lot shorter.
+
+**The "full-stack" engineer becomes real.** I'm primarily a backend engineer. I can write frontend code, but CSS has always been the part where I slow down and start Googling. Having an agent that can translate "make this not overflow on mobile" into the right combination of `max-width`, `overflow`, and `box-sizing` declarations — while I verify the result — means I'm less constrained by the boundaries of my deepest expertise.
+
+**Infrastructure work loses its activation energy.** Adding CloudFront access logging to two sites required maybe 20 lines of CDK code total. But *without* an agent, the actual work involves reading CDK docs, remembering the S3 bucket ownership requirements for CloudFront log delivery, and testing the deployment. That's an hour of context-switching for something that delivers value in minutes. The ratio of thinking-to-typing shifts dramatically.
+
+**Maintenance becomes approachable.** The codenames project hadn't been meaningfully updated in over a year. The frontend was on old versions of Next.js and React, the backend was running on an EC2 instance I was paying for but rarely thinking about, and there was Storybook config that nobody used. Cleaning all of that up in a single session — upgrading dependencies, migrating to serverless, removing dead code — is the kind of housekeeping that compounds in value but never feels urgent enough to prioritize.
+
+## The 10x Engineer, Revisited
+
+The "10x engineer" has always been a controversial concept. But if there's any truth to it, it was never about typing speed. It was about leverage — the ability to identify the highest-impact work and execute on it efficiently.
+
+AI doesn't create 10x engineers. It lowers the floor. An engineer who already has good judgment about what to build, how to structure it, and where the risks are can now move at a pace that was previously only possible with a team. The bottleneck shifts from "can I implement this?" to "should I implement this?" — which, frankly, is where it always should have been.
+
+I don't think we're going to see fewer software engineers. I think we're going to see engineers who are less constrained by the mechanical parts of the job, more focused on the parts that actually require human judgment, and dramatically more productive as a result.
+
+The engineers who thrive in this world will be the ones who were always good at the *hard* parts: understanding systems, making trade-offs, and knowing when the elegant solution is worse than the simple one. AI just clears the path so they can spend more time doing exactly that.
+
+That's not replacement. That's what I mean by unlocking.
